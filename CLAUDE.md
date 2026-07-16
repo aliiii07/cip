@@ -1,4 +1,4 @@
-# Vibe Trading
+# CIP
 
 Natural-language to backtested, risk-managed algorithmic trading strategies.
 Multi-agent LLM pipeline. Retail investors and mid-tier prop firms; stocks,
