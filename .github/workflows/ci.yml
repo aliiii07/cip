@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  python:
+    name: Python lint + test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lint + test
+        run: |
+          if [ -f requirements.txt ] || [ -f pyproject.toml ]; then
+            pip install -e ".[dev]" 2>/dev/null || pip install -r requirements.txt
+            pip install ruff pytest 2>/dev/null || true
+            ruff check .
+            pytest
+          else
+            echo "No Python project files (requirements.txt / pyproject.toml) yet — nothing to lint/test."
+          fi
+
+  frontend:
+    name: Frontend lint + test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          # cache: npm — enable once package-lock.json exists; setup-node
+          # errors if this is set with no lockfile present.
+      - name: Lint + test
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+            npm run lint --if-present
+            npm test --if-present
+          else
+            echo "No package.json yet — nothing to lint/test."
+          fi

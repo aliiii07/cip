@@ -1,0 +1,29 @@
+[project]
+name = "cip"
+version = "0.1.0"
+description = "Natural-language to backtested, risk-managed algorithmic trading strategies."
+requires-python = ">=3.11"
+dependencies = [
+    "jsonschema>=4.23",
+    "langgraph>=0.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "id": "strat_7d3f5b44",
+  "name": "FX Range Rotation",
+  "description": "Bounded RSI mean-reversion entries across a small FX watchlist, multi-day holds.",
+  "archetype": "range_swing_rotation",
+  "asset_class": "forex",
+  "universe": ["EURUSD", "GBPUSD", "USDJPY"],
+  "timeframe": "4h",
+  "entry_rules": [
+    {
+      "indicator": { "type": "rsi", "params": { "period": 14 } },
+      "comparator": "less_than",
+      "value": 30
+    }
+  ],
+  "exit_rules": [
+    {
+      "indicator": { "type": "rsi", "params": { "period": 14 } },
+      "comparator": "greater_than",
+      "value": 55
+    }
+  ],
+  "risk_management": {
+    "stop_loss": { "type": "fixed_pct", "value": 1.5 },
+    "position_sizing": { "method": "fixed_fractional", "max_position_pct": 5 },
+    "per_asset_parameters": {
+      "EURUSD": {
+        "stop_loss_value": 1.5,
+        "max_position_pct": 5,
+        "indicator_params": { "rsi_period": 14, "oversold": 30, "overbought": 55 }
+      },
+      "GBPUSD": {
+        "stop_loss_value": 1.8,
+        "max_position_pct": 5,
+        "indicator_params": { "rsi_period": 14, "oversold": 28, "overbought": 55 }
+      },
+      "USDJPY": {
+        "stop_loss_value": 1.2,
+        "max_position_pct": 4,
+        "indicator_params": { "rsi_period": 10, "oversold": 32, "overbought": 58 }
+      }
+    }
+  },
+  "backtest_config": {
+    "candle_type": "native",
+    "data_provider": "polygon",
+    "fee_model": { "maker_bps": 1, "taker_bps": 2 },
+    "slippage_model": { "type": "order_book_depth", "order_book_depth_levels": 5 },
+    "train_validate_split": { "method": "chronological", "train_pct": 70, "validate_pct": 30 },
+    "monte_carlo": { "iterations": 5000, "permute": ["price", "spread", "slippage"] },
+    "point_in_time_adjusted": true,
+    "survivorship_bias_free": true
+  },
+  "execution": { "mode": "paper", "requires_user_approval": true },
+  "metadata": {
+    "created_by": "strategy-architect@0.1.0-stub",
+    "created_at": "2026-06-04T00:00:00Z",
+    "source_prompt": "Rotate a small FX watchlist: buy oversold RSI, sell into strength, hold a few days.",
+    "rank_metric": "expectancy",
+    "parameter_robustness_pct": 15,
+    "disclaimer": "For educational and simulation purposes only. Past performance does not guarantee future results."
+  }
+}

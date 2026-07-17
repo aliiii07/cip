@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "id": "strat_1e6c0a99",
+  "name": "ETH Funding-Rate Carry",
+  "description": "Spot long ETH plus perp short, capturing staking yield and positive funding. Not market-neutral: exposed to basis risk, short-leg liquidation risk, and unbonding lockups.",
+  "archetype": "funding_rate_carry",
+  "asset_class": "crypto",
+  "universe": ["ETH-USD"],
+  "timeframe": "1h",
+  "entry_rules": [
+    {
+      "indicator": { "type": "funding_rate", "params": { "leg": "perp" } },
+      "comparator": "greater_than",
+      "value": 0.0001
+    }
+  ],
+  "exit_rules": [
+    {
+      "indicator": { "type": "funding_rate", "params": { "leg": "perp" } },
+      "comparator": "less_than",
+      "value": -0.00005
+    }
+  ],
+  "risk_management": {
+    "stop_loss": { "type": "fixed_pct", "value": 5 },
+    "position_sizing": { "method": "fixed_fractional", "max_position_pct": 15 },
+    "per_asset_parameters": {
+      "ETH-USD": {
+        "stop_loss_value": 5,
+        "max_position_pct": 15,
+        "indicator_params": { "funding_entry_threshold": 0.0001, "funding_exit_threshold": -0.00005 }
+      }
+    }
+  },
+  "funding_carry_risk": {
+    "basis_risk_limit_pct": 3,
+    "short_leg_liquidation_buffer_pct": 25,
+    "staking_unbonding_days": 4,
+    "negative_funding_stop_bps": -5
+  },
+  "backtest_config": {
+    "candle_type": "native",
+    "data_provider": "binance",
+    "fee_model": { "maker_bps": 2, "taker_bps": 5 },
+    "slippage_model": { "type": "order_book_depth", "order_book_depth_levels": 10 },
+    "train_validate_split": { "method": "chronological", "train_pct": 70, "validate_pct": 30 },
+    "monte_carlo": { "iterations": 5000, "permute": ["price", "spread", "slippage"] },
+    "point_in_time_adjusted": true,
+    "survivorship_bias_free": true
+  },
+  "execution": { "mode": "paper", "requires_user_approval": true },
+  "metadata": {
+    "created_by": "strategy-architect@0.1.0-stub",
+    "created_at": "2026-06-03T00:00:00Z",
+    "source_prompt": "Run an ETH funding-rate carry: long spot, short the perp, capture funding plus staking yield when funding is positive.",
+    "rank_metric": "expectancy",
+    "parameter_robustness_pct": 10,
+    "disclaimer": "For educational and simulation purposes only. Past performance does not guarantee future results."
+  }
+}

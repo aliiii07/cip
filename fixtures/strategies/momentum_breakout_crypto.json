@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "id": "strat_9f2a7c31",
+  "name": "BTC/ETH Donchian Breakout",
+  "description": "Long entries on Donchian upper-band breakouts confirmed by a rising EMA trend filter, ATR trailing stop. Expects a low win rate with a long right tail.",
+  "archetype": "asymmetric_momentum",
+  "asset_class": "crypto",
+  "universe": ["BTC-USD", "ETH-USD"],
+  "timeframe": "4h",
+  "entry_rules": [
+    {
+      "indicator": { "type": "price", "params": { "field": "close" } },
+      "comparator": "crosses_above",
+      "value": { "type": "donchian_channel", "params": { "period": 20, "band": "upper" } }
+    },
+    {
+      "indicator": { "type": "moving_average", "params": { "period": 50, "ma_type": "ema", "field": "close" } },
+      "comparator": "greater_than",
+      "value": { "type": "moving_average", "params": { "period": 200, "ma_type": "ema", "field": "close" } }
+    }
+  ],
+  "exit_rules": [
+    {
+      "indicator": { "type": "price", "params": { "field": "close" } },
+      "comparator": "crosses_below",
+      "value": { "type": "donchian_channel", "params": { "period": 10, "band": "lower" } }
+    }
+  ],
+  "risk_management": {
+    "stop_loss": { "type": "atr_multiple", "value": 2.5 },
+    "position_sizing": { "method": "volatility_targeted", "max_position_pct": 8 },
+    "per_asset_parameters": {
+      "BTC-USD": {
+        "stop_loss_value": 2.5,
+        "max_position_pct": 8,
+        "indicator_params": { "entry_donchian_period": 20, "trend_fast_period": 50, "trend_slow_period": 200, "exit_donchian_period": 10 }
+      },
+      "ETH-USD": {
+        "stop_loss_value": 3.0,
+        "max_position_pct": 6,
+        "indicator_params": { "entry_donchian_period": 20, "trend_fast_period": 50, "trend_slow_period": 200, "exit_donchian_period": 14 }
+      }
+    }
+  },
+  "backtest_config": {
+    "candle_type": "native",
+    "data_provider": "binance",
+    "fee_model": { "maker_bps": 6, "taker_bps": 12 },
+    "slippage_model": { "type": "order_book_depth", "order_book_depth_levels": 10 },
+    "train_validate_split": { "method": "chronological", "train_pct": 70, "validate_pct": 30 },
+    "monte_carlo": { "iterations": 5000, "permute": ["price", "spread", "slippage"] },
+    "point_in_time_adjusted": true,
+    "survivorship_bias_free": true
+  },
+  "execution": { "mode": "paper", "requires_user_approval": true },
+  "metadata": {
+    "created_by": "strategy-architect@0.1.0-stub",
+    "created_at": "2026-06-01T00:00:00Z",
+    "source_prompt": "Buy BTC and ETH when they break out of a 20-period high with the trend confirmed, use an ATR trailing stop.",
+    "rank_metric": "expectancy",
+    "parameter_robustness_pct": 15,
+    "disclaimer": "For educational and simulation purposes only. Past performance does not guarantee future results."
+  }
+}

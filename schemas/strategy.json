@@ -1,0 +1,417 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cip:schema:strategy:1",
+  "title": "CIP Strategy",
+  "description": "Strictly-typed strategy specification emitted by the Strategy Architect. This is the sole contract between agents in the four-agent loop (Market Scout -> Strategy Architect -> Backtest Engine -> Risk Cop). See docs/architecture.md. Schema changes must update validators (src/cip/validation.py) on both sides in the same PR, per CLAUDE.md conventions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "archetype",
+    "asset_class",
+    "universe",
+    "timeframe",
+    "entry_rules",
+    "exit_rules",
+    "risk_management",
+    "backtest_config",
+    "execution",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^strat_[a-z0-9]{8,}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Human-readable summary of the NL hypothesis this strategy encodes."
+    },
+    "archetype": {
+      "enum": ["asymmetric_momentum", "funding_rate_carry", "range_swing_rotation"],
+      "description": "The Architect composes from these templates only; each is a hypothesis to test, never a default or a recommendation. Order-book imbalance scalping and other microstructure strategies are permanently out of scope and have no archetype here."
+    },
+    "asset_class": {
+      "enum": ["equity", "forex", "crypto"]
+    },
+    "universe": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true,
+      "description": "Small, bounded watchlist. Not a broad-market scan universe."
+    },
+    "timeframe": {
+      "enum": ["1h", "4h", "1d"],
+      "description": "Sub-hour/tick timeframes are structurally excluded. HFT and microstructure strategies requiring sub-second latency are incompatible with this pipeline by design (see CLAUDE.md Non-goals)."
+    },
+    "entry_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/condition" }
+    },
+    "exit_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/condition" }
+    },
+    "risk_management": { "$ref": "#/$defs/riskManagement" },
+    "backtest_config": { "$ref": "#/$defs/backtestConfig" },
+    "execution": { "$ref": "#/$defs/execution" },
+    "funding_carry_risk": { "$ref": "#/$defs/fundingCarryRisk" },
+    "metadata": { "$ref": "#/$defs/metadata" }
+  },
+  "allOf": [
+    {
+      "description": "Funding-rate carry is a crypto-only archetype (spot long + perp short) and must declare its specific risk block.",
+      "if": {
+        "properties": { "archetype": { "const": "funding_rate_carry" } },
+        "required": ["archetype"]
+      },
+      "then": {
+        "properties": { "asset_class": { "const": "crypto" } },
+        "required": ["asset_class", "funding_carry_risk"]
+      }
+    }
+  ],
+  "$defs": {
+    "indicator": {
+      "type": "object",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "moving_average" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["period", "ma_type", "field"],
+              "properties": {
+                "period": { "type": "integer", "minimum": 2, "maximum": 500 },
+                "ma_type": { "enum": ["sma", "ema"] },
+                "field": { "enum": ["open", "high", "low", "close"] }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "donchian_channel" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["period", "band"],
+              "properties": {
+                "period": { "type": "integer", "minimum": 2, "maximum": 500 },
+                "band": { "enum": ["upper", "lower", "mid"] }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "rsi" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["period"],
+              "properties": {
+                "period": { "type": "integer", "minimum": 2, "maximum": 200 }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "atr" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["period"],
+              "properties": {
+                "period": { "type": "integer", "minimum": 2, "maximum": 200 }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "volume" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["period", "agg"],
+              "properties": {
+                "period": { "type": "integer", "minimum": 1, "maximum": 500 },
+                "agg": { "enum": ["sum", "avg"] }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "price" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["field"],
+              "properties": {
+                "field": { "enum": ["open", "high", "low", "close"] }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "funding_rate" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["leg"],
+              "properties": {
+                "leg": { "enum": ["perp"] }
+              }
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["type", "params"],
+          "properties": {
+            "type": { "const": "staking_yield" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {}
+            }
+          }
+        }
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["indicator", "comparator", "value"],
+      "properties": {
+        "indicator": { "$ref": "#/$defs/indicator" },
+        "comparator": {
+          "enum": [
+            "crosses_above",
+            "crosses_below",
+            "greater_than",
+            "greater_than_or_equal",
+            "less_than",
+            "less_than_or_equal",
+            "equals"
+          ]
+        },
+        "value": {
+          "oneOf": [{ "type": "number" }, { "$ref": "#/$defs/indicator" }]
+        }
+      }
+    },
+    "assetParameterSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stop_loss_value", "max_position_pct", "indicator_params"],
+      "properties": {
+        "stop_loss_value": { "type": "number", "exclusiveMinimum": 0 },
+        "max_position_pct": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+        "indicator_params": {
+          "type": "object",
+          "description": "Symbol-specific values for numeric params referenced in entry_rules/exit_rules (e.g. {\"period\": 20}). Every symbol in universe must have its own entry here -- see CLAUDE.md: NEVER reuse a parameter set across assets.",
+          "additionalProperties": { "type": "number" }
+        }
+      }
+    },
+    "riskManagement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stop_loss", "position_sizing", "per_asset_parameters"],
+      "properties": {
+        "stop_loss": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "enum": ["fixed_pct", "atr_multiple"] },
+            "value": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "position_sizing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "max_position_pct"],
+          "properties": {
+            "method": { "enum": ["fixed_fractional", "volatility_targeted"] },
+            "max_position_pct": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 }
+          }
+        },
+        "per_asset_parameters": {
+          "type": "object",
+          "description": "One entry per symbol in universe, keyed by symbol. Structurally requires at least one entry; the validator layer (src/cip/validation.py) enforces that keys exactly match `universe` -- JSON Schema alone cannot express that cross-field constraint.",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/$defs/assetParameterSet" }
+        }
+      }
+    },
+    "fundingCarryRisk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis_risk_limit_pct",
+        "short_leg_liquidation_buffer_pct",
+        "staking_unbonding_days",
+        "negative_funding_stop_bps"
+      ],
+      "properties": {
+        "basis_risk_limit_pct": { "type": "number", "exclusiveMinimum": 0 },
+        "short_leg_liquidation_buffer_pct": { "type": "number", "exclusiveMinimum": 0 },
+        "staking_unbonding_days": { "type": "integer", "minimum": 0 },
+        "negative_funding_stop_bps": { "type": "number" }
+      },
+      "description": "Required for funding_rate_carry. Must model basis risk, short-leg liquidation distance, staking unbonding lockups, and negative-funding regimes -- never presented to users as market-neutral without these qualifiers."
+    },
+    "backtestConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candle_type",
+        "data_provider",
+        "fee_model",
+        "slippage_model",
+        "train_validate_split",
+        "monte_carlo",
+        "point_in_time_adjusted",
+        "survivorship_bias_free"
+      ],
+      "properties": {
+        "candle_type": {
+          "const": "native",
+          "description": "Only raw/native exchange candles. Heikin-Ashi and other synthetic/smoothed series are rejected at the schema level -- HA shows entry fills that never existed."
+        },
+        "data_provider": { "enum": ["polygon", "binance", "coingecko_pro"] },
+        "fee_model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maker_bps", "taker_bps"],
+          "properties": {
+            "maker_bps": { "type": "number", "minimum": 0 },
+            "taker_bps": { "type": "number", "minimum": 0 }
+          },
+          "description": "Default round-trip fee assumption is 12bps (0.12%) unless the strategy has evidence for a different venue fee schedule."
+        },
+        "slippage_model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "order_book_depth_levels"],
+          "properties": {
+            "type": { "const": "order_book_depth" },
+            "order_book_depth_levels": { "type": "integer", "minimum": 1 }
+          },
+          "description": "Mid-spread fills are not representable -- only order-book depth consumption."
+        },
+        "train_validate_split": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "train_pct", "validate_pct"],
+          "properties": {
+            "method": { "const": "chronological" },
+            "train_pct": { "type": "number", "minimum": 65, "maximum": 75 },
+            "validate_pct": { "type": "number", "minimum": 25, "maximum": 35 }
+          }
+        },
+        "monte_carlo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["iterations", "permute"],
+          "properties": {
+            "iterations": { "const": 5000 },
+            "permute": {
+              "type": "array",
+              "items": { "enum": ["price", "spread", "slippage"] },
+              "minItems": 3,
+              "uniqueItems": true
+            }
+          }
+        },
+        "point_in_time_adjusted": { "const": true },
+        "survivorship_bias_free": { "const": true }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "requires_user_approval"],
+      "properties": {
+        "mode": {
+          "const": "paper",
+          "description": "Live brokerage/exchange execution has no implementation compiled into this product and is not representable in this schema."
+        },
+        "requires_user_approval": { "const": true }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_by",
+        "created_at",
+        "source_prompt",
+        "rank_metric",
+        "parameter_robustness_pct",
+        "disclaimer"
+      ],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Architect agent/model version identifier, e.g. 'strategy-architect@1.2.0'."
+        },
+        "created_at": { "type": "string", "format": "date-time" },
+        "source_prompt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The natural-language input this strategy was generated from."
+        },
+        "rank_metric": {
+          "const": "expectancy",
+          "description": "Strategies are ranked by expectancy, never win rate alone."
+        },
+        "parameter_robustness_pct": {
+          "type": "number",
+          "minimum": 10,
+          "maximum": 20,
+          "description": "The strategy must stay profitable when every parameter shifts by +/- this percent."
+        },
+        "disclaimer": {
+          "const": "For educational and simulation purposes only. Past performance does not guarantee future results."
+        }
+      }
+    }
+  }
+}

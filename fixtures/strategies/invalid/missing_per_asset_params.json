@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "id": "strat_4b8e1d02",
+  "name": "Equity Golden Cross Momentum",
+  "description": "Long entries when the 50-day EMA crosses above the 200-day EMA, fixed-percent stop.",
+  "archetype": "asymmetric_momentum",
+  "asset_class": "equity",
+  "universe": ["AAPL", "MSFT", "NVDA"],
+  "timeframe": "1d",
+  "entry_rules": [
+    {
+      "indicator": { "type": "moving_average", "params": { "period": 50, "ma_type": "ema", "field": "close" } },
+      "comparator": "crosses_above",
+      "value": { "type": "moving_average", "params": { "period": 200, "ma_type": "ema", "field": "close" } }
+    }
+  ],
+  "exit_rules": [
+    {
+      "indicator": { "type": "moving_average", "params": { "period": 50, "ma_type": "ema", "field": "close" } },
+      "comparator": "crosses_below",
+      "value": { "type": "moving_average", "params": { "period": 200, "ma_type": "ema", "field": "close" } }
+    }
+  ],
+  "risk_management": {
+    "stop_loss": { "type": "fixed_pct", "value": 6 },
+    "position_sizing": { "method": "fixed_fractional", "max_position_pct": 10 },
+    "per_asset_parameters": {
+      "AAPL": {
+        "stop_loss_value": 6,
+        "max_position_pct": 10,
+        "indicator_params": { "fast_period": 50, "slow_period": 200 }
+      },
+      "MSFT": {
+        "stop_loss_value": 6,
+        "max_position_pct": 10,
+        "indicator_params": { "fast_period": 50, "slow_period": 200 }
+      }
+    }
+  },
+  "backtest_config": {
+    "candle_type": "native",
+    "data_provider": "polygon",
+    "fee_model": { "maker_bps": 0, "taker_bps": 2 },
+    "slippage_model": { "type": "order_book_depth", "order_book_depth_levels": 5 },
+    "train_validate_split": { "method": "chronological", "train_pct": 70, "validate_pct": 30 },
+    "monte_carlo": { "iterations": 5000, "permute": ["price", "spread", "slippage"] },
+    "point_in_time_adjusted": true,
+    "survivorship_bias_free": true
+  },
+  "execution": { "mode": "paper", "requires_user_approval": true },
+  "metadata": {
+    "created_by": "strategy-architect@0.1.0-stub",
+    "created_at": "2026-06-02T00:00:00Z",
+    "source_prompt": "Golden cross momentum on AAPL, MSFT, and NVDA.",
+    "rank_metric": "expectancy",
+    "parameter_robustness_pct": 20,
+    "disclaimer": "For educational and simulation purposes only. Past performance does not guarantee future results."
+  }
+}
