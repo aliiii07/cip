@@ -68,6 +68,30 @@ def create_app(db_url: str = DEFAULT_DB_URL) -> FastAPI:
         background.add_task(execute_run, session_factory, bus, run_id)
         return {"run_id": run_id, "status": "queued"}
 
+    @app.get("/strategies")
+    def list_strategies() -> list[dict]:
+        with session_factory() as session:
+            rows = session.query(StrategyRow).order_by(StrategyRow.created_at.desc()).all()
+            return [
+                {
+                    "id": row.id,
+                    "name": row.spec.get("name"),
+                    "archetype": row.spec.get("archetype"),
+                    "asset_class": row.spec.get("asset_class"),
+                    "universe": row.spec.get("universe"),
+                    "created_at": row.created_at,
+                }
+                for row in rows
+            ]
+
+    @app.get("/runs")
+    def list_runs(strategy_id: str | None = None, limit: int = 50) -> list[dict]:
+        with session_factory() as session:
+            query = session.query(PipelineRunRow).order_by(PipelineRunRow.created_at.desc())
+            if strategy_id is not None:
+                query = query.filter(PipelineRunRow.strategy_id == strategy_id)
+            return [run.as_dict() for run in query.limit(min(limit, 200)).all()]
+
     @app.get("/runs/{run_id}")
     def get_run(run_id: str) -> dict:
         with session_factory() as session:
