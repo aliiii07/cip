@@ -37,9 +37,11 @@ and testable; the API and frontend are not yet built (see
    keyless — keys only matter once real providers land.
 2. Backend: `python -m venv .venv && source .venv/bin/activate`, then
    `pip install -e ".[dev]"`.
-3. Tests and lint: `pytest` and `ruff check .` — both run in CI on every
+3. API server: `uvicorn api.main:app --port 8000` from the repo root
+   (SQLite store is created at `data/cip.db`, gitignored).
+4. Tests and lint: `pytest` and `ruff check .` — both run in CI on every
    PR via [.github/workflows/ci.yml](.github/workflows/ci.yml).
-4. Frontend (Next.js): not yet in the repo. Add `npm install` /
+5. Frontend (Next.js): not yet in the repo. Add `npm install` /
    `npm run dev` instructions here in the same PR that adds
    `frontend/package.json` — don't leave this section aspirational once
    the files exist.
