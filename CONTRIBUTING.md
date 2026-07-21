@@ -28,21 +28,21 @@ fix the drift rather than picking one.
 
 ## Running locally
 
-This repo is pre-implementation — no backend or frontend code exists yet
-(see [README.md](README.md#status)). Once the stack described in
-[docs/architecture.md](docs/architecture.md) lands, this section becomes:
+The Python scaffold (schema, validators, stub LangGraph pipeline) is real
+and testable; the API and frontend are not yet built (see
+[README.md](README.md#status)).
 
 1. Copy `.env.example` to `.env` and fill in real API keys (data providers,
-   per-agent LLM credentials). Never commit `.env`.
-2. Backend (Python / LangGraph): create a virtualenv, `pip install` the
-   project, run the agent pipeline.
-3. Frontend (Next.js): `npm install`, `npm run dev`.
-4. Tests: `pytest` for the backend, `npm test` for the frontend — both run
-   in CI on every PR via [.github/workflows/ci.yml](.github/workflows/ci.yml).
-
-Update this section with real commands in the same PR that adds the
-corresponding `requirements.txt`/`pyproject.toml` or `package.json` — don't
-leave it aspirational once the files exist.
+   per-agent LLM credentials). Never commit `.env`. The stub pipeline runs
+   keyless — keys only matter once real providers land.
+2. Backend: `python -m venv .venv && source .venv/bin/activate`, then
+   `pip install -e ".[dev]"`.
+3. Tests and lint: `pytest` and `ruff check .` — both run in CI on every
+   PR via [.github/workflows/ci.yml](.github/workflows/ci.yml).
+4. Frontend (Next.js): not yet in the repo. Add `npm install` /
+   `npm run dev` instructions here in the same PR that adds
+   `frontend/package.json` — don't leave this section aspirational once
+   the files exist.
 
 ## Reporting issues
 

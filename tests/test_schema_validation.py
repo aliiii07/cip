@@ -40,6 +40,19 @@ def test_forbidden_language_is_rejected():
     assert "forbidden profit/return language" in str(exc_info.value)
 
 
+def test_qualified_market_neutral_is_allowed_but_bare_use_is_not():
+    """CLAUDE.md bans "market-neutral" only when stated without qualification;
+    the funding-carry archetype is required to carry the negated form."""
+    strategy = json.loads((FIXTURES_DIR / "funding_rate_carry_eth.json").read_text())
+    assert "not market-neutral" in strategy["description"].lower()
+    validate_strategy(strategy)  # qualified use must not raise
+
+    strategy["description"] = "A market-neutral carry position."
+    with pytest.raises(StrategyValidationError) as exc_info:
+        validate_strategy(strategy)
+    assert "market-neutral" in str(exc_info.value)
+
+
 def test_live_execution_mode_is_schema_invalid():
     strategy = json.loads(
         (FIXTURES_DIR / "invalid" / "live_execution_mode.json").read_text()

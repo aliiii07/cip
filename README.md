@@ -8,10 +8,22 @@ four-agent pipeline fits together.
 
 ## Status
 
-Pre-implementation. This repo currently holds the product spec and agent
-rules; the LangGraph pipeline, backtest engine, and frontend described in
-[docs/architecture.md](docs/architecture.md) are not yet built. This section
-will be replaced with real setup/run instructions once code lands.
+Scaffold stage. The strategy JSON schema ([schemas/strategy.json](schemas/strategy.json)),
+its validator layer ([src/cip/validation.py](src/cip/validation.py)), and a
+stub LangGraph four-agent pipeline ([src/cip/agents/](src/cip/agents/)) run
+end to end under test. The agents are stubs — fixture-based strategy
+selection and deterministic pseudo-metrics, no LLM calls, no real data
+providers, no real backtests. The web platform (API, frontend, screener,
+monitor) is being built next; see
+[docs/decisions/0002-web-architecture.md](docs/decisions/0002-web-architecture.md).
+
+To run what exists:
+
+```sh
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+pytest
+```
 
 ## Docs
 

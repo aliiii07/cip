@@ -26,6 +26,15 @@ FORBIDDEN_TERMS = (
     "market-neutral",
 )
 
+# Of the terms above, only "market-neutral" is banned conditionally — CLAUDE.md
+# bans it "stated without qualification", and the funding-carry archetype is
+# *required* to carry the negation ("Not market-neutral: exposed to ...").
+# These qualified forms are stripped before scanning.
+_QUALIFIED_FORMS = (
+    "not market-neutral",
+    "never market-neutral",
+)
+
 _SCHEMA_PATH = Path(__file__).resolve().parents[2] / "schemas" / "strategy.json"
 
 
@@ -88,6 +97,8 @@ def _semantic_errors(strategy: dict[str, Any]) -> list[str]:
         if not isinstance(text, str):
             continue
         lowered = text.lower()
+        for qualified in _QUALIFIED_FORMS:
+            lowered = lowered.replace(qualified, "")
         hits = [term for term in FORBIDDEN_TERMS if term in lowered]
         if hits:
             errors.append(
