@@ -19,11 +19,12 @@ from cip.agents.graph import build_graph
 from cip.validation import StrategyValidationError
 
 AGENT_TAGS = {
-    "market_scout": "[Market Scout Analysis Complete]",
-    "strategy_architect": "[Strategy Architect Compiling Spec]",
-    "backtest_engine": "[Backtest Engine Running]",
-    "risk_cop": "[Risk Cop Simulating Drawdown…]",
+    "market_scout": "[Market Scout complete]",
+    "strategy_architect": "[Strategy Architect compiling]",
+    "backtest_engine": "[Backtest Engine running]",
+    "risk_cop": "[Risk Cop simulating]",
 }
+MAX_CORRECTION_ATTEMPTS = 3
 TERMINAL_EVENT = "run_finished"
 
 
@@ -50,6 +51,7 @@ def execute_run(session_factory: sessionmaker, bus: EventBus, run_id: str) -> No
         record(session, run, "run_started")
 
         state: dict[str, Any] = {"source_prompt": run.prompt}
+        corrections = 0
         try:
             for update in build_graph().stream(state, stream_mode="updates"):
                 for node, partial in update.items():
@@ -57,6 +59,15 @@ def execute_run(session_factory: sessionmaker, bus: EventBus, run_id: str) -> No
                     tag = AGENT_TAGS.get(node)
                     if tag:
                         record(session, run, "agent_tag", node=node, tag=tag)
+                    if node == "risk_cop" and state.get("status") == "designing":
+                        corrections += 1
+                        record(
+                            session,
+                            run,
+                            "agent_tag",
+                            node="risk_cop",
+                            tag=f"[Correction attempt {corrections} of {MAX_CORRECTION_ATTEMPTS}]",
+                        )
         except StrategyValidationError as exc:
             run.status = "failed"
             run.finished_at = _now()
@@ -77,4 +88,13 @@ def execute_run(session_factory: sessionmaker, bus: EventBus, run_id: str) -> No
         run.risk_report = state.get("risk_report")
         run.correction_history = state.get("correction_history", [])
         run.finished_at = _now()
+        if run.status == "approved":
+            verdict = "[Strategy approved]"
+        else:
+            breaches = len((state.get("risk_report") or {}).get("correction_notes", []))
+            verdict = (
+                f"[Strategy rejected — {breaches} gate breaches after "
+                f"{MAX_CORRECTION_ATTEMPTS} correction attempts]"
+            )
+        record(session, run, "agent_tag", node="verdict", tag=verdict)
         record(session, run, TERMINAL_EVENT, status=run.status, strategy_id=run.strategy_id)

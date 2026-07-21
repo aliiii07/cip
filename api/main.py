@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import secrets
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
@@ -16,10 +17,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
+from api.analysis import get_analysis
 from api.db import DEFAULT_DB_URL, Base, make_engine, make_session_factory
 from api.events import EventBus
 from api.models import PipelineRunRow, StrategyRow
 from api.pipeline import TERMINAL_EVENT, execute_run
+from api.symbols import SymbolRow, search_symbols, seed_static_symbols, sync_binance_symbols
 
 
 class StrategyRequest(BaseModel):
@@ -39,7 +42,13 @@ def create_app(db_url: str = DEFAULT_DB_URL) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         bus.bind(asyncio.get_running_loop())
+        seed_static_symbols(session_factory)
+        sync_task = None
+        if not os.environ.get("CIP_SKIP_SYMBOL_SYNC"):
+            sync_task = asyncio.create_task(sync_binance_symbols(session_factory))
         yield
+        if sync_task is not None:
+            sync_task.cancel()
 
     app = FastAPI(title="CIP API", lifespan=lifespan)
     app.state.session_factory = session_factory
@@ -67,6 +76,25 @@ def create_app(db_url: str = DEFAULT_DB_URL) -> FastAPI:
             session.commit()
         background.add_task(execute_run, session_factory, bus, run_id)
         return {"run_id": run_id, "status": "queued"}
+
+    @app.get("/symbols")
+    def symbols(q: str = "") -> list[dict]:
+        with session_factory() as session:
+            return search_symbols(session, q)
+
+    @app.get("/assets/{symbol}/analysis")
+    async def asset_analysis(symbol: str, timeframe: str = "4h") -> dict:
+        if timeframe not in ("1h", "4h", "1d"):
+            raise HTTPException(status_code=422, detail="timeframe must be 1h, 4h, or 1d")
+        with session_factory() as session:
+            row = session.get(SymbolRow, symbol.upper())
+            if row is None or not row.active:
+                raise HTTPException(
+                    status_code=404,
+                    detail="Unknown symbol — check the ticker spelling or search the directory.",
+                )
+            symbol_dict = row.as_dict()
+        return await get_analysis(symbol_dict, timeframe)
 
     @app.get("/strategies")
     def list_strategies() -> list[dict]:
@@ -134,6 +162,10 @@ def create_app(db_url: str = DEFAULT_DB_URL) -> FastAPI:
                     return
 
         return StreamingResponse(stream(), media_type="text/event-stream")
+
+    @app.get("/runs/{run_id}/events")
+    async def run_events(run_id: str) -> StreamingResponse:
+        return await events(run_id=run_id)
 
     return app
 

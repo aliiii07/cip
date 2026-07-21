@@ -43,12 +43,16 @@ before implementation.
   key), CoinGecko Pro optional. Backtest results are never cached across
   a data-provider change (repo rule).
 - **Frontend: Next.js (App Router, TypeScript) + Tailwind in
-  `frontend/`.** Charts: TradingView Lightweight Charts (Apache-2.0) for
-  native candles; visx or Recharts for ridgeline/funnel/distribution
-  charts; custom canvas for the Galton probability lattice and the
-  scanner radar. TanStack Query + server components; an SSE client hook.
-  A demo-seed mode runs the whole site keyless off the four fixture
-  strategies with visible `STUB DATA` badges.
+  `frontend/`.** Candlestick charts: TradingView Lightweight Charts
+  (Apache-2.0), installed from npm rather than a CDN script tag — same
+  library and license, but versioned by the lockfile and compatible with
+  SSR/bundling; pinned to v4 for the stable series API.
+  Distribution/funnel charts: Recharts (declarative, React-native fit,
+  small API surface) when they land in P5/P6. TanStack Query + server
+  components; an SSE client hook. A demo-seed mode runs the whole site
+  keyless off the fixture strategies and a deterministic seeded fixture
+  candle provider, with visible `Stub data` notices on anything not
+  real.
 - **Design system as tokens, not vibes**: two user-switchable themes,
   `blueprint` (cream technical-drawing, default) and `terminal` (dark
   phosphor green), encoded as CSS custom properties with shared

@@ -28,7 +28,8 @@ EXPECTED_TAG_ORDER = [
 
 
 @pytest.fixture()
-def client(tmp_path):
+def client(tmp_path, monkeypatch):
+    monkeypatch.setenv("CIP_SKIP_SYMBOL_SYNC", "1")
     app = create_app(db_url=f"sqlite:///{tmp_path / 'test.db'}")
     with TestClient(app) as test_client:
         yield test_client
@@ -57,13 +58,14 @@ def test_post_strategies_returns_id_and_reaches_terminal_status(client):
 def test_agent_tags_emitted_in_order(client):
     run = _run_pipeline(client, APPROVING_PROMPT)
     tags = [e["tag"] for e in run["events"] if e["type"] == "agent_tag"]
-    assert tags == EXPECTED_TAG_ORDER
+    assert tags[:4] == EXPECTED_TAG_ORDER
+    assert tags[-1] == "[Strategy approved]"
 
 
 def test_sse_replays_agent_tags_in_order(client):
     run = _run_pipeline(client, APPROVING_PROMPT)
     tags = []
-    with client.stream("GET", f"/events?run_id={run['id']}") as response:
+    with client.stream("GET", f"/runs/{run['id']}/events") as response:
         assert response.status_code == 200
         assert response.headers["content-type"].startswith("text/event-stream")
         for line in response.iter_lines():
@@ -71,7 +73,8 @@ def test_sse_replays_agent_tags_in_order(client):
                 tags.append("pending")
             elif line.startswith("data: ") and tags and tags[-1] == "pending":
                 tags[-1] = json.loads(line[len("data: ") :])["tag"]
-    assert tags == EXPECTED_TAG_ORDER
+    assert tags[:4] == EXPECTED_TAG_ORDER
+    assert tags[-1] == "[Strategy approved]"
 
 
 def test_breaching_run_loops_and_rejects(client):
@@ -82,6 +85,8 @@ def test_breaching_run_loops_and_rejects(client):
     # The correction loop re-runs Architect -> Backtest -> Risk Cop, so the
     # Architect tag appears more than once before the retry cap rejects.
     assert tags.count(AGENT_TAGS["strategy_architect"]) > 1
+    assert "[Correction attempt 1 of 3]" in tags
+    assert tags[-1].startswith("[Strategy rejected — ")
     assert run["events"][-1]["type"] == "run_finished"
 
 

@@ -12,5 +12,5 @@ export function UtcClock() {
     return () => clearInterval(id);
   }, []);
 
-  return <span className="label tabular-nums">{now}</span>;
+  return <span className="mono hidden text-[12px] text-secondary sm:inline">{now}</span>;
 }

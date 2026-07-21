@@ -2,92 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme A "blueprint" (default): cream technical-drawing. */
-:root,
-:root[data-theme="blueprint"] {
-  --paper: #f5f1e8;
-  --ink: #17150f;
-  --accent: #e4571b;
-  --line: rgba(23, 21, 15, 0.22);
-  --ok: #1e7f4f;
-  --fail: #c43c1f;
-  --dim: rgba(23, 21, 15, 0.55);
-}
-
-/* Theme B "terminal": dark phosphor green. */
-:root[data-theme="terminal"] {
-  --paper: #07100b;
-  --ink: #35d97b;
-  --accent: #35d97b;
-  --line: rgba(53, 217, 123, 0.28);
-  --ok: #35d97b;
-  --fail: #ff6b4a;
-  --dim: rgba(53, 217, 123, 0.55);
-}
-
-:root[data-theme="terminal"] .glow {
-  text-shadow:
-    0 0 2px rgba(53, 217, 123, 0.9),
-    0 0 12px rgba(53, 217, 123, 0.45);
+/* CIP design tokens — master prompt Section 6: warm, cozy, rich. */
+:root {
+  --cip-bg: #f2f1ee;
+  --cip-surface: #fafaf8;
+  --cip-surface-raised: #ffffff;
+  --cip-border: rgba(60, 58, 52, 0.12);
+  --cip-border-strong: rgba(60, 58, 52, 0.22);
+  --cip-ink: #1e1d1a;
+  --cip-secondary: #6b6860;
+  --cip-muted: #9b9890;
+  --cip-accent: #c07b3a;
+  --cip-accent-bg: #fbf3e8;
+  --cip-accent-border: rgba(192, 123, 58, 0.25);
+  --cip-ok: #2e7d4f;
+  --cip-ok-bg: #ebf5ef;
+  --cip-warn: #a06b1a;
+  --cip-warn-bg: #fdf4e3;
+  --cip-fail: #b03a2e;
+  --cip-fail-bg: #fbeae8;
+  --cip-rail: #e8e6e2;
 }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
-}
-
-.label {
-  @apply font-mono text-[11px] uppercase tracking-[0.08em];
+  background-color: var(--cip-bg);
+  color: var(--cip-ink);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .card {
-  @apply relative border border-line p-4;
+  background: var(--cip-surface);
+  border: 0.5px solid var(--cip-border);
+  border-radius: 10px;
+  padding: 14px 16px;
 }
 
-/* Corner-tick card frames: short accent ticks at each corner. */
-.card::before,
-.card::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: var(--ink);
-  border-style: solid;
-}
-.card::before {
-  top: -1px;
-  left: -1px;
-  border-width: 1px 0 0 1px;
-}
-.card::after {
-  bottom: -1px;
-  right: -1px;
-  border-width: 0 1px 1px 0;
+.stat-card {
+  background: var(--cip-surface);
+  border: 0.5px solid var(--cip-border);
+  border-radius: 10px;
+  padding: 12px 14px;
 }
 
-.stamp {
-  @apply inline-block border-2 px-3 py-1 font-mono text-sm font-bold uppercase tracking-[0.12em];
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: rotate(-2deg);
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cip-secondary);
 }
 
-.stamp-ok {
-  border-color: var(--ok);
-  color: var(--ok);
+.stat-value {
+  font-size: 22px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
-.stamp-fail {
-  border-color: var(--fail);
-  color: var(--fail);
+.stat-hero {
+  border-left: 2.5px solid var(--cip-accent);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-.badge {
-  @apply inline-flex items-center border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-dim;
+.badge-simulated {
+  font-size: 9px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  background: #eef2fb;
+  color: #3a5fc0;
+  border: 0.5px solid rgba(58, 95, 192, 0.2);
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
 }
 
-.crosshair {
-  @apply pointer-events-none absolute font-mono text-xs text-dim;
+.badge-paper {
+  background: var(--cip-accent-bg);
+  color: var(--cip-accent);
+  border: 0.5px solid var(--cip-accent-border);
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--cip-ink);
+  color: #fff;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: var(--cip-surface);
+  border: 1px solid var(--cip-border-strong);
+  color: var(--cip-ink);
+  border-radius: 8px;
+  padding: 6px 13px;
+  font-size: 13px;
+}
+
+.btn-ghost {
+  color: var(--cip-secondary);
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cip-accent);
+  outline-offset: 1px;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
 }
 
 @media (prefers-reduced-motion: reduce) {
