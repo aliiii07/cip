@@ -50,4 +50,3 @@ class PipelineRunRow(Base):
             "created_at": self.created_at,
             "finished_at": self.finished_at,
         }
-

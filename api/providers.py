@@ -158,4 +158,3 @@ def provider_for(asset_class: str) -> tuple[BinanceProvider | PolygonProvider | 
     if polygon.available:
         return polygon, False
     return fixture, True
-

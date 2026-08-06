@@ -34,4 +34,3 @@ class EventBus:
                 yield await queue.get()
         finally:
             self._queues.discard(queue)
-

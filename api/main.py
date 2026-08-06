@@ -171,4 +171,3 @@ def create_app(db_url: str = DEFAULT_DB_URL) -> FastAPI:
 
 
 app = create_app()
-

@@ -50,4 +50,3 @@ class PipelineState(TypedDict):
     risk_report: NotRequired[RiskReport]
     correction_history: NotRequired[list[str]]
     status: NotRequired[Status]
-

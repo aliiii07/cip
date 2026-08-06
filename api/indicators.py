@@ -163,4 +163,3 @@ def support_resistance(
         key=lambda c: c["level"],
     )[:4]
     return {"supports": supports, "resistances": resistances}
-

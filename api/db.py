@@ -23,4 +23,3 @@ def make_engine(db_url: str = DEFAULT_DB_URL) -> Engine:
 
 def make_session_factory(engine: Engine) -> sessionmaker:
     return sessionmaker(bind=engine, expire_on_commit=False)
-

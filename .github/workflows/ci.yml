@@ -42,4 +42,3 @@ jobs:
           npm run lint --if-present
           npm test --if-present
           npm run build
-

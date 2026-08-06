@@ -180,4 +180,3 @@ def search_symbols(session: Session, query: str, limit: int = 20) -> list[dict]:
         )
 
     return [row.as_dict() for row in sorted(rows, key=rank)[:limit]]
-

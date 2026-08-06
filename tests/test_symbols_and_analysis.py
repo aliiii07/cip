@@ -80,4 +80,3 @@ def test_analysis_unknown_symbol_is_honest_404(client):
 def test_analysis_rejects_subhour_timeframe(client):
     # Sub-hour timeframes are structurally excluded (CLAUDE.md non-goals).
     assert client.get("/assets/EURUSD/analysis?timeframe=15m").status_code == 422
-

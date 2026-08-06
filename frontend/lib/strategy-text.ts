@@ -57,4 +57,3 @@ export function stopLossText(spec: Spec): string {
     ? `Stop loss at ${sl.value}× ATR`
     : `Stop loss at ${sl.value}% from entry`;
 }
-

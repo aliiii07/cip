@@ -127,4 +127,3 @@ def is_valid(strategy: dict[str, Any]) -> bool:
     except StrategyValidationError:
         return False
     return True
-

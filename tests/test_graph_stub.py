@@ -42,4 +42,3 @@ def test_correction_loop_terminates():
         if result["risk_report"]["correction_notes"]:
             assert result["status"] == "rejected"
             assert len(result["correction_history"]) >= 1
-

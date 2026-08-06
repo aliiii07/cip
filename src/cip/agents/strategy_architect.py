@@ -48,4 +48,3 @@ def strategy_architect_node(state: PipelineState) -> dict[str, Any]:
     # optional, until real correction logic exists.
     validate_strategy(strategy)
     return {"strategy": strategy, "status": "backtesting"}
-

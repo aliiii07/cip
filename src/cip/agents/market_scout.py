@@ -22,4 +22,3 @@ def market_scout_node(state: PipelineState) -> dict[str, Any]:
         },
         "status": "designing",
     }
-

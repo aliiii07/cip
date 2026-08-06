@@ -218,4 +218,3 @@ export default function AssetPage() {
     </div>
   );
 }
-

@@ -56,4 +56,3 @@ A strategy idea passes through a fixed four-agent loop — Market Scout,
 Strategy Architect, Backtest Engine, Risk Cop — with the Risk Cop able to
 kick a strategy back to the Architect on a risk-gate breach. Full detail,
 including the data flow, is in [architecture.md](architecture.md).
-

@@ -123,4 +123,3 @@ changes justified by execution speed.
 - git pull --rebase origin main before starting work.
 - Migrations are append-only.
 - Lint and tests pass before commit.
-

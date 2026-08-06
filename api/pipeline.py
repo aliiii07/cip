@@ -98,4 +98,3 @@ def execute_run(session_factory: sessionmaker, bus: EventBus, run_id: str) -> No
             )
         record(session, run, "agent_tag", node="verdict", tag=verdict)
         record(session, run, TERMINAL_EVENT, status=run.status, strategy_id=run.strategy_id)
-
