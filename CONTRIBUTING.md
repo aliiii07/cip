@@ -28,9 +28,9 @@ fix the drift rather than picking one.
 
 ## Running locally
 
-The Python scaffold (schema, validators, stub LangGraph pipeline) is real
-and testable; the API and frontend are not yet built (see
-[README.md](README.md#status)).
+The Python scaffold (schema, validators, stub LangGraph pipeline), the
+FastAPI layer, and the Next.js frontend are all real and runnable. The four
+agents themselves are still stubs (see [README.md](README.md#status)).
 
 1. Copy `.env.example` to `.env` and fill in real API keys (data providers,
    per-agent LLM credentials). Never commit `.env`. The stub pipeline runs
@@ -41,10 +41,10 @@ and testable; the API and frontend are not yet built (see
    (SQLite store is created at `data/cip.db`, gitignored).
 4. Tests and lint: `pytest` and `ruff check .` — both run in CI on every
    PR via [.github/workflows/ci.yml](.github/workflows/ci.yml).
-5. Frontend (Next.js): not yet in the repo. Add `npm install` /
-   `npm run dev` instructions here in the same PR that adds
-   `frontend/package.json` — don't leave this section aspirational once
-   the files exist.
+5. Frontend (Next.js): `npm install --prefix frontend`, then
+   `npm run dev --prefix frontend` for the dev server on port 3000. It
+   reads the API base from `NEXT_PUBLIC_API_BASE_URL` (default
+   `http://localhost:8000`), so start the API first.
 
 ## Reporting issues
 

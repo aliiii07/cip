@@ -64,9 +64,16 @@ agents implemented as stubs: the Scout returns fixed fake context, the
 Architect selects a fixture by keyword, the Backtest Engine derives
 seeded pseudo-metrics, and the Risk Cop enforces real hardcoded gates
 with a correction-loop retry cap. The strategy schema and validator
-layer are real and enforced at every agent boundary. Data providers,
-LLM calls, the vectorbt backtest engine, and the frontend are not yet
-built — web-platform architecture is recorded in
+layer are real and enforced at every agent boundary.
+
+The web platform around that pipeline is built: a FastAPI layer
+([api/](../api/)) with SQLite persistence and SSE, and a Next.js
+frontend ([frontend/](../frontend/)). Market data is real for crypto
+(keyless Binance klines); equities and forex fall back to deterministic
+fixture candles, badged as stub data, until `POLYGON_API_KEY` is set.
+Still outstanding: LLM calls for all four agents and the vectorbt
+backtest engine with its Monte Carlo perf gate. Web-platform
+architecture is recorded in
 [decisions/0002-web-architecture.md](decisions/0002-web-architecture.md).
 Update this file as agents are actually implemented; treat divergence
 between this doc and the code as a bug in one of the two.
