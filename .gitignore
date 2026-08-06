@@ -21,7 +21,7 @@ env/
 .coverage
 htmlcov/
 dist/
-build/
+/build/
 
 # Node / Next.js
 node_modules/
