@@ -52,3 +52,4 @@ Branch rules and how to run locally: [CONTRIBUTING.md](CONTRIBUTING.md).
 If you're an AI agent working in this repo, read [CLAUDE.md](CLAUDE.md)
 first — it encodes hard constraints (no live execution, no raw codegen,
 backtest integrity rules) that override anything implied here.
+

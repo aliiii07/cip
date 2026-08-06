@@ -112,3 +112,4 @@ SIGNAL_LABELS = {
     "trend_continuation": "Trend continuation",
     "reversal": "Reversal",
 }
+

@@ -121,3 +121,4 @@ def test_unknown_ids_return_404(client):
     assert client.get("/runs/run_nope").status_code == 404
     assert client.get("/strategies/strat_nope").status_code == 404
     assert client.get("/events?run_id=run_nope").status_code == 404
+

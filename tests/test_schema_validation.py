@@ -69,3 +69,4 @@ def test_missing_per_asset_params_is_semantic_error():
     with pytest.raises(StrategyValidationError) as exc_info:
         validate_strategy(strategy)
     assert "NVDA" in str(exc_info.value)
+
