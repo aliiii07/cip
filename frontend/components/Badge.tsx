@@ -35,3 +35,4 @@ export function SignalBadge({ type, label }: { type: string; label: string }) {
     </span>
   );
 }
+

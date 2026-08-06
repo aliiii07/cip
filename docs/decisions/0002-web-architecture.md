@@ -79,3 +79,4 @@ before implementation.
 - Risk gates (`src/cip/agents/risk_cop.py: RISK_GATES`) are displayed by
   the UI but not editable through any endpoint; a gate-immutability test
   asserts any API attempt to modify them returns 4xx.
+

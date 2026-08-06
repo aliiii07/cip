@@ -143,3 +143,4 @@ export function PriceChart({ analysis }: { analysis: AssetAnalysis }) {
     </div>
   );
 }
+

@@ -77,3 +77,4 @@ architecture is recorded in
 [decisions/0002-web-architecture.md](decisions/0002-web-architecture.md).
 Update this file as agents are actually implemented; treat divergence
 between this doc and the code as a bug in one of the two.
+

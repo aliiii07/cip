@@ -153,3 +153,4 @@ async def get_analysis(symbol_row: dict, timeframe: str) -> dict[str, Any]:
     }
     _CACHE[key] = (time.time(), payload)
     return payload
+

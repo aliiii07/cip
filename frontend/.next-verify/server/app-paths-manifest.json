@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/decisions/page": "app/decisions/page.js",
+  "/build/page": "app/build/page.js",
+  "/asset/[symbol]/page": "app/asset/[symbol]/page.js",
+  "/lab/page": "app/lab/page.js",
+  "/monitor/page": "app/monitor/page.js",
+  "/scanner/page": "app/scanner/page.js",
+  "/screener/page": "app/screener/page.js",
+  "/strategy/[id]/page": "app/strategy/[id]/page.js",
+  "/page": "app/page.js"
+}
