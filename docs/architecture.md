@@ -58,7 +58,15 @@ flowchart LR
 
 ## Status
 
-No implementation exists yet — this document describes the target
-architecture the codebase is being built toward. Update this file as agents
-are actually implemented; treat divergence between this doc and the code as
-a bug in one of the two.
+The four-agent loop is wired as a LangGraph `StateGraph`
+([src/cip/agents/graph.py](../src/cip/agents/graph.py)) with all four
+agents implemented as stubs: the Scout returns fixed fake context, the
+Architect selects a fixture by keyword, the Backtest Engine derives
+seeded pseudo-metrics, and the Risk Cop enforces real hardcoded gates
+with a correction-loop retry cap. The strategy schema and validator
+layer are real and enforced at every agent boundary. Data providers,
+LLM calls, the vectorbt backtest engine, and the frontend are not yet
+built — web-platform architecture is recorded in
+[decisions/0002-web-architecture.md](decisions/0002-web-architecture.md).
+Update this file as agents are actually implemented; treat divergence
+between this doc and the code as a bug in one of the two.

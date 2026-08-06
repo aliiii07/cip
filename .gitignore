@@ -40,6 +40,11 @@ data/raw/
 data/processed/
 *.parquet
 *.duckdb
+data/*.db
+
+# Repo dumps / packs — generated, never committed
+project_dump.txt
+repomix-output.xml
 
 # Editors / OS
 .vscode/
