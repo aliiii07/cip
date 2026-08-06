@@ -24,3 +24,4 @@ per significant decision, following the format in
 - `CLAUDE.md` stays focused on constraints the AI agent must follow; `docs/`
   stays the source of truth for humans, per the split described in the
   project's [README](../../README.md).
+

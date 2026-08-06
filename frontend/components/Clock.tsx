@@ -14,3 +14,4 @@ export function UtcClock() {
 
   return <span className="mono hidden text-[12px] text-secondary sm:inline">{now}</span>;
 }
+

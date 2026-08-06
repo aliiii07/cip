@@ -127,3 +127,4 @@ export const api = {
     get<AssetAnalysis>(`/assets/${encodeURIComponent(symbol)}/analysis?timeframe=${timeframe}`),
   eventsUrl: (runId: string) => `${API_BASE}/runs/${runId}/events`,
 };
+
