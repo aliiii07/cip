@@ -33,14 +33,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          # cache: npm — enable once package-lock.json exists; setup-node
-          # errors if this is set with no lockfile present.
-      - name: Lint + test
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Lint + test + build
+        working-directory: frontend
         run: |
-          if [ -f package.json ]; then
-            npm ci
-            npm run lint --if-present
-            npm test --if-present
-          else
-            echo "No package.json yet — nothing to lint/test."
-          fi
+          npm ci
+          npm run lint --if-present
+          npm test --if-present
+          npm run build

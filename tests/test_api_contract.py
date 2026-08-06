@@ -98,6 +98,20 @@ def test_empty_prompt_is_rejected(client):
     assert client.post("/strategies", json={"prompt": ""}).status_code == 422
 
 
+def test_list_endpoints_return_recent_items(client):
+    approved = _run_pipeline(client, APPROVING_PROMPT)
+    _run_pipeline(client, BREACHING_PROMPT)
+
+    strategies = client.get("/strategies").json()
+    assert {s["id"] for s in strategies} >= {approved["strategy_id"]}
+    assert all("name" in s and "archetype" in s for s in strategies)
+
+    runs = client.get("/runs").json()
+    assert len(runs) == 2
+    filtered = client.get(f"/runs?strategy_id={approved['strategy_id']}").json()
+    assert [r["id"] for r in filtered] == [approved["id"]]
+
+
 def test_unknown_ids_return_404(client):
     assert client.get("/runs/run_nope").status_code == 404
     assert client.get("/strategies/strat_nope").status_code == 404
