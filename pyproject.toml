@@ -1,7 +1,7 @@
 [project]
 name = "cip"
 version = "0.1.0"
-description = "Natural-language to backtested, risk-managed algorithmic trading strategies."
+description = "Capital Investment Prospects (CIP): natural-language to backtested, risk-managed algorithmic trading strategies."
 requires-python = ">=3.11"
 dependencies = [
     "jsonschema>=4.23",

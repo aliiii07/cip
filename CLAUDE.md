@@ -1,6 +1,7 @@
-# CIP
+# CIP — Capital Investment Prospects
 
-Natural-language to backtested, risk-managed algorithmic trading strategies.
+CIP (Capital Investment Prospects): natural-language to backtested,
+risk-managed algorithmic trading strategies.
 Multi-agent LLM pipeline. Retail investors and mid-tier prop firms; stocks,
 crypto, forex. Paper-trading sandbox only.
 

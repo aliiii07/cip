@@ -2,8 +2,8 @@
 
 ## Vision
 
-CIP turns a natural-language trading idea into a backtested, risk-managed
-strategy — without requiring the user to write code, wire up a broker, or
+CIP (Capital Investment Prospects) turns a natural-language trading idea
+into a backtested, risk-managed strategy — without requiring the user to write code, wire up a broker, or
 understand market microstructure themselves. Input is a plain-English
 hypothesis ("buy the breakout when volume confirms"); output is a typed
 strategy spec, a distribution of backtest results across realistic costs and

@@ -19,7 +19,7 @@ export function Nav() {
     <nav className="flex flex-row gap-0.5 overflow-x-auto border-b border-line-strong bg-rail p-2 md:min-h-full md:w-[220px] md:flex-col md:border-b-0 md:border-r md:p-3">
       <div className="mb-4 hidden px-2 pt-1 md:block">
         <div className="text-lg font-semibold tracking-tight">CIP</div>
-        <div className="text-[11px] text-secondary">Quant research sandbox</div>
+        <div className="text-[11px] text-secondary">Capital Investment Prospects</div>
       </div>
       {ITEMS.map(([name, href]) => {
         const active = href === "/" ? pathname === "/" : pathname.startsWith(href);

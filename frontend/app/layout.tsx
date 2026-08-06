@@ -9,9 +9,9 @@ const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "CIP — Quant research sandbox",
+  title: "CIP — Capital Investment Prospects",
   description:
-    "Search any stock, coin, or FX pair for an honest technical analysis, or turn a plain-English idea into a backtested, risk-gated strategy spec. Paper simulation only.",
+    "Capital Investment Prospects (CIP): search any stock, coin, or FX pair for an honest technical analysis, or turn a plain-English idea into a backtested, risk-gated strategy spec. Paper simulation only.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
