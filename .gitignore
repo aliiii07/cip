@@ -25,8 +25,8 @@ dist/
 
 # Node / Next.js
 node_modules/
-.next/
-.next-build/
+# Covers any NEXT_DIST_DIR value (see frontend/next.config.mjs), not just .next
+.next*/
 out/
 .turbo/
 npm-debug.log*
