@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CIP design tokens — master prompt Section 6: warm, cozy, rich. */
+:root {
+  --cip-bg: #f2f1ee;
+  --cip-surface: #fafaf8;
+  --cip-surface-raised: #ffffff;
+  --cip-border: rgba(60, 58, 52, 0.12);
+  --cip-border-strong: rgba(60, 58, 52, 0.22);
+  --cip-ink: #1e1d1a;
+  --cip-secondary: #6b6860;
+  --cip-muted: #9b9890;
+  --cip-accent: #c07b3a;
+  --cip-accent-bg: #fbf3e8;
+  --cip-accent-border: rgba(192, 123, 58, 0.25);
+  --cip-ok: #2e7d4f;
+  --cip-ok-bg: #ebf5ef;
+  --cip-warn: #a06b1a;
+  --cip-warn-bg: #fdf4e3;
+  --cip-fail: #b03a2e;
+  --cip-fail-bg: #fbeae8;
+  --cip-rail: #e8e6e2;
+}
+
+body {
+  background-color: var(--cip-bg);
+  color: var(--cip-ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card {
+  background: var(--cip-surface);
+  border: 0.5px solid var(--cip-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.stat-card {
+  background: var(--cip-surface);
+  border: 0.5px solid var(--cip-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cip-secondary);
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-hero {
+  border-left: 2.5px solid var(--cip-accent);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.badge-simulated {
+  font-size: 9px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  background: #eef2fb;
+  color: #3a5fc0;
+  border: 0.5px solid rgba(58, 95, 192, 0.2);
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.badge-paper {
+  background: var(--cip-accent-bg);
+  color: var(--cip-accent);
+  border: 0.5px solid var(--cip-accent-border);
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--cip-ink);
+  color: #fff;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: var(--cip-surface);
+  border: 1px solid var(--cip-border-strong);
+  color: var(--cip-ink);
+  border-radius: 8px;
+  padding: 6px 13px;
+  font-size: 13px;
+}
+
+.btn-ghost {
+  color: var(--cip-secondary);
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cip-accent);
+  outline-offset: 1px;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
