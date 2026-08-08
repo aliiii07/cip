@@ -6,11 +6,11 @@ import { CountUp, Eyebrow, Reveal, Slide } from "./primitives";
 const WHAT = [
   [
     "Pick & go",
-    "Select an asset, choose a timeframe, and CIP builds and tests the strategy for you.",
+    "Select an asset and a timeframe — CIP builds and tests the strategy.",
   ],
   [
     "Automated pipeline",
-    "Four specialised agents research, design, backtest and stress-test the strategy end to end.",
+    "Four specialised agents research, design, backtest and stress-test it end to end.",
   ],
   [
     "Risk-managed output",
@@ -93,9 +93,9 @@ export function Pipeline() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {AGENTS.map(([n, name, body], i) => (
             <Reveal key={n} delay={i * 80}>
-              <div className="relative h-full border border-[#e2e0da] bg-white p-7">
+              <div className="card-lift pointer-glow relative h-full border border-[#e2e0da] bg-white p-7">
                 <div
-                  className="text-[34px] leading-none tracking-tight"
+                  className="text-[34px] leading-none tracking-tight transition-colors duration-300"
                   style={{ color: i === 3 ? "var(--signal)" : "#c9c7c1" }}
                 >
                   {n}
@@ -136,6 +136,7 @@ export function Pipeline() {
               strokeWidth="1"
               strokeDasharray="4 4"
               vectorEffect="non-scaling-stroke"
+              className="flow-dash"
             />
             <path
               d="M368 18 L375 6 L382 18"
@@ -183,9 +184,8 @@ export function Honesty() {
               Research, news, access, charts.
             </p>
             <p className="mt-9 max-w-[58ch] text-[17px] leading-[1.66] text-[#2c2b28]">
-              Make fast decisions with a workspace built for judgement, not
-              noise: multi-asset monitors, honest charting, and the context that
-              actually moves markets.
+              A workspace built for judgement, not noise: multi-asset
+              monitors, honest charting, and market context that matters.
             </p>
           </Reveal>
         </div>
@@ -196,7 +196,7 @@ export function Honesty() {
 
       <div className="flex items-center bg-ink px-[var(--gutter)] py-24 lg:py-32">
         <Reveal delay={140} className="w-full">
-          <div className="panel">
+          <div className="panel pointer-glow">
             <Eyebrow>Principle</Eyebrow>
             <ol className="mt-7 space-y-2 text-[15px] text-[#d8d8d8]">
               <li>01 — Expectancy over win-rate</li>
@@ -254,7 +254,7 @@ export function DeathTraps() {
       <div className="mt-14 grid gap-5 md:grid-cols-2">
         {TRAPS.map(([n, title, body], i) => (
           <Reveal key={n} delay={i * 70}>
-            <div className="panel h-full">
+            <div className="panel card-lift pointer-glow h-full">
               <div className="grid grid-cols-[3rem_1fr] gap-2">
                 <span className="text-[17px] text-signal">{n}</span>
                 <div>
@@ -344,7 +344,7 @@ function Tile({
 }) {
   return (
     <Reveal delay={delay}>
-      <div className="relative h-full bg-[#efeeea] px-8 py-10">
+      <div className="card-lift pointer-glow relative h-full bg-[#efeeea] px-8 py-10">
         {signal ? (
           <span
             className="absolute left-8 top-6 h-[7px] w-[7px] rounded-full"

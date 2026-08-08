@@ -19,7 +19,7 @@ export function Panel({
   className?: string;
 }) {
   return (
-    <section className={`t-panel ${className}`}>
+    <section className={`t-panel pointer-glow ${className}`}>
       <header className="flex items-center justify-between gap-3 border-b border-[var(--hair)] px-4 py-2.5">
         <h2 className="t-label">{title}</h2>
         {aside ? <div className="flex items-center gap-2">{aside}</div> : null}
@@ -49,9 +49,13 @@ export function Stat({
           ? "#8a6f14"
           : "var(--t-ink)";
   return (
-    <div className="flex items-baseline justify-between gap-3 border-b border-[var(--hair)] py-[7px] last:border-0">
+    <div className="group flex items-baseline justify-between gap-3 border-b border-[var(--hair)] py-[7px] transition-colors last:border-0 hover:bg-[rgba(35,35,30,0.025)]">
       <span className="t-label">{label}</span>
-      <span className="t-value text-right" style={{ color }} title={hint}>
+      <span
+        className="t-value text-right transition-colors duration-300"
+        style={{ color }}
+        title={hint}
+      >
         {value}
       </span>
     </div>
@@ -65,7 +69,9 @@ export function VerdictPill({ verdict }: { verdict: Verdict }) {
       : verdict === "rejected"
         ? "v-rejected"
         : "v-marginal";
-  return <span className={`verdict ${cls}`}>{verdict}</span>;
+  return (
+    <span className={`verdict panel-open inline-block ${cls}`}>{verdict}</span>
+  );
 }
 
 export function ApprovalBanner() {

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/Logo";
+import { Magnetic } from "./Magnetic";
 
 const LINKS = [
   ["Product", "/#what-we-do"],
@@ -37,11 +38,7 @@ export function Nav() {
 
         <nav className="ml-6 hidden items-center gap-7 lg:flex">
           {LINKS.map(([label, href]) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-[13px] text-[#b0b0b0] transition-colors hover:text-white"
-            >
+            <Link key={href} href={href} className="nav-link text-[13px] text-[#b0b0b0]">
               {label}
             </Link>
           ))}
@@ -50,12 +47,16 @@ export function Nav() {
         <span className="flex-1" />
 
         <div className="hidden items-center gap-2.5 md:flex">
-          <Link href="/#contact" className="btn btn-ghost">
-            Book a demo
-          </Link>
-          <Link href="/#contact" className="btn btn-primary">
-            Get early access
-          </Link>
+          <Magnetic strength={6}>
+            <Link href="/#contact" className="btn btn-ghost">
+              Book a demo
+            </Link>
+          </Magnetic>
+          <Magnetic strength={6}>
+            <Link href="/#contact" className="btn btn-primary">
+              Get early access
+            </Link>
+          </Magnetic>
         </div>
 
         <button
@@ -81,7 +82,7 @@ export function Nav() {
       </div>
 
       {open ? (
-        <div className="border-t border-hairline bg-ink px-[var(--gutter)] py-5 md:hidden">
+        <div className="panel-open border-t border-hairline bg-ink px-[var(--gutter)] py-5 md:hidden">
           <nav className="flex flex-col gap-4">
             {LINKS.map(([label, href]) => (
               <Link

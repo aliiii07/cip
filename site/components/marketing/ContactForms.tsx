@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Magnetic } from "./Magnetic";
 
 /**
  * Two doors: individuals join the waitlist, companies book a demo.
@@ -42,11 +43,13 @@ export function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="h-11 flex-1 rounded-sm border border-hairline bg-transparent px-3.5 text-[14px] text-white placeholder:text-[#6a6a6a] focus:border-[#4a4a4a]"
+          className="h-11 flex-1 rounded-sm border border-hairline bg-transparent px-3.5 text-[14px] text-white placeholder:text-[#6a6a6a] transition-colors duration-200 focus:border-[#4a4a4a]"
         />
-        <button type="submit" className="btn btn-primary justify-center">
-          Get early access
-        </button>
+        <Magnetic>
+          <button type="submit" className="btn btn-primary justify-center">
+            Get early access
+          </button>
+        </Magnetic>
       </div>
       <p className="mt-3 text-[12.5px] text-muted-2">
         {sent
@@ -61,12 +64,14 @@ export function DemoCta() {
   return (
     <div className="mt-6">
       <div className="eyebrow">For companies and prop firms</div>
-      <a
-        href={`mailto:${INBOX}?subject=${encodeURIComponent("CIP — book a demo")}`}
-        className="btn btn-ghost mt-3"
-      >
-        Book a demo
-      </a>
+      <Magnetic>
+        <a
+          href={`mailto:${INBOX}?subject=${encodeURIComponent("CIP — book a demo")}`}
+          className="btn btn-ghost mt-3"
+        >
+          Book a demo
+        </a>
+      </Magnetic>
       <p className="mt-3 max-w-[36ch] text-[12.5px] text-muted-2">
         Team and prop-firm access is set up with us directly, not self-serve.
       </p>

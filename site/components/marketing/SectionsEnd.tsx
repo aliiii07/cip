@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
 import { CountUp, Eyebrow, Reveal, Slide, SlideNo } from "./primitives";
 import { DemoCta, WaitlistForm } from "./ContactForms";
+import { Magnetic } from "./Magnetic";
 import { STAGE } from "@/lib/constants";
 
 /* -------------------------------------------------------------- 10 Status */
@@ -86,7 +87,7 @@ export function Opportunity() {
 
       <div className="mt-14 grid gap-5 md:grid-cols-3">
         <Reveal delay={0}>
-          <div className="panel h-full">
+          <div className="panel card-lift pointer-glow h-full">
             <div className="stat-figure">
               <CountUp to={10} prefix="~$" suffix="B+" />
             </div>
@@ -97,7 +98,7 @@ export function Opportunity() {
         </Reveal>
 
         <Reveal delay={90}>
-          <div className="panel h-full">
+          <div className="panel card-lift pointer-glow h-full">
             <div className="stat-figure">
               <CountUp to={325} prefix="~" suffix="k" />
             </div>
@@ -108,7 +109,7 @@ export function Opportunity() {
         </Reveal>
 
         <Reveal delay={180}>
-          <div className="panel panel-signal relative h-full">
+          <div className="panel panel-signal card-lift pointer-glow relative h-full">
             <span
               className="absolute -left-[4px] -top-[4px] h-[9px] w-[9px] rounded-full"
               style={{ background: "var(--signal)" }}
@@ -242,7 +243,7 @@ export function Roadmap() {
       <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {NEXT.map(([p, title, body], i) => (
           <Reveal key={p} delay={i * 70}>
-            <div className="h-full border border-[#e2e0da] bg-white p-6">
+            <div className="card-lift pointer-glow h-full border border-[#e2e0da] bg-white p-6">
               <div
                 className="text-[30px] leading-none"
                 style={{ color: i === 0 ? "var(--signal)" : "#c9c7c1" }}
@@ -282,9 +283,9 @@ export function Vision() {
             The platform to success in trading.
           </h2>
           <p className="lead mt-12">
-            Bloomberg brought transparency to institutions and changed finance
-            for forty years. The next leap isn’t more data for the few. It’s
-            honest, automated research for the millions who were never let in.
+            Bloomberg brought transparency to institutions for forty years.
+            The next leap isn’t more data for the few — it’s honest, automated
+            research for the millions never let in.
           </p>
           <p className="mt-10 text-[clamp(1.25rem,2.4vw,2rem)] italic">
             Younger. Simpler. Cheaper.{" "}
@@ -293,7 +294,7 @@ export function Vision() {
         </Reveal>
 
         <Reveal delay={160} className="hidden justify-center lg:flex">
-          <LogoMark className="h-[190px] w-[240px] text-white" />
+          <LogoMark className="idle-bob h-[190px] w-[240px] text-white" />
         </Reveal>
       </div>
     </Slide>
@@ -316,7 +317,7 @@ export function FinalCta() {
     >
       <div className="deck-inner">
         <Reveal className="flex flex-col items-center text-center">
-          <LogoMark className="h-[76px] w-[96px] text-white" />
+          <LogoMark className="idle-bob h-[76px] w-[96px] text-white" />
           <h2 className="display mt-12">Capital Investment Prospects</h2>
           <p className="lead mt-6 text-center">
             Younger, simpler and cheaper than Bloomberg, and automatic instead

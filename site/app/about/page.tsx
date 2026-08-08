@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "@/components/marketing/Nav";
 import { Footer } from "@/components/marketing/Footer";
 import { Eyebrow, Reveal, Slide } from "@/components/marketing/primitives";
+import { Magnetic } from "@/components/marketing/Magnetic";
 import { LogoSquare } from "@/components/Logo";
 import { STAGE } from "@/lib/constants";
 
@@ -29,36 +30,33 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="space-y-6 text-[17px] leading-[1.68] text-[#c6c6c6]">
                 <p>
-                  CIP turns a plain-English trading idea — “buy the breakout when
-                  volume confirms” — into a backtested, risk-managed strategy. No
-                  code, no broker wiring, no market-microstructure expertise
+                  CIP turns a plain-English idea — “buy the breakout when
+                  volume confirms” — into a backtested, risk-managed strategy.
+                  No code, no broker wiring, no microstructure expertise
                   required.
                 </p>
                 <p>
-                  Input a hypothesis in ordinary language. Output a
-                  strictly-typed strategy, a full distribution of backtest
-                  results across realistic costs, and a risk report — built for
-                  retail investors and for firms.
+                  Output: a strictly-typed strategy, a full distribution of
+                  backtest results, and a risk report.
                 </p>
                 <p className="text-white">
                   We are building it from Uzbekistan, for the millions of
-                  emerging-market investors that professional tooling was never
-                  priced for.
+                  emerging-market investors that professional tooling was
+                  never priced for.
                 </p>
                 <p>
-                  The product’s defining constraint is honesty. A backtest that
-                  flatters itself is worse than no backtest, because it costs
-                  real money to discover. So the four ways a backtest lies are
-                  made structurally impossible rather than discouraged, every
-                  simulated figure is badged, and a strategy that fails its risk
-                  gates is reported as rejected rather than quietly softened.
+                  The defining constraint is honesty. A flattering backtest
+                  costs real money to discover later. The four ways a backtest
+                  lies are structurally impossible here, every simulated
+                  figure is badged, and a failed strategy is reported as
+                  rejected — never softened.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={160}>
-              <div className="flex items-center justify-center bg-[#111] px-8 py-16">
-                <LogoSquare className="h-[180px] w-[180px]" />
+              <div className="pointer-glow flex items-center justify-center bg-[#111] px-8 py-16">
+                <LogoSquare className="idle-bob h-[180px] w-[180px]" />
               </div>
 
               <dl className="mt-8 space-y-4">
@@ -79,12 +77,16 @@ export default function AboutPage() {
 
           <Reveal delay={240}>
             <div className="mt-20 flex flex-wrap gap-3 border-t border-hairline pt-10">
-              <Link href="/prototype" className="btn btn-primary">
-                Run the prototype
-              </Link>
-              <Link href="/#contact" className="btn btn-ghost">
-                Get in touch
-              </Link>
+              <Magnetic>
+                <Link href="/prototype" className="btn btn-primary">
+                  Run the prototype
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link href="/#contact" className="btn btn-ghost">
+                  Get in touch
+                </Link>
+              </Magnetic>
             </div>
           </Reveal>
         </Slide>

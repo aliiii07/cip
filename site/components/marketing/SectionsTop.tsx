@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { LogoMark, LogoSquare } from "@/components/Logo";
 import { Eyebrow, GapMotif, Reveal, Slide, SlideNo } from "./primitives";
+import { AmbientField } from "./AmbientField";
+import { Magnetic } from "./Magnetic";
+import { ScrollParallax } from "./ScrollParallax";
 import { DECK_FOOTER, STAGE } from "@/lib/constants";
 
 /* ---------------------------------------------------------------- 01 Hero */
@@ -15,10 +18,16 @@ const META = [
 export function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-[var(--gutter)] pb-16 pt-32">
-      <div className="hero-rules" aria-hidden />
+      <AmbientField className="opacity-70" />
+      <ScrollParallax className="parallax-slow">
+        <div className="hero-rules" aria-hidden />
+      </ScrollParallax>
 
       <div className="deck-inner relative">
-        <LogoMark className="mb-12 h-[68px] w-[86px] text-white md:mb-16" animate />
+        <LogoMark
+          className="mb-12 h-[68px] w-[86px] text-white md:mb-16"
+          animate
+        />
 
         <h1 className="hero-type max-w-[16ch]">
           Investing,
@@ -29,18 +38,21 @@ export function Hero() {
         </h1>
 
         <p className="lead mt-8 max-w-[54ch]">
-          CIP turns a simple choice into a tested, risk-managed strategy. Pick a
-          market, an asset, a timeframe — four specialists do the rest.
-          Paper-trading only, on real data.
+          Pick a market, an asset, a timeframe. Four specialists build and test
+          the strategy — paper only, on real data.
         </p>
 
         <div className="mt-9 flex flex-wrap gap-3">
-          <Link href="/prototype" className="btn btn-primary">
-            Try the prototype
-          </Link>
-          <Link href="/#contact" className="btn btn-ghost">
-            Book a demo
-          </Link>
+          <Magnetic>
+            <Link href="/prototype" className="btn btn-primary">
+              Try the prototype
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link href="/#contact" className="btn btn-ghost">
+              Book a demo
+            </Link>
+          </Magnetic>
         </div>
 
         <hr className="rule mt-16 max-w-[46rem]" />
@@ -77,26 +89,23 @@ export function About() {
 
           <div className="mt-12 space-y-6 text-[17px] leading-[1.68] text-[#2c2b28]">
             <p>
-              CIP turns a plain-English trading idea — “buy the breakout when
-              volume confirms” — into a backtested, risk-managed strategy. No
-              code, no broker wiring, no market-microstructure expertise
-              required.
+              CIP turns a plain-English idea — “buy the breakout when volume
+              confirms” — into a backtested, risk-managed strategy. No code,
+              no broker wiring, no microstructure expertise required.
             </p>
             <p>
-              Input a hypothesis in ordinary language. Output a strictly-typed
-              strategy, a full distribution of backtest results across realistic
-              costs, and a risk report: built for retail investors and firms &amp;
-              companies.
+              Output: a strictly-typed strategy, a full distribution of
+              results across realistic costs, and a risk report.
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={120} className="space-y-4">
           <div className="flex items-center justify-center bg-[#efeeea] px-8 py-14">
-            <LogoSquare className="h-[168px] w-[168px]" />
+            <LogoSquare className="h-[168px] w-[168px] idle-bob" />
           </div>
 
-          <div className="bg-ink px-8 py-9 text-white">
+          <div className="pointer-glow bg-ink px-8 py-9 text-white">
             <div className="eyebrow">CIP</div>
             <ol className="mt-4 space-y-2 text-[15px] text-[#d8d8d8]">
               <li>01 — Natural language in</li>
@@ -106,8 +115,8 @@ export function About() {
               <Sparkline />
             </div>
             <p className="text-[13px] italic leading-relaxed text-muted">
-              Fast access to news, data, unique insight and research tools —
-              helping decision makers turn knowledge into action.
+              Fast access to news, data and research tools — turning knowledge
+              into action.
             </p>
           </div>
         </Reveal>
@@ -154,22 +163,23 @@ export function Problem() {
         <Reveal delay={80}>
           <div className="space-y-6 text-[17px] leading-[1.68] text-[#c6c6c6]">
             <p>
-              Almost every retail strategy looks brilliant on a naive backtest.
-              Then it loses money the moment it meets a real order book.
+              Almost every retail strategy looks brilliant on a naive
+              backtest — then loses money the moment it meets a real order
+              book.
             </p>
             <p>
-              Smoothed candles, mid-spread fills, cross-asset parameter reuse,
-              in-sample-only metrics: four “death traps” quietly turn a +200%
-              backtest into a −30% live result.
+              Smoothed candles, mid-spread fills, cross-asset reuse, in-sample
+              metrics: four “death traps,” shown at right, turn a backtest
+              into a live loss.
             </p>
             <p>
-              Tools that catch these mistakes cost tens of thousands a year and
-              demand a quant on staff. Everyone else flies blind.
+              Tools that catch these mistakes cost tens of thousands a year
+              and need a quant on staff. Everyone else flies blind.
             </p>
             <p className="text-white">
               Millions across Uzbekistan and beyond want to invest but fear
-              charts they can’t read. CIP turns your idea into a tested,
-              risk-managed strategy — opening the market to everyone.
+              charts they can’t read. CIP turns that idea into a tested,
+              risk-managed strategy for everyone.
             </p>
           </div>
         </Reveal>
@@ -222,7 +232,7 @@ export function Positioning() {
 
       <div className="mt-14 grid gap-5 md:grid-cols-2">
         <Reveal delay={80}>
-          <div className="panel h-full">
+          <div className="panel pointer-glow h-full">
             <div className="eyebrow">Bloomberg Terminal</div>
             <ul className="mt-7 space-y-4 text-[16px] text-[#9e9e9e]">
               {BLOOMBERG.map((l) => (
@@ -233,7 +243,7 @@ export function Positioning() {
         </Reveal>
 
         <Reveal delay={160}>
-          <div className="panel panel-signal h-full">
+          <div className="panel panel-signal pointer-glow h-full">
             <div className="flex items-center gap-2.5">
               <span className="eyebrow">CIP</span>
               <span className="dot" />

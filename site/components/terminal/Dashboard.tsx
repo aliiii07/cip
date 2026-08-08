@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState, type ReactNode } from "react";
 import { LogoMark } from "@/components/Logo";
 import type { AnalyzeResponse } from "@/lib/types";
 import { ApprovalBanner, Panel, SimulatedBadge, Stat, TerminalDisclaimer } from "./atoms";
@@ -13,10 +14,44 @@ import {
 } from "./Panels";
 import { MiniHistogram, MirofishGraph, ProbabilityLattice, TailRidge } from "./Visuals";
 
+/**
+ * Words describing the pipeline's own ongoing computation — never a claim
+ * about a live external feed. This cycles purely to say "the engine is the
+ * thing running here," which is true: the dashboard recomputes candidate
+ * strategies and correlations every time this page loads.
+ */
+const ENGINE_WORDS = ["correlating", "resampling", "stress-testing", "scoring"];
+
+function EngineStatus() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((n) => (n + 1) % ENGINE_WORDS.length), 2600);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span className="t-label inline-flex items-center gap-1.5">
+      <span className="engine-dot" aria-hidden />
+      <span key={i} className="ticker-word">
+        {ENGINE_WORDS[i]}
+      </span>
+    </span>
+  );
+}
+
+/** Cascades the dashboard's major blocks in, staggered — a settle, not a slam. */
+function Stagger({ i, children }: { i: number; children: ReactNode }) {
+  return (
+    <div className="panel-open" style={{ animationDelay: `${i * 55}ms`, animationFillMode: "backwards" }}>
+      {children}
+    </div>
+  );
+}
+
 export function Dashboard({ data }: { data: AnalyzeResponse }) {
   const { computed, meta, asset, narrative } = data;
   const mc = computed.monteCarlo;
   const asOf = meta.asOf.slice(11, 16);
+  let block = 0;
 
   return (
     <div className="t-frame p-3 sm:p-5">
@@ -26,36 +61,35 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         <span className="t-label !text-[var(--t-ink)]">CIP</span>
         <span className="t-label">MIROFISH</span>
         <span className="t-hair h-3 w-px" />
-        <span className="text-[13px]">{asset.ticker}</span>
+        <span className="text-[13px] font-semibold">{asset.ticker}</span>
         <span className="t-label">{data.timeframe}</span>
         <span className="flex-1" />
-        <span className="t-label">Snapshot</span>
-        <span className="t-label">as of {asOf} UTC</span>
+        <EngineStatus />
+        <span className="t-hair h-3 w-px" />
         {/* Deliberately not "LIVE" — this is computed on request, and an honest
             timestamp beats a badge that implies a stream we do not run. */}
-        <span className="t-label">computed on request</span>
+        <span className="t-label">as of {asOf} UTC</span>
         {meta.simulated ? <SimulatedBadge label="Sample data" /> : null}
       </header>
 
       <div className="mt-4 space-y-4">
-        <ApprovalBanner />
+        <Stagger i={block++}><ApprovalBanner /></Stagger>
 
         {/* -------------------------------------------------- the strategy */}
-        <Panel
-          title="Strategy the pipeline built"
-          aside={<SimulatedBadge />}
-        >
+        <Stagger i={block++}>
+        <Panel title="Strategy the pipeline built" aside={<SimulatedBadge />}>
           <p className="max-w-[80ch] text-[13px] leading-relaxed">
             {narrative.strategyPlainEnglish}
           </p>
           <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
-            Fills are taken on the next bar’s open — never the signal bar’s
-            close. Costs applied: 0.12% round-trip fees plus depth-based
-            slippage scaled to ATR.
+            Fills on the next bar’s open, never the signal close. 0.12%
+            round-trip fees plus depth-based slippage applied.
           </p>
         </Panel>
+        </Stagger>
 
         {/* ------------------------------------------------------- chart */}
+        <Stagger i={block++}>
         <Panel
           title="Chart analysis"
           aside={
@@ -66,9 +100,11 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         >
           <ChartAnalysis candles={computed.candles} indicators={computed.indicators} />
         </Panel>
+        </Stagger>
 
         {/* ------------------------------------- lattice + tail, side by side */}
         <div className="grid gap-4 xl:grid-cols-2">
+          <Stagger i={block++}>
           <Panel title="Probability lattice" aside={<SimulatedBadge />}>
             <div className="grid gap-4 lg:grid-cols-[1fr_190px]">
               <div className="min-w-0">
@@ -79,13 +115,13 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
               </div>
             </div>
             <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
-              5,000 paths, each a run of {mc.summary.tradesPerPath} trades
-              resampled from the out-of-sample set with price and slippage
-              perturbed. The spread is the point — a single average would hide
-              it.
+              5,000 paths of {mc.summary.tradesPerPath} resampled trades, price
+              and slippage perturbed. The spread is the point.
             </p>
           </Panel>
+          </Stagger>
 
+          <Stagger i={block++}>
           <Panel title="Tail probability ridge" aside={<SimulatedBadge />}>
             <div className="grid gap-4 lg:grid-cols-[1fr_170px]">
               <div className="min-w-0">
@@ -106,15 +142,17 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
                   tone="green"
                 />
                 <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
-                  Each ridge is the outcome distribution after one more trade.
-                  The filled right tail is what an average quietly absorbs.
+                  Each ridge is the distribution after one more trade — the
+                  filled tail is what an average hides.
                 </p>
               </div>
             </div>
           </Panel>
+          </Stagger>
         </div>
 
         {/* ------------------------------------------------ relationship */}
+        <Stagger i={block++}>
         <Panel
           title="MIROFISH · relationship graph"
           aside={
@@ -141,8 +179,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
                 </div>
               ))}
               <p className="mt-3 text-[10px] leading-relaxed text-[var(--t-muted)]">
-                A hollow node means the pair could not be measured. We draw the
-                gap rather than fill it in.
+                Hollow = not measured. We draw the gap rather than fill it in.
               </p>
             </div>
 
@@ -175,36 +212,45 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
             </div>
           </div>
         </Panel>
+        </Stagger>
 
         {/* --------------------------------------------------- the board */}
+        <Stagger i={block++}>
         <RecommendationBoard
           board={computed.board}
           strongestTimeframe={computed.strongestTimeframe}
           narrative={narrative}
         />
+        </Stagger>
 
         {/* ------------------------------------------------ read + news */}
         <div className="grid gap-4 xl:grid-cols-2">
-          <FactualRead narrative={narrative} indicators={computed.indicators} />
-          <NewsPanel headlines={data.headlines} />
+          <Stagger i={block++}>
+            <FactualRead narrative={narrative} indicators={computed.indicators} />
+          </Stagger>
+          <Stagger i={block++}>
+            <NewsPanel headlines={data.headlines} />
+          </Stagger>
         </div>
 
+        <Stagger i={block++}>
         <DataGrid
           indicators={computed.indicators}
           mc={mc}
           dataSource={meta.dataSource}
           simulated={meta.simulated}
         />
+        </Stagger>
 
         {/* ------------------------------------------------------ footer */}
         <TerminalDisclaimer simulated={meta.simulated} />
 
         <p className="text-[10px] leading-relaxed text-[var(--t-faint)]">
-          Numbers computed in {meta.computeMs} ms by the engine, never by a
-          language model.{" "}
+          Computed in {meta.computeMs} ms by the engine, never by a language
+          model.{" "}
           {meta.narrativeSource === "anthropic"
             ? `Wording written by ${meta.model} from those figures.`
-            : "Wording assembled deterministically from those figures — no model key configured."}
+            : "Wording assembled deterministically — no model key configured."}
         </p>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { MARKETS, TIMEFRAMES, assetsFor, findAsset } from "@/lib/assets";
 import type { AnalyzeResponse, Market, Timeframe } from "@/lib/types";
 import { Dashboard } from "@/components/terminal/Dashboard";
 import { LoadingTheater } from "@/components/terminal/LoadingTheater";
+import { AmbientField } from "@/components/marketing/AmbientField";
 import { DISCLAIMER } from "@/lib/constants";
 
 /**
@@ -73,7 +74,11 @@ export default function PrototypePage() {
   const chosen = asset ? findAsset(asset) : undefined;
 
   return (
-    <main className="terminal min-h-screen px-4 py-6 sm:px-6 lg:px-10">
+    <main className="terminal relative min-h-screen px-4 py-6 sm:px-6 lg:px-10">
+      <div className="pointer-events-none fixed inset-0 -z-10 opacity-40" aria-hidden>
+        <AmbientField palette="terminal" />
+      </div>
+
       {/* ------------------------------------------------------------ top */}
       <div className="mx-auto flex max-w-[1400px] items-center gap-3 pb-6">
         <Link href="/" className="flex items-center gap-2.5" aria-label="Back to CIP">
@@ -94,9 +99,8 @@ export default function PrototypePage() {
             Pick a market, an asset and a timeframe.
           </h1>
           <p className="mt-2 max-w-[62ch] text-[12px] leading-relaxed text-[var(--t-muted)]">
-            CIP builds a strategy, tests it against real costs, stress-tests it
-            over 5,000 simulations, and tells you whether it survived. Paper
-            only — nothing is ever ordered.
+            Builds a strategy, tests it against real costs, and stress-tests
+            it 5,000 times. Paper only — nothing is ever ordered.
           </p>
 
           {/* Step 1 — category */}
@@ -145,9 +149,8 @@ export default function PrototypePage() {
               </div>
               {market === "cfd" ? (
                 <p className="mt-2.5 max-w-[70ch] text-[10.5px] leading-relaxed text-[var(--t-muted)]">
-                  “CFD” is just the bucket label for gold here. CIP models no
-                  leverage and no CFD execution — gold is analysed on exactly
-                  the same honest paper basis as everything else.
+                  “CFD” is just the bucket label for gold here — no leverage,
+                  no CFD execution, same honest paper basis as everything else.
                 </p>
               ) : null}
             </div>
@@ -186,18 +189,19 @@ export default function PrototypePage() {
               type="button"
               onClick={analyze}
               disabled={!ready || state === "running"}
-              className="h-11 rounded-[3px] px-7 text-[12px] uppercase tracking-[0.16em] transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
-              style={{ background: "var(--frame)", color: "#f1f0e9" }}
+              className="h-11 rounded-[3px] px-7 text-[12px] uppercase tracking-[0.16em] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:enabled:scale-[1.03] active:enabled:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-30"
+              style={{
+                background: "var(--frame)",
+                color: "#f1f0e9",
+                boxShadow: ready && state !== "running" ? "0 10px 26px -14px rgba(28,28,25,0.5)" : "none",
+              }}
             >
               {state === "running" ? "Analyzing…" : "Analyze"}
             </button>
 
             <p className="text-[11px] text-[var(--t-muted)]">
               {ready ? (
-                <>
-                  {chosen?.label} · {timeframe} — computed the moment you press
-                  it. Nothing runs in the background.
-                </>
+                <>{chosen?.label} · {timeframe} — computed the moment you press it.</>
               ) : (
                 "Pick all three to continue."
               )}

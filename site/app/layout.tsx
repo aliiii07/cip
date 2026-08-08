@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import { PointerGlowField } from "@/components/PointerGlowField";
 import "./globals.css";
 
 /**
  * The deck is set in Helvetica Neue. We ask for it first and fall back to Inter
- * (loaded here) so the type stays a neo-grotesque everywhere.
+ * (loaded here) so the type stays a neo-grotesque everywhere. The prototype
+ * route loads its own typeface (Nunito, --font-terminal) in its own layout —
+ * the two identities stay deliberately separate, per the two-surface system.
  */
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans-fallback",
-  display: "swap",
-});
-
-const mono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -34,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={sans.variable}>
       <body
         style={
           {
@@ -43,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           } as React.CSSProperties
         }
       >
+        <PointerGlowField />
         {children}
       </body>
     </html>
