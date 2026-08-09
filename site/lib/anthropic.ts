@@ -238,7 +238,7 @@ export function fallbackNarrative(input: NarrativeInput): Narrative {
       momentum:
         rsi == null
           ? "Not enough history for RSI(14)."
-          : `RSI(14) is at ${rsi} — ${rsi <= 30 ? "the oversold end" : rsi >= 70 ? "the overbought end" : "mid-range"}.`,
+          : `RSI(14) is at ${rsi}, ${rsi <= 30 ? "the oversold end" : rsi >= 70 ? "the overbought end" : "mid-range"}.`,
       volatility:
         i.atrPct == null
           ? "Not enough history for ATR(14)."

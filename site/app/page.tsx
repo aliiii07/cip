@@ -10,10 +10,7 @@ import {
 } from "@/components/marketing/SectionsMid";
 import {
   FinalCta,
-  Opportunity,
-  Pricing,
   Roadmap,
-  Status,
   Vision,
 } from "@/components/marketing/SectionsEnd";
 
@@ -36,9 +33,6 @@ export default function Home() {
         <Honesty />
         <DeathTraps />
         <Numbers />
-        <Status />
-        <Opportunity />
-        <Pricing />
         <Roadmap />
         <Vision />
         <FinalCta />

@@ -80,7 +80,7 @@ export function LoadingTheater({ done }: { done: boolean }) {
       </ol>
 
       <p className="mt-6 border-t border-[var(--hair)] pt-4 text-[11px] leading-relaxed text-[var(--t-muted)]">
-        A rejected strategy is a valid outcome — the costs ate the edge, and
+        A rejected strategy is a valid outcome. The costs ate the edge, and
         CIP would rather say so now.
       </p>
 

@@ -6,14 +6,23 @@ import type { Candle, CandleSet, Timeframe } from "./types";
 /**
  * Market data, server-side only.
  *
- * Crypto comes from Binance's keyless public endpoint. Equities, FX and gold
- * come from Polygon and need POLYGON_API_KEY. When a source is unavailable we
- * fall back to deterministic sample candles and set `simulated: true` — the UI
- * badges everything downstream. We never present an unmarked estimate as data.
+ * Three real sources, tried in order, before anything synthetic:
+ *   1. Binance's keyless public endpoint — crypto.
+ *   2. Polygon.io — needs POLYGON_API_KEY. Official, minute-accurate, paid.
+ *   3. Yahoo Finance's public chart endpoint — no key, no signup. Used only
+ *      when Polygon has no key configured, so equities, FX and gold still
+ *      get a real, current price rather than a guess. It is an unofficial,
+ *      undocumented endpoint: it can rate-limit or change shape without
+ *      notice, which is exactly why it is a fallback and not the primary.
+ *
+ * When none of the three answer, we fall back to deterministic sample candles
+ * and set `simulated: true` — the UI badges everything downstream. We never
+ * present an unmarked estimate as data.
  */
 
 const BINANCE = "https://api.binance.com";
 const POLYGON = "https://api.polygon.io";
+const YAHOO = "https://query1.finance.yahoo.com";
 
 const BINANCE_INTERVAL: Record<Timeframe, string> = {
   "15m": "15m",
@@ -30,11 +39,40 @@ const POLYGON_SPAN: Record<Timeframe, [number, string]> = {
 };
 
 /**
+ * Yahoo has no native 4h interval, so 4h is built by resampling 60m bars.
+ * Ranges are picked to comfortably clear LIMIT candles after accounting for
+ * equities only trading during the session, not around the clock.
+ */
+const YAHOO_PARAMS: Record<Timeframe, { interval: string; range: string }> = {
+  "15m": { interval: "15m", range: "60d" },
+  "1h": { interval: "60m", range: "730d" },
+  "4h": { interval: "60m", range: "730d" },
+  "1d": { interval: "1d", range: "5y" },
+};
+
+/**
  * Binance's per-request maximum. We want the long series: the out-of-sample
  * 30% has to contain enough trades to conclude anything, and a thin sample is
  * the most common reason a row gets rejected.
  */
 const LIMIT = 1000;
+
+/** A real bar older than this many multiples of its own timeframe means a
+ *  closed market or a lagging feed, not a live-moving price. */
+const STALE_BAR_MULTIPLE = 2;
+
+function toCandleSet(
+  candles: Candle[],
+  simulated: boolean,
+  source: string,
+  timeframe: Timeframe,
+  sourceDetail?: string
+): CandleSet {
+  const lastTime = candles[candles.length - 1]?.time ?? Math.floor(Date.now() / 1000);
+  const stale =
+    !simulated && Date.now() / 1000 - lastTime > TF_SECONDS[timeframe] * STALE_BAR_MULTIPLE;
+  return { candles, simulated, source, sourceDetail, asOf: lastTime, stale };
+}
 
 export async function getCandles(
   asset: AssetDef,
@@ -43,14 +81,24 @@ export async function getCandles(
   if (asset.binance) {
     const candles = await fetchBinance(asset.binance, timeframe).catch(() => null);
     if (candles && candles.length > 120) {
-      return { candles, simulated: false, source: "Binance" };
+      return toCandleSet(candles, false, "Binance", timeframe);
     }
   }
 
   if (asset.polygon && process.env.POLYGON_API_KEY) {
     const candles = await fetchPolygon(asset.polygon, timeframe).catch(() => null);
     if (candles && candles.length > 120) {
-      return { candles, simulated: false, source: "Polygon.io" };
+      return toCandleSet(candles, false, "Polygon.io", timeframe);
+    }
+  }
+
+  if (asset.yahoo) {
+    const candles = await fetchYahoo(asset.yahoo, timeframe).catch((err) => {
+      console.error(`[cip] yahoo fetch failed for ${asset.yahoo}:`, err);
+      return null;
+    });
+    if (candles && candles.length > 120) {
+      return toCandleSet(candles, false, "Yahoo Finance", timeframe, asset.yahooProxyNote);
     }
   }
 
@@ -58,6 +106,8 @@ export async function getCandles(
     candles: sampleCandles(asset.key, asset.seedPrice, timeframe),
     simulated: true,
     source: "sample",
+    asOf: Math.floor(Date.now() / 1000),
+    stale: false,
   };
 }
 
@@ -115,6 +165,83 @@ async function fetchPolygon(ticker: string, tf: Timeframe): Promise<Candle[]> {
       volume: r.v ?? 0,
     }))
     .slice(-LIMIT);
+}
+
+interface YahooQuote {
+  open?: (number | null)[];
+  high?: (number | null)[];
+  low?: (number | null)[];
+  close?: (number | null)[];
+  volume?: (number | null)[];
+}
+
+interface YahooChartResponse {
+  chart: {
+    result?: {
+      timestamp?: number[];
+      indicators?: { quote?: YahooQuote[] };
+    }[];
+    error?: { description?: string } | null;
+  };
+}
+
+/**
+ * Yahoo's public, keyless chart endpoint. Unofficial and undocumented, but
+ * widely relied on and, as tested, currently returns real intraday and daily
+ * OHLCV for equities, FX pairs and futures with no signup required.
+ */
+async function fetchYahoo(symbol: string, tf: Timeframe): Promise<Candle[]> {
+  const { interval, range } = YAHOO_PARAMS[tf];
+  const url =
+    `${YAHOO}/v8/finance/chart/${encodeURIComponent(symbol)}` +
+    `?interval=${interval}&range=${range}`;
+  const res = await fetch(url, {
+    cache: "no-store",
+    signal: AbortSignal.timeout(9000),
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; CIP-research/1.0)" },
+  });
+  if (!res.ok) throw new Error(`yahoo ${res.status}`);
+  const body = (await res.json()) as YahooChartResponse;
+  const result = body.chart.result?.[0];
+  if (!result) throw new Error(body.chart.error?.description ?? "yahoo: no result");
+
+  const ts = result.timestamp ?? [];
+  const q = result.indicators?.quote?.[0] ?? {};
+  const candles: Candle[] = [];
+  for (let i = 0; i < ts.length; i++) {
+    const o = q.open?.[i];
+    const h = q.high?.[i];
+    const l = q.low?.[i];
+    const c = q.close?.[i];
+    // Yahoo pads non-trading slots with nulls rather than omitting them.
+    if (o == null || h == null || l == null || c == null) continue;
+    candles.push({ time: ts[i], open: o, high: h, low: l, close: c, volume: q.volume?.[i] ?? 0 });
+  }
+
+  return (tf === "4h" ? resampleHourly(candles, 4) : candles).slice(-LIMIT);
+}
+
+/** Groups consecutive hourly bars into fixed-width buckets. Yahoo has no
+ *  native multi-hour interval, so 4h is built here rather than faked. */
+function resampleHourly(hourly: Candle[], hours: number): Candle[] {
+  const width = hours * 3600;
+  const buckets = new Map<number, Candle[]>();
+  for (const c of hourly) {
+    const key = Math.floor(c.time / width) * width;
+    const bucket = buckets.get(key);
+    if (bucket) bucket.push(c);
+    else buckets.set(key, [c]);
+  }
+  return Array.from(buckets.entries())
+    .sort(([a], [b]) => a - b)
+    .map(([time, group]) => ({
+      time,
+      open: group[0].open,
+      high: Math.max(...group.map((g: Candle) => g.high)),
+      low: Math.min(...group.map((g: Candle) => g.low)),
+      close: group[group.length - 1].close,
+      volume: group.reduce((sum: number, g: Candle) => sum + g.volume, 0),
+    }));
 }
 
 /* ------------------------------------------------------------ sample data */

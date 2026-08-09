@@ -8,7 +8,7 @@ import { LogoSquare } from "@/components/Logo";
 import { STAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About — Capital Investment Prospects",
+  title: "About · Capital Investment Prospects",
   description:
     "CIP turns a plain-English trading idea into a backtested, risk-managed strategy. Built in Uzbekistan for emerging-market investors.",
 };
@@ -30,10 +30,10 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="space-y-6 text-[17px] leading-[1.68] text-[#c6c6c6]">
                 <p>
-                  CIP turns a plain-English idea — “buy the breakout when
-                  volume confirms” — into a backtested, risk-managed strategy.
-                  No code, no broker wiring, no microstructure expertise
-                  required.
+                  CIP turns a plain-English idea, such as “buy the breakout
+                  when volume confirms,” into a backtested, risk-managed
+                  strategy. No code, no broker wiring, no microstructure
+                  expertise required.
                 </p>
                 <p>
                   Output: a strictly-typed strategy, a full distribution of
@@ -49,7 +49,7 @@ export default function AboutPage() {
                   costs real money to discover later. The four ways a backtest
                   lies are structurally impossible here, every simulated
                   figure is badged, and a failed strategy is reported as
-                  rejected — never softened.
+                  rejected, never softened.
                 </p>
               </div>
             </Reveal>

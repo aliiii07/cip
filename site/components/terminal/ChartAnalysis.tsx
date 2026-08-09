@@ -174,7 +174,7 @@ export function ChartAnalysis({
           value={i.trend}
           tone={i.trend === "uptrend" ? "green" : i.trend === "downtrend" ? "red" : undefined}
         />
-        <Stat label="MA20 − MA50" value={i.maSpreadPct != null ? pct(i.maSpreadPct, 2) : "—"} />
+        <Stat label="MA20 vs MA50" value={i.maSpreadPct != null ? pct(i.maSpreadPct, 2) : "—"} />
         <Stat label="RSI(14)" value={i.rsiLast != null ? fmt(i.rsiLast, 1) : "—"} />
         <Stat label="ATR(14)" value={i.atrPct != null ? `${i.atrPct.toFixed(2)}%` : "—"} />
         <Stat

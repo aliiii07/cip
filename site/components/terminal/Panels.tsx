@@ -5,6 +5,7 @@ import type {
   Indicators,
   McResult,
   Narrative,
+  SignalAlignment,
   TimeframeRow,
   Timeframe,
 } from "@/lib/types";
@@ -34,13 +35,13 @@ export function RecommendationBoard({
           <>
             Strongest support at{" "}
             <strong className="font-bold">{strongestTimeframe}</strong>. This is a
-            tested strategy and its verdict — not a trade, and not a view on
+            tested strategy and its verdict, not a trade and not a view on
             direction.
           </>
         ) : (
           <>
             No timeframe cleared the risk gates for this asset. That is a
-            result, not a failure — the honest answer is that this setup does
+            result, not a failure. The honest answer is that this setup does
             not survive its own costs right now.
           </>
         )}
@@ -95,9 +96,11 @@ export function RecommendationBoard({
 export function FactualRead({
   narrative,
   indicators,
+  alignment,
 }: {
   narrative: Narrative;
   indicators: Indicators;
+  alignment: SignalAlignment;
 }) {
   const cards: [string, string, string][] = [
     ["Trend", narrative.factualRead.trend, indicators.trend],
@@ -116,13 +119,25 @@ export function FactualRead({
       narrative.factualRead.volume,
       indicators.volumeRatio != null ? `${indicators.volumeRatio.toFixed(2)}×` : "—",
     ],
+    [
+      "Signal alignment",
+      alignment.total > 0
+        ? `${alignment.agreeing} of ${alignment.total} timeframes read the same ${indicators.trend}.`
+        : "Not enough history across timeframes to compare.",
+      alignment.label,
+    ],
   ];
 
   return (
     <Panel title="Factual analysis">
       <div className="grid gap-3 sm:grid-cols-2">
-        {cards.map(([label, body, chip]) => (
-          <div key={label} className="rounded-[3px] border border-[var(--hair)] p-3">
+        {cards.map(([label, body, chip], i) => (
+          <div
+            key={label}
+            className={`rounded-[3px] border border-[var(--hair)] p-3 ${
+              i === cards.length - 1 ? "sm:col-span-2" : ""
+            }`}
+          >
             <div className="flex items-center justify-between">
               <span className="t-label">{label}</span>
               <span className="t-label !tracking-normal">{chip}</span>
@@ -174,7 +189,7 @@ export function DistributionStats({ mc }: { mc: McResult }) {
       <Stat
         label="Benchmark at matched exposure"
         value={pct(s.benchmarkAdjustedPct, 1)}
-        hint="Buy & hold scaled to the strategy's own exposure — the like-for-like bar it has to clear."
+        hint="Buy & hold scaled to the strategy's own exposure: the like-for-like bar it has to clear."
       />
       <Stat
         label="Win rate"
@@ -201,7 +216,7 @@ export function NewsPanel({ headlines }: { headlines: Headline[] }) {
       {headlines.length === 0 ? (
         <p className="text-[11.5px] leading-relaxed text-[var(--t-muted)]">
           No news feed is configured, so this panel is empty. Headlines here are
-          always real articles from a news provider — CIP tags them, it does not
+          always real articles from a news provider. CIP tags them; it does not
           write them. An invented headline would be worse than none.
         </p>
       ) : (

@@ -244,6 +244,25 @@ body {
 }
 .btn-primary:hover { background: var(--signal); box-shadow: 0 0 0 5px rgba(226,59,59,0.12); }
 
+/* The hero's one CTA: solid, larger and lit, so it reads as the obvious next
+   step rather than one option among several. */
+.btn-hero {
+  height: 3.4rem;
+  padding: 0 2.3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: var(--signal);
+  color: #fff;
+  border: 1px solid var(--signal);
+  box-shadow: 0 16px 40px -14px rgba(226,59,59,0.55);
+}
+.btn-hero:hover {
+  background: #ec5252;
+  border-color: #ec5252;
+  box-shadow: 0 0 0 6px rgba(226,59,59,0.16), 0 20px 46px -14px rgba(226,59,59,0.6);
+}
+
 .btn-ghost {
   background: transparent;
   color: #cfcfcf;
@@ -285,10 +304,14 @@ body {
    Subtle on purpose: a few pixels and a hair of opacity, never a slide show. */
 .parallax-slow { transform: translateY(calc((var(--scroll-p) - 0.5) * -34px)); }
 .parallax-fast { transform: translateY(calc((var(--scroll-p) - 0.5) * -64px)); }
+/* Opposite sign of .parallax-slow — two elements given these two classes
+   drift apart as the section scrolls by, rather than together. Used where the
+   drift itself should read as a comparison (Bloomberg vs. CIP), not decoration. */
+.parallax-slow-rev { transform: translateY(calc((var(--scroll-p) - 0.5) * 34px)); }
 .parallax-fade { opacity: calc(1 - max(0, (var(--scroll-p) - 0.72)) * 3.4); }
 
 @media (prefers-reduced-motion: reduce) {
-  .parallax-slow, .parallax-fast { transform: none; }
+  .parallax-slow, .parallax-fast, .parallax-slow-rev { transform: none; }
   .parallax-fade { opacity: 1; }
 }
 
@@ -390,8 +413,7 @@ body {
 .terminal {
   background: var(--paper-bg);
   color: var(--t-ink);
-  font-family: var(--font-terminal), "Nunito", "Helvetica Neue", sans-serif;
-  font-weight: 500; /* Nunito Medium, per the prototype's typographic spec */
+  font-family: var(--font-terminal), "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-variant-numeric: tabular-nums;
 }
 

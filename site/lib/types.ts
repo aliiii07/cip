@@ -14,7 +14,18 @@ export interface CandleSet {
   candles: Candle[];
   /** True when these are deterministic sample candles, not exchange data. */
   simulated: boolean;
+  /** Short label for tight UI slots, e.g. "Yahoo Finance". */
   source: string;
+  /** Set only when `source` is a disclosed proxy, not the literal instrument
+   *  (e.g. gold's COMEX futures standing in for spot XAU/USD). Shown as its
+   *  own line rather than silently folded into `source`. */
+  sourceDetail?: string;
+  /** Unix seconds of the most recent candle — the data's own timestamp. */
+  asOf: number;
+  /** True when real data's last bar is old relative to its timeframe: a closed
+   *  market or a lagging feed, not a live-moving price. Always false for
+   *  simulated data, whose last bar is synthesized at request time. */
+  stale: boolean;
 }
 
 export interface Indicators {
@@ -114,6 +125,14 @@ export interface TimeframeRow {
   buyHoldReturnPct: number;
   medianPathReturnPct: number;
   simulated: boolean;
+  trend: Indicators["trend"] | null;
+}
+
+export interface SignalAlignment {
+  /** How many of the four timeframes read the same trend direction as the one selected. */
+  agreeing: number;
+  total: number;
+  label: "strong" | "moderate" | "weak";
 }
 
 export interface GraphNode {
@@ -174,13 +193,22 @@ export interface AnalyzeResponse {
     board: TimeframeRow[];
     graph: RelationshipGraph;
     strongestTimeframe: Timeframe | null;
+    signalAlignment: SignalAlignment;
   };
   narrative: Narrative;
   headlines: Headline[];
   meta: {
+    /** When this response was computed. */
     asOf: string;
+    /** When the underlying market data itself is from — can predate `asOf`
+     *  when a market is closed or a feed lags. */
+    dataAsOf: string;
+    /** True when real data is old relative to the timeframe: closed market or
+     *  lagging feed. Always false when `simulated` is true. */
+    stale: boolean;
     simulated: boolean;
     dataSource: string;
+    dataSourceDetail?: string;
     narrativeSource: "anthropic" | "fallback";
     computeMs: number;
     model: string | null;

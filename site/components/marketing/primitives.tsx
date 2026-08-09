@@ -60,7 +60,7 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 export function SlideNo({ n }: { n: string }) {
   return (
     <div className="slide-no absolute bottom-7 left-[var(--gutter)] hidden md:block">
-      {n} — {DECK_FOOTER}
+      {n} · {DECK_FOOTER}
     </div>
   );
 }

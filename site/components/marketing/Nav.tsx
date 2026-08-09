@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/Logo";
-import { Magnetic } from "./Magnetic";
 
 const LINKS = [
   ["Product", "/#what-we-do"],
   ["How it works", "/#pipeline"],
   ["Honesty", "/#honesty"],
-  ["Pricing", "/#pricing"],
   ["Prototype", "/prototype"],
 ] as const;
 
@@ -31,7 +29,7 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex h-[68px] max-w-deck items-center gap-4 px-[var(--gutter)]">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="CIP — home">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="CIP home">
           <LogoMark className="h-6 w-8 text-white" />
           <span className="text-[13px] tracking-[0.18em]">CIP</span>
         </Link>
@@ -45,19 +43,6 @@ export function Nav() {
         </nav>
 
         <span className="flex-1" />
-
-        <div className="hidden items-center gap-2.5 md:flex">
-          <Magnetic strength={6}>
-            <Link href="/#contact" className="btn btn-ghost">
-              Book a demo
-            </Link>
-          </Magnetic>
-          <Magnetic strength={6}>
-            <Link href="/#contact" className="btn btn-primary">
-              Get early access
-            </Link>
-          </Magnetic>
-        </div>
 
         <button
           type="button"
@@ -94,13 +79,6 @@ export function Nav() {
                 {label}
               </Link>
             ))}
-            <Link
-              href="/#contact"
-              onClick={() => setOpen(false)}
-              className="btn btn-primary mt-2 self-start"
-            >
-              Get early access
-            </Link>
           </nav>
         </div>
       ) : null}

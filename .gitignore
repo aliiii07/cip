@@ -29,6 +29,10 @@ node_modules/
 .next*/
 out/
 .turbo/
+*.tsbuildinfo
+
+# Vercel CLI link state — machine-local, never committed
+.vercel/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -100,7 +100,7 @@ export default function PrototypePage() {
           </h1>
           <p className="mt-2 max-w-[62ch] text-[12px] leading-relaxed text-[var(--t-muted)]">
             Builds a strategy, tests it against real costs, and stress-tests
-            it 5,000 times. Paper only — nothing is ever ordered.
+            it 5,000 times. Paper only. Nothing is ever ordered.
           </p>
 
           {/* Step 1 — category */}
@@ -113,7 +113,7 @@ export default function PrototypePage() {
                 onClick={() => pickMarket(m.key)}
                 data-on={market === m.key}
                 aria-pressed={market === m.key}
-                aria-label={`${m.label} — ${m.note}`}
+                aria-label={`${m.label}, ${m.note}`}
                 className="chip px-4 py-3.5 text-left"
               >
                 <div className="text-[14px]">{m.label}</div>
@@ -125,7 +125,7 @@ export default function PrototypePage() {
           {/* Step 2 — asset panel reveals under the chosen category */}
           {market ? (
             <div className="panel-open">
-              <Step n="2" label={`Choose an asset — ${market}`} />
+              <Step n="2" label={`Choose an asset in ${market}`} />
               <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
                 {assets.map((a) => (
                   <button
@@ -149,7 +149,7 @@ export default function PrototypePage() {
               </div>
               {market === "cfd" ? (
                 <p className="mt-2.5 max-w-[70ch] text-[10.5px] leading-relaxed text-[var(--t-muted)]">
-                  “CFD” is just the bucket label for gold here — no leverage,
+                  “CFD” is just the bucket label for gold here, no leverage,
                   no CFD execution, same honest paper basis as everything else.
                 </p>
               ) : null}
@@ -177,7 +177,7 @@ export default function PrototypePage() {
                 ))}
               </div>
               <p className="mt-2.5 text-[10.5px] text-[var(--t-muted)]">
-                Positions are held for several bars even at 15m — CIP targets
+                Positions are held for several bars even at 15m. CIP targets
                 hours to days, never sub-second.
               </p>
             </div>
@@ -201,7 +201,7 @@ export default function PrototypePage() {
 
             <p className="text-[11px] text-[var(--t-muted)]">
               {ready ? (
-                <>{chosen?.label} · {timeframe} — computed the moment you press it.</>
+                <>{chosen?.label} · {timeframe}, computed the moment you press it.</>
               ) : (
                 "Pick all three to continue."
               )}
@@ -224,7 +224,7 @@ export default function PrototypePage() {
             >
               {error}
               <span className="mt-2 block text-[var(--t-muted)]">
-                Nothing was fabricated to fill the gap — try again, or pick
+                Nothing was fabricated to fill the gap. Try again, or pick
                 another asset.
               </span>
             </div>

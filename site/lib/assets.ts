@@ -9,6 +9,13 @@ export interface AssetDef {
   binance?: string;
   /** Polygon ticker, when Polygon is the source. */
   polygon?: string;
+  /** Yahoo Finance chart symbol — a keyless fallback used when Polygon has no
+   *  key configured. Real data, no signup required. */
+  yahoo?: string;
+  /** Set when the Yahoo symbol is a proxy, not the literal instrument (gold
+   *  has no free spot forex-style symbol on Yahoo, so GC=F futures stands in).
+   *  Surfaced in the UI rather than silently substituted. */
+  yahooProxyNote?: string;
   /** Seed price used only by the deterministic sample-candle generator. */
   seedPrice: number;
   peers: string[];
@@ -43,6 +50,7 @@ export const ASSETS: AssetDef[] = [
     ticker: "EUR/USD",
     market: "forex",
     polygon: "C:EURUSD",
+    yahoo: "EURUSD=X",
     seedPrice: 1.086,
     peers: ["BTCUSDT"],
   },
@@ -52,6 +60,7 @@ export const ASSETS: AssetDef[] = [
     ticker: "USD/JPY",
     market: "forex",
     polygon: "C:USDJPY",
+    yahoo: "USDJPY=X",
     seedPrice: 155.4,
     peers: ["BTCUSDT"],
   },
@@ -61,6 +70,7 @@ export const ASSETS: AssetDef[] = [
     ticker: "AAPL",
     market: "stocks",
     polygon: "AAPL",
+    yahoo: "AAPL",
     seedPrice: 232,
     peers: ["BTCUSDT"],
   },
@@ -70,6 +80,7 @@ export const ASSETS: AssetDef[] = [
     ticker: "TSLA",
     market: "stocks",
     polygon: "TSLA",
+    yahoo: "TSLA",
     seedPrice: 318,
     peers: ["BTCUSDT"],
   },
@@ -79,6 +90,9 @@ export const ASSETS: AssetDef[] = [
     ticker: "XAU/USD",
     market: "cfd",
     polygon: "C:XAUUSD",
+    yahoo: "GC=F",
+    yahooProxyNote:
+      "Yahoo has no free spot XAU/USD feed, so this reads COMEX gold futures (GC=F), which tracks spot gold closely.",
     seedPrice: 2650,
     peers: ["BTCUSDT"],
   },

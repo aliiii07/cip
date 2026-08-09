@@ -23,7 +23,6 @@ export function Footer() {
               ["Product", "/#what-we-do"],
               ["How it works", "/#pipeline"],
               ["Honesty", "/#honesty"],
-              ["Pricing", "/#pricing"],
               ["Prototype", "/prototype"],
               ["About", "/about"],
               ["Legal", "/legal"],

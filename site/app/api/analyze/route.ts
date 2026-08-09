@@ -7,7 +7,7 @@ import { buildGraph } from "@/lib/correlation";
 import { getCandles, getPeerCloses } from "@/lib/marketData";
 import { getHeadlines } from "@/lib/news";
 import { writeNarrative } from "@/lib/anthropic";
-import type { AnalyzeResponse, Timeframe, TimeframeRow } from "@/lib/types";
+import type { AnalyzeResponse, SignalAlignment, Timeframe, TimeframeRow } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -87,6 +87,7 @@ export async function POST(req: NextRequest) {
         buyHoldReturnPct: 0,
         medianPathReturnPct: 0,
         simulated: set.simulated,
+        trend: null,
       };
     }
     const bt = backtest(set.candles);
@@ -107,8 +108,22 @@ export async function POST(req: NextRequest) {
       buyHoldReturnPct: mc.summary.buyHoldReturnPct,
       medianPathReturnPct: mc.summary.medianPathReturnPct,
       simulated: set.simulated,
+      trend: ind.trend,
     };
   });
+
+  // --- Multi-timeframe context ---------------------------------------------
+  // How many of the four independently-tested timeframes read the same trend
+  // as the one selected. Traceable, coherent context for the selected read
+  // rather than treating one timeframe's number in isolation.
+  const withTrend = board.filter((r) => r.trend != null);
+  const agreeing = withTrend.filter((r) => r.trend === indicators.trend).length;
+  const alignmentShare = withTrend.length > 0 ? agreeing / withTrend.length : 0;
+  const signalAlignment: SignalAlignment = {
+    agreeing,
+    total: withTrend.length,
+    label: alignmentShare >= 0.75 ? "strong" : alignmentShare >= 0.5 ? "moderate" : "weak",
+  };
 
   const selectedBt = backtest(selected.candles);
   const monteCarlo = runMonteCarlo(selectedBt.validate, {
@@ -166,13 +181,17 @@ export async function POST(req: NextRequest) {
       board,
       graph,
       strongestTimeframe: strongest(board),
+      signalAlignment,
     },
     narrative,
     headlines: taggedHeadlines,
     meta: {
       asOf: new Date().toISOString(),
+      dataAsOf: new Date(selected.asOf * 1000).toISOString(),
+      stale: selected.stale,
       simulated: selected.simulated,
       dataSource: selected.source,
+      dataSourceDetail: selected.sourceDetail,
       narrativeSource: source,
       computeMs: Date.now() - started,
       model,

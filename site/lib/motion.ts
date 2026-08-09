@@ -18,5 +18,7 @@ export function hasFinePointer(): boolean {
 /** The one easing curve used everywhere motion happens on this site. */
 export const EASE_PREMIUM = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-/** Canvas text needs a real font-name string — CSS var() does not resolve in a 2D context. */
-export const TERMINAL_FONT = '"Nunito", "Helvetica Neue", sans-serif';
+/** Canvas text needs a real font name string; CSS var() does not resolve in a
+ *  2D context. Matches the marketing site's typeface so the prototype reads
+ *  as the same product, not a separate app dropped into an iframe. */
+export const TERMINAL_FONT = '"Helvetica Neue", Helvetica, Arial, sans-serif';

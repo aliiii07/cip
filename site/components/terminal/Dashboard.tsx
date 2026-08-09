@@ -50,7 +50,7 @@ function Stagger({ i, children }: { i: number; children: ReactNode }) {
 export function Dashboard({ data }: { data: AnalyzeResponse }) {
   const { computed, meta, asset, narrative } = data;
   const mc = computed.monteCarlo;
-  const asOf = meta.asOf.slice(11, 16);
+  const dataAsOf = meta.dataAsOf.slice(11, 16);
   let block = 0;
 
   return (
@@ -67,9 +67,18 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         <EngineStatus />
         <span className="t-hair h-3 w-px" />
         {/* Deliberately not "LIVE" — this is computed on request, and an honest
-            timestamp beats a badge that implies a stream we do not run. */}
-        <span className="t-label">as of {asOf} UTC</span>
-        {meta.simulated ? <SimulatedBadge label="Sample data" /> : null}
+            timestamp beats a badge that implies a stream we do not run. The
+            timestamp is the data's own, not the request time: a closed market
+            or a lagging feed shows its real last-updated time, never "now". */}
+        {meta.simulated ? (
+          <SimulatedBadge label="Sample data" />
+        ) : meta.stale ? (
+          <span className="t-label" style={{ color: "#8a6f14" }}>
+            last available · {dataAsOf} UTC
+          </span>
+        ) : (
+          <span className="t-label">market data · {dataAsOf} UTC</span>
+        )}
       </header>
 
       <div className="mt-4 space-y-4">
@@ -99,6 +108,11 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
           }
         >
           <ChartAnalysis candles={computed.candles} indicators={computed.indicators} />
+          {meta.dataSourceDetail ? (
+            <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
+              {meta.dataSourceDetail}
+            </p>
+          ) : null}
         </Panel>
         </Stagger>
 
@@ -142,7 +156,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
                   tone="green"
                 />
                 <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
-                  Each ridge is the distribution after one more trade — the
+                  Each ridge is the distribution after one more trade. The
                   filled tail is what an average hides.
                 </p>
               </div>
@@ -165,7 +179,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
             <div className="order-2 min-w-0 lg:order-1">
               <div className="t-label mb-2">Node class</div>
               {[
-                ["Hub — this asset", "var(--t-ink)"],
+                ["Hub · this asset", "var(--t-ink)"],
                 ["Co-moves with trend", "var(--green)"],
                 ["Moves against", "var(--red)"],
                 ["Weak / unmeasured", "var(--amber)"],
@@ -203,7 +217,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
                 value={`${(computed.graph.confidence * 100).toFixed(0)}%`}
               />
               <div className="mt-3">
-                <div className="t-label mb-1.5">Last 24 bars — return spread</div>
+                <div className="t-label mb-1.5">Last 24 bars · return spread</div>
                 <MiniHistogram bins={computed.graph.edgeHistogram} />
               </div>
               <p className="mt-2 text-[10px] leading-relaxed text-[var(--t-muted)]">
@@ -226,7 +240,11 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         {/* ------------------------------------------------ read + news */}
         <div className="grid gap-4 xl:grid-cols-2">
           <Stagger i={block++}>
-            <FactualRead narrative={narrative} indicators={computed.indicators} />
+            <FactualRead
+              narrative={narrative}
+              indicators={computed.indicators}
+              alignment={computed.signalAlignment}
+            />
           </Stagger>
           <Stagger i={block++}>
             <NewsPanel headlines={data.headlines} />
@@ -250,7 +268,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
           model.{" "}
           {meta.narrativeSource === "anthropic"
             ? `Wording written by ${meta.model} from those figures.`
-            : "Wording assembled deterministically — no model key configured."}
+            : "Wording assembled deterministically. No model key configured."}
         </p>
       </div>
     </div>

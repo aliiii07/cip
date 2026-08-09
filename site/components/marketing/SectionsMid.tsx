@@ -6,7 +6,7 @@ import { CountUp, Eyebrow, Reveal, Slide } from "./primitives";
 const WHAT = [
   [
     "Pick & go",
-    "Select an asset and a timeframe — CIP builds and tests the strategy.",
+    "Select an asset and a timeframe. CIP builds and tests the strategy.",
   ],
   [
     "Automated pipeline",
@@ -64,7 +64,7 @@ const AGENTS = [
   [
     "02",
     "Strategy Architect",
-    "Compiles the setup into a strictly-typed strategy — never raw code.",
+    "Compiles the setup into a strictly-typed strategy, never raw code.",
   ],
   [
     "03",
@@ -84,7 +84,7 @@ export function Pipeline() {
       <Reveal>
         <h2 className="display">The four-agent loop</h2>
         <p className="mt-5 max-w-[62ch] text-[17px] text-[#57554f]">
-          A fixed LangGraph sequence. Every strategy passes through all four —
+          A fixed LangGraph sequence. Every strategy passes through all four,
           none skippable.
         </p>
       </Reveal>
@@ -190,7 +190,7 @@ export function Honesty() {
           </Reveal>
         </div>
         <div className="slide-no absolute bottom-7 left-[var(--gutter)] hidden md:block">
-          07 — Capital Investment Prospects
+          07 · Capital Investment Prospects
         </div>
       </div>
 
@@ -199,8 +199,8 @@ export function Honesty() {
           <div className="panel pointer-glow">
             <Eyebrow>Principle</Eyebrow>
             <ol className="mt-7 space-y-2 text-[15px] text-[#d8d8d8]">
-              <li>01 — Expectancy over win-rate</li>
-              <li>02 — Every number badged ‘simulated’</li>
+              <li>01 · Expectancy over win-rate</li>
+              <li>02 · Every number badged ‘simulated’</li>
             </ol>
             <hr className="rule my-8" />
             <ul className="space-y-2.5 text-[15px] text-[#b4b4b4]">
@@ -226,7 +226,7 @@ const TRAPS = [
   [
     "02",
     "Mid-spread fills",
-    "We model order-book depth, maker/taker fees and realistic slippage — never a fantasy price.",
+    "We model order-book depth, maker/taker fees and realistic slippage, never a fantasy price.",
   ],
   [
     "03",
@@ -271,7 +271,7 @@ export function DeathTraps() {
 
       <Reveal delay={320}>
         <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-hairline pt-7 text-[13.5px] text-muted">
-          <span>Headline by expectancy — never win-rate</span>
+          <span>Headline by expectancy, never win-rate</span>
           <span>Always the full distribution</span>
           <span>Always benchmarked against buy-and-hold</span>
           <span>Every number badged SIMULATED</span>
@@ -318,7 +318,7 @@ export function Numbers() {
         <Tile
           delay={210}
           figure={<CountUp to={3} />}
-          caption="asset classes — stocks, crypto, forex"
+          caption="asset classes: stocks, crypto, forex"
         />
         <Tile delay={280} figure="70/30" caption="chronological train/validate split" />
         <Tile

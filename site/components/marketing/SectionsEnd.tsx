@@ -1,225 +1,11 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
-import { CountUp, Eyebrow, Reveal, Slide, SlideNo } from "./primitives";
-import { DemoCta, WaitlistForm } from "./ContactForms";
-import { Magnetic } from "./Magnetic";
+import { Eyebrow, Reveal, Slide, SlideNo } from "./primitives";
+import { WaitlistForm } from "./ContactForms";
+import { ScrollParallax } from "./ScrollParallax";
 import { STAGE } from "@/lib/constants";
 
-/* -------------------------------------------------------------- 10 Status */
-
-const PHASES = [
-  ["P0", "Truthful docs, validator, integrity rules"],
-  ["P1", "FastAPI backend, persistence, live event stream"],
-  ["P2", "Next.js app shell, builder, CI"],
-  ["P3", "Symbol search, live data, indicators & analysis engine"],
-] as const;
-
-export function Status() {
-  return (
-    <section className="grid lg:grid-cols-[1.2fr_0.8fr]">
-      <div className="on-paper relative px-[var(--gutter)] py-24 lg:py-32">
-        <Reveal>
-          <h2 className="display">Shipped, not slideware</h2>
-          <p className="mt-5 max-w-[52ch] text-[17px] text-[#57554f]">
-            Four phases live. The pipeline, the risk gates and the analysis
-            engine already run on real market data.
-          </p>
-        </Reveal>
-
-        <div className="mt-14 space-y-3">
-          {PHASES.map(([p, label], i) => (
-            <Reveal key={p} delay={i * 80}>
-              <div className="flex items-center gap-6">
-                <span
-                  className={`flex h-[52px] w-[52px] shrink-0 items-center justify-center text-[15px] ${
-                    i === PHASES.length - 1
-                      ? "bg-ink text-white"
-                      : "bg-[#efeeea] text-[#2c2b28]"
-                  }`}
-                >
-                  {p}
-                </span>
-                <span className="flex-1 text-[16px] text-[#2c2b28]">{label}</span>
-                <span className="eyebrow shrink-0 text-signal">Shipped</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="slide-no absolute bottom-7 left-[var(--gutter)] hidden md:block">
-          10 — Capital Investment Prospects
-        </div>
-      </div>
-
-      <div className="flex items-center bg-ink px-[var(--gutter)] py-24 lg:py-32">
-        <Reveal delay={120} className="w-full">
-          <h2 className="display">
-            Where we
-            <br />
-            are today
-          </h2>
-          <div className="panel mt-12">
-            <Eyebrow>Status</Eyebrow>
-            <ul className="mt-5 space-y-2.5 text-[15px] text-[#d0d0d0]">
-              <li>Early days</li>
-              <li>Core pipeline running</li>
-              <li>Still building</li>
-            </ul>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------- 11 Opportunity */
-
-export function Opportunity() {
-  return (
-    <Slide n="11">
-      <Reveal>
-        <h2 className="display">The opportunity</h2>
-        <p className="lead mt-6">
-          The category is proven at the top. No one has built the automatic,
-          affordable version for everyone below it.
-        </p>
-      </Reveal>
-
-      <div className="mt-14 grid gap-5 md:grid-cols-3">
-        <Reveal delay={0}>
-          <div className="panel card-lift pointer-glow h-full">
-            <div className="stat-figure">
-              <CountUp to={10} prefix="~$" suffix="B+" />
-            </div>
-            <p className="mt-6 text-[14.5px] text-[#a0a0a0]">
-              Bloomberg’s terminal business, per year
-            </p>
-          </div>
-        </Reveal>
-
-        <Reveal delay={90}>
-          <div className="panel card-lift pointer-glow h-full">
-            <div className="stat-figure">
-              <CountUp to={325} prefix="~" suffix="k" />
-            </div>
-            <p className="mt-6 text-[14.5px] text-[#a0a0a0]">
-              terminals at ~$30k each — pros only
-            </p>
-          </div>
-        </Reveal>
-
-        <Reveal delay={180}>
-          <div className="panel panel-signal card-lift pointer-glow relative h-full">
-            <span
-              className="absolute -left-[4px] -top-[4px] h-[9px] w-[9px] rounded-full"
-              style={{ background: "var(--signal)" }}
-              aria-hidden
-            />
-            <div className="stat-figure">
-              <CountUp to={100} suffix="M+" />
-            </div>
-            <p className="mt-6 text-[14.5px] text-[#c9bdbb]">
-              retail traders worldwide, largely unserved
-            </p>
-          </div>
-        </Reveal>
-      </div>
-
-      <Reveal delay={280}>
-        <p className="mt-12 text-[16px] italic text-[#a8a8a8]">
-          Every year more of the world’s trading moves to retail. CIP is priced
-          and built for exactly that shift.
-        </p>
-        <p className="mt-3 text-[12px] text-muted-2">Industry figures approximate.</p>
-      </Reveal>
-    </Slide>
-  );
-}
-
-/* ------------------------------------------------------------- 12 Pricing */
-
-const TIERS = [
-  [
-    "Starter",
-    "Entry-level access: core features, limited runs, small monthly price.",
-    false,
-  ],
-  [
-    "Retail",
-    "Full pipeline, unlimited strategies, all data providers. Monthly subscription.",
-    true,
-  ],
-  [
-    "Prop / Team",
-    "Seats, higher limits and priority data for small prop firms: per-seat pricing.",
-    false,
-  ],
-] as const;
-
-export function Pricing() {
-  return (
-    <section id="pricing" className="grid lg:grid-cols-[0.8fr_1.2fr]">
-      <div className="flex items-center bg-ink px-[var(--gutter)] py-24 lg:py-32">
-        <Reveal className="w-full">
-          <Eyebrow>Bloomberg</Eyebrow>
-          <div className="stat-figure mt-5">~$30,000</div>
-          <p className="mt-4 text-[14.5px] text-[#a0a0a0]">per user, per year</p>
-
-          <p className="mt-10 text-[19px] italic text-signal">vs</p>
-
-          <div className="mt-10 eyebrow">CIP</div>
-          <div className="display mt-4 leading-[1.08]">
-            a small fraction
-            <br />
-            of the cost
-          </div>
-        </Reveal>
-      </div>
-
-      <div className="on-paper relative px-[var(--gutter)] py-24 lg:py-32">
-        <Reveal>
-          <h2 className="display">How we make money</h2>
-        </Reveal>
-
-        <dl className="mt-14">
-          {TIERS.map(([name, body, highlight], i) => (
-            <Reveal key={name} delay={i * 90}>
-              <div className="grid gap-3 border-t border-[#e2e0da] py-9 sm:grid-cols-[12rem_1fr] sm:gap-8">
-                <dt
-                  className={`text-[15px] ${
-                    highlight
-                      ? "eyebrow !text-signal"
-                      : "eyebrow !text-[#4a4843]"
-                  }`}
-                >
-                  {name}
-                </dt>
-                <dd className="text-[16.5px] leading-[1.6] text-[#2c2b28]">
-                  {body}
-                  <span className="mt-2 block text-[13px] text-[#8b8983]">
-                    Pricing announced at launch.
-                  </span>
-                </dd>
-              </div>
-            </Reveal>
-          ))}
-        </dl>
-
-        <Reveal delay={280}>
-          <p className="mt-6 border-t border-[#e2e0da] pt-7 text-[15px] italic text-[#57554f]">
-            Subscription-first. Land with retail, expand into prop firms.
-          </p>
-        </Reveal>
-
-        <div className="slide-no absolute bottom-7 left-[var(--gutter)] hidden md:block">
-          12 — Capital Investment Prospects
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------- 13 Roadmap */
+/* ------------------------------------------------------------- 10 Roadmap */
 
 const NEXT = [
   ["P4", "Screener & scanner", "Rank markets by volume, volatility, trend and momentum into watchlists."],
@@ -231,7 +17,7 @@ const NEXT = [
 
 export function Roadmap() {
   return (
-    <Slide n="13" tone="paper">
+    <Slide n="10" tone="paper">
       <Reveal>
         <h2 className="display">What’s next</h2>
         <p className="mt-5 max-w-[60ch] text-[17px] text-[#57554f]">
@@ -271,11 +57,11 @@ export function Roadmap() {
   );
 }
 
-/* -------------------------------------------------------------- 14 Vision */
+/* -------------------------------------------------------------- 11 Vision */
 
 export function Vision() {
   return (
-    <Slide n="14">
+    <Slide n="11">
       <div className="grid items-center gap-16 lg:grid-cols-[1.25fr_0.75fr]">
         <Reveal>
           <Eyebrow>Our vision</Eyebrow>
@@ -284,7 +70,7 @@ export function Vision() {
           </h2>
           <p className="lead mt-12">
             Bloomberg brought transparency to institutions for forty years.
-            The next leap isn’t more data for the few — it’s honest, automated
+            The next leap isn’t more data for the few. It’s honest, automated
             research for the millions never let in.
           </p>
           <p className="mt-10 text-[clamp(1.25rem,2.4vw,2rem)] italic">
@@ -294,19 +80,21 @@ export function Vision() {
         </Reveal>
 
         <Reveal delay={160} className="hidden justify-center lg:flex">
-          <LogoMark className="idle-bob h-[190px] w-[240px] text-white" />
+          <ScrollParallax className="parallax-slow">
+            <LogoMark className="idle-bob h-[190px] w-[240px] text-white" />
+          </ScrollParallax>
         </Reveal>
       </div>
     </Slide>
   );
 }
 
-/* ----------------------------------------------------------------- 15 CTA */
+/* ----------------------------------------------------------------- 12 CTA */
 
 const CLOSING_META = [
   ["Category", "Fintech · quantitative research"],
   ["Stage", STAGE],
-  ["Ask", "President Tech Award — build the next Bloomberg"],
+  ["Ask", "President Tech Award: build the next Bloomberg"],
 ] as const;
 
 export function FinalCta() {
@@ -317,7 +105,9 @@ export function FinalCta() {
     >
       <div className="deck-inner">
         <Reveal className="flex flex-col items-center text-center">
-          <LogoMark className="idle-bob h-[76px] w-[96px] text-white" />
+          <ScrollParallax className="parallax-slow">
+            <LogoMark className="idle-bob h-[76px] w-[96px] text-white" />
+          </ScrollParallax>
           <h2 className="display mt-12">Capital Investment Prospects</h2>
           <p className="lead mt-6 text-center">
             Younger, simpler and cheaper than Bloomberg, and automatic instead
@@ -341,9 +131,8 @@ export function FinalCta() {
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mx-auto mt-16 grid max-w-[52rem] gap-10 border-t border-hairline pt-12 md:grid-cols-2 md:gap-14">
+          <div className="mx-auto mt-16 max-w-[30rem] border-t border-hairline pt-12">
             <WaitlistForm />
-            <DemoCta />
           </div>
         </Reveal>
 
@@ -353,12 +142,12 @@ export function FinalCta() {
             <Link href="/prototype" className="text-white underline underline-offset-4">
               Run the prototype
             </Link>{" "}
-            — pick an asset and watch the four agents.
+            and pick an asset to watch the four agents.
           </p>
         </Reveal>
       </div>
 
-      <SlideNo n="15" />
+      <SlideNo n="12" />
     </section>
   );
 }

@@ -395,13 +395,13 @@ export function verdictFor(
   if (summary.sampleTrades < GATES.minTrades) {
     return {
       verdict: "rejected",
-      reason: `Only ${summary.sampleTrades} out-of-sample trades — below the ${GATES.minTrades}-trade floor needed to conclude anything.`,
+      reason: `Only ${summary.sampleTrades} out-of-sample trades, below the ${GATES.minTrades}-trade floor needed to conclude anything.`,
     };
   }
   if (summary.expectancyPct <= 0) {
     return {
       verdict: "rejected",
-      reason: `Expectancy is ${summary.expectancyPct.toFixed(3)}% per trade after fees and slippage — the costs eat the edge.`,
+      reason: `Expectancy is ${summary.expectancyPct.toFixed(3)}% per trade after fees and slippage. The costs eat the edge.`,
     };
   }
   if (summary.maxDrawdownPct > GATES.maxDrawdownPct) {
@@ -413,7 +413,7 @@ export function verdictFor(
   if (summary.profitablePathShare < GATES.minProfitableShare) {
     return {
       verdict: "marginal",
-      reason: `Only ${(summary.profitablePathShare * 100).toFixed(0)}% of the 5,000 paths finish above water — too close to a coin flip.`,
+      reason: `Only ${(summary.profitablePathShare * 100).toFixed(0)}% of the 5,000 paths finish above water, too close to a coin flip.`,
     };
   }
   // Like-for-like: the strategy held a position for only part of the window,
@@ -422,7 +422,7 @@ export function verdictFor(
   if (summary.medianPathReturnPct <= summary.benchmarkAdjustedPct) {
     return {
       verdict: "marginal",
-      reason: `The median path returns ${summary.medianPathReturnPct.toFixed(1)}% against ${summary.benchmarkAdjustedPct.toFixed(1)}% for holding at the same ${(summary.exposureShare * 100).toFixed(0)}% exposure — it does not beat the benchmark.`,
+      reason: `The median path returns ${summary.medianPathReturnPct.toFixed(1)}% against ${summary.benchmarkAdjustedPct.toFixed(1)}% for holding at the same ${(summary.exposureShare * 100).toFixed(0)}% exposure. It does not beat the benchmark.`,
     };
   }
   return {
