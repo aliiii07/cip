@@ -1,0 +1,559 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   CIP — two surfaces, two worlds. Do not blend them.
+   Surface A = the deck (marketing). Surface B = MIROFISH (the instrument).
+   ========================================================================== */
+
+:root {
+  /* --- Surface A: marketing, the deck world ------------------------------ */
+  --ink: #0a0a0a;
+  --ink-panel: #111111;
+  --white: #ffffff;
+  --paper: #f4f3f0;
+  --text-on-light: #202020;
+  --muted: #8c8c8c;
+  --muted-2: #5a5a5a;
+  --hairline: #262626;
+  --hairline-light: #ddddd8;
+  --signal: #e23b3b;
+
+  /* --- Surface B: the MIROFISH terminal ---------------------------------- */
+  --paper-bg: #f1f0e9;
+  --frame: #1c1c19;
+  --t-ink: #23231e;
+  --t-muted: #8c8b81;
+  --t-faint: #b4b3a9;
+  --hair: #d5d3ca;
+  --green: #6e8f68;
+  --green-d: #4b6b45;
+  --red: #9e4b47;
+  --red-d: #7e3a37;
+  --grey: #9c9b92;
+  --amber: #c9a227;
+
+  /* --- Type scale, measured off the deck --------------------------------- */
+  --fs-hero: clamp(3.25rem, 7.4vw, 7.25rem);
+  --fs-display: clamp(2.5rem, 5.2vw, 4.75rem);
+  --fs-stat: clamp(2.5rem, 5vw, 4.5rem);
+  --fs-lead: clamp(1rem, 1.32vw, 1.25rem);
+  --fs-body: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  --fs-eyebrow: 0.6875rem;
+
+  --gutter: clamp(1.5rem, 5vw, 5.5rem);
+
+  /* The one motion curve used everywhere on this site — an expo-out feel. */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Written by useScrollProgress: 0 entering, 1 leaving. Static 0 elsewhere. */
+  --scroll-p: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  /* Structural floor: no single component's overflow should ever be able to
+     force the page to scroll sideways, and on some engines an overflowing
+     descendant inflates the sizing of `position: fixed; inset: 0` ancestors
+     (the ambient canvas layers) unless this is clamped here. */
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.62;
+  font-feature-settings: "kern" 1;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--signal);
+  color: #fff;
+}
+
+/* ==========================================================================
+   Surface A primitives
+   ========================================================================== */
+
+.deck-slide {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) var(--gutter);
+}
+
+.deck-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* The deck's signature move: a light slide inverted out of the black. */
+.on-paper {
+  background: var(--paper);
+  color: var(--text-on-light);
+}
+.on-paper .eyebrow { color: #78766f; }
+.on-paper .lead { color: #4a4843; }
+.on-paper .rule { background: var(--hairline-light); }
+.on-paper .slide-no { color: #a3a099; }
+
+.display {
+  font-size: var(--fs-display);
+  line-height: 1.06;
+  letter-spacing: -0.021em;
+  font-weight: 400;
+}
+
+.hero-type {
+  font-size: var(--fs-hero);
+  line-height: 1.04;
+  letter-spacing: -0.026em;
+  font-weight: 400;
+}
+
+.stat-figure {
+  font-size: var(--fs-stat);
+  line-height: 1;
+  letter-spacing: -0.028em;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.58;
+  color: #b6b6b6;
+  max-width: 62ch;
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--hairline);
+  border: 0;
+}
+
+/* Bottom-left page marker, exactly as every deck slide carries it. */
+.slide-no {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.16em;
+  color: #4e4e4e;
+  text-transform: none;
+}
+
+.panel {
+  background: var(--ink-panel);
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+}
+
+/* The one panel per slide that carries the red — used sparingly, as in the deck. */
+.panel-signal {
+  background: #141110;
+  border: 1px solid rgba(226, 59, 59, 0.42);
+}
+
+/* Nav links: an underline that grows from the left rather than a bare
+   color-swap — the same restraint as the rest of the deck, just alive. */
+.nav-link {
+  position: relative;
+  transition: color 0.25s var(--ease-premium);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  height: 1px;
+  background: var(--signal);
+  transition: right 0.3s var(--ease-premium);
+}
+.nav-link:hover { color: #fff; }
+.nav-link:hover::after { right: 0; }
+
+.dot {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 999px;
+  background: var(--signal);
+  vertical-align: middle;
+}
+
+/* Faint vertical hairlines on the hero's right — the deck's title-slide motif. */
+.hero-rules {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 38%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.055) 0 1px,
+    transparent 1px 15.5%
+  );
+}
+
+/* --- Buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 2.75rem;
+  padding: 0 1.35rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.005em;
+  border-radius: 2px;
+  transition: background-color 0.22s var(--ease-premium), color 0.22s var(--ease-premium),
+    border-color 0.22s var(--ease-premium), transform 0.22s var(--ease-premium),
+    box-shadow 0.22s var(--ease-premium);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--signal);
+}
+.btn-primary:hover { background: var(--signal); box-shadow: 0 0 0 5px rgba(226,59,59,0.12); }
+
+/* The hero's one CTA: solid, larger and lit, so it reads as the obvious next
+   step rather than one option among several. */
+.btn-hero {
+  height: 3.4rem;
+  padding: 0 2.3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: var(--signal);
+  color: #fff;
+  border: 1px solid var(--signal);
+  box-shadow: 0 16px 40px -14px rgba(226,59,59,0.55);
+}
+.btn-hero:hover {
+  background: #ec5252;
+  border-color: #ec5252;
+  box-shadow: 0 0 0 6px rgba(226,59,59,0.16), 0 20px 46px -14px rgba(226,59,59,0.6);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #cfcfcf;
+  border: 1px solid var(--hairline);
+}
+.btn-ghost:hover { border-color: #4a4a4a; color: #fff; }
+
+.btn-solid {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid #fff;
+}
+.btn-solid:hover { background: #ddd; border-color: #ddd; }
+
+.btn:disabled { opacity: 0.32; cursor: not-allowed; }
+.btn:disabled:active { transform: none; }
+
+/* --- Scroll reveal ------------------------------------------------------ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px) scale(0.985);
+  filter: blur(3px);
+  transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium),
+    filter 0.85s var(--ease-premium);
+  will-change: transform, opacity;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; filter: none; }
+}
+
+/* Scroll-linked drift — reads --scroll-p written by useScrollProgress.
+   Subtle on purpose: a few pixels and a hair of opacity, never a slide show. */
+.parallax-slow { transform: translateY(calc((var(--scroll-p) - 0.5) * -34px)); }
+.parallax-fast { transform: translateY(calc((var(--scroll-p) - 0.5) * -64px)); }
+/* Opposite sign of .parallax-slow — two elements given these two classes
+   drift apart as the section scrolls by, rather than together. Used where the
+   drift itself should read as a comparison (Bloomberg vs. CIP), not decoration. */
+.parallax-slow-rev { transform: translateY(calc((var(--scroll-p) - 0.5) * 34px)); }
+.parallax-fade { opacity: calc(1 - max(0, (var(--scroll-p) - 0.72)) * 3.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-slow, .parallax-fast, .parallax-slow-rev { transform: none; }
+  .parallax-fade { opacity: 1; }
+}
+
+/* A gentle idle bob for standalone icons (the logo mark on Vision, etc.) —
+   cheap, GPU-only, and the one animation allowed to run without a trigger. */
+@keyframes idle-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.idle-bob { animation: idle-bob 5.5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .idle-bob { animation: none; }
+}
+
+/* Cursor-follow highlight for panels — see lib/useMagnetic.ts:usePointerGlow.
+   Falls back to no-op (no --gx/--gy set) on touch, which is invisible anyway. */
+.pointer-glow {
+  position: relative;
+  isolation: isolate;
+}
+.pointer-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background: radial-gradient(
+    380px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(226, 59, 59, 0.09),
+    transparent 65%
+  );
+  transition: opacity 0.4s var(--ease-premium);
+}
+.pointer-glow:hover::before { opacity: 1; }
+
+/* A restrained hover lift for deck cards — pipeline steps, death traps,
+   number tiles, comparison panels. One shared feel across all of them. */
+.card-lift {
+  transition: transform 0.32s var(--ease-premium), box-shadow 0.32s var(--ease-premium),
+    border-color 0.32s var(--ease-premium);
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.55);
+}
+.on-paper .card-lift:hover {
+  box-shadow: 0 14px 32px -22px rgba(40, 38, 34, 0.22);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-lift:hover { transform: none; }
+}
+
+/* Marching-ants flow on the pipeline's dashed feedback edge — the one loop
+   in the graph, made to feel like it is actually carrying a correction back. */
+.flow-dash {
+  animation: flow-dash 1.1s linear infinite;
+}
+@keyframes flow-dash {
+  to { stroke-dashoffset: -8; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash { animation: none; }
+}
+.on-paper .pointer-glow::before {
+  background: radial-gradient(
+    380px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(192, 60, 33, 0.07),
+    transparent 65%
+  );
+}
+
+/* --- Hero logo draw-on -------------------------------------------------- */
+
+.mark-line {
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+  animation: draw 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+.mark-dot {
+  opacity: 0;
+  transform-origin: 905px 375px;
+  animation: pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.2); }
+  70% { opacity: 1; transform: scale(1.18); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mark-line { stroke-dashoffset: 0; animation: none; }
+  .mark-dot { opacity: 1; animation: none; }
+}
+
+/* ==========================================================================
+   Surface B — the MIROFISH terminal. Warm paper, monospace, hairlines.
+   ========================================================================== */
+
+.terminal {
+  background: var(--paper-bg);
+  color: var(--t-ink);
+  font-family: var(--font-terminal), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.t-frame {
+  border: 1px solid var(--frame);
+  border-radius: 10px;
+  background: var(--paper-bg);
+}
+
+.t-panel {
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  background: #f7f6f1;
+}
+
+.t-label {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  color: var(--t-muted);
+}
+
+.t-value {
+  font-size: 13px;
+  color: var(--t-ink);
+}
+
+.t-hair { height: 1px; background: var(--hair); }
+
+.badge-sim {
+  display: inline-block;
+  font-size: 8.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid rgba(140, 139, 129, 0.45);
+  border-radius: 2px;
+  color: var(--t-muted);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.verdict {
+  font-size: 9.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.v-approved { color: var(--green-d); background: rgba(110, 143, 104, 0.11); }
+.v-rejected { color: var(--red-d); background: rgba(158, 75, 71, 0.1); }
+.v-marginal { color: #8a6f14; background: rgba(201, 162, 39, 0.12); }
+
+/* Selection chips in the prototype flow */
+.chip {
+  border: 1px solid var(--hair);
+  background: #f7f6f1;
+  border-radius: 4px;
+  transition: border-color 0.22s var(--ease-premium), background-color 0.22s var(--ease-premium),
+    transform 0.22s var(--ease-premium), box-shadow 0.22s var(--ease-premium);
+}
+.chip:hover:not(:disabled) {
+  border-color: var(--t-muted);
+  transform: translateY(-1px);
+}
+.chip:active:not(:disabled) { transform: translateY(0) scale(0.98); }
+.chip[data-on="true"] {
+  border-color: var(--frame);
+  background: #fffdf7;
+  box-shadow: inset 0 0 0 1px var(--frame), 0 4px 14px -8px rgba(28,28,25,0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .chip:hover:not(:disabled) { transform: none; }
+}
+
+.panel-open {
+  animation: panelOpen 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes panelOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* The four-agent loading theater */
+.stage-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid var(--t-faint);
+  flex: none;
+}
+.stage-dot[data-state="active"] {
+  background: var(--amber);
+  border-color: var(--amber);
+  animation: pulse 1.3s var(--ease-premium) infinite;
+}
+.stage-dot[data-state="done"] {
+  background: var(--green);
+  border-color: var(--green);
+  transition: background-color 0.3s var(--ease-premium), border-color 0.3s var(--ease-premium);
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.82); }
+}
+
+/* A live-status word cycling in the dashboard header — honestly labelled as
+   the pipeline's own stage, never presented as an external data feed. */
+.ticker-word {
+  display: inline-block;
+  animation: ticker-fade 2.6s var(--ease-premium) infinite;
+}
+@keyframes ticker-fade {
+  0%, 8% { opacity: 0; transform: translateY(3px); }
+  16%, 84% { opacity: 1; transform: translateY(0); }
+  92%, 100% { opacity: 0; transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-word { animation: none; }
+}
+
+/* A small always-on breathing dot — "the engine is running," stated honestly
+   rather than borrowing the visual language of a live market ticker. */
+.engine-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--amber);
+  animation: pulse 2.2s var(--ease-premium) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .engine-dot { animation: none; opacity: 0.7; }
+}
+
+.t-panel {
+  transition: box-shadow 0.3s var(--ease-premium), border-color 0.3s var(--ease-premium);
+}
+.t-panel:hover {
+  box-shadow: 0 10px 28px -20px rgba(28, 28, 25, 0.4);
+}
