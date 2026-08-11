@@ -3,7 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { LogoMark } from "@/components/Logo";
 import type { AnalyzeResponse } from "@/lib/types";
-import { ApprovalBanner, Panel, SimulatedBadge, Stat, TerminalDisclaimer } from "./atoms";
+import { ApprovalBanner, Panel, SimulatedBadge, Stat, TerminalDisclaimer, VerdictPill } from "./atoms";
 import { ChartAnalysis } from "./ChartAnalysis";
 import {
   DataGrid,
@@ -86,13 +86,53 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
 
         {/* -------------------------------------------------- the strategy */}
         <Stagger i={block++}>
-        <Panel title="Strategy the pipeline built" aside={<SimulatedBadge />}>
+        <Panel
+          title="Strategy the pipeline built"
+          aside={
+            <>
+              <span className="t-label">{computed.strategy.label}</span>
+              <SimulatedBadge />
+            </>
+          }
+        >
           <p className="max-w-[80ch] text-[13px] leading-relaxed">
             {narrative.strategyPlainEnglish}
           </p>
+
+          {/* Every archetype the engine tried, not only the one that won.
+              Showing the rejected field is the point: it is the difference
+              between "this asset has no edge" and "the one rule we tried had
+              no edge here." */}
+          <div className="mt-4 border-t border-[var(--hair)] pt-3">
+            <div className="t-label mb-2">Archetypes tested</div>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {computed.variants.map((v) => (
+                <div
+                  key={v.key}
+                  className="rounded-[6px] border p-2.5"
+                  style={{
+                    borderColor: v.selected ? "var(--t-ink)" : "var(--hair)",
+                    background: v.selected ? "rgba(35,35,30,0.03)" : "transparent",
+                  }}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[11.5px] font-semibold">{v.label}</span>
+                    <VerdictPill verdict={v.verdict} />
+                  </div>
+                  <div className="mt-1.5 text-[10.5px] text-[var(--t-muted)]">
+                    {v.expectancyPct >= 0 ? "+" : "−"}
+                    {Math.abs(v.expectancyPct).toFixed(3)}% / trade · {v.trades} trades
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
             Fills on the next bar’s open, never the signal close. 0.12%
-            round-trip fees plus depth-based slippage applied.
+            round-trip fees plus depth-based slippage applied. The winner is
+            the archetype that clears the most gates, then the highest
+            expectancy — never the highest return alone.
           </p>
         </Panel>
         </Stagger>

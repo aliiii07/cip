@@ -43,11 +43,22 @@ const POLYGON_SPAN: Record<Timeframe, [number, string]> = {
  * Ranges are picked to comfortably clear LIMIT candles after accounting for
  * equities only trading during the session, not around the clock.
  */
+/**
+ * Ranges are the maximum each interval will actually serve, measured rather
+ * than assumed: 1d/10y returns ~2500 bars where 1d/max returns only ~170, and
+ * 60m tops out at 730d for ~5100 bars.
+ *
+ * Depth matters more than it looks. The 70/30 split means only 30% of these
+ * bars are available to trade out-of-sample, and a strategy that holds for
+ * several bars produces few trades from a short series. At 1000 candles that
+ * left 4-7 out-of-sample trades, under the 8-trade floor, so genuinely
+ * profitable timeframes were being rejected for thin sampling alone.
+ */
 const YAHOO_PARAMS: Record<Timeframe, { interval: string; range: string }> = {
   "15m": { interval: "15m", range: "60d" },
   "1h": { interval: "60m", range: "730d" },
   "4h": { interval: "60m", range: "730d" },
-  "1d": { interval: "1d", range: "5y" },
+  "1d": { interval: "1d", range: "10y" },
 };
 
 /**
@@ -55,7 +66,10 @@ const YAHOO_PARAMS: Record<Timeframe, { interval: string; range: string }> = {
  * 30% has to contain enough trades to conclude anything, and a thin sample is
  * the most common reason a row gets rejected.
  */
-const LIMIT = 1000;
+const LIMIT = 4000;
+
+/** Binance's hard per-request cap. More than this needs pagination. */
+const BINANCE_PAGE = 1000;
 
 /** A real bar older than this many multiples of its own timeframe means a
  *  closed market or a lagging feed, not a live-moving price. */
@@ -111,7 +125,11 @@ export async function getCandles(
   };
 }
 
-/** Peer closes for the relationship graph. Binance only — it needs no key. */
+/**
+ * Peer closes for the relationship graph. Binance only — it needs no key.
+ * One page each: correlation over the recent window is all the graph needs,
+ * and paginating four peers would cost four times the requests for nothing.
+ */
 export async function getPeerCloses(
   symbols: string[],
   timeframe: Timeframe
@@ -119,7 +137,7 @@ export async function getPeerCloses(
   const out: Record<string, number[]> = {};
   const results = await Promise.all(
     symbols.map(async (s) => {
-      const candles = await fetchBinance(s, timeframe).catch(() => null);
+      const candles = await fetchBinance(s, timeframe, BINANCE_PAGE).catch(() => null);
       return [s, candles] as const;
     })
   );
@@ -129,11 +147,7 @@ export async function getPeerCloses(
   return out;
 }
 
-async function fetchBinance(symbol: string, tf: Timeframe): Promise<Candle[]> {
-  const url = `${BINANCE}/api/v3/klines?symbol=${symbol}&interval=${BINANCE_INTERVAL[tf]}&limit=${LIMIT}`;
-  const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(9000) });
-  if (!res.ok) throw new Error(`binance ${res.status}`);
-  const rows = (await res.json()) as unknown[][];
+function parseKlines(rows: unknown[][]): Candle[] {
   return rows.map((r) => ({
     time: Math.floor(Number(r[0]) / 1000),
     open: Number(r[1]),
@@ -142,6 +156,40 @@ async function fetchBinance(symbol: string, tf: Timeframe): Promise<Candle[]> {
     close: Number(r[4]),
     volume: Number(r[5]),
   }));
+}
+
+/**
+ * Binance caps a single klines call at 1000 bars, so anything deeper walks
+ * backwards a page at a time using endTime. Pages are fetched in sequence
+ * because each one's cursor depends on the previous page's oldest bar.
+ */
+async function fetchBinance(
+  symbol: string,
+  tf: Timeframe,
+  want: number = LIMIT
+): Promise<Candle[]> {
+  const interval = BINANCE_INTERVAL[tf];
+  const collected: Candle[] = [];
+  let endTime: number | undefined;
+
+  while (collected.length < want) {
+    const page = Math.min(BINANCE_PAGE, want - collected.length);
+    const url =
+      `${BINANCE}/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${page}` +
+      (endTime ? `&endTime=${endTime}` : "");
+    const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(9000) });
+    if (!res.ok) throw new Error(`binance ${res.status}`);
+    const batch = parseKlines((await res.json()) as unknown[][]);
+    if (batch.length === 0) break;
+
+    collected.unshift(...batch);
+    // Step to just before this page's oldest bar for the next page.
+    endTime = batch[0].time * 1000 - 1;
+    // A short page means we've reached the start of the symbol's history.
+    if (batch.length < page) break;
+  }
+
+  return collected.slice(-want);
 }
 
 async function fetchPolygon(ticker: string, tf: Timeframe): Promise<Candle[]> {

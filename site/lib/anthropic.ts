@@ -102,6 +102,8 @@ export interface NarrativeInput {
   monteCarlo: McResult;
   board: TimeframeRow[];
   headlines: Headline[];
+  /** The archetype that actually won, so the prose describes what was run. */
+  strategyDescribe: string;
 }
 
 export async function writeNarrative(
@@ -143,8 +145,7 @@ export async function writeNarrative(
       benchmarkAtMatchedExposurePct: input.monteCarlo.summary.benchmarkAdjustedPct,
       winRatePct: input.monteCarlo.summary.winRatePct,
     },
-    testedStrategy:
-      "Long on a 5-bar Donchian breakout while MA20 is above MA50; exit on a close back below MA20, a 2x ATR stop, or a 14-bar cap. Fills on the next bar's open, 0.12% round-trip fees and depth-based slippage applied.",
+    testedStrategy: `${input.strategyDescribe} Fills on the next bar's open, 0.12% round-trip fees and depth-based slippage applied.`,
     timeframeVerdicts: input.board.map((r) => ({
       timeframe: r.timeframe,
       verdict: r.verdict,
@@ -228,8 +229,7 @@ export function fallbackNarrative(input: NarrativeInput): Narrative {
   } as const;
 
   return {
-    strategyPlainEnglish:
-      "Enter long when price breaks above the 5-bar high while the 20-bar average sits above the 50-bar average; exit on a close back under the 20-bar average, a stop two ATR below entry, or after 14 bars.",
+    strategyPlainEnglish: input.strategyDescribe,
     factualRead: {
       trend:
         i.maSpreadPct == null
