@@ -305,7 +305,7 @@ export function Numbers() {
           delay={70}
           figure={
             <>
-              &lt; <CountUp to={120} />s
+              &lt; <CountUp to={60} />s
             </>
           }
           caption="to finish the full simulation, vectorised"

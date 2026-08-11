@@ -8,11 +8,7 @@ import {
   Pipeline,
   WhatWeDo,
 } from "@/components/marketing/SectionsMid";
-import {
-  FinalCta,
-  Roadmap,
-  Vision,
-} from "@/components/marketing/SectionsEnd";
+import { FinalCta, Vision } from "@/components/marketing/SectionsEnd";
 
 /**
  * The landing page is the deck, unrolled vertically. Each section is one slide:
@@ -33,7 +29,6 @@ export default function Home() {
         <Honesty />
         <DeathTraps />
         <Numbers />
-        <Roadmap />
         <Vision />
         <FinalCta />
       </main>
