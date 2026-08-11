@@ -29,19 +29,25 @@ export function ChartAnalysis({
   useEffect(() => {
     if (!priceRef.current || !rsiRef.current || candles.length === 0) return;
 
+    // Same reason as the canvas visuals: this library takes colour strings,
+    // not custom properties, so they are resolved against the live theme.
+    const host = priceRef.current;
+    const css = (name: string, fallback: string) =>
+      getComputedStyle(host).getPropertyValue(name).trim() || fallback;
+
     const common = {
       layout: {
-        background: { type: ColorType.Solid, color: "#f7f6f1" },
-        textColor: "#8c8b81",
+        background: { type: ColorType.Solid, color: css("--paper-bg", "#f7f6f1") },
+        textColor: css("--t-muted", "#8c8b81"),
         fontSize: 10,
         fontFamily: TERMINAL_FONT,
       },
       grid: {
-        vertLines: { color: "rgba(213,211,202,0.5)" },
-        horzLines: { color: "rgba(213,211,202,0.5)" },
+        vertLines: { color: css("--hair", "#d5d3ca") },
+        horzLines: { color: css("--hair", "#d5d3ca") },
       },
-      rightPriceScale: { borderColor: "#d5d3ca" },
-      timeScale: { borderColor: "#d5d3ca", timeVisible: true },
+      rightPriceScale: { borderColor: css("--hair", "#d5d3ca") },
+      timeScale: { borderColor: css("--hair", "#d5d3ca"), timeVisible: true },
       crosshair: { mode: 0 as const },
     };
 

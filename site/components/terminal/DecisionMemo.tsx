@@ -2,7 +2,7 @@
 
 import type { DecisionMemo as Memo, MemoFactor } from "@/lib/memo";
 import type { Timeframe } from "@/lib/types";
-import { Panel, SimulatedBadge, VerdictPill } from "./atoms";
+import { Panel, SimulatedBadge } from "./atoms";
 
 /**
  * Every setup gets challenged before it gets a verdict.
@@ -68,12 +68,6 @@ function Level({ label, value, note }: { label: string; value: string; note?: st
   );
 }
 
-const RISK_TONE: Record<Memo["riskLevel"], string> = {
-  low: "var(--green-d)",
-  moderate: "var(--t-ink)",
-  elevated: "var(--amber-d)",
-  high: "var(--red-d)",
-};
 
 export function DecisionMemo({ memo, timeframe }: { memo: Memo; timeframe: Timeframe }) {
   const fmt = (n: number) => n.toLocaleString("en-US", { maximumFractionDigits: 6 });
@@ -89,16 +83,6 @@ export function DecisionMemo({ memo, timeframe }: { memo: Memo; timeframe: Timef
         </>
       }
     >
-      {/* ---------------------------------------------- challenge first */}
-      <div className="mb-3 rounded-[10px] border border-[var(--hair)] bg-[#f1f0e9] px-3 py-2">
-        <div className="t-label">Every setup gets challenged first</div>
-        <p className="mt-1 text-[11px] leading-relaxed text-[var(--t-muted)]">
-          The case for and the case against are weighed from the same measured
-          figures, then the risk gates decide. Objective, unbiased,
-          evidence-based.
-        </p>
-      </div>
-
       <div className="grid gap-3 lg:grid-cols-2">
         <div className="rounded-[10px] border border-[var(--hair)] p-3">
           <div className="mb-2.5 flex items-center gap-2">
@@ -154,47 +138,10 @@ export function DecisionMemo({ memo, timeframe }: { memo: Memo; timeframe: Timef
         </div>
       </div>
 
-      {/* ------------------------------------------------- the call ----- */}
-      <div className="mt-3 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-[10px] border border-[var(--hair)] p-3">
-          <div className="t-label">Risk level</div>
-          <div
-            className="mt-1 text-[17px] uppercase tracking-[0.12em]"
-            style={{ color: RISK_TONE[memo.riskLevel] }}
-          >
-            {memo.riskLevel}
-          </div>
-          <p className="mt-1.5 text-[10px] leading-snug text-[var(--t-muted)]">{memo.riskNote}</p>
-        </div>
-
-        <div className="rounded-[10px] border border-[var(--hair)] p-3">
-          <div className="t-label">Confidence</div>
-          <div className="t-num mt-1 !text-[24px] leading-none">{memo.confidencePct}%</div>
-          <div className="mt-2 h-[6px] w-full overflow-hidden rounded-full bg-[rgba(35,35,30,0.08)]">
-            <div
-              className="h-full rounded-full"
-              style={{ width: `${memo.confidencePct}%`, background: "var(--t-ink)" }}
-            />
-          </div>
-          <p className="mt-1.5 text-[10px] leading-snug text-[var(--t-muted)]">
-            {memo.confidenceBasis}
-          </p>
-        </div>
-
-        <div className="rounded-[10px] border p-3" style={{ borderColor: "var(--hair)" }}>
-          <div className="t-label">Engine verdict</div>
-          <div className="mt-1.5">
-            <VerdictPill verdict={memo.verdict} />
-          </div>
-          <p className="mt-2 text-[10px] leading-snug text-[var(--t-muted)]">
-            {memo.verdict === "approved"
-              ? "Cleared every deterministic risk gate."
-              : memo.verdict === "marginal"
-                ? "Needs more context: an edge exists but does not clear every gate."
-                : "Do not trade this setup. It does not survive its own costs."}
-          </p>
-        </div>
-      </div>
+      <p className="mt-3 rounded-[10px] border border-[var(--hair)] px-3 py-2 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
+        <span className="t-label !text-[var(--t-ink)]">How confidence was derived</span>
+        <span className="mt-1 block">{memo.confidenceBasis}</span>
+      </p>
 
       {/* --------------------------------------------- human approval --- */}
       <div
