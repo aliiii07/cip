@@ -28,7 +28,7 @@ export function RecommendationBoard({
   return (
     <Panel title="Recommendation board" aside={<SimulatedBadge />}>
       <div
-        className="mb-4 rounded-[3px] border px-3 py-2.5 text-[11.5px] leading-relaxed"
+        className="mb-4 rounded-[10px] border px-3 py-2.5 text-[11.5px] leading-relaxed"
         style={{ borderColor: "var(--hair)", background: "#f1f0e9" }}
       >
         {strongestTimeframe ? (
@@ -134,7 +134,7 @@ export function FactualRead({
         {cards.map(([label, body, chip], i) => (
           <div
             key={label}
-            className={`rounded-[3px] border border-[var(--hair)] p-3 ${
+            className={`rounded-[10px] border border-[var(--hair)] p-3 ${
               i === cards.length - 1 ? "sm:col-span-2" : ""
             }`}
           >

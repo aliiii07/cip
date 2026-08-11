@@ -24,8 +24,13 @@
   --paper-bg: #f1f0e9;
   --frame: #1c1c19;
   --t-ink: #23231e;
-  --t-muted: #8c8b81;
-  --t-faint: #b4b3a9;
+  /* Measured against --paper-bg, not eyeballed. The previous values were
+     #8c8b81 at 3.00:1 and #b4b3a9 at 1.85:1, both under the 4.5:1 WCAG AA
+     floor for body text — and they carried most of the terminal's captions,
+     which is why the small type read as barely there. */
+  --t-muted: #66655e;  /* 5.12:1 — passes AA for body text */
+  --t-faint: #7a7970;  /* 3.83:1 — de-emphasised meta only, passes AA large */
+  --amber-d: #7d6412;  /* readable amber for text; --amber is 2.12:1, fill only */
   --hair: #d5d3ca;
   --green: #6e8f68;
   --green-d: #4b6b45;
@@ -229,7 +234,7 @@ body {
   padding: 0 1.35rem;
   font-size: 0.875rem;
   letter-spacing: 0.005em;
-  border-radius: 2px;
+  border-radius: 999px;
   transition: background-color 0.22s var(--ease-premium), color 0.22s var(--ease-premium),
     border-color 0.22s var(--ease-premium), transform 0.22s var(--ease-premium),
     box-shadow 0.22s var(--ease-premium);
@@ -419,13 +424,13 @@ body {
 
 .t-frame {
   border: 1px solid var(--frame);
-  border-radius: 10px;
+  border-radius: 16px;
   background: var(--paper-bg);
 }
 
 .t-panel {
   border: 1px solid var(--hair);
-  border-radius: 4px;
+  border-radius: 14px;
   background: #f7f6f1;
 }
 
@@ -450,7 +455,7 @@ body {
   text-transform: uppercase;
   padding: 2px 6px;
   border: 1px solid rgba(140, 139, 129, 0.45);
-  border-radius: 2px;
+  border-radius: 999px;
   color: var(--t-muted);
   white-space: nowrap;
   vertical-align: middle;
@@ -461,7 +466,7 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 3px 9px;
-  border-radius: 2px;
+  border-radius: 999px;
   border: 1px solid currentColor;
   white-space: nowrap;
 }
@@ -473,7 +478,7 @@ body {
 .chip {
   border: 1px solid var(--hair);
   background: #f7f6f1;
-  border-radius: 4px;
+  border-radius: 12px;
   transition: border-color 0.22s var(--ease-premium), background-color 0.22s var(--ease-premium),
     transform 0.22s var(--ease-premium), box-shadow 0.22s var(--ease-premium);
 }

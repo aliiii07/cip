@@ -286,7 +286,13 @@ export function TailRidge({ mc }: { mc: McResult }) {
       const rowGap = (h - padTop - padBottom) / (n + 1.4);
       const insetPer = 9;
 
-      const breathe = t ? 1 + 0.035 * Math.sin(t / 1500) : 1;
+      // A wave that travels back through the stack rather than a single ridge
+      // pulsing in place. Amplitude is deliberately well above the old 3.5%,
+      // which sat under the threshold where the eye registers motion at all
+      // and made a running animation read as a frozen image.
+      const breatheAt = (i: number) =>
+        t ? 1 + 0.11 * Math.sin(t / 1150 - i * 0.55) : 1;
+      const breathe = breatheAt(0);
 
       const strikeX = (v: number, inset: number) =>
         padX + inset + ((v - lo) / span) * (w - padX * 2 - inset * 2);
@@ -296,7 +302,7 @@ export function TailRidge({ mc }: { mc: McResult }) {
         const inset = i * insetPer;
         const baseY = h - padBottom - i * rowGap;
         const pts = ridge.density.length;
-        const amp = rowGap * 2.15 * (i === 0 ? breathe : 1);
+        const amp = rowGap * 2.15 * breatheAt(i);
 
         const xAt = (k: number) =>
           padX + inset + (k / (pts - 1)) * (w - padX * 2 - inset * 2);
@@ -313,7 +319,7 @@ export function TailRidge({ mc }: { mc: McResult }) {
         const tailStart = pts * ((15 - lo) / span);
         if (tailStart < pts - 1) {
           const k0 = Math.max(0, Math.floor(tailStart));
-          const tailPulse = i === 0 && t ? 0.34 + 0.1 * Math.sin(t / 900) : 0.4;
+          const tailPulse = i === 0 && t ? 0.34 + 0.19 * Math.sin(t / 780) : 0.4;
           ctx.beginPath();
           ctx.moveTo(xAt(k0), baseY);
           for (let k = k0; k < pts; k++) ctx.lineTo(xAt(k), yAt(k));
@@ -348,7 +354,7 @@ export function TailRidge({ mc }: { mc: McResult }) {
         const frontBaseY = h - padBottom;
         const frontAmp = rowGap * 2.15 * breathe;
         const tailStartFrac = (15 - lo) / span;
-        const PARTICLES = 5;
+        const PARTICLES = 16;
         for (let p = 0; p < PARTICLES; p++) {
           const cycle = 2600;
           const phase = (p * cycle) / PARTICLES;
@@ -489,7 +495,7 @@ export function MirofishGraph({ graph }: { graph: RelationshipGraph }) {
       graph.nodes.forEach((n, ni) => {
         const x = X(n.x);
         const y = Y(n.y);
-        const breathe = t ? 1 + 0.06 * Math.sin(t / 1000 + ni * 1.3) : 1;
+        const breathe = t ? 1 + 0.16 * Math.sin(t / 820 + ni * 1.3) : 1;
         const r = (n.id === "SELF" ? 11 : 7.5) * breathe;
         const color = NODE_COLOR[n.klass] ?? MUTED;
 

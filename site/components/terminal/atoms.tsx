@@ -77,7 +77,7 @@ export function VerdictPill({ verdict }: { verdict: Verdict }) {
 export function ApprovalBanner() {
   return (
     <div
-      className="rounded-[3px] border px-4 py-3 text-[11.5px] leading-relaxed"
+      className="rounded-[10px] border px-4 py-3 text-[11.5px] leading-relaxed"
       style={{
         borderColor: "rgba(158,75,71,0.32)",
         background: "rgba(158,75,71,0.06)",
