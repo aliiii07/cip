@@ -141,7 +141,7 @@ function ZoneList({ zones }: { zones: Zone[] }) {
   return (
     <div className="space-y-0.5">
       {zones.slice(0, 3).map((z, i) => (
-        <div key={i} className="flex justify-between gap-2 tabular-nums">
+        <div key={i} className="t-num flex justify-between gap-2 !text-[10px]">
           <span>{z.price.toLocaleString("en-US", { maximumFractionDigits: 4 })}</span>
           <span>
             {z.distancePct >= 0 ? "+" : "−"}
@@ -215,7 +215,7 @@ function Gauge({ pct, cap, tone = INK }: { pct: number; cap?: number; tone?: str
           />
         ) : null}
       </div>
-      <div className="mt-1.5 flex justify-between text-[9.5px] tabular-nums text-[var(--t-muted)]">
+      <div className="t-num mt-1.5 flex justify-between !text-[9px] !text-[var(--t-muted)]">
         <span>0%</span>
         {cap != null && cap < 100 ? <span>cap {cap}%</span> : null}
         <span>100%</span>
@@ -234,7 +234,7 @@ export function DeskPanels({ desk }: { desk: DeskAnalysis }) {
   const sz = desk.sizing;
 
   return (
-    <Panel title="Desk analysis" aside={<SimulatedBadge />}>
+    <Panel title="Desk analysis" code="DESK" aside={<SimulatedBadge />}>
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         <Metric
           label="Volume"

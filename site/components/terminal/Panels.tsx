@@ -26,7 +26,7 @@ export function RecommendationBoard({
     narrative.timeframeNotes.find((n) => n.timeframe === tf)?.note;
 
   return (
-    <Panel title="Recommendation board" aside={<SimulatedBadge />}>
+    <Panel title="Recommendation board" code="BOARD" aside={<SimulatedBadge />}>
       <div
         className="mb-4 rounded-[10px] border px-3 py-2.5 text-[11.5px] leading-relaxed"
         style={{ borderColor: "var(--hair)", background: "#f1f0e9" }}
@@ -146,7 +146,7 @@ export function FactualRead({
   ];
 
   return (
-    <Panel title="Factual analysis">
+    <Panel title="Factual analysis" code="READ">
       <div className="grid gap-3 sm:grid-cols-2">
         {cards.map(([label, body, chip], i) => (
           <div
@@ -229,7 +229,7 @@ const TAG_STYLE: Record<string, string> = {
 
 export function NewsPanel({ headlines }: { headlines: Headline[] }) {
   return (
-    <Panel title="News & sentiment">
+    <Panel title="News & sentiment" code="NEWS">
       {headlines.length === 0 ? (
         <p className="text-[11.5px] leading-relaxed text-[var(--t-muted)]">
           No news feed is configured, so this panel is empty. Headlines here are
@@ -280,7 +280,7 @@ export function DataGrid({
   simulated: boolean;
 }) {
   return (
-    <Panel title="Market data">
+    <Panel title="Market data" code="DATA">
       <Stat label="Source" value={simulated ? "sample (no key)" : dataSource} />
       <Stat label="Candles" value="native, unsmoothed" />
       <Stat label="Fee model" value="0.12% round trip" />

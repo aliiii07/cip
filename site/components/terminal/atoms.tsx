@@ -9,22 +9,28 @@ export function SimulatedBadge({ label = "Simulated" }: { label?: string }) {
 
 export function Panel({
   title,
+  code,
   aside,
   children,
   className = "",
 }: {
   title: string;
+  /** Short function code shown as a keycap, the way a terminal labels a screen. */
+  code?: string;
   aside?: ReactNode;
   children: ReactNode;
   className?: string;
 }) {
   return (
     <section className={`t-panel pointer-glow ${className}`}>
-      <header className="flex items-center justify-between gap-3 border-b border-[var(--hair)] px-4 py-2.5">
-        <h2 className="t-label">{title}</h2>
-        {aside ? <div className="flex items-center gap-2">{aside}</div> : null}
+      <header className="flex items-center justify-between gap-3 border-b border-[var(--hair)] px-3 py-2">
+        <div className="flex min-w-0 items-center gap-2">
+          {code ? <span className="t-key">{code}</span> : null}
+          <h2 className="t-label truncate">{title}</h2>
+        </div>
+        {aside ? <div className="flex shrink-0 items-center gap-2">{aside}</div> : null}
       </header>
-      <div className="p-4">{children}</div>
+      <div className="p-3">{children}</div>
     </section>
   );
 }
@@ -49,7 +55,7 @@ export function Stat({
           ? "#8a6f14"
           : "var(--t-ink)";
   return (
-    <div className="group flex items-baseline justify-between gap-3 border-b border-[var(--hair)] py-[7px] transition-colors last:border-0 hover:bg-[rgba(35,35,30,0.025)]">
+    <div className="group flex items-baseline justify-between gap-3 border-b border-[var(--hair)] py-[5px] transition-colors last:border-0 hover:bg-[rgba(35,35,30,0.04)]">
       <span className="t-label">{label}</span>
       <span
         className="t-value text-right transition-colors duration-300"

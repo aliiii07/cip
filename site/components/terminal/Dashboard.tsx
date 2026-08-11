@@ -62,7 +62,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         <span className="t-label !text-[var(--t-ink)]">CIP</span>
         <span className="t-label">MIROFISH</span>
         <span className="t-hair h-3 w-px" />
-        <span className="text-[13px] font-semibold">{asset.ticker}</span>
+        <span className="t-num !text-[13px] font-semibold">{asset.ticker}</span>
         <span className="t-label">{data.timeframe}</span>
         <span className="flex-1" />
         <EngineStatus />
@@ -82,13 +82,13 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         )}
       </header>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-3 space-y-3">
         <Stagger i={block++}><ApprovalBanner /></Stagger>
 
         {/* -------------------------------------------------- the strategy */}
         <Stagger i={block++}>
         <Panel
-          title="Strategy the pipeline built"
+          title="Strategy the pipeline built" code="STRAT"
           aside={
             <>
               <span className="t-label">{computed.strategy.label}</span>
@@ -176,7 +176,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         {/* ------------------------------------------------------- chart */}
         <Stagger i={block++}>
         <Panel
-          title="Chart analysis"
+          title="Chart analysis" code="CHART"
           aside={
             <span className="t-label">
               {meta.simulated ? "sample candles" : `${meta.dataSource} · native candles`}
@@ -193,9 +193,9 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         </Stagger>
 
         {/* ------------------------------------- lattice + tail, side by side */}
-        <div className="grid gap-4 xl:grid-cols-2">
+        <div className="grid gap-3 xl:grid-cols-2">
           <Stagger i={block++}>
-          <Panel title="Probability lattice" aside={<SimulatedBadge />}>
+          <Panel title="Probability lattice" code="MC" aside={<SimulatedBadge />}>
             <div className="grid gap-4 lg:grid-cols-[1fr_190px]">
               <div className="min-w-0">
                 <ProbabilityLattice mc={mc} />
@@ -212,7 +212,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
           </Stagger>
 
           <Stagger i={block++}>
-          <Panel title="Tail probability ridge" aside={<SimulatedBadge />}>
+          <Panel title="Tail probability ridge" code="TAIL" aside={<SimulatedBadge />}>
             <div className="grid gap-4 lg:grid-cols-[1fr_170px]">
               <div className="min-w-0">
                 <TailRidge mc={mc} />
@@ -244,7 +244,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         {/* ------------------------------------------------ relationship */}
         <Stagger i={block++}>
         <Panel
-          title="MIROFISH · relationship graph"
+          title="MIROFISH · relationship graph" code="CORR"
           aside={
             computed.graph.anyEstimated ? (
               <SimulatedBadge label="Partly unmeasured" />
@@ -319,7 +319,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         </Stagger>
 
         {/* ------------------------------------------------ read + news */}
-        <div className="grid gap-4 xl:grid-cols-2">
+        <div className="grid gap-3 xl:grid-cols-2">
           <Stagger i={block++}>
             <FactualRead
               narrative={narrative}
