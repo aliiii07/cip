@@ -2,7 +2,9 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { TIMEFRAMES, findAsset } from "@/lib/assets";
 import { computeIndicators } from "@/lib/indicators";
-import { runVariants, strongest } from "@/lib/montecarlo";
+import { analyseDesk } from "@/lib/analysis";
+import { buildMemo } from "@/lib/memo";
+import { runVariants, strongest, testRobustness } from "@/lib/montecarlo";
 import { buildGraph } from "@/lib/correlation";
 import { getCandles, getPeerCloses } from "@/lib/marketData";
 import { getHeadlines } from "@/lib/news";
@@ -95,7 +97,15 @@ export async function POST(req: NextRequest) {
       seedKey: `${asset.key}:${tf}`,
       avgAtrPct: ind.atrPct ?? 1,
     });
+    // Every timeframe's winner is cluster-tested too, so the board reports a
+    // durable edge rather than one that happens to work at one exact setting.
+    const rob = testRobustness(set.candles, best.strategy, {
+      seedKey: `${asset.key}:${tf}`,
+      avgAtrPct: ind.atrPct ?? 1,
+    });
     return {
+      robustness: rob.verdict,
+      robustShare: rob.share,
       timeframe: tf,
       verdict: best.verdict,
       reason: best.reason,
@@ -127,6 +137,33 @@ export async function POST(req: NextRequest) {
     avgAtrPct: indicators.atrPct ?? 1,
   });
   const monteCarlo = selectedVariant.mc;
+
+  // Test the cluster, not the point. 15 perturbations of the winning rule, each
+  // fully re-backtested and re-simulated under identical costs.
+  const robustness = testRobustness(selected.candles, selectedVariant.strategy, {
+    seedKey: `${asset.key}:${timeframe}`,
+    avgAtrPct: indicators.atrPct ?? 1,
+  });
+
+  const desk = analyseDesk(
+    selected.candles,
+    indicators,
+    monteCarlo.summary,
+    selectedVariant.strategy.stopAtr
+  );
+
+  // The memo reads off everything above. Its levels come from the selected
+  // timeframe's own ATR and structure, so a 1h request gets 1h levels.
+  const memo = buildMemo({
+    timeframe,
+    strategy: selectedVariant.strategy,
+    indicators,
+    summary: monteCarlo.summary,
+    desk,
+    robustness,
+    alignment: signalAlignment,
+    verdict: selectedVariant.verdict,
+  });
 
   const peerCloses = await getPeerCloses(asset.peers, timeframe);
   const graph = buildGraph({
@@ -183,6 +220,9 @@ export async function POST(req: NextRequest) {
         label: selectedVariant.strategy.label,
         describe: selectedVariant.strategy.describe,
       },
+      robustness,
+      memo,
+      desk,
       variants: field.map((v) => ({
         key: v.strategy.key,
         label: v.strategy.label,

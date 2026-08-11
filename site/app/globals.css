@@ -28,6 +28,10 @@
      #8c8b81 at 3.00:1 and #b4b3a9 at 1.85:1, both under the 4.5:1 WCAG AA
      floor for body text — and they carried most of the terminal's captions,
      which is why the small type read as barely there. */
+  /* The data face. System mono everywhere so no webfont round-trip stands
+     between a request and a legible number. */
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono",
+    "Roboto Mono", Menlo, Consolas, monospace;
   --t-muted: #66655e;  /* 5.12:1 — passes AA for body text */
   --t-faint: #7a7970;  /* 3.83:1 — de-emphasised meta only, passes AA large */
   --amber-d: #7d6412;  /* readable amber for text; --amber is 2.12:1, fill only */
@@ -434,19 +438,49 @@ body {
   background: #f7f6f1;
 }
 
+/* Row labels. Tighter tracking and a hair smaller than before: a terminal
+   fits more per screen without shrinking the numbers that matter. */
 .t-label {
-  font-size: 9.5px;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.14em;
   color: var(--t-muted);
+  white-space: nowrap;
 }
 
-.t-value {
-  font-size: 13px;
+/* Every figure on Surface B is set in mono with tabular, slashed-zero
+   numerals. This is what actually reads as an instrument: digits sit on a
+   fixed pitch, so a column of prices aligns to the decimal and a value that
+   updates does not reflow the row beside it. Prose stays in the sans face —
+   mono is for data, not for sentences. */
+.t-value,
+.t-num {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums slashed-zero;
+  letter-spacing: -0.01em;
   color: var(--t-ink);
 }
 
 .t-hair { height: 1px; background: var(--hair); }
+
+/* Function-code keycap on a panel header, the way a terminal names a screen.
+   Mono, boxed, fixed width so a column of panels aligns down the page. */
+.t-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  padding: 1px 5px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #f1f0e9;
+  background: var(--frame);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
 
 .badge-sim {
   display: inline-block;

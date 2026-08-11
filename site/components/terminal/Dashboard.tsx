@@ -13,6 +13,8 @@ import {
   RecommendationBoard,
 } from "./Panels";
 import { MiniHistogram, MirofishGraph, ProbabilityLattice, TailRidge } from "./Visuals";
+import { DeskPanels } from "./DeskPanels";
+import { DecisionMemo } from "./DecisionMemo";
 
 /**
  * Words describing the pipeline's own ongoing computation — never a claim
@@ -61,7 +63,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         <span className="t-label !text-[var(--t-ink)]">CIP</span>
         <span className="t-label">MIROFISH</span>
         <span className="t-hair h-3 w-px" />
-        <span className="text-[13px] font-semibold">{asset.ticker}</span>
+        <span className="t-num !text-[13px] font-semibold">{asset.ticker}</span>
         <span className="t-label">{data.timeframe}</span>
         <span className="flex-1" />
         <EngineStatus />
@@ -81,13 +83,13 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         )}
       </header>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-3 space-y-3">
         <Stagger i={block++}><ApprovalBanner /></Stagger>
 
         {/* -------------------------------------------------- the strategy */}
         <Stagger i={block++}>
         <Panel
-          title="Strategy the pipeline built"
+          title="Strategy the pipeline built" code="STRAT"
           aside={
             <>
               <span className="t-label">{computed.strategy.label}</span>
@@ -128,6 +130,41 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
             </div>
           </div>
 
+          {/* Robustness: the neighbours of the winning settings, not the
+              settings alone. An edge that survives only at one exact stop is
+              curve fit, and the point estimate alone would hide that. */}
+          <div className="mt-4 border-t border-[var(--hair)] pt-3">
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <span className="t-label">Parameter robustness</span>
+              <VerdictPill
+                verdict={computed.robustness.verdict === "robust" ? "approved" : "rejected"}
+              />
+            </div>
+            <div className="flex flex-wrap items-center gap-1">
+              {computed.robustness.grid.map((p, i) => (
+                <span
+                  key={i}
+                  title={`stop ${p.stopAtr}× ATR · ${p.maxBars} bars · ${p.expectancyPct >= 0 ? "+" : "−"}${Math.abs(p.expectancyPct).toFixed(3)}% · ${p.trades} trades`}
+                  className="h-4 w-4 rounded-[3px]"
+                  style={{
+                    background:
+                      p.trades < 8
+                        ? "rgba(35,35,30,0.10)"
+                        : p.expectancyPct > 0
+                          ? "var(--green-d)"
+                          : "var(--red-d)",
+                    opacity: p.trades < 8 ? 1 : p.withinDrawdown ? 1 : 0.45,
+                  }}
+                />
+              ))}
+            </div>
+            <p className="mt-2 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
+              {computed.robustness.reason} Each square is one run with the stop
+              and hold cap shifted ±10% and ±20%; faded squares breach the
+              drawdown limit, grey ones had too few trades to judge.
+            </p>
+          </div>
+
           <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
             Fills on the next bar’s open, never the signal close. 0.12%
             round-trip fees plus depth-based slippage applied. The winner is
@@ -140,7 +177,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         {/* ------------------------------------------------------- chart */}
         <Stagger i={block++}>
         <Panel
-          title="Chart analysis"
+          title="Chart analysis" code="CHART"
           aside={
             <span className="t-label">
               {meta.simulated ? "sample candles" : `${meta.dataSource} · native candles`}
@@ -157,9 +194,9 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         </Stagger>
 
         {/* ------------------------------------- lattice + tail, side by side */}
-        <div className="grid gap-4 xl:grid-cols-2">
+        <div className="grid gap-3 xl:grid-cols-2">
           <Stagger i={block++}>
-          <Panel title="Probability lattice" aside={<SimulatedBadge />}>
+          <Panel title="Probability lattice" code="MC" aside={<SimulatedBadge />}>
             <div className="grid gap-4 lg:grid-cols-[1fr_190px]">
               <div className="min-w-0">
                 <ProbabilityLattice mc={mc} />
@@ -176,7 +213,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
           </Stagger>
 
           <Stagger i={block++}>
-          <Panel title="Tail probability ridge" aside={<SimulatedBadge />}>
+          <Panel title="Tail probability ridge" code="TAIL" aside={<SimulatedBadge />}>
             <div className="grid gap-4 lg:grid-cols-[1fr_170px]">
               <div className="min-w-0">
                 <TailRidge mc={mc} />
@@ -208,7 +245,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         {/* ------------------------------------------------ relationship */}
         <Stagger i={block++}>
         <Panel
-          title="MIROFISH · relationship graph"
+          title="MIROFISH · relationship graph" code="CORR"
           aside={
             computed.graph.anyEstimated ? (
               <SimulatedBadge label="Partly unmeasured" />
@@ -268,6 +305,16 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         </Panel>
         </Stagger>
 
+        {/* ------------------------------------------------ decision memo */}
+        <Stagger i={block++}>
+          <DecisionMemo memo={computed.memo} timeframe={data.timeframe} />
+        </Stagger>
+
+        {/* ---------------------------------------------- the desk grid */}
+        <Stagger i={block++}>
+          <DeskPanels desk={computed.desk} />
+        </Stagger>
+
         {/* --------------------------------------------------- the board */}
         <Stagger i={block++}>
         <RecommendationBoard
@@ -278,7 +325,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         </Stagger>
 
         {/* ------------------------------------------------ read + news */}
-        <div className="grid gap-4 xl:grid-cols-2">
+        <div className="grid gap-3 xl:grid-cols-2">
           <Stagger i={block++}>
             <FactualRead
               narrative={narrative}
