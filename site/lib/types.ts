@@ -217,6 +217,8 @@ export interface AnalyzeResponse {
     desk: import("./analysis").DeskAnalysis;
     /** The ±10/20% parameter cluster around the winning rule. */
     robustness: import("./montecarlo").RobustnessResult;
+    /** Bull case, bear case and the levels, all on the selected timeframe. */
+    memo: import("./memo").DecisionMemo;
   };
   narrative: Narrative;
   headlines: Headline[];

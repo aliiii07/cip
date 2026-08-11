@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { TIMEFRAMES, findAsset } from "@/lib/assets";
 import { computeIndicators } from "@/lib/indicators";
 import { analyseDesk } from "@/lib/analysis";
+import { buildMemo } from "@/lib/memo";
 import { runVariants, strongest, testRobustness } from "@/lib/montecarlo";
 import { buildGraph } from "@/lib/correlation";
 import { getCandles, getPeerCloses } from "@/lib/marketData";
@@ -144,6 +145,26 @@ export async function POST(req: NextRequest) {
     avgAtrPct: indicators.atrPct ?? 1,
   });
 
+  const desk = analyseDesk(
+    selected.candles,
+    indicators,
+    monteCarlo.summary,
+    selectedVariant.strategy.stopAtr
+  );
+
+  // The memo reads off everything above. Its levels come from the selected
+  // timeframe's own ATR and structure, so a 1h request gets 1h levels.
+  const memo = buildMemo({
+    timeframe,
+    strategy: selectedVariant.strategy,
+    indicators,
+    summary: monteCarlo.summary,
+    desk,
+    robustness,
+    alignment: signalAlignment,
+    verdict: selectedVariant.verdict,
+  });
+
   const peerCloses = await getPeerCloses(asset.peers, timeframe);
   const graph = buildGraph({
     assetLabel: asset.ticker,
@@ -200,12 +221,8 @@ export async function POST(req: NextRequest) {
         describe: selectedVariant.strategy.describe,
       },
       robustness,
-      desk: analyseDesk(
-        selected.candles,
-        indicators,
-        monteCarlo.summary,
-        selectedVariant.strategy.stopAtr
-      ),
+      memo,
+      desk,
       variants: field.map((v) => ({
         key: v.strategy.key,
         label: v.strategy.label,

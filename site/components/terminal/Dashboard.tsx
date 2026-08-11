@@ -14,6 +14,7 @@ import {
 } from "./Panels";
 import { MiniHistogram, MirofishGraph, ProbabilityLattice, TailRidge } from "./Visuals";
 import { DeskPanels } from "./DeskPanels";
+import { DecisionMemo } from "./DecisionMemo";
 
 /**
  * Words describing the pipeline's own ongoing computation — never a claim
@@ -302,6 +303,11 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
             </div>
           </div>
         </Panel>
+        </Stagger>
+
+        {/* ------------------------------------------------ decision memo */}
+        <Stagger i={block++}>
+          <DecisionMemo memo={computed.memo} timeframe={data.timeframe} />
         </Stagger>
 
         {/* ---------------------------------------------- the desk grid */}
