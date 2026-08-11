@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { TIMEFRAMES, findAsset } from "@/lib/assets";
 import { computeIndicators } from "@/lib/indicators";
-import { backtest, runMonteCarlo, strongest, verdictFor } from "@/lib/montecarlo";
+import { runVariants, strongest } from "@/lib/montecarlo";
 import { buildGraph } from "@/lib/correlation";
 import { getCandles, getPeerCloses } from "@/lib/marketData";
 import { getHeadlines } from "@/lib/news";
@@ -90,25 +90,22 @@ export async function POST(req: NextRequest) {
         trend: null,
       };
     }
-    const bt = backtest(set.candles);
     const ind = computeIndicators(set.candles);
-    const mc = runMonteCarlo(bt.validate, {
+    const { best } = runVariants(set.candles, {
       seedKey: `${asset.key}:${tf}`,
-      buyHoldReturnPct: bt.buyHoldReturnPct,
-      exposureShare: bt.exposureShare,
       avgAtrPct: ind.atrPct ?? 1,
     });
-    const { verdict, reason } = verdictFor(mc.summary);
     return {
       timeframe: tf,
-      verdict,
-      reason,
-      expectancyPct: mc.summary.expectancyPct,
-      trades: mc.summary.sampleTrades,
-      buyHoldReturnPct: mc.summary.buyHoldReturnPct,
-      medianPathReturnPct: mc.summary.medianPathReturnPct,
+      verdict: best.verdict,
+      reason: best.reason,
+      expectancyPct: best.mc.summary.expectancyPct,
+      trades: best.mc.summary.sampleTrades,
+      buyHoldReturnPct: best.mc.summary.buyHoldReturnPct,
+      medianPathReturnPct: best.mc.summary.medianPathReturnPct,
       simulated: set.simulated,
       trend: ind.trend,
+      strategyLabel: best.strategy.label,
     };
   });
 
@@ -125,13 +122,11 @@ export async function POST(req: NextRequest) {
     label: alignmentShare >= 0.75 ? "strong" : alignmentShare >= 0.5 ? "moderate" : "weak",
   };
 
-  const selectedBt = backtest(selected.candles);
-  const monteCarlo = runMonteCarlo(selectedBt.validate, {
+  const { best: selectedVariant, field } = runVariants(selected.candles, {
     seedKey: `${asset.key}:${timeframe}`,
-    buyHoldReturnPct: selectedBt.buyHoldReturnPct,
-    exposureShare: selectedBt.exposureShare,
     avgAtrPct: indicators.atrPct ?? 1,
   });
+  const monteCarlo = selectedVariant.mc;
 
   const peerCloses = await getPeerCloses(asset.peers, timeframe);
   const graph = buildGraph({
@@ -153,6 +148,7 @@ export async function POST(req: NextRequest) {
     monteCarlo,
     board,
     headlines,
+    strategyDescribe: selectedVariant.strategy.describe,
   });
 
   const taggedHeadlines = headlines.map((h, i) => ({
@@ -182,6 +178,19 @@ export async function POST(req: NextRequest) {
       graph,
       strongestTimeframe: strongest(board),
       signalAlignment,
+      strategy: {
+        key: selectedVariant.strategy.key,
+        label: selectedVariant.strategy.label,
+        describe: selectedVariant.strategy.describe,
+      },
+      variants: field.map((v) => ({
+        key: v.strategy.key,
+        label: v.strategy.label,
+        verdict: v.verdict,
+        expectancyPct: v.mc.summary.expectancyPct,
+        trades: v.mc.summary.sampleTrades,
+        selected: v.strategy.key === selectedVariant.strategy.key,
+      })),
     },
     narrative,
     headlines: taggedHeadlines,

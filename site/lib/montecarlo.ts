@@ -1,4 +1,4 @@
-import { atr, donchianUpper, sma } from "./indicators";
+import { STRATEGIES, buildContext, type StrategyDef } from "./strategies";
 import type {
   Bin,
   Candle,
@@ -81,44 +81,25 @@ export interface BacktestOut {
 }
 
 /**
- * An asymmetric-momentum rule: enter on a Donchian(10) breakout while the
- * short mean is above the long one, exit on a close back below MA20, an
- * ATR-multiple stop, or a hard bar cap.
+ * Runs one strategy definition over the candles.
  *
  * Holding periods are floored at a few bars even on 15m, which keeps CIP
  * inside its hours-to-days scope rather than drifting into microstructure.
+ * The bar cap stops one winner from quietly becoming buy-and-hold.
  */
-export function backtest(candles: Candle[]): BacktestOut {
-  const closes = candles.map((c) => c.close);
-  const ma20 = sma(closes, 20);
-  const ma50 = sma(closes, 50);
-  const dcUpper = donchianUpper(candles, 5);
-  const atrSeries = atr(candles, 14);
-
-  // Several bars minimum even on 15m — that keeps CIP in its hours-to-days
-  // scope. The cap is what stops one winner from becoming a buy-and-hold in
-  // disguise, and it keeps the out-of-sample sample large enough to test.
-  const MIN_BARS = 2;
-  const MAX_BARS = 14;
-  const STOP_ATR = 2.0;
+export function backtest(
+  candles: Candle[],
+  strategy: StrategyDef = STRATEGIES[0]
+): BacktestOut {
+  const ctx = buildContext(candles);
+  const atrSeries = ctx.atr;
 
   const trades: Trade[] = [];
   let i = 51;
 
   while (i < candles.length - 1) {
-    const up = dcUpper[i];
-    const m20 = ma20[i];
-    const m50 = ma50[i];
     const a = atrSeries[i];
-    const prevUp = dcUpper[i - 1];
-
-    if (up == null || m20 == null || m50 == null || a == null || prevUp == null) {
-      i++;
-      continue;
-    }
-
-    const crossed = closes[i] > up && closes[i - 1] <= prevUp;
-    if (!crossed || m20 <= m50) {
+    if (a == null || !strategy.entry(ctx, i)) {
       i++;
       continue;
     }
@@ -127,7 +108,7 @@ export function backtest(candles: Candle[]): BacktestOut {
     const entryIdx = i + 1;
     if (entryIdx >= candles.length) break;
     const entry = candles[entryIdx].open;
-    const stop = entry - STOP_ATR * a;
+    const stop = entry - strategy.stopAtr * a;
 
     let exitIdx = entryIdx;
     let exit = entry;
@@ -138,12 +119,11 @@ export function backtest(candles: Candle[]): BacktestOut {
         exit = stop;
         break;
       }
-      const m = ma20[k];
-      if (bars >= MIN_BARS && m != null && candles[k].close < m) {
+      if (bars >= strategy.minBars && strategy.exit(ctx, k, bars)) {
         exit = candles[k].close;
         break;
       }
-      if (bars >= MAX_BARS) {
+      if (bars >= strategy.maxBars) {
         exit = candles[k].close;
         break;
       }
@@ -437,4 +417,55 @@ export function strongest(
   const approved = rows.filter((r) => r.verdict === "approved");
   if (approved.length === 0) return null;
   return approved.sort((a, b) => b.expectancyPct - a.expectancyPct)[0].timeframe;
+}
+
+/* ------------------------------------------------------- variant selection */
+
+export interface VariantResult {
+  strategy: StrategyDef;
+  bt: BacktestOut;
+  mc: McResult;
+  verdict: Verdict;
+  reason: string;
+}
+
+const VERDICT_RANK: Record<Verdict, number> = {
+  approved: 2,
+  marginal: 1,
+  rejected: 0,
+};
+
+/**
+ * Tests every archetype on the same candles and returns the one that survives
+ * best, plus the full field so the UI can show what was tried and rejected.
+ *
+ * Ranking is by verdict first, then expectancy. Picking purely by expectancy
+ * would let a variant with a huge edge and an unacceptable drawdown outrank a
+ * sound one, which is precisely the trade this product exists to refuse. The
+ * gates are untouched: this widens the hypotheses tested, it does not lower
+ * the bar any of them has to clear.
+ */
+export function runVariants(
+  candles: Candle[],
+  opts: { seedKey: string; avgAtrPct: number }
+): { best: VariantResult; field: VariantResult[] } {
+  const field = STRATEGIES.map((strategy) => {
+    const bt = backtest(candles, strategy);
+    const mc = runMonteCarlo(bt.validate, {
+      seedKey: `${opts.seedKey}:${strategy.key}`,
+      buyHoldReturnPct: bt.buyHoldReturnPct,
+      exposureShare: bt.exposureShare,
+      avgAtrPct: opts.avgAtrPct,
+    });
+    const { verdict, reason } = verdictFor(mc.summary);
+    return { strategy, bt, mc, verdict, reason };
+  });
+
+  const best = [...field].sort((a, b) => {
+    const rank = VERDICT_RANK[b.verdict] - VERDICT_RANK[a.verdict];
+    if (rank !== 0) return rank;
+    return b.mc.summary.expectancyPct - a.mc.summary.expectancyPct;
+  })[0];
+
+  return { best, field };
 }

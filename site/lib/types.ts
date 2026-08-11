@@ -126,6 +126,18 @@ export interface TimeframeRow {
   medianPathReturnPct: number;
   simulated: boolean;
   trend: Indicators["trend"] | null;
+  /** Which archetype won at this timeframe. Null when nothing could be tested. */
+  strategyLabel?: string;
+}
+
+/** One archetype's result, so the UI can show what was tried, not just what won. */
+export interface VariantRow {
+  key: string;
+  label: string;
+  verdict: Verdict;
+  expectancyPct: number;
+  trades: number;
+  selected: boolean;
 }
 
 export interface SignalAlignment {
@@ -194,6 +206,10 @@ export interface AnalyzeResponse {
     graph: RelationshipGraph;
     strongestTimeframe: Timeframe | null;
     signalAlignment: SignalAlignment;
+    /** The winning archetype at the selected timeframe. */
+    strategy: { key: string; label: string; describe: string };
+    /** Every archetype tested, winner included. */
+    variants: VariantRow[];
   };
   narrative: Narrative;
   headlines: Headline[];

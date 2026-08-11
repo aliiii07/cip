@@ -189,7 +189,7 @@ export default function PrototypePage() {
               type="button"
               onClick={analyze}
               disabled={!ready || state === "running"}
-              className="h-11 rounded-[3px] px-7 text-[12px] uppercase tracking-[0.16em] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:enabled:scale-[1.03] active:enabled:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-30"
+              className="h-12 rounded-full px-9 text-[12px] uppercase tracking-[0.16em] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:enabled:scale-[1.03] active:enabled:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-30"
               style={{
                 background: "var(--frame)",
                 color: "#f1f0e9",
