@@ -60,9 +60,26 @@ export function RecommendationBoard({
             <p className="text-[11.5px] leading-relaxed text-[var(--t-ink)]">
               {noteFor(row.timeframe) ?? row.reason}
               <span className="mt-1 block text-[10.5px] text-[var(--t-muted)]">
+                {row.strategyLabel ? `${row.strategyLabel} · ` : null}
                 {row.trades} out-of-sample trades · median{" "}
                 {pct(row.medianPathReturnPct, 1)} · buy &amp; hold{" "}
                 {pct(row.buyHoldReturnPct, 1)}
+                {row.robustness ? (
+                  <>
+                    {" · "}
+                    <span
+                      style={{
+                        color:
+                          row.robustness === "robust" ? "var(--green-d)" : "var(--red-d)",
+                      }}
+                    >
+                      {row.robustness}
+                      {row.robustShare != null
+                        ? ` (${Math.round(row.robustShare * 100)}% of cluster)`
+                        : null}
+                    </span>
+                  </>
+                ) : null}
               </span>
             </p>
             <div className="text-left sm:text-right">

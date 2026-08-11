@@ -128,6 +128,9 @@ export interface TimeframeRow {
   trend: Indicators["trend"] | null;
   /** Which archetype won at this timeframe. Null when nothing could be tested. */
   strategyLabel?: string;
+  /** Whether that winner survives its own parameter neighbourhood. */
+  robustness?: "robust" | "fragile";
+  robustShare?: number;
 }
 
 /** One archetype's result, so the UI can show what was tried, not just what won. */
@@ -210,6 +213,10 @@ export interface AnalyzeResponse {
     strategy: { key: string; label: string; describe: string };
     /** Every archetype tested, winner included. */
     variants: VariantRow[];
+    /** Volume, zones, momentum, volatility, exposure and sizing. */
+    desk: import("./analysis").DeskAnalysis;
+    /** The ±10/20% parameter cluster around the winning rule. */
+    robustness: import("./montecarlo").RobustnessResult;
   };
   narrative: Narrative;
   headlines: Headline[];

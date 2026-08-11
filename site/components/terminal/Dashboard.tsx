@@ -13,6 +13,7 @@ import {
   RecommendationBoard,
 } from "./Panels";
 import { MiniHistogram, MirofishGraph, ProbabilityLattice, TailRidge } from "./Visuals";
+import { DeskPanels } from "./DeskPanels";
 
 /**
  * Words describing the pipeline's own ongoing computation — never a claim
@@ -126,6 +127,41 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Robustness: the neighbours of the winning settings, not the
+              settings alone. An edge that survives only at one exact stop is
+              curve fit, and the point estimate alone would hide that. */}
+          <div className="mt-4 border-t border-[var(--hair)] pt-3">
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <span className="t-label">Parameter robustness</span>
+              <VerdictPill
+                verdict={computed.robustness.verdict === "robust" ? "approved" : "rejected"}
+              />
+            </div>
+            <div className="flex flex-wrap items-center gap-1">
+              {computed.robustness.grid.map((p, i) => (
+                <span
+                  key={i}
+                  title={`stop ${p.stopAtr}× ATR · ${p.maxBars} bars · ${p.expectancyPct >= 0 ? "+" : "−"}${Math.abs(p.expectancyPct).toFixed(3)}% · ${p.trades} trades`}
+                  className="h-4 w-4 rounded-[3px]"
+                  style={{
+                    background:
+                      p.trades < 8
+                        ? "rgba(35,35,30,0.10)"
+                        : p.expectancyPct > 0
+                          ? "var(--green-d)"
+                          : "var(--red-d)",
+                    opacity: p.trades < 8 ? 1 : p.withinDrawdown ? 1 : 0.45,
+                  }}
+                />
+              ))}
+            </div>
+            <p className="mt-2 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
+              {computed.robustness.reason} Each square is one run with the stop
+              and hold cap shifted ±10% and ±20%; faded squares breach the
+              drawdown limit, grey ones had too few trades to judge.
+            </p>
           </div>
 
           <p className="mt-3 text-[10.5px] leading-relaxed text-[var(--t-muted)]">
@@ -266,6 +302,11 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
             </div>
           </div>
         </Panel>
+        </Stagger>
+
+        {/* ---------------------------------------------- the desk grid */}
+        <Stagger i={block++}>
+          <DeskPanels desk={computed.desk} />
         </Stagger>
 
         {/* --------------------------------------------------- the board */}

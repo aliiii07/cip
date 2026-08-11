@@ -419,6 +419,94 @@ export function strongest(
   return approved.sort((a, b) => b.expectancyPct - a.expectancyPct)[0].timeframe;
 }
 
+/* ---------------------------------------------------- parameter robustness */
+
+export interface RobustnessPoint {
+  stopAtr: number;
+  maxBars: number;
+  expectancyPct: number;
+  trades: number;
+  /** True when this perturbation still clears the drawdown gate. */
+  withinDrawdown: boolean;
+}
+
+export interface RobustnessResult {
+  grid: RobustnessPoint[];
+  tested: number;
+  profitable: number;
+  /** Share of the perturbed cluster that stays profitable after costs. */
+  share: number;
+  medianExpectancyPct: number;
+  verdict: "robust" | "fragile";
+  reason: string;
+}
+
+/** A strategy has to survive its neighbours, not just its own exact settings. */
+const ROBUST_SHARE_FLOOR = 0.6;
+
+/**
+ * Shifts every parameter by ±10% and ±20% and retests the whole cluster.
+ *
+ * An edge that exists only at one exact setting is curve-fit noise. Reporting
+ * the point estimate alone is how a backtest flatters itself, so the neighbours
+ * are tested under identical costs and the share of them that stays profitable
+ * is reported beside the headline figure.
+ */
+export function testRobustness(
+  candles: Candle[],
+  strategy: StrategyDef,
+  opts: { seedKey: string; avgAtrPct: number }
+): RobustnessResult {
+  const stopSteps = [0.8, 0.9, 1, 1.1, 1.2];
+  const barSteps = [0.8, 1, 1.2];
+
+  const grid: RobustnessPoint[] = [];
+  for (const s of stopSteps) {
+    for (const b of barSteps) {
+      const stopAtr = Number((strategy.stopAtr * s).toFixed(3));
+      const maxBars = Math.max(3, Math.round(strategy.maxBars * b));
+      const perturbed: StrategyDef = { ...strategy, stopAtr, maxBars };
+      const bt = backtest(candles, perturbed);
+      const mc = runMonteCarlo(bt.validate, {
+        seedKey: `${opts.seedKey}:${strategy.key}:${stopAtr}:${maxBars}`,
+        buyHoldReturnPct: bt.buyHoldReturnPct,
+        exposureShare: bt.exposureShare,
+        avgAtrPct: opts.avgAtrPct,
+      });
+      grid.push({
+        stopAtr,
+        maxBars,
+        expectancyPct: mc.summary.expectancyPct,
+        trades: mc.summary.sampleTrades,
+        withinDrawdown: mc.summary.maxDrawdownPct <= GATES.maxDrawdownPct,
+      });
+    }
+  }
+
+  const scored = grid.filter((p) => p.trades >= GATES.minTrades);
+  const profitable = scored.filter((p) => p.expectancyPct > 0).length;
+  const share = scored.length > 0 ? profitable / scored.length : 0;
+  const sortedExp = [...scored].map((p) => p.expectancyPct).sort((a, b) => a - b);
+  const medianExpectancyPct = sortedExp.length
+    ? sortedExp[Math.floor(sortedExp.length / 2)]
+    : 0;
+
+  const robust = scored.length > 0 && share >= ROBUST_SHARE_FLOOR;
+  return {
+    grid,
+    tested: scored.length,
+    profitable,
+    share: r4(share),
+    medianExpectancyPct: r4(medianExpectancyPct),
+    verdict: robust ? "robust" : "fragile",
+    reason: scored.length === 0
+      ? "No perturbation produced enough trades to judge robustness."
+      : robust
+        ? `${profitable} of ${scored.length} parameter neighbours stay profitable after costs, so the edge is not a single lucky setting.`
+        : `Only ${profitable} of ${scored.length} parameter neighbours stay profitable, which reads as curve fit rather than a durable edge.`,
+  };
+}
+
 /* ------------------------------------------------------- variant selection */
 
 export interface VariantResult {
