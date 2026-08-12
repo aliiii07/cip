@@ -9,7 +9,6 @@ import {
   DataGrid,
   DistributionStats,
   FactualRead,
-  NewsPanel,
   RecommendationBoard,
 } from "./Panels";
 import { MiniHistogram, MirofishGraph, ProbabilityLattice, TailRidge } from "./Visuals";
@@ -55,6 +54,14 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
   const dataAsOf = meta.dataAsOf.slice(11, 16);
   let block = 0;
 
+  const memo = computed.memo;
+  const RISK_TONE: Record<string, string> = {
+    low: "var(--green-d)",
+    moderate: "var(--t-ink)",
+    elevated: "var(--amber-d)",
+    high: "var(--red-d)",
+  };
+
   return (
     <div className="t-frame p-3 sm:p-5">
       {/* ------------------------------------------------------------ head */}
@@ -84,7 +91,53 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
       </header>
 
       <div className="mt-3 space-y-3">
-        <Stagger i={block++}><ApprovalBanner /></Stagger>
+        {/* ------------------------------------------- headline verdict row
+            The three figures that decide the outcome, given the size and the
+            colour to match. Everything below this is the supporting case. */}
+        <Stagger i={block++}>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="t-panel p-3">
+              <div className="t-label">Engine verdict</div>
+              <div className="mt-1.5">
+                <VerdictPill verdict={memo.verdict} />
+              </div>
+              <p className="mt-2 text-[10.5px] leading-snug text-[var(--t-muted)]">
+                {memo.verdict === "approved"
+                  ? "Cleared every deterministic risk gate."
+                  : memo.verdict === "marginal"
+                    ? "An edge exists but does not clear every gate."
+                    : "Does not survive its own costs. Do not trade."}
+              </p>
+            </div>
+
+            <div className="t-panel p-3">
+              <div className="t-label">Risk level</div>
+              <div
+                className="mt-1 text-[17px] uppercase tracking-[0.12em]"
+                style={{ color: RISK_TONE[memo.riskLevel] }}
+              >
+                {memo.riskLevel}
+              </div>
+              <p className="mt-2 text-[10.5px] leading-snug text-[var(--t-muted)]">
+                {memo.riskNote}
+              </p>
+            </div>
+
+            <div className="t-panel p-3">
+              <div className="t-label">Confidence</div>
+              <div className="t-num mt-1 !text-[24px] leading-none">{memo.confidencePct}%</div>
+              <div className="mt-2 h-[6px] w-full overflow-hidden rounded-full bg-[rgba(35,35,30,0.08)]">
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: `${memo.confidencePct}%`, background: "var(--t-ink)" }}
+                />
+              </div>
+              <p className="mt-2 text-[10.5px] leading-snug text-[var(--t-muted)]">
+                Derived, not asserted. Capped by the verdict.
+              </p>
+            </div>
+          </div>
+        </Stagger>
 
         {/* -------------------------------------------------- the strategy */}
         <Stagger i={block++}>
@@ -324,19 +377,14 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         />
         </Stagger>
 
-        {/* ------------------------------------------------ read + news */}
-        <div className="grid gap-3 xl:grid-cols-2">
-          <Stagger i={block++}>
-            <FactualRead
-              narrative={narrative}
-              indicators={computed.indicators}
-              alignment={computed.signalAlignment}
-            />
-          </Stagger>
-          <Stagger i={block++}>
-            <NewsPanel headlines={data.headlines} />
-          </Stagger>
-        </div>
+        {/* ------------------------------------------------ factual read */}
+        <Stagger i={block++}>
+          <FactualRead
+            narrative={narrative}
+            indicators={computed.indicators}
+            alignment={computed.signalAlignment}
+          />
+        </Stagger>
 
         <Stagger i={block++}>
         <DataGrid
@@ -348,6 +396,8 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
         </Stagger>
 
         {/* ------------------------------------------------------ footer */}
+        <Stagger i={block++}><ApprovalBanner /></Stagger>
+
         <TerminalDisclaimer simulated={meta.simulated} />
 
         <p className="text-[10px] leading-relaxed text-[var(--t-faint)]">
