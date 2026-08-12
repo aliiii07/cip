@@ -55,11 +55,6 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
   let block = 0;
 
   const memo = computed.memo;
-  const VERDICT_TONE: Record<string, string> = {
-    approved: "var(--green-d)",
-    rejected: "var(--red-d)",
-    marginal: "var(--amber-d)",
-  };
   const RISK_TONE: Record<string, string> = {
     low: "var(--green-d)",
     moderate: "var(--t-ink)",
@@ -68,7 +63,7 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
   };
 
   return (
-    <div className="t-dark t-frame p-3 sm:p-5">
+    <div className="t-frame p-3 sm:p-5">
       {/* ------------------------------------------------------------ head */}
       <header className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-[var(--hair)] pb-4">
         <LogoMark className="h-4 w-5 text-[var(--t-ink)]" />
@@ -101,13 +96,10 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
             colour to match. Everything below this is the supporting case. */}
         <Stagger i={block++}>
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="t-panel px-4 py-3.5">
+            <div className="t-panel p-3">
               <div className="t-label">Engine verdict</div>
-              <div
-                className="t-headline-word mt-2"
-                style={{ color: VERDICT_TONE[memo.verdict] }}
-              >
-                {memo.verdict}
+              <div className="mt-1.5">
+                <VerdictPill verdict={memo.verdict} />
               </div>
               <p className="mt-2 text-[10.5px] leading-snug text-[var(--t-muted)]">
                 {memo.verdict === "approved"
@@ -118,10 +110,10 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
               </p>
             </div>
 
-            <div className="t-panel px-4 py-3.5">
+            <div className="t-panel p-3">
               <div className="t-label">Risk level</div>
               <div
-                className="t-headline-word mt-2"
+                className="mt-1 text-[17px] uppercase tracking-[0.12em]"
                 style={{ color: RISK_TONE[memo.riskLevel] }}
               >
                 {memo.riskLevel}
@@ -131,16 +123,13 @@ export function Dashboard({ data }: { data: AnalyzeResponse }) {
               </p>
             </div>
 
-            <div className="t-panel px-4 py-3.5">
+            <div className="t-panel p-3">
               <div className="t-label">Confidence</div>
-              <div className="t-headline mt-2">{memo.confidencePct}%</div>
-              <div className="mt-2.5 h-[5px] w-full overflow-hidden rounded-full bg-[rgba(255,255,255,0.08)]">
+              <div className="t-num mt-1 !text-[24px] leading-none">{memo.confidencePct}%</div>
+              <div className="mt-2 h-[6px] w-full overflow-hidden rounded-full bg-[rgba(35,35,30,0.08)]">
                 <div
                   className="h-full rounded-full"
-                  style={{
-                    width: `${memo.confidencePct}%`,
-                    background: VERDICT_TONE[memo.verdict],
-                  }}
+                  style={{ width: `${memo.confidencePct}%`, background: "var(--t-ink)" }}
                 />
               </div>
               <p className="mt-2 text-[10.5px] leading-snug text-[var(--t-muted)]">

@@ -464,69 +464,6 @@ body {
 
 .t-hair { height: 1px; background: var(--hair); }
 
-/* ==========================================================================
-   The dark instrument.
-
-   Scoped to the result dashboard only, by overriding the same Surface B
-   custom properties every terminal component already consumes. Nothing else
-   has to change: a component that asked for var(--t-ink) simply gets the
-   dark-theme ink inside this subtree, and the marketing pages and the picker
-   above it are untouched.
-   ========================================================================== */
-.t-dark {
-  --paper-bg: #0c0c0e;
-  --frame: #1e1e22;
-  --t-ink: #ecebe6;      /* 14.9:1 on the panel — headline figures */
-  --t-muted: #9e9d95;    /*  6.4:1 — captions still clear AA        */
-  --t-faint: #74736d;    /*  3.4:1 — de-emphasised meta only        */
-  --hair: #2a2a30;
-  --green: #6bbd7f;
-  --green-d: #6bbd7f;
-  --red: #d4605b;
-  --red-d: #d4605b;
-  --amber: #d8a441;
-  --amber-d: #d8a441;
-  --grey: #6e6d67;
-  background: #0c0c0e;
-  color: var(--t-ink);
-}
-.t-dark .t-frame { background: #0c0c0e; border-color: #26262c; }
-.t-dark .t-panel { background: #141418; }
-.t-dark .t-panel:hover { box-shadow: 0 12px 34px -22px rgba(0, 0, 0, 0.9); }
-.t-dark .t-key { background: #2c2c34; color: #ecebe6; }
-.t-dark .badge-sim { border-color: rgba(158, 157, 149, 0.4); color: var(--t-muted); }
-/* Nested cards read as one step lighter than the panel that holds them. */
-.t-dark .rounded-\[10px\] { border-color: #2a2a30; }
-
-/* --- hierarchy ----------------------------------------------------------
-   The old dashboard set nearly everything at one size, weight and colour, so
-   the figures that decide the outcome disappeared into the captions. These
-   three steps exist so the eye lands on the verdict first, the supporting
-   values second and the prose last. */
-.t-headline {
-  font-family: var(--font-mono);
-  font-size: clamp(1.75rem, 3.4vw, 2.6rem);
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums slashed-zero;
-}
-.t-headline-word {
-  font-size: clamp(1.35rem, 2.6vw, 2rem);
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.t-figure {
-  font-family: var(--font-mono);
-  font-size: 1.05rem;
-  line-height: 1.15;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums slashed-zero;
-  color: var(--t-ink);
-}
-
 /* Function-code keycap on a panel header, the way a terminal names a screen.
    Mono, boxed, fixed width so a column of panels aligns down the page. */
 .t-key {

@@ -32,7 +32,6 @@ function useCanvas(
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    syncPalette(canvas);
 
     let w = 0;
     let h = 0;
@@ -95,34 +94,13 @@ function useCanvas(
   return ref;
 }
 
-/**
- * Canvas cannot resolve a CSS custom property, so the palette is read off the
- * live computed style once per module load and refreshed whenever a canvas
- * mounts. That keeps these drawings on whatever theme the surrounding
- * `.t-dark` scope has set, instead of hardcoding the light values and
- * rendering ink-on-ink once the dashboard went dark.
- */
-let INK = "#23231e";
-let MUTED = "#8c8b81";
-let FAINT = "#b4b3a9";
-let HAIR = "#d5d3ca";
-let GREEN = "#6e8f68";
-let RED = "#9e4b47";
-let AMBER = "#c9a227";
-
-function syncPalette(el: Element | null) {
-  if (typeof window === "undefined" || !el) return;
-  const cs = getComputedStyle(el);
-  const read = (name: string, fallback: string) =>
-    cs.getPropertyValue(name).trim() || fallback;
-  INK = read("--t-ink", INK);
-  MUTED = read("--t-muted", MUTED);
-  FAINT = read("--t-faint", FAINT);
-  HAIR = read("--hair", HAIR);
-  GREEN = read("--green-d", GREEN);
-  RED = read("--red-d", RED);
-  AMBER = read("--amber", AMBER);
-}
+const INK = "#23231e";
+const MUTED = "#8c8b81";
+const FAINT = "#b4b3a9";
+const HAIR = "#d5d3ca";
+const GREEN = "#6e8f68";
+const RED = "#9e4b47";
+const AMBER = "#c9a227";
 
 /* ------------------------------------------------- 1. Probability lattice */
 
