@@ -464,6 +464,32 @@ body {
 
 .t-hair { height: 1px; background: var(--hair); }
 
+/* ==========================================================================
+   Prototype typography: Georgia, everywhere on this surface.
+
+   The variables above already carry it to prose and figures, but several
+   elements set font-family themselves (.t-value, .t-num, .t-key, and any
+   utility class that does the same). This descendant rule catches those too,
+   so every word and every number on the page is Georgia rather than most of
+   them. It is scoped to .terminal, which only ever wraps the prototype — the
+   marketing pages never match it.
+   ========================================================================== */
+.terminal,
+.terminal * {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Georgia ships old-style figures: numerals sit at different heights and on
+   proportional widths, so a column of prices will not align on the decimal
+   the way the previous mono face did. Requesting lining and tabular figures
+   here lets the browser use them wherever the face can supply them, and is
+   simply ignored where it cannot. */
+.terminal .t-value,
+.terminal .t-num,
+.terminal .stat-figure {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
 /* Function-code keycap on a panel header, the way a terminal names a screen.
    Mono, boxed, fixed width so a column of panels aligns down the page. */
 .t-key {

@@ -19,6 +19,7 @@ export function hasFinePointer(): boolean {
 export const EASE_PREMIUM = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 /** Canvas text needs a real font name string; CSS var() does not resolve in a
- *  2D context. Matches the marketing site's typeface so the prototype reads
- *  as the same product, not a separate app dropped into an iframe. */
-export const TERMINAL_FONT = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+ *  2D context, and Lightweight Charts takes a family string rather than a
+ *  variable. Both are prototype-only, so this carries Georgia to the labels
+ *  drawn inside the visuals and the chart axes without touching marketing. */
+export const TERMINAL_FONT = 'Georgia, "Times New Roman", Times, serif';
