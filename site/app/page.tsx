@@ -1,38 +1,38 @@
-import { Nav } from "@/components/marketing/Nav";
-import { Footer } from "@/components/marketing/Footer";
-import { About, Hero, Positioning, Problem } from "@/components/marketing/SectionsTop";
-import {
-  DeathTraps,
-  Honesty,
-  Numbers,
-  Pipeline,
-  WhatWeDo,
-} from "@/components/marketing/SectionsMid";
-import { FinalCta, Vision } from "@/components/marketing/SectionsEnd";
+import { NavBar } from "@/components/landing/NavBar";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { HowItWorksScroll } from "@/components/landing/HowItWorksScroll";
+import { PartnerGrid } from "@/components/landing/PartnerGrid";
+import { SecuritySection } from "@/components/landing/SecuritySection";
+import { RoiCalculator } from "@/components/landing/RoiCalculator";
+import { FaqAccordion } from "@/components/landing/FaqAccordion";
+import { InvestingBand } from "@/components/landing/InvestingBand";
+import { SiteFooter } from "@/components/landing/SiteFooter";
 
 /**
- * The landing page is the deck, unrolled vertically. Each section is one slide:
- * one idea, a lot of negative space, and the crimson used once or not at all.
- * The ink → paper → ink alternation is the deck's rhythm, not decoration.
+ * The landing page.
+ *
+ * Order is fixed and load-bearing: the calculator sits after security, not
+ * under the hero, so a reader meets the verification argument before any
+ * modelled figure. Surfaces alternate black / #1F1F1F rather than dropping a
+ * light slab into the middle of the dark run.
+ *
+ * Figtree is opted into here via `font-body`; it is not the global face, so
+ * the prototype at /prototype keeps its own typography untouched.
  */
 export default function Home() {
   return (
-    <>
-      <Nav />
+    <div className="bg-true-black font-body">
+      <NavBar />
       <main>
-        <Hero />
-        <About />
-        <Problem />
-        <Positioning />
-        <WhatWeDo />
-        <Pipeline />
-        <Honesty />
-        <DeathTraps />
-        <Numbers />
-        <Vision />
-        <FinalCta />
+        <HeroSection />
+        <HowItWorksScroll />
+        <PartnerGrid />
+        <SecuritySection />
+        <RoiCalculator />
+        <FaqAccordion />
+        <InvestingBand />
       </main>
-      <Footer />
-    </>
+      <SiteFooter />
+    </div>
   );
 }

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="290" height="196" viewBox="0 0 290 196" fill="none">
+  <g stroke="#9F9D9B" stroke-width="1.35" stroke-linejoin="round">
+    <g opacity="1.00">
+      <polygon points="145,28 258,76 145,124 32,76" fill="#141417"/>
+      <polygon points="145,44 214,74 145,104 76,74" fill="none" stroke-opacity=".5"/>
+      <circle cx="145" cy="74" r="11" fill="none" stroke-opacity=".75"/>
+    </g>
+    <g opacity="0.78">
+      <polygon points="145,54 258,102 145,150 32,102" fill="#141417"/>
+      <polygon points="145,70 214,100 145,130 76,100" fill="none" stroke-opacity=".5"/>
+      <circle cx="145" cy="100" r="11" fill="none" stroke-opacity=".75"/>
+    </g>
+    <g opacity="0.56">
+      <polygon points="145,80 258,128 145,176 32,128" fill="#141417"/>
+      <polygon points="145,96 214,126 145,156 76,126" fill="none" stroke-opacity=".5"/>
+      <circle cx="145" cy="126" r="11" fill="none" stroke-opacity=".75"/>
+    </g>
+  </g>
+  <polyline points="112,64 132,80 178,46" fill="none" stroke="#C2C0BC" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

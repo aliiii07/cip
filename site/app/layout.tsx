@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Figtree, Inter } from "next/font/google";
 import { PointerGlowField } from "@/components/PointerGlowField";
 import "./globals.css";
 
@@ -12,6 +12,21 @@ import "./globals.css";
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans-fallback",
+  display: "swap",
+});
+
+/**
+ * Figtree is the landing page's face. It is declared here so Next can host
+ * and preload it, but deliberately NOT applied to <body>: the landing opts in
+ * through `font-display` / `font-body`, which keeps the prototype and the
+ * older deck sections on their own type. Changing the global face here would
+ * silently restyle the terminal.
+ */
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-figtree",
   display: "swap",
 });
 
@@ -30,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en" className={`${sans.variable} ${figtree.variable}`}>
       <body
         style={
           {

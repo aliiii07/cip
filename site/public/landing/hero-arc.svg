@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="586" viewBox="0 0 1160 586" fill="none">
+  <defs>
+    <linearGradient id="arcFade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#9F9D9B" stop-opacity="0"/>
+      <stop offset=".45" stop-color="#9F9D9B" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#C2C0BC" stop-opacity=".9"/>
+    </linearGradient>
+  </defs>
+  <path id="arc" d="M20 566 C 190 150, 480 40, 580 40 C 680 40, 970 150, 1140 566" stroke="url(#arcFade)" stroke-width="1.25"/>
+  <circle cx="176.8" cy="353.1" r="5.5" fill="#9F9D9B"/>
+  <circle cx="176.8" cy="353.1" r="11" fill="none" stroke="#9F9D9B" stroke-opacity=".28"/>
+  <circle cx="445.6" cy="101.1" r="5.5" fill="#9F9D9B"/>
+  <circle cx="445.6" cy="101.1" r="11" fill="none" stroke="#9F9D9B" stroke-opacity=".28"/>
+  <circle cx="714.4" cy="101.1" r="5.5" fill="#9F9D9B"/>
+  <circle cx="714.4" cy="101.1" r="11" fill="none" stroke="#9F9D9B" stroke-opacity=".28"/>
+  <circle cx="983.2" cy="353.1" r="5.5" fill="#9F9D9B"/>
+  <circle cx="983.2" cy="353.1" r="11" fill="none" stroke="#9F9D9B" stroke-opacity=".28"/>
+</svg>

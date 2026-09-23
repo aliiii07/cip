@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="216" height="152" viewBox="0 0 216 152">
+  <defs>
+    <linearGradient id="t6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2E2E33"/><stop offset="1" stop-color="#1B1B1F"/>
+    </linearGradient>
+  </defs>
+  <!-- top face -->
+  <polygon points="108,14 200,60 108,106 16,60" fill="url(#t6)" stroke="#9F9D9B" stroke-width="1.1" stroke-opacity=".55"/>
+  <!-- left face -->
+  <polygon points="16,60 108,106 108,140 16,94" fill="#1B1B1F" stroke="#9F9D9B" stroke-width="1" stroke-opacity=".35"/>
+  <!-- right face -->
+  <polygon points="200,60 108,106 108,140 200,94" fill="#121215" stroke="#9F9D9B" stroke-width="1" stroke-opacity=".28"/>
+  <!-- titanium edge highlight along the top ridge -->
+  <polyline points="16,60 108,14 200,60" fill="none" stroke="#C2C0BC" stroke-width="1.4" stroke-opacity=".8"/>
+  <text x="108" y="66" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="#C2C0BC">Global Equity Book</text>
+</svg>
