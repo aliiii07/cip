@@ -18,12 +18,12 @@ const sans = Inter({
 export const metadata: Metadata = {
   title: "CIP · Capital Investment Prospects",
   description:
-    "CIP turns a simple choice into a tested, risk-managed strategy. Pick a market, an asset, a timeframe: four specialists do the rest. Paper-trading only, on real data.",
-  metadataBase: new URL("https://cip.example"),
+    "Build your own strategy or follow an expert. Nothing reaches you untested: every strategy passes the same verification first. Paper-trading only, on real data.",
+  metadataBase: new URL("https://netcip.com"),
   openGraph: {
     title: "CIP · Capital Investment Prospects",
     description:
-      "The younger Bloomberg. Automatic where Bloomberg is manual, at a small fraction of the cost.",
+      "Follow the proven, not just the famous. Every strategy verified before you trust it.",
     type: "website",
   },
 };

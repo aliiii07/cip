@@ -10,7 +10,7 @@ import { STAGE } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "About · Capital Investment Prospects",
   description:
-    "CIP turns a plain-English trading idea into a backtested, risk-managed strategy. Built in Uzbekistan for emerging-market investors.",
+    "Build your own strategy or follow an expert. Every strategy is verified before it reaches you. Built in Uzbekistan for emerging-market investors.",
 };
 
 export default function AboutPage() {
@@ -30,19 +30,20 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="space-y-6 text-[17px] leading-[1.68] text-[#c6c6c6]">
                 <p>
-                  CIP turns a plain-English idea, such as “buy the breakout
-                  when volume confirms,” into a backtested, risk-managed
-                  strategy. No code, no broker wiring, no microstructure
-                  expertise required.
+                  CIP lets everyday people invest the way professionals do.
+                  Follow the strategies of top investors and funds, build your
+                  own with AI, or do both.
                 </p>
                 <p>
-                  Output: a strictly-typed strategy, a full distribution of
-                  backtest results, and a risk report.
+                  The core of CIP is neither building nor following. It is
+                  verification. CIP stands between a strategy and the person
+                  about to trust it and says either this passed the test, or
+                  this did not.
                 </p>
                 <p className="text-white">
-                  We are building it from Uzbekistan, for the millions of
-                  emerging-market investors that professional tooling was
-                  never priced for.
+                  We are building it from Uzbekistan, for emerging-market
+                  investors that broker-dependent apps cannot serve and
+                  professional tooling was never priced for.
                 </p>
                 <p>
                   The defining constraint is honesty. A flattering backtest
@@ -62,7 +63,9 @@ export default function AboutPage() {
               <dl className="mt-8 space-y-4">
                 {[
                   ["Stage", STAGE],
-                  ["Model", "Multi-agent LLM pipeline"],
+                  ["Founder", "Xojiakbar Davlataliev"],
+                  ["Co-founder", "Azamat Davronov"],
+                  ["Core", "Verification, on every strategy"],
                   ["Markets", "Stocks · Crypto · Forex"],
                   ["Execution", "Paper only, on real market data"],
                 ].map(([k, v]) => (
