@@ -262,3 +262,39 @@ emulated and confirm nothing is still transparent.
 `stroke-dashoffset` may be animated to draw a line, because it triggers no
 layout and a fade cannot express direction. Nothing else joins this list
 without the same argument.
+
+### Relationship to the global design directive
+
+`~/.claude/CLAUDE.md` carries a house frontend directive: zinc dark mode,
+Cobalt `#0055FF` as the single accent, shadcn primitives, mandatory loading,
+empty, error and toast states. CIP is an explicit exception to its palette
+and an explicit adopter of its craft. Decided 2026-09-24.
+
+**CIP keeps its own visual identity.** Figtree, titanium `#9F9D9B` on the
+landing, signal red `#E23B3B` on the deck, and the MIROFISH terminal's paper
+surface `#F1F0E9`. The terminal is light on purpose: a trading terminal that
+reads as paper is the most distinctive thing this product looks like, and a
+dark mode default would delete it. Do not repaint any of this to zinc and
+Cobalt.
+
+**CIP adopts the directive's craft rules**, which are palette independent:
+
+- Monospace for every numeral, label, status tag and timestamp. In a product
+  whose whole surface is numbers, proportional digits are the wrong call.
+  Note `--font-mono` must be declared inside the scope that uses it; a `var()`
+  resolves at the declaring element, so declaring it at `:root` against a
+  variable that only exists on a nested layout computes to empty.
+- All four states on every screen: loading skeletons shaped like the real
+  component, an empty state with one primary action, inline validation, and a
+  toast on any action with a consequence.
+- Contrast measured against the actual composited background at the actual
+  size, with opacity folded in.
+- Reduced motion renders the settled end state, never the absent one.
+- shadcn primitives rather than hand rolled dialogs, tooltips and tables,
+  with props pulled from the shadcn MCP.
+- Concrete copy over buzzwords, bounded by the harder product rule above:
+  never invent a number to sound precise.
+
+Where the directive and the product rules disagree, the product rules win.
+The honesty constraints, the paper only constraint, the banned language rules
+and the mandatory disclaimer are not style decisions.
