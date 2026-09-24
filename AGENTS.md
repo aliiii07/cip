@@ -213,3 +213,52 @@ Ask whether a designer would wince at this. Specifically: is the type face
 doing any work, is there one accent or several, is anything animated for
 decoration alone, is any number or name invented, does it hold up at 390px.
 If the answer is bad on any of them, fix it before showing it.
+
+### Verify by measurement, not by eye
+
+Run the audit before calling any UI work done. It renders the real pages in a
+real browser at 390px and 1440px and fails on anything below.
+
+    npx -y playwright@latest install chromium          # once
+    npx -y -p playwright@latest node site/scripts/design-audit.mjs
+
+Everything it checks is something that looks fine and is not. These are the
+traps it exists to catch, each one found in this repo's own shipped code:
+
+- A token named for a surface gets used on the opposite surface. `text-light-
+  muted` reads as "light coloured text" and means "muted text for light
+  backgrounds". It ended up on four dark backgrounds, failing every one, and
+  the failures landed on the legally required disclaimers. Name a token for
+  the surface it sits on, and measure before reusing one across surfaces.
+- Translucent text is not the colour it declares. Dimming an element to 45%
+  is a contrast change, so a 6.4:1 grey becomes 1.67:1 and the declared value
+  still looks compliant in the source. Fold opacity into the measurement.
+- A grey that passes on one dark background can fail on another. There is no
+  single muted grey that clears 4.5:1 on both #1F1F1F and #F5F5F7, because
+  the two requirements point in opposite directions. That is two tokens, not
+  one value to tune.
+
+### Reduced motion means the settled state, never the absent one
+
+Rendering the end state is not the same as removing the animation. In
+framer-motion, `useReducedMotion()` returns null on the first render, so an
+`initial: { opacity: 0 }` applies before the preference resolves. Dropping the
+props on the next render strands the element at opacity 0 with no `animate` to
+carry it home, and the content never appears at all.
+
+    // wrong: strands the element at its initial state
+    const rise = reduced ? {} : { initial: { opacity: 0 }, animate: { opacity: 1 } }
+
+    // right: the settled state is still a state
+    const rise = reduced
+      ? { initial: false, animate: { opacity: 1, y: 0 } }
+      : { initial: { opacity: 0, y: 18 }, animate: { opacity: 1, y: 0 } }
+
+Check it the only way that proves anything: load the page with reduced motion
+emulated and confirm nothing is still transparent.
+
+### One narrow exception to opacity and transform
+
+`stroke-dashoffset` may be animated to draw a line, because it triggers no
+layout and a fade cannot express direction. Nothing else joins this list
+without the same argument.
