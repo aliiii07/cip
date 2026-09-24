@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, Inter } from "next/font/google";
 import { PointerGlowField } from "@/components/PointerGlowField";
+import { SmoothScroll } from "@/components/motion";
 import "./globals.css";
 
 /**
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           } as React.CSSProperties
         }
       >
+        <SmoothScroll />
         <PointerGlowField />
         {children}
       </body>
