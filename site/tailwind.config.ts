@@ -49,6 +49,21 @@ const config: Config = {
         "titanium-light": "#C2C0BC",
         "text-dark-muted": "#A1A1AA",
         "text-light-muted": "#71717A",
+
+        /* --- Surface D — the Parrot template (homepage) --------------------
+           Cloned palette; every value is a placeholder for the rebrand and
+           lives only under this key so nothing else on the site inherits it. */
+        parrot: {
+          black: "#0A0A0A",
+          dark: "#1F1F1F",
+          lime: "#B2F200",
+          "lime-deep": "#8CC400",
+          muted: "#A1A1AA",
+          "muted-2": "#71717A",
+          border: "#3F3F46",
+          screen: "#F1F1F1",
+          "light-border": "#E4E4E7",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

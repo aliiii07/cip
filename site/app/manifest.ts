@@ -4,9 +4,10 @@ import type { MetadataRoute } from "next";
  * Served at /manifest.webmanifest. Next wires the <link rel="manifest"> tag
  * automatically from this file.
  *
- * The tab and touch icons come from the file conventions instead
- * (app/favicon.ico, app/icon.svg, app/icon.png, app/apple-icon.png); these two
- * entries are the larger raster sizes Android and installed-app surfaces use.
+ * The tab and touch icons are declared in app/layout.tsx metadata (public/
+ * favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png,
+ * apple-touch-icon.png); these two entries are the larger raster sizes Android
+ * and installed-app surfaces use. All are generated from the same mark.
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {

@@ -1,38 +1,38 @@
-import { NavBar } from "@/components/landing/NavBar";
-import { HeroSection } from "@/components/landing/HeroSection";
-import { HowItWorksScroll } from "@/components/landing/HowItWorksScroll";
-import { PartnerGrid } from "@/components/landing/PartnerGrid";
-import { SecuritySection } from "@/components/landing/SecuritySection";
-import { RoiCalculator } from "@/components/landing/RoiCalculator";
-import { FaqAccordion } from "@/components/landing/FaqAccordion";
-import { InvestingBand } from "@/components/landing/InvestingBand";
-import { SiteFooter } from "@/components/landing/SiteFooter";
+import type { Metadata } from "next";
+import { Navbar } from "@/components/parrot/Navbar";
+import { Hero } from "@/components/parrot/Hero";
+import { HowItWorks } from "@/components/parrot/HowItWorks";
+import { AccessCubes } from "@/components/parrot/AccessCubes";
+import { Security } from "@/components/parrot/Security";
+import { GrowthCalculator } from "@/components/parrot/GrowthCalculator";
+import { Faq } from "@/components/parrot/Faq";
+import { Footer } from "@/components/parrot/Footer";
+import { BRAND, HERO } from "@/lib/parrot-content";
 
 /**
- * The landing page.
- *
- * Order is fixed and load-bearing: the calculator sits after security, not
- * under the hero, so a reader meets the verification argument before any
- * modelled figure. Surfaces alternate black / #1F1F1F rather than dropping a
- * light slab into the middle of the dark run.
- *
- * Figtree is opted into here via `font-body`; it is not the global face, so
- * the prototype at /prototype keeps its own typography untouched.
+ * Homepage: a clone of parrotfinance.io kept as a design template. All copy,
+ * figures and branding come from lib/parrot-content.ts and are placeholders
+ * for the rebrand. The previous landing (components/landing/*) is untouched
+ * and still importable; the prototype at /prototype is not affected.
  */
+export const metadata: Metadata = {
+  title: `${BRAND.name} · ${BRAND.fullName}`,
+  description: HERO.sub,
+};
+
 export default function Home() {
   return (
-    <div className="bg-true-black font-body">
-      <NavBar />
+    <div className="pf-root">
+      <Navbar />
       <main>
-        <HeroSection />
-        <HowItWorksScroll />
-        <PartnerGrid />
-        <SecuritySection />
-        <RoiCalculator />
-        <FaqAccordion />
-        <InvestingBand />
+        <Hero />
+        <HowItWorks />
+        <AccessCubes />
+        <Security />
+        <GrowthCalculator />
+        <Faq />
       </main>
-      <SiteFooter />
+      <Footer />
     </div>
   );
 }
