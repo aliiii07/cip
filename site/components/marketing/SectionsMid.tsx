@@ -4,17 +4,19 @@ import { CountUp, Eyebrow, Reveal, Slide } from "./primitives";
 /* ---------------------------------------------------------- 05 What we do */
 
 const WHAT = [
+  ["Browse", "Scroll a list of verified strategies, like a menu."],
+  ["Follow", "Pick one and start copying it."],
   [
-    "Pick & go",
-    "Select an asset and a timeframe. CIP builds and tests the strategy.",
+    "Auto-follow",
+    "Let it update when the expert moves, after CIP re-verifies the new move.",
   ],
   [
-    "Automated pipeline",
-    "Four specialised agents research, design, backtest and stress-test it end to end.",
+    "Build",
+    "Start from a verified strategy and edit it, or build one from scratch with the AI agents.",
   ],
   [
-    "Risk-managed output",
-    "A strictly-typed strategy, the full distribution of results, and a plain-language risk report.",
+    "Track on paper",
+    "Watch performance with simulated money, so there is zero real-money risk.",
   ],
 ] as const;
 
@@ -35,7 +37,7 @@ export function WhatWeDo() {
             <h2 className="display text-right">What we do</h2>
           </Reveal>
 
-          <dl className="mt-16 space-y-11">
+          <dl className="mt-14 space-y-8">
             {WHAT.map(([label, body], i) => (
               <Reveal key={label} delay={i * 90}>
                 <div className="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-8">
@@ -55,26 +57,31 @@ export function WhatWeDo() {
 
 /* ------------------------------------------------------------ 06 Pipeline */
 
+/**
+ * Each agent is framed by the question it answers, which is how the product
+ * describes them now: the four together are the verification engine, and the
+ * same four run whether a user builds a strategy or follows an expert.
+ */
 const AGENTS = [
   [
     "01",
     "Market Scout",
-    "Pulls price, order-book flow, and news / sentiment for the asset.",
+    "Is this move real and current? Confirms the trade or holding against live data.",
   ],
   [
     "02",
     "Strategy Architect",
-    "Compiles the setup into a strictly-typed strategy, never raw code.",
+    "Does the logic hold up? Produces the rationale and the context behind it.",
   ],
   [
     "03",
     "Backtest Engine",
-    "Runs it on point-in-time data with realistic fills, fees and slippage.",
+    "Would it have worked over time? Returns an honest historical result, not a flattering one.",
   ],
   [
     "04",
     "Risk Cop",
-    "5,000-permutation Monte Carlo. On a breach, loops back for correction.",
+    "Real signal or a false one? Passes or fails the move on the four death traps.",
   ],
 ] as const;
 
@@ -82,10 +89,11 @@ export function Pipeline() {
   return (
     <Slide id="pipeline" n="06" tone="paper">
       <Reveal>
-        <h2 className="display">The four-agent loop</h2>
+        <h2 className="display">The verification engine</h2>
         <p className="mt-5 max-w-[62ch] text-[17px] text-[#57554f]">
-          A fixed LangGraph sequence. Every strategy passes through all four,
-          none skippable.
+          A fixed sequence of four agents. Every strategy passes through all
+          four, none skippable, whether you built it or an expert made the
+          move.
         </p>
       </Reveal>
 
@@ -173,7 +181,7 @@ export function Honesty() {
         <div className="max-w-[44rem]">
           <Reveal>
             <h2 className="display">
-              5,000 simulations stand behind every result.
+              Every strategy, verified before you trust it.
             </h2>
           </Reveal>
           <Reveal delay={90}>
@@ -181,11 +189,13 @@ export function Honesty() {
               The product is built to refuse to lie to you.
             </p>
             <p className="mt-3 text-[18px] italic text-[#6e6c66]">
-              Research, news, access, charts.
+              This passed the test, or it did not.
             </p>
             <p className="mt-9 max-w-[58ch] text-[17px] leading-[1.66] text-[#2c2b28]">
-              A workspace built for judgement, not noise: multi-asset
-              monitors, honest charting, and market context that matters.
+              CIP stands between a strategy and the user and says which one it
+              is. That is the whole product, and it is the one rule that holds
+              it together: nothing reaches a user without passing through
+              verification first.
             </p>
           </Reveal>
         </div>
@@ -199,8 +209,9 @@ export function Honesty() {
           <div className="panel pointer-glow">
             <Eyebrow>Principle</Eyebrow>
             <ol className="mt-7 space-y-2 text-[15px] text-[#d8d8d8]">
-              <li>01 · Expectancy over win-rate</li>
-              <li>02 · Every number badged ‘simulated’</li>
+              <li>01 · Verified before it reaches you</li>
+              <li>02 · Expectancy over win-rate</li>
+              <li>03 · Every number badged ‘simulated’</li>
             </ol>
             <hr className="rule my-8" />
             <ul className="space-y-2.5 text-[15px] text-[#b4b4b4]">
@@ -244,10 +255,11 @@ export function DeathTraps() {
   return (
     <Slide n="08">
       <Reveal>
-        <h2 className="display">Built to remove the fear from investing</h2>
+        <h2 className="display">What verification actually catches</h2>
         <p className="lead mt-6">
-          Four “death traps” that fake most backtests are made structurally
-          impossible. Not merely discouraged.
+          Four “death traps”: the common ways a backtest lies. Catching them
+          is the real edge, and the honesty promise. Each one is made
+          structurally impossible, not merely discouraged.
         </p>
       </Reveal>
 

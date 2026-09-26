@@ -57,6 +57,10 @@
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   /* Written by useScrollProgress: 0 entering, 1 leaving. Static 0 elsewhere. */
   --scroll-p: 0;
+
+  /* Landing chrome at 12-14px asks for Inter; it is the same instance the
+     root layout already loads, aliased rather than fetched a second time. */
+  --font-inter: var(--font-sans-fallback);
 }
 
 html {
@@ -66,8 +70,13 @@ html {
   /* Structural floor: no single component's overflow should ever be able to
      force the page to scroll sideways, and on some engines an overflowing
      descendant inflates the sizing of `position: fixed; inset: 0` ancestors
-     (the ambient canvas layers) unless this is clamped here. */
-  overflow-x: hidden;
+     (the ambient canvas layers) unless this is clamped here.
+
+     `clip`, not `hidden`: hidden makes this element a scroll container, and a
+     scroll container ancestor silently disables `position: sticky` on every
+     descendant — which broke the pinned How-it-works pane. `clip` performs
+     the same guard without establishing one. */
+  overflow-x: clip;
 }
 
 body {
@@ -77,7 +86,7 @@ body {
   font-size: var(--fs-body);
   line-height: 1.62;
   font-feature-settings: "kern" 1;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -595,4 +604,48 @@ body {
 }
 .t-panel:hover {
   box-shadow: 0 10px 28px -20px rgba(28, 28, 25, 0.4);
+}
+
+/* ==========================================================================
+   Surface D — the Parrot template homepage. Everything is prefixed `pf-`
+   and scoped under `.pf-root` so it cannot leak into the deck or terminal.
+   ========================================================================== */
+
+.pf-root {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: var(--font-figtree), var(--font-sans-fallback), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.pf-root :focus-visible { outline: 2px solid #b2f200; outline-offset: 3px; }
+.pf-root ::selection { background: #b2f200; color: #0a0a0a; }
+
+/* The one looping animation on the page: the circular badge text. */
+@keyframes pf-spin {
+  to { transform: rotate(360deg); }
+}
+.pf-spin {
+  animation: pf-spin 20s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+/* Faint square grid behind the how-it-works and cubes sections. */
+.pf-grid-light {
+  background-image:
+    linear-gradient(rgba(26, 26, 26, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.06) 1px, transparent 1px);
+  background-size: 120px 120px;
+  background-position: center top;
+}
+
+/* Hero money pile: a gentle float, transform only. */
+@keyframes pf-money-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.pf-money-float { animation: pf-money-float 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-spin, .pf-money-float { animation: none; }
 }

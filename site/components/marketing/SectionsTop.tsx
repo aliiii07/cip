@@ -9,8 +9,8 @@ import { DECK_FOOTER, STAGE } from "@/lib/constants";
 /* ---------------------------------------------------------------- 01 Hero */
 
 const META = [
-  ["Category", "Fintech · quantitative research"],
-  ["Model", "Multi-agent LLM pipeline"],
+  ["Category", "Fintech · verified investing"],
+  ["Core", "Verification before anything reaches you"],
   ["Stage", STAGE],
   ["Markets", "Stocks · Crypto · Forex"],
 ] as const;
@@ -29,15 +29,16 @@ export function Hero() {
           animate
         />
 
-        <h1 className="hero-type max-w-[23ch]">
-          Decision Intelligence
+        <h1 className="hero-type max-w-[19ch]">
+          Follow the proven,
           <br />
-          for What Comes Next.
+          not just the famous.
         </h1>
 
-        <p className="lead mt-8 max-w-[54ch]">
-          Pick a market, an asset, a timeframe. Four specialists build and
-          test the strategy: paper only, on real data.
+        <p className="lead mt-8 max-w-[56ch]">
+          Build your own strategy or follow an expert. Nothing reaches you
+          untested: every strategy passes the same verification first, on
+          paper, with real data.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
@@ -82,13 +83,18 @@ export function About() {
 
           <div className="mt-12 space-y-6 text-[17px] leading-[1.68] text-[#2c2b28]">
             <p>
-              CIP turns a plain-English idea, such as “buy the breakout when
-              volume confirms,” into a backtested, risk-managed strategy. No
-              code, no broker wiring, no microstructure expertise required.
+              CIP lets everyday people invest the way professionals do. Follow
+              the strategies of top investors and funds, build your own with
+              AI, or do both.
             </p>
             <p>
-              Output: a strictly-typed strategy, a full distribution of
-              results across realistic costs, and a risk report.
+              What separates CIP from every copy-trading app is verification.
+              Nothing reaches you until CIP has checked it with data,
+              research, backtesting and an AI risk review.
+            </p>
+            <p className="text-[#1c1b19]">
+              Following is building you did not have to do yourself. Building
+              is following you kept editing. Both run through the same engine.
             </p>
           </div>
         </Reveal>
@@ -101,15 +107,15 @@ export function About() {
           <div className="pointer-glow bg-ink px-8 py-9 text-white">
             <div className="eyebrow">CIP</div>
             <ol className="mt-4 space-y-2 text-[15px] text-[#d8d8d8]">
-              <li>01 · Natural language in</li>
-              <li>02 · Backtested strategy out</li>
+              <li>01 · An expert moves, or you build</li>
+              <li>02 · CIP verifies it</li>
+              <li>03 · Only what passes reaches you</li>
             </ol>
             <div className="my-7 h-[86px]">
               <Sparkline />
             </div>
             <p className="text-[13px] italic leading-relaxed text-muted">
-              Fast access to news, data and research tools that turn knowledge
-              into action.
+              We combine human experts with machine verification.
             </p>
           </div>
         </Reveal>
@@ -149,28 +155,34 @@ export function Problem() {
   return (
     <Slide id="problem" n="03">
       <Reveal>
-        <h2 className="display">The strategy that lies</h2>
+        <h2 className="display">Following on blind faith</h2>
       </Reveal>
 
       <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_0.85fr] lg:gap-20">
         <Reveal delay={80}>
           <div className="space-y-6 text-[17px] leading-[1.68] text-[#c6c6c6]">
             <p>
-              Almost every retail strategy looks brilliant on a naive
-              backtest, then loses money the moment it meets a real order
-              book.
+              <strong className="font-semibold text-white">Access.</strong>{" "}
+              The best strategies have always been reserved for the wealthy.
             </p>
             <p>
-              Smoothed candles, mid-spread fills, cross-asset reuse, in-sample
-              metrics: four “death traps,” shown at right, turn a backtest
-              into a live loss.
+              <strong className="font-semibold text-white">
+                Blind trust.
+              </strong>{" "}
+              Copy-trading apps let people follow experts on faith, with real
+              money, and mostly only inside the United States.
+            </p>
+            <p>
+              <strong className="font-semibold text-white">
+                No judgement.
+              </strong>{" "}
+              A beginner cannot tell a genuinely good strategy from a lucky
+              one.
             </p>
             <p className="text-white">
-              Tools that catch these mistakes cost tens of thousands a year
-              and need a quant on staff, so millions across Uzbekistan and
-              beyond who want to invest but fear charts they can’t read fly
-              blind. CIP turns that fear into a tested, risk-managed strategy
-              for everyone.
+              <strong className="font-semibold">No proof.</strong> No tool
+              checks whether an expert’s move actually holds up before you
+              copy it. That gap is the whole reason CIP exists.
             </p>
           </div>
         </Reveal>
@@ -180,12 +192,12 @@ export function Problem() {
             <GapMotif />
           </ScrollParallax>
           <p className="mt-6 max-w-[34ch] text-[14px] text-muted">
-            The gap between a naive backtest and live reality.
+            The gap between a claim and a checked claim.
           </p>
           <hr className="rule mt-10" />
           <p className="mt-6 max-w-[38ch] text-[13px] leading-relaxed text-muted-2">
-            Every one of those four traps is made structurally impossible in
-            CIP. Not discouraged. Made impossible.
+            Closing it is the product. Nothing reaches a user without passing
+            verification first.
           </p>
         </Reveal>
       </div>
@@ -195,41 +207,43 @@ export function Problem() {
 
 /* --------------------------------------------------------- 04 Positioning */
 
-const BLOOMBERG = [
-  "Manual: a cockpit you must learn to fly",
-  "~$30,000 / year per terminal",
-  "Built for institutions and pros",
-  "Data & tools; you build the strategy",
-];
-
-const CIP_SIDE = [
-  "Automatic: describe the idea in plain English",
-  "A small fraction of the cost",
-  "Built for retail, individuals, and investing firms",
-  "A finished, risk-checked strategy",
+/**
+ * The comparison rows come straight from the deck's own table, kept as
+ * matched pairs so each claim about a copy-trading app sits directly beside
+ * what CIP does instead. Stated as capability differences, never as a claim
+ * about anyone's results.
+ */
+const COMPARISON: [string, string][] = [
+  ["Follows experts", "Follows experts"],
+  ["Does not verify the strategy first", "Verifies every strategy first"],
+  ["No warning when an expert's move fails a test", "Warns when a move fails the test"],
+  ["Real money from day one", "Paper first, no real-money risk now"],
+  ["Needs a US brokerage", "No brokerage needed in paper mode"],
+  ["Does not serve emerging markets", "Built for Uzbekistan and emerging markets"],
+  ["Follow the famous", "Follow the proven"],
 ];
 
 export function Positioning() {
   return (
     <Slide id="positioning" n="04">
       <Reveal>
-        <Eyebrow>Positioning: the next Bloomberg</Eyebrow>
+        <Eyebrow>Positioning</Eyebrow>
         <h2 className="display mt-6">
-          Bloomberg for <em className="font-normal italic">everyone</em>
+          Follow the <em className="font-normal italic">proven</em>
         </h2>
         <p className="lead mt-6">
-          Bloomberg gave professionals the data to decide manually. CIP does
-          the analysis and the strategy work automatically, for everyone.
+          Copy-trading put expert portfolios within reach and asked you to
+          take them on faith. CIP checks the move before it reaches you.
         </p>
       </Reveal>
 
       <div className="mt-14 grid gap-5 md:grid-cols-2">
         <Reveal delay={80}>
           <ScrollParallax className="parallax-slow panel pointer-glow h-full">
-            <div className="eyebrow">Bloomberg Terminal</div>
+            <div className="eyebrow">Copy-trading apps today</div>
             <ul className="mt-7 space-y-4 text-[16px] text-[#9e9e9e]">
-              {BLOOMBERG.map((l) => (
-                <li key={l}>{l}</li>
+              {COMPARISON.map(([them]) => (
+                <li key={them}>{them}</li>
               ))}
             </ul>
           </ScrollParallax>
@@ -242,8 +256,8 @@ export function Positioning() {
               <span className="dot" />
             </div>
             <ul className="mt-7 space-y-4 text-[16px] text-white">
-              {CIP_SIDE.map((l) => (
-                <li key={l}>{l}</li>
+              {COMPARISON.map(([, us]) => (
+                <li key={us}>{us}</li>
               ))}
             </ul>
           </ScrollParallax>

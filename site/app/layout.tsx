@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Figtree, Inter } from "next/font/google";
 import { PointerGlowField } from "@/components/PointerGlowField";
+import { SmoothScroll } from "@/components/motion";
 import "./globals.css";
 
 /**
@@ -15,22 +16,46 @@ const sans = Inter({
   display: "swap",
 });
 
+/**
+ * Figtree is the landing page's face. It is declared here so Next can host
+ * and preload it, but deliberately NOT applied to <body>: the landing opts in
+ * through `font-display` / `font-body`, which keeps the prototype and the
+ * older deck sections on their own type. Changing the global face here would
+ * silently restyle the terminal.
+ */
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-figtree",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "CIP · Capital Investment Prospects",
   description:
-    "CIP turns a simple choice into a tested, risk-managed strategy. Pick a market, an asset, a timeframe: four specialists do the rest. Paper-trading only, on real data.",
-  metadataBase: new URL("https://cip.example"),
+    "Build your own strategy or follow an expert. Nothing reaches you untested: every strategy passes the same verification first. Paper-trading only, on real data.",
+  metadataBase: new URL("https://netcip.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "CIP · Capital Investment Prospects",
     description:
-      "The younger Bloomberg. Automatic where Bloomberg is manual, at a small fraction of the cost.",
+      "Follow the proven, not just the famous. Every strategy verified before you trust it.",
     type: "website",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en" className={`${sans.variable} ${figtree.variable}`}>
       <body
         style={
           {
@@ -39,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           } as React.CSSProperties
         }
       >
+        <SmoothScroll />
         <PointerGlowField />
         {children}
       </body>

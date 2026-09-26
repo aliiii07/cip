@@ -14,16 +14,16 @@ export function Vision() {
         <Reveal>
           <Eyebrow>Our vision</Eyebrow>
           <h2 className="display mt-7 max-w-[16ch]">
-            The platform to success in trading.
+            The proof layer for investing.
           </h2>
           <p className="lead mt-12">
-            Bloomberg brought transparency to institutions for forty years.
-            The next leap isn’t more data for the few. It’s honest, automated
-            research for the millions never let in.
+            Access to expert strategies was never the hard part. Knowing which
+            of them survive a check is. CIP puts that check between every
+            strategy and the person about to trust it.
           </p>
           <p className="mt-10 text-[clamp(1.25rem,2.4vw,2rem)] italic">
-            Younger. Simpler. Cheaper.{" "}
-            <span style={{ color: "var(--signal)" }}>Automatic.</span>
+            Human experts.{" "}
+            <span style={{ color: "var(--signal)" }}>Machine verification.</span>
           </p>
         </Reveal>
 
@@ -42,7 +42,7 @@ export function Vision() {
 const CLOSING_META = [
   ["Category", "Fintech · quantitative research"],
   ["Stage", STAGE],
-  ["Ask", "President Tech Award: build the next Bloomberg"],
+  ["Ask", "President Tech Award 2026, organised by IT Park"],
 ] as const;
 
 export function FinalCta() {
@@ -58,8 +58,7 @@ export function FinalCta() {
           </ScrollParallax>
           <h2 className="display mt-12">Capital Investment Prospects</h2>
           <p className="lead mt-6 text-center">
-            Younger, simpler and cheaper than Bloomberg, and automatic instead
-            of manual.
+            Build your own or follow an expert. Nothing reaches you untested.
           </p>
         </Reveal>
 
@@ -90,7 +89,7 @@ export function FinalCta() {
             <Link href="/prototype" className="text-white underline underline-offset-4">
               Run the prototype
             </Link>{" "}
-            and pick an asset to watch the four agents.
+            and watch the verification engine run.
           </p>
         </Reveal>
       </div>

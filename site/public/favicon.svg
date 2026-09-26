@@ -1,0 +1,13 @@
+<!-- CIP tab icon: the zigzag mark, simplified to three segments with a
+     heavier stroke so it stays readable at 16px, on a rounded tile in the
+     site's nav color. The tile lightens a step under a dark browser theme so
+     it keeps contrast against a dark tab bar. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <style>
+    .tile { fill: #1F1F1F; }
+    @media (prefers-color-scheme: dark) { .tile { fill: #2B2B2B; } }
+  </style>
+  <rect class="tile" width="1200" height="1200" rx="232"/>
+  <path d="M250 860 L560 560 L770 700 L920 430" stroke="#FFFFFF" stroke-width="130" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="945" cy="330" r="110" fill="#C6F04A"/>
+</svg>

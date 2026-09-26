@@ -1,38 +1,38 @@
-import { Nav } from "@/components/marketing/Nav";
-import { Footer } from "@/components/marketing/Footer";
-import { About, Hero, Positioning, Problem } from "@/components/marketing/SectionsTop";
-import {
-  DeathTraps,
-  Honesty,
-  Numbers,
-  Pipeline,
-  WhatWeDo,
-} from "@/components/marketing/SectionsMid";
-import { FinalCta, Vision } from "@/components/marketing/SectionsEnd";
+import type { Metadata } from "next";
+import { Navbar } from "@/components/parrot/Navbar";
+import { Hero } from "@/components/parrot/Hero";
+import { HowItWorks } from "@/components/parrot/HowItWorks";
+import { AccessCubes } from "@/components/parrot/AccessCubes";
+import { Security } from "@/components/parrot/Security";
+import { GrowthCalculator } from "@/components/parrot/GrowthCalculator";
+import { Faq } from "@/components/parrot/Faq";
+import { Footer } from "@/components/parrot/Footer";
+import { BRAND, HERO } from "@/lib/parrot-content";
 
 /**
- * The landing page is the deck, unrolled vertically. Each section is one slide:
- * one idea, a lot of negative space, and the crimson used once or not at all.
- * The ink → paper → ink alternation is the deck's rhythm, not decoration.
+ * Homepage: a clone of parrotfinance.io kept as a design template. All copy,
+ * figures and branding come from lib/parrot-content.ts and are placeholders
+ * for the rebrand. The previous landing (components/landing/*) is untouched
+ * and still importable; the prototype at /prototype is not affected.
  */
+export const metadata: Metadata = {
+  title: `${BRAND.name} · ${BRAND.fullName}`,
+  description: HERO.sub,
+};
+
 export default function Home() {
   return (
-    <>
-      <Nav />
+    <div className="pf-root">
+      <Navbar />
       <main>
         <Hero />
-        <About />
-        <Problem />
-        <Positioning />
-        <WhatWeDo />
-        <Pipeline />
-        <Honesty />
-        <DeathTraps />
-        <Numbers />
-        <Vision />
-        <FinalCta />
+        <HowItWorks />
+        <AccessCubes />
+        <Security />
+        <GrowthCalculator />
+        <Faq />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

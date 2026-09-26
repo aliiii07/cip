@@ -7,11 +7,15 @@
     "dev": "next dev --port 3100",
     "build": "next build",
     "start": "next start --port 3100",
-    "lint": "next lint"
+    "lint": "next lint",
+    "logos": "node scripts/fetch-logos.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
+    "framer-motion": "^13.4.1",
+    "lenis": "^1.3.26",
     "lightweight-charts": "^4.2.3",
+    "lucide-react": "^1.48.0",
     "next": "^14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,6 +27,7 @@
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
+    "shadcn": "^4.21.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.5.2"
   }
