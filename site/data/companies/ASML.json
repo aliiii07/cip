@@ -14,7 +14,7 @@
   "employees": 43938
  },
  "asOf": {
-  "research": "2026-09-27T07:23:23.976Z",
+  "research": "2026-09-27T08:20:05.306Z",
   "latestAnnual": {
    "form": "20-F",
    "filed": "2026-02-25",
@@ -4210,8 +4210,8 @@
    }
   },
   {
-   "id": "segment.MetrologyampInspection.FY2025",
-   "label": "Metrology &amp; Inspection share of revenue, FY2025",
+   "id": "segment.MetrologyInspection.FY2025",
+   "label": "Metrology & Inspection share of revenue, FY2025",
    "value": 2.5,
    "unit": "pct",
    "display": "2.5%",
@@ -4226,8 +4226,8 @@
    }
   },
   {
-   "id": "segment.MetrologyampInspection.FY2025.value",
-   "label": "Metrology &amp; Inspection revenue, FY2025",
+   "id": "segment.MetrologyInspection.FY2025.value",
+   "label": "Metrology & Inspection revenue, FY2025",
    "value": 824600000,
    "unit": "USD",
    "display": "EUR 825M",
@@ -5152,10 +5152,10 @@
    "factId": "segment.KrF.FY2025"
   },
   {
-   "name": "Metrology &amp; Inspection",
+   "name": "Metrology & Inspection",
    "pct": 2.5,
    "value": 824600000,
-   "factId": "segment.MetrologyampInspection.FY2025"
+   "factId": "segment.MetrologyInspection.FY2025"
   },
   {
    "name": "ArF dry",
@@ -8807,7 +8807,7 @@
       ]
      },
      {
-      "name": "Metrology &amp; Inspection",
+      "name": "Metrology & Inspection",
       "values": [
        659600000,
        536100000,

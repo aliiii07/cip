@@ -388,10 +388,41 @@ async function research(ticker: string, opts: { table: boolean }): Promise<Compa
   log("reading segment notes");
   const seg = await readSegments(cik, annuals);
   const revenueSources: CompanyResearch["revenueSources"] = [];
-  const revSeries = seg.products[0] ?? seg.business.find((x) => x.measure === "Revenue") ?? null;
+  // A usable series splits revenue into parts that add up to about the whole.
+  // Some filers tag a total and its parts on one axis (ADP's product axis
+  // carries 94%, 61% and 42%), which is not a split, so that series is skipped
+  // for the next one.
+  const fyRevenue = built ? built.get("income", "revenue", built.columns - 2) : null;
+  // Members that equal the sum of two to four smaller members are parents
+  // (NVIDIA files Data Center beside Compute and Networking) and are dropped,
+  // as is any member that is the whole; what is left must add up to at most
+  // 102% or the series is not a split.
+  const toSplit = (x: SegmentSeries): SegmentSeries | null => {
+    if (!fyRevenue) return x;
+    const last = x.years.length - 1;
+    const vals = x.items.map((it) => it.values[last] ?? 0);
+    const tol = fyRevenue * 0.004;
+    const isParent = (i: number) => {
+      const parts = vals.filter((v, j) => j !== i && v > 0 && v < vals[i]).sort((a, b) => b - a);
+      const rec = (start: number, left: number, chosen: number): boolean => {
+        if (chosen >= 4) return false;
+        for (let k = start; k < parts.length; k++) {
+          const v = parts[k];
+          if (chosen >= 1 && Math.abs(left - v) <= tol) return true;
+          if (v < left - tol && rec(k + 1, left - v, chosen + 1)) return true;
+        }
+        return false;
+      };
+      return vals[i] > 0 && rec(0, vals[i], 0);
+    };
+    const kept = x.items.filter((_, i) => vals[i] < fyRevenue * 0.99 && !isParent(i));
+    const sum = kept.reduce((acc, it) => acc + Math.max(0, it.values[last] ?? 0), 0);
+    if (!kept.length || (sum / fyRevenue) * 100 > 102) return null;
+    return { ...x, items: kept };
+  };
+  const revSeries = [...seg.products, ...seg.business.filter((x) => x.measure === "Revenue")].map(toSplit).find((x) => x !== null) ?? null;
   if (revSeries && s?.revenue != null && built) {
     const lastIdx = revSeries.years.length - 1;
-    const fyRevenue = built.get("income", "revenue", built.columns - 2);
     const yearLabel = revSeries.years[lastIdx];
     for (const it of revSeries.items) {
       const v = it.values[lastIdx];

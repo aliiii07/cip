@@ -24,7 +24,7 @@ export interface LineSpec {
 }
 
 export const INCOME_LINES: LineSpec[] = [
-  { key: "revenue", label: "Revenue", tags: ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues", "SalesRevenueNet", "RevenueFromContractWithCustomerIncludingAssessedTax", "Revenue"], kind: "duration", unit: "USD", keyLine: true },
+  { key: "revenue", label: "Revenue", tags: ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues", "SalesRevenueNet", "RevenueFromContractWithCustomerIncludingAssessedTax", "Revenue", "RevenueFromSaleOfGoods"], kind: "duration", unit: "USD", keyLine: true },
   { key: "costOfRevenue", label: "Cost of revenue", tags: ["CostOfRevenue", "CostOfGoodsAndServicesSold", "CostOfGoodsSold", "CostOfSales"], kind: "duration", unit: "USD", keyLine: true },
   { key: "grossProfit", label: "Gross profit", tags: ["GrossProfit"], kind: "duration", unit: "USD", keyLine: true },
   { key: "rnd", label: "Research and development", tags: ["ResearchAndDevelopmentExpense", "ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost"], kind: "duration", unit: "USD", keyLine: true },
@@ -160,6 +160,9 @@ export function pickAnnual(
 
 /** The last N fiscal year ends the company reported revenue for. */
 export function fiscalYearEnds(cf: CompanyFacts, n = 5): string[] {
+  // Every revenue tag counts: a filer that moved from one tag to another
+  // (NVIDIA used the contract revenue tag until FY2022 and Revenues after)
+  // would otherwise be read from the tag it stopped using.
   const ends = new Set<string>();
   for (const tag of INCOME_LINES[0].tags) {
     for (const { entries } of entriesFor(cf, tag)) {
@@ -169,7 +172,6 @@ export function fiscalYearEnds(cf: CompanyFacts, n = 5): string[] {
         if (d >= 340 && d <= 385) ends.add(e.end);
       }
     }
-    if (ends.size) break;
   }
   return [...ends].sort().slice(-n);
 }
@@ -189,7 +191,6 @@ export function quarterEnds(cf: CompanyFacts, n = 5): { end: string; label: stri
         if (d >= 80 && d <= 100 && e.fp) found.set(e.end, `${e.fp} ${e.end.slice(0, 4)}`);
       }
     }
-    if (found.size) break;
   }
   return [...found.entries()]
     .sort(([a], [b]) => a.localeCompare(b))

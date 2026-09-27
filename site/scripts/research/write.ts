@@ -101,11 +101,16 @@ export function writeFallback(input: WriterInput): WriterOutput {
 
   const money: Sentence[] = [];
   if (input.revenueSources.length) {
-    const top = input.revenueSources.slice(0, 3);
-    money.push({
-      text: `${top.map((s) => `${s.name} ${Math.round(s.pct)}%`).join(", ")} of ${top[0].year} revenue.`,
-      factIds: top.map((s) => s.factId),
-    });
+    // Three sources when the names are short, fewer when they are not, so the
+    // line stays inside the 20 word limit the checker enforces.
+    for (let n = Math.min(3, input.revenueSources.length); n >= 1; n--) {
+      const top = input.revenueSources.slice(0, n);
+      const text = `${top.map((s) => `${s.name} ${Math.round(s.pct)}%`).join(", ")} of ${top[0].year} revenue.`;
+      if (text.split(/\s+/).length <= 20 || n === 1) {
+        money.push({ text, factIds: top.map((s) => s.factId) });
+        break;
+      }
+    }
   }
 
   const track: Sentence[] = [];

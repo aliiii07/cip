@@ -78,6 +78,8 @@ function matches(t: Token, f: Fact): boolean {
       return f.unit === "x" && closeAt(v, t.value, t.decimals);
     case "usd": {
       if (f.unit !== "USD" && f.unit !== "usdPerShare") return false;
+      // "$0" is a real figure (no debt), and sits below every scale.
+      if (t.value === 0) return v === 0;
       // Compare at the token's own scale: "$416.2B" means 416.2 at one decimal in billions.
       for (const scale of [1e12, 1e9, 1e6, 1]) {
         if (t.value >= scale && closeAt(v / scale, t.value / scale, t.decimals)) return true;

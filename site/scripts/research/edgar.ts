@@ -163,12 +163,9 @@ export async function filingFiles(cik: string, accession: string): Promise<strin
  * HTML to text with block boundaries kept as newlines, so headings and
  * paragraphs can still be told apart afterwards.
  */
-export function htmlToText(html: string): string {
-  let t = html.replace(/<(script|style)[\s\S]*?<\/\1>/gi, " ");
-  t = t.replace(/<\/(p|div|tr|li|h\d|table|section)>/gi, "\n");
-  t = t.replace(/<br\s*\/?>/gi, "\n");
-  t = t.replace(/<[^>]+>/g, " ");
-  t = t
+/** HTML and XML character entities to plain text; dashes become spaces. */
+export function decodeEntities(s: string): string {
+  return s
     .replace(/&nbsp;|&#160;/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
@@ -179,6 +176,14 @@ export function htmlToText(html: string): string {
     .replace(/&#8211;|&ndash;/g, " ")
     .replace(/&#8212;|&mdash;/g, " ")
     .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
+}
+
+export function htmlToText(html: string): string {
+  let t = html.replace(/<(script|style)[\s\S]*?<\/\1>/gi, " ");
+  t = t.replace(/<\/(p|div|tr|li|h\d|table|section)>/gi, "\n");
+  t = t.replace(/<br\s*\/?>/gi, "\n");
+  t = t.replace(/<[^>]+>/g, " ");
+  t = decodeEntities(t);
   t = t.replace(/[ \t\r\f\v]+/g, " ");
   t = t.replace(/ *\n */g, "\n").replace(/\n{3,}/g, "\n\n");
   return t.trim();
@@ -248,7 +253,7 @@ export function parseLabels(labXml: string): Map<string, string> {
     const label = attrs.match(/xlink:label="([^"]+)"/)?.[1];
     if (!label) continue;
     const key = label.replace(/^lab_/, "").replace(/_label.*$/, "").replace(/_terseLabel.*$/, "");
-    const text = m[2].trim();
+    const text = decodeEntities(m[2]).replace(/\s+/g, " ").trim();
     if (role.endsWith("/role/terseLabel")) {
       if (!terse.has(key)) terse.set(key, text);
     } else if (role.endsWith("/role/label")) {
