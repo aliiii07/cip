@@ -87,6 +87,19 @@ export const COMPANY: Record<string, Company> = Object.fromEntries(
   NASDAQ_50.map((c) => [c.symbol, c])
 );
 
+/**
+ * Display order for the company page: the order the list was given in,
+ * roughly by market cap at the time it was written. Presentation only; the
+ * heatmap sizes tiles from live caps, never from this order.
+ */
+export const LIST_ORDER: string[] = [
+  "NVDA", "AAPL", "GOOGL", "MSFT", "AMZN", "SPCX", "AVGO", "META", "TSLA", "MU",
+  "SKHY", "WMT", "AMD", "ASML", "INTC", "CSCO", "PLTR", "COST", "LRCX", "AMAT",
+  "NFLX", "ARM", "PANW", "TXN", "SNDK", "KLAC", "LIN", "CRWD", "MRVL", "AMGN",
+  "TMUS", "QCOM", "STX", "PEP", "ADI", "GILD", "SHOP", "WDC", "BKNG", "VRTX",
+  "ISRG", "FTNT", "SBUX", "PDD", "APP", "ADP", "EQIX", "SNY", "HOOD", "CEG",
+];
+
 export const SECTOR_OF: Record<string, Sector> = Object.fromEntries(
   NASDAQ_50.map((c) => [c.symbol, c.sector])
 );

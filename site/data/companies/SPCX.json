@@ -1,0 +1,6281 @@
+{
+ "ticker": "SPCX",
+ "name": "SpaceX",
+ "cik": "0001181412",
+ "exchange": "Nasdaq",
+ "country": "United States",
+ "currency": "USD",
+ "form": "424B4",
+ "fiscalYearEnd": "1231",
+ "profile": {
+  "sector": "Industrials",
+  "industry": "Aerospace & Defense",
+  "website": "https://www.spacex.com",
+  "employees": 21000
+ },
+ "asOf": {
+  "research": "2026-09-27T08:00:58.746Z",
+  "latestAnnual": {
+   "form": "424B4",
+   "filed": "2026-06-12",
+   "accession": "0001628280-26-042639",
+   "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm"
+  },
+  "latestFiling": {
+   "form": "10-Q",
+   "filed": "2026-08-04",
+   "accession": "0001628280-26-052535",
+   "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+   "period": "2026-06-30"
+  },
+  "prices": "2026-09-25"
+ },
+ "quickReview": [
+  {
+   "key": "about",
+   "title": "What it does",
+   "sentences": [
+    {
+     "text": "SpaceX designs, manufactures, launches, and operates the world's most advanced rockets and spacecraft.",
+     "factIds": []
+    }
+   ],
+   "items": [
+    {
+     "text": "",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
+     "source": "424B4"
+    }
+   ]
+  },
+  {
+   "key": "money",
+   "title": "Where the money comes from",
+   "sentences": [],
+   "bars": []
+  },
+  {
+   "key": "track",
+   "title": "Track record",
+   "chip": {
+    "label": "Not enough history",
+    "tone": "neutral",
+    "rule": "No annual report filed yet, so the five year rule cannot be applied."
+   },
+   "sentences": [
+    {
+     "text": "Shares began trading in 2026.",
+     "factIds": [
+      "track.tradingSince"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "health",
+   "title": "Financial health",
+   "chip": {
+    "label": "Not enough history",
+    "tone": "neutral",
+    "rule": "No annual report filed yet, so the four tests cannot be applied."
+   },
+   "sentences": []
+  },
+  {
+   "key": "risks",
+   "title": "What can go wrong",
+   "sentences": [],
+   "items": [
+    {
+     "text": "Orbital refueling involves technical complexities associated with cryogenic propellant transfer in microgravity, propellant settling.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
+     "source": "424B4 risk factors"
+    },
+    {
+     "text": "Any inability to deliver Starship to market as planned could constrain our participation in new or expanding addressable markets.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
+     "source": "424B4 risk factors"
+    },
+    {
+     "text": "There can be no assurance that we will be able to achieve our objectives.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm",
+     "source": "424B4 risk factors"
+    }
+   ]
+  },
+  {
+   "key": "moments",
+   "title": "Big moments",
+   "sentences": [],
+   "items": [
+    {
+     "date": "2026-06-15",
+     "text": "Shares rose 19.6% in one day, 8-K filed nearby.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043288/0001628280-26-043288-index.htm",
+     "kind": "good",
+     "source": "SEC filing"
+    },
+    {
+     "date": "2026-06-17",
+     "text": "Shares fell 9.3% in one day, 8-K filed nearby.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043865/0001628280-26-043865-index.htm",
+     "kind": "bad",
+     "source": "SEC filing"
+    },
+    {
+     "date": "2026-08-07",
+     "text": "Shares rose 15.8% in one day, 8-K filed nearby.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/0001628280-26-052515-index.htm",
+     "kind": "good",
+     "source": "SEC filing"
+    },
+    {
+     "date": "2026-08-05",
+     "text": "Shares fell 13.6% in one day, 8-K filed nearby.",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/0001628280-26-052515-index.htm",
+     "kind": "bad",
+     "source": "SEC filing"
+    }
+   ]
+  },
+  {
+   "key": "coming",
+   "title": "What's coming",
+   "sentences": [],
+   "items": [
+    {
+     "date": "2026-11-03",
+     "text": "Next earnings report scheduled for 2026-11-03.",
+     "url": "https://finance.yahoo.com/quote/SPCX/",
+     "source": "Yahoo Finance calendar"
+    }
+   ]
+  },
+  {
+   "key": "peers",
+   "title": "Against its peers",
+   "sentences": []
+  }
+ ],
+ "quickNumbers": [
+  {
+   "label": "Revenue, latest quarter",
+   "factId": "revenue.Q2 2026"
+  },
+  {
+   "label": "Operating margin",
+   "factId": "ratio.operatingMargin"
+  }
+ ],
+ "whatThisMeans": {
+  "chart": {
+   "text": "Real daily candles with 20 and 50 day averages, RSI and mapped support and resistance.",
+   "factIds": [
+    "chart.ma20",
+    "chart.ma50"
+   ]
+  },
+  "probabilities": {
+   "text": "5,000 paths built from 72 trading days of this stock's own moves, not a forecast.",
+   "factIds": [
+    "sim.paths",
+    "sim.days"
+   ]
+  },
+  "financials": {
+   "text": "Five fiscal years plus the trailing twelve months, straight from filings, in USD.",
+   "factIds": []
+  },
+  "ratios": {
+   "text": "Margins, returns and valuation beside 1 peers from the same sector.",
+   "factIds": [
+    "ratios.peerCount"
+   ]
+  },
+  "segments": {
+   "text": "Revenue by the segments and regions the company itself reports, names unchanged.",
+   "factIds": []
+  },
+  "earningsQuality": {
+   "text": "Each check asks whether reported profit is backed by cash.",
+   "factIds": []
+  },
+  "balanceSheet": {
+   "text": "What the company owns against what it owes, and when its debt comes due.",
+   "factIds": []
+  },
+  "risk": {
+   "text": "Levels come from fixed rules on prices, debt, concentration and the legal section.",
+   "factIds": []
+  },
+  "audit": {
+   "text": "PricewaterhouseCoopers LLP has audited the company since 2012; the latest opinion is unqualified.",
+   "factIds": [
+    "audit.since"
+   ]
+  }
+ },
+ "facts": [
+  {
+   "id": "revenue.Q2 2025",
+   "label": "Revenue, Q2 2025",
+   "value": 4071000000,
+   "unit": "USD",
+   "display": "$4.1B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "revenue.Q2 2026",
+   "label": "Revenue, Q2 2026",
+   "value": 7814000000,
+   "unit": "USD",
+   "display": "$7.8B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "costOfRevenue.Q2 2025",
+   "label": "Cost of revenue, Q2 2025",
+   "value": 2282000000,
+   "unit": "USD",
+   "display": "$2.3B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:CostOfRevenue"
+   }
+  },
+  {
+   "id": "costOfRevenue.Q2 2026",
+   "label": "Cost of revenue, Q2 2026",
+   "value": 3495000000,
+   "unit": "USD",
+   "display": "$3.5B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:CostOfRevenue"
+   }
+  },
+  {
+   "id": "grossProfit.Q2 2025",
+   "label": "Gross profit, Q2 2025",
+   "value": 1789000000,
+   "unit": "USD",
+   "display": "$1.8B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement (revenue minus cost of revenue)",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "grossProfit.Q2 2026",
+   "label": "Gross profit, Q2 2026",
+   "value": 4319000000,
+   "unit": "USD",
+   "display": "$4.3B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement (revenue minus cost of revenue)",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "rnd.Q2 2025",
+   "label": "Research and development, Q2 2025",
+   "value": 1958000000,
+   "unit": "USD",
+   "display": "$2.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:ResearchAndDevelopmentExpense"
+   }
+  },
+  {
+   "id": "rnd.Q2 2026",
+   "label": "Research and development, Q2 2026",
+   "value": 3548000000,
+   "unit": "USD",
+   "display": "$3.5B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:ResearchAndDevelopmentExpense"
+   }
+  },
+  {
+   "id": "sga.Q2 2025",
+   "label": "Selling, general and administrative, Q2 2025",
+   "value": 606000000,
+   "unit": "USD",
+   "display": "$606M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:SellingGeneralAndAdministrativeExpense"
+   }
+  },
+  {
+   "id": "sga.Q2 2026",
+   "label": "Selling, general and administrative, Q2 2026",
+   "value": 912000000,
+   "unit": "USD",
+   "display": "$912M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:SellingGeneralAndAdministrativeExpense"
+   }
+  },
+  {
+   "id": "operatingExpenses.Q2 2025",
+   "label": "Total operating expenses, Q2 2025",
+   "value": 5041000000,
+   "unit": "USD",
+   "display": "$5.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:CostsAndExpenses"
+   }
+  },
+  {
+   "id": "operatingExpenses.Q2 2026",
+   "label": "Total operating expenses, Q2 2026",
+   "value": 7957000000,
+   "unit": "USD",
+   "display": "$8.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:CostsAndExpenses"
+   }
+  },
+  {
+   "id": "operatingIncome.Q2 2025",
+   "label": "Operating income, Q2 2025",
+   "value": -970000000,
+   "unit": "USD",
+   "display": "−$970M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:OperatingIncomeLoss"
+   }
+  },
+  {
+   "id": "operatingIncome.Q2 2026",
+   "label": "Operating income, Q2 2026",
+   "value": -143000000,
+   "unit": "USD",
+   "display": "−$143M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:OperatingIncomeLoss"
+   }
+  },
+  {
+   "id": "interestExpense.Q2 2025",
+   "label": "Interest expense, Q2 2025",
+   "value": 411000000,
+   "unit": "USD",
+   "display": "$411M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:InterestExpenseNonoperating"
+   }
+  },
+  {
+   "id": "interestExpense.Q2 2026",
+   "label": "Interest expense, Q2 2026",
+   "value": 629000000,
+   "unit": "USD",
+   "display": "$629M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:InterestExpenseNonoperating"
+   }
+  },
+  {
+   "id": "otherIncome.Q2 2025",
+   "label": "Other income (expense), net, Q2 2025",
+   "value": 413000000,
+   "unit": "USD",
+   "display": "$413M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:OtherNonoperatingIncomeExpense"
+   }
+  },
+  {
+   "id": "otherIncome.Q2 2026",
+   "label": "Other income (expense), net, Q2 2026",
+   "value": -86000000,
+   "unit": "USD",
+   "display": "−$86M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:OtherNonoperatingIncomeExpense"
+   }
+  },
+  {
+   "id": "pretaxIncome.Q2 2025",
+   "label": "Income before tax, Q2 2025",
+   "value": -870000000,
+   "unit": "USD",
+   "display": "−$870M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+   }
+  },
+  {
+   "id": "pretaxIncome.Q2 2026",
+   "label": "Income before tax, Q2 2026",
+   "value": -518000000,
+   "unit": "USD",
+   "display": "−$518M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+   }
+  },
+  {
+   "id": "incomeTax.Q2 2025",
+   "label": "Income tax, Q2 2025",
+   "value": 138000000,
+   "unit": "USD",
+   "display": "$138M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:IncomeTaxExpenseBenefit"
+   }
+  },
+  {
+   "id": "incomeTax.Q2 2026",
+   "label": "Income tax, Q2 2026",
+   "value": 23000000,
+   "unit": "USD",
+   "display": "$23M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:IncomeTaxExpenseBenefit"
+   }
+  },
+  {
+   "id": "netIncome.Q2 2025",
+   "label": "Net income, Q2 2025",
+   "value": -1008000000,
+   "unit": "USD",
+   "display": "−$1.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:NetIncomeLoss"
+   }
+  },
+  {
+   "id": "netIncome.Q2 2026",
+   "label": "Net income, Q2 2026",
+   "value": -541000000,
+   "unit": "USD",
+   "display": "−$541M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:NetIncomeLoss"
+   }
+  },
+  {
+   "id": "epsDiluted.Q2 2025",
+   "label": "Diluted earnings per share, Q2 2025",
+   "value": -0.34,
+   "unit": "usdPerShare",
+   "display": "−$0.34",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:EarningsPerShareDiluted"
+   }
+  },
+  {
+   "id": "epsDiluted.Q2 2026",
+   "label": "Diluted earnings per share, Q2 2026",
+   "value": -0.09,
+   "unit": "usdPerShare",
+   "display": "−$0.09",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:EarningsPerShareDiluted"
+   }
+  },
+  {
+   "id": "dilutedShares.Q2 2025",
+   "label": "Diluted shares (weighted), Q2 2025",
+   "value": 2929000000,
+   "unit": "shares",
+   "display": "2.93B shares",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding"
+   }
+  },
+  {
+   "id": "dilutedShares.Q2 2026",
+   "label": "Diluted shares (weighted), Q2 2026",
+   "value": 5864000000,
+   "unit": "shares",
+   "display": "5.86B shares",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding"
+   }
+  },
+  {
+   "id": "sbc.Q2 2025",
+   "label": "Stock based compensation, Q2 2025",
+   "value": 463000000,
+   "unit": "USD",
+   "display": "$463M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+   }
+  },
+  {
+   "id": "sbc.Q2 2026",
+   "label": "Stock based compensation, Q2 2026",
+   "value": 831000000,
+   "unit": "USD",
+   "display": "$831M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+   }
+  },
+  {
+   "id": "restructuring.Q2 2025",
+   "label": "Restructuring charges, Q2 2025",
+   "value": 190000000,
+   "unit": "USD",
+   "display": "$190M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:RestructuringCharges"
+   }
+  },
+  {
+   "id": "restructuring.Q2 2026",
+   "label": "Restructuring charges, Q2 2026",
+   "value": 2000000,
+   "unit": "USD",
+   "display": "$2M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Income statement",
+    "concept": "us-gaap:RestructuringCharges"
+   }
+  },
+  {
+   "id": "cash.Q2 2025",
+   "label": "Cash and cash equivalents, Q2 2025",
+   "value": 15094000000,
+   "unit": "USD",
+   "display": "$15.1B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+   }
+  },
+  {
+   "id": "cash.Q2 2026",
+   "label": "Cash and cash equivalents, Q2 2026",
+   "value": 93522000000,
+   "unit": "USD",
+   "display": "$93.5B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+   }
+  },
+  {
+   "id": "shortTermInvestments.Q2 2026",
+   "label": "Short term investments, Q2 2026",
+   "value": 6487000000,
+   "unit": "USD",
+   "display": "$6.5B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:MarketableSecuritiesCurrent"
+   }
+  },
+  {
+   "id": "receivables.Q2 2026",
+   "label": "Accounts receivable, Q2 2026",
+   "value": 3596000000,
+   "unit": "USD",
+   "display": "$3.6B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:AccountsReceivableNetCurrent"
+   }
+  },
+  {
+   "id": "inventory.Q2 2026",
+   "label": "Inventories, Q2 2026",
+   "value": 2718000000,
+   "unit": "USD",
+   "display": "$2.7B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:InventoryNet"
+   }
+  },
+  {
+   "id": "currentAssets.Q2 2026",
+   "label": "Total current assets, Q2 2026",
+   "value": 108047000000,
+   "unit": "USD",
+   "display": "$108.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:AssetsCurrent"
+   }
+  },
+  {
+   "id": "ppe.Q2 2026",
+   "label": "Property, plant and equipment, Q2 2026",
+   "value": 65736000000,
+   "unit": "USD",
+   "display": "$65.7B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:PropertyPlantAndEquipmentNet"
+   }
+  },
+  {
+   "id": "goodwill.Q2 2026",
+   "label": "Goodwill, Q2 2026",
+   "value": 11645000000,
+   "unit": "USD",
+   "display": "$11.6B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:Goodwill"
+   }
+  },
+  {
+   "id": "intangibles.Q2 2026",
+   "label": "Intangible assets, Q2 2026",
+   "value": 1318000000,
+   "unit": "USD",
+   "display": "$1.3B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill"
+   }
+  },
+  {
+   "id": "totalAssets.Q2 2026",
+   "label": "Total assets, Q2 2026",
+   "value": 192770000000,
+   "unit": "USD",
+   "display": "$192.8B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:Assets"
+   }
+  },
+  {
+   "id": "currentLiabilities.Q2 2026",
+   "label": "Total current liabilities, Q2 2026",
+   "value": 21122000000,
+   "unit": "USD",
+   "display": "$21.1B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:LiabilitiesCurrent"
+   }
+  },
+  {
+   "id": "longTermDebt.Q2 2026",
+   "label": "Long term debt, Q2 2026",
+   "value": 38285000000,
+   "unit": "USD",
+   "display": "$38.3B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:LongTermDebt"
+   }
+  },
+  {
+   "id": "totalLiabilities.Q2 2026",
+   "label": "Total liabilities, Q2 2026",
+   "value": 65546000000,
+   "unit": "USD",
+   "display": "$65.5B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:Liabilities"
+   }
+  },
+  {
+   "id": "equity.Q2 2025",
+   "label": "Shareholders' equity, Q2 2025",
+   "value": 5217000000,
+   "unit": "USD",
+   "display": "$5.2B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:StockholdersEquity"
+   }
+  },
+  {
+   "id": "equity.Q2 2026",
+   "label": "Shareholders' equity, Q2 2026",
+   "value": 127224000000,
+   "unit": "USD",
+   "display": "$127.2B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Balance sheet",
+    "concept": "us-gaap:StockholdersEquity"
+   }
+  },
+  {
+   "id": "sbc.Q2 2025",
+   "label": "Stock based compensation, Q2 2025",
+   "value": 463000000,
+   "unit": "USD",
+   "display": "$463M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Cash flow statement",
+    "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+   }
+  },
+  {
+   "id": "sbc.Q2 2026",
+   "label": "Stock based compensation, Q2 2026",
+   "value": 831000000,
+   "unit": "USD",
+   "display": "$831M",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Cash flow statement",
+    "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+   }
+  },
+  {
+   "id": "ratio.grossMargin",
+   "label": "Gross margin",
+   "value": 43.9,
+   "unit": "pct",
+   "display": "43.9%",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Computed: Gross profit divided by revenue.",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "ratio.operatingMargin",
+   "label": "Operating margin",
+   "value": -23.8,
+   "unit": "pct",
+   "display": "−23.8%",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Computed: Operating income divided by revenue.",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "ratio.netMargin",
+   "label": "Net margin",
+   "value": -24.8,
+   "unit": "pct",
+   "display": "−24.8%",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Computed: Net income divided by revenue.",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "ratios.peerCount",
+   "label": "Peers compared",
+   "value": 1,
+   "unit": "count",
+   "display": "1",
+   "source": {
+    "form": "424B4",
+    "filed": "2026-06-12",
+    "accession": "0001628280-26-042639",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm",
+    "statement": "Peers: the largest companies in the same sector among the NASDAQ 50"
+   }
+  },
+  {
+   "id": "chart.ma20",
+   "label": "Short moving average, days",
+   "value": 20,
+   "unit": "count",
+   "display": "20",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "chart.ma50",
+   "label": "Long moving average, days",
+   "value": 50,
+   "unit": "count",
+   "display": "50",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "chart.rsi",
+   "label": "RSI period, days",
+   "value": 14,
+   "unit": "count",
+   "display": "14",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.paths",
+   "label": "Simulation paths per horizon",
+   "value": 5000,
+   "unit": "count",
+   "display": "5,000",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.days",
+   "label": "Trading days of history used",
+   "value": 72,
+   "unit": "count",
+   "display": "72 trading days",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.1m.pEndHigher",
+   "label": "Chance of ending higher, 1 month",
+   "value": 45.4,
+   "unit": "pct",
+   "display": "45.4%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.1m.median",
+   "label": "Median outcome, 1 month",
+   "value": -2.92,
+   "unit": "pct",
+   "display": "−2.9%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.1m.pDrop20",
+   "label": "Chance of a 20% or larger drop, 1 month",
+   "value": 51.1,
+   "unit": "pct",
+   "display": "51.1%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.3m.pEndHigher",
+   "label": "Chance of ending higher, 3 months",
+   "value": 42.6,
+   "unit": "pct",
+   "display": "42.6%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.3m.median",
+   "label": "Median outcome, 3 months",
+   "value": -7.29,
+   "unit": "pct",
+   "display": "−7.3%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.3m.pDrop20",
+   "label": "Chance of a 20% or larger drop, 3 months",
+   "value": 92.2,
+   "unit": "pct",
+   "display": "92.2%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.1y.pEndHigher",
+   "label": "Chance of ending higher, 1 year",
+   "value": 37.5,
+   "unit": "pct",
+   "display": "37.5%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.1y.median",
+   "label": "Median outcome, 1 year",
+   "value": -22.66,
+   "unit": "pct",
+   "display": "−22.7%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "sim.1y.pDrop20",
+   "label": "Chance of a 20% or larger drop, 1 year",
+   "value": 100,
+   "unit": "pct",
+   "display": "100.0%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "track.founded",
+   "label": "Founded or incorporated",
+   "value": 2002,
+   "unit": "years",
+   "display": "2002",
+   "source": {
+    "form": "424B4",
+    "filed": "2026-06-12",
+    "accession": "0001628280-26-042639",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm",
+    "statement": "Business section"
+   }
+  },
+  {
+   "id": "track.tradingSince",
+   "label": "Shares trading since",
+   "value": 2026,
+   "unit": "years",
+   "display": "2026",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "First bar of the price history"
+   }
+  },
+  {
+   "id": "track.yearsPublic",
+   "label": "Years public",
+   "value": 0,
+   "unit": "years",
+   "display": "0 years",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "Years since the first bar of the price history"
+   }
+  },
+  {
+   "id": "track.profitableYears",
+   "label": "Profitable years of the last five",
+   "value": 0,
+   "unit": "count",
+   "display": "0",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Net income above zero",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "track.yearsCounted",
+   "label": "Fiscal years counted",
+   "value": 0,
+   "unit": "years",
+   "display": "0 years",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Fiscal years with a filed income statement",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  {
+   "id": "bs.purchaseObligations",
+   "label": "Unconditional purchase obligations",
+   "value": 27955000000,
+   "unit": "USD",
+   "display": "$28.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "concept": "us-gaap:UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount",
+    "statement": "Commitments note"
+   }
+  },
+  {
+   "id": "bs.maturity.Within1year",
+   "label": "Debt due, within 1 year",
+   "value": 2402000000,
+   "unit": "USD",
+   "display": "$2.4B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Debt note",
+    "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths"
+   }
+  },
+  {
+   "id": "bs.maturity.Year2",
+   "label": "Debt due, year 2",
+   "value": 2867000000,
+   "unit": "USD",
+   "display": "$2.9B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Debt note",
+    "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo"
+   }
+  },
+  {
+   "id": "bs.maturity.Year3",
+   "label": "Debt due, year 3",
+   "value": 3422000000,
+   "unit": "USD",
+   "display": "$3.4B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Debt note",
+    "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree"
+   }
+  },
+  {
+   "id": "bs.maturity.Year4",
+   "label": "Debt due, year 4",
+   "value": 3597000000,
+   "unit": "USD",
+   "display": "$3.6B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "statement": "Debt note",
+    "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour"
+   }
+  },
+  {
+   "id": "risk.vol",
+   "label": "Annualised volatility, 5 years",
+   "value": 87.4,
+   "unit": "pct",
+   "display": "87.4%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "Standard deviation of daily returns, annualised"
+   }
+  },
+  {
+   "id": "risk.maxDrawdown",
+   "label": "Largest fall from a peak, 5 years",
+   "value": 48.78,
+   "unit": "pct",
+   "display": "48.8%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "Peak to trough of daily closes"
+   }
+  },
+  {
+   "id": "risk.beta",
+   "label": "Beta versus the S&P 500, 5 years",
+   "value": 3.1,
+   "unit": "x",
+   "display": "3.10",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "Slope of daily returns on the index"
+   }
+  },
+  {
+   "id": "audit.since",
+   "label": "Auditor since",
+   "value": 2012,
+   "unit": "years",
+   "display": "2012",
+   "source": {
+    "form": "424B4",
+    "filed": "2026-06-12",
+    "accession": "0001628280-26-042639",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm",
+    "statement": "Report of the independent auditor"
+   }
+  },
+  {
+   "id": "moment.2026-06-15",
+   "label": "Daily move on 2026-06-15",
+   "value": 19.6,
+   "unit": "pct",
+   "display": "19.6%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-06-15",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "moment.2026-08-07",
+   "label": "Daily move on 2026-08-07",
+   "value": 15.83,
+   "unit": "pct",
+   "display": "15.8%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-08-07",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "moment.2026-06-16",
+   "label": "Daily move on 2026-06-16",
+   "value": 9.81,
+   "unit": "pct",
+   "display": "9.8%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-06-16",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "moment.2026-06-17",
+   "label": "Daily move on 2026-06-17",
+   "value": -9.26,
+   "unit": "pct",
+   "display": "−9.3%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-06-17",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "moment.2026-08-05",
+   "label": "Daily move on 2026-08-05",
+   "value": -13.61,
+   "unit": "pct",
+   "display": "−13.6%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-08-05",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  },
+  {
+   "id": "moment.2026-06-22",
+   "label": "Daily move on 2026-06-22",
+   "value": -16.43,
+   "unit": "pct",
+   "display": "−16.4%",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-06-22",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/"
+   }
+  }
+ ],
+ "revenueSources": [],
+ "track": {
+  "chip": "Not enough history",
+  "rule": "Revenue growth of 5% or more per year over 5 years and profitable in 5 of the last 5 years: Strong. Revenue shrinking over 5 years, or profitable in 2 or fewer of the last 5 years: Weak. Anything else: Mixed.",
+  "founded": {
+   "id": "track.founded",
+   "label": "Founded or incorporated",
+   "value": 2002,
+   "unit": "years",
+   "display": "2002",
+   "source": {
+    "form": "424B4",
+    "filed": "2026-06-12",
+    "accession": "0001628280-26-042639",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/0001628280-26-042639-index.htm",
+    "statement": "Business section"
+   }
+  },
+  "tradingSince": {
+   "id": "track.tradingSince",
+   "label": "Shares trading since",
+   "value": 2026,
+   "unit": "years",
+   "display": "2026",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "First bar of the price history"
+   }
+  },
+  "yearsPublic": {
+   "id": "track.yearsPublic",
+   "label": "Years public",
+   "value": 0,
+   "unit": "years",
+   "display": "0 years",
+   "source": {
+    "form": "Yahoo Finance",
+    "filed": "2026-09-25",
+    "url": "https://finance.yahoo.com/quote/SPCX/history/",
+    "statement": "Years since the first bar of the price history"
+   }
+  },
+  "revenueCagr5y": null,
+  "profitableYears": {
+   "id": "track.profitableYears",
+   "label": "Profitable years of the last five",
+   "value": 0,
+   "unit": "count",
+   "display": "0",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2025-06-30",
+    "statement": "Net income above zero",
+    "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+   }
+  },
+  "yearsCounted": 0
+ },
+ "health": {
+  "chip": "Not enough history",
+  "tests": [],
+  "rule": "Four tests: net debt to EBITDA below 1 (net cash counts as a pass), interest coverage above 10 (no debt counts as a pass), free cash flow positive in each of the last 3 years, current ratio above 1. All pass: Strong. One or two fail: Moderate. Three or four fail: Weak. An input the company did not report counts as a fail.",
+  "cashAndInvestments": null,
+  "totalDebt": null,
+  "fcf": null,
+  "interestCoverage": null,
+  "netDebtToEbitda": null,
+  "currentRatio": null
+ },
+ "financials": {
+  "currency": "USD",
+  "periodKind": "quarterly",
+  "years": [
+   "Q2 2025",
+   "Q2 2026"
+  ],
+  "periodEnds": [
+   "2025-06-30",
+   "2026-06-30"
+  ],
+  "income": [
+   {
+    "key": "revenue",
+    "label": "Revenue",
+    "values": [
+     4071000000,
+     7814000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "costOfRevenue",
+    "label": "Cost of revenue",
+    "values": [
+     2282000000,
+     3495000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:CostOfRevenue"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:CostOfRevenue"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "grossProfit",
+    "label": "Gross profit",
+    "values": [
+     1789000000,
+     4319000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement (revenue minus cost of revenue)",
+      "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement (revenue minus cost of revenue)",
+      "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "rnd",
+    "label": "Research and development",
+    "values": [
+     1958000000,
+     3548000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:ResearchAndDevelopmentExpense"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:ResearchAndDevelopmentExpense"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "sga",
+    "label": "Selling, general and administrative",
+    "values": [
+     606000000,
+     912000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:SellingGeneralAndAdministrativeExpense"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:SellingGeneralAndAdministrativeExpense"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "operatingExpenses",
+    "label": "Total operating expenses",
+    "values": [
+     5041000000,
+     7957000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:CostsAndExpenses"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:CostsAndExpenses"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "operatingIncome",
+    "label": "Operating income",
+    "values": [
+     -970000000,
+     -143000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:OperatingIncomeLoss"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:OperatingIncomeLoss"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "interestExpense",
+    "label": "Interest expense",
+    "values": [
+     411000000,
+     629000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:InterestExpenseNonoperating"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:InterestExpenseNonoperating"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "otherIncome",
+    "label": "Other income (expense), net",
+    "values": [
+     413000000,
+     -86000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:OtherNonoperatingIncomeExpense"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:OtherNonoperatingIncomeExpense"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "pretaxIncome",
+    "label": "Income before tax",
+    "values": [
+     -870000000,
+     -518000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "incomeTax",
+    "label": "Income tax",
+    "values": [
+     138000000,
+     23000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:IncomeTaxExpenseBenefit"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:IncomeTaxExpenseBenefit"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "netIncome",
+    "label": "Net income",
+    "values": [
+     -1008000000,
+     -541000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:NetIncomeLoss"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:NetIncomeLoss"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "epsDiluted",
+    "label": "Diluted earnings per share",
+    "values": [
+     -0.34,
+     -0.09
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:EarningsPerShareDiluted"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:EarningsPerShareDiluted"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "usdPerShare"
+   },
+   {
+    "key": "dilutedShares",
+    "label": "Diluted shares (weighted)",
+    "values": [
+     2929000000,
+     5864000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "shares"
+   },
+   {
+    "key": "sbc",
+    "label": "Stock based compensation",
+    "values": [
+     463000000,
+     831000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "restructuring",
+    "label": "Restructuring charges",
+    "values": [
+     190000000,
+     2000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:RestructuringCharges"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Income statement",
+      "concept": "us-gaap:RestructuringCharges"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   }
+  ],
+  "balance": [
+   {
+    "key": "cash",
+    "label": "Cash and cash equivalents",
+    "values": [
+     15094000000,
+     93522000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "shortTermInvestments",
+    "label": "Short term investments",
+    "values": [
+     null,
+     6487000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:MarketableSecuritiesCurrent"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "receivables",
+    "label": "Accounts receivable",
+    "values": [
+     null,
+     3596000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:AccountsReceivableNetCurrent"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "inventory",
+    "label": "Inventories",
+    "values": [
+     null,
+     2718000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:InventoryNet"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "currentAssets",
+    "label": "Total current assets",
+    "values": [
+     null,
+     108047000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:AssetsCurrent"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "ppe",
+    "label": "Property, plant and equipment",
+    "values": [
+     null,
+     65736000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:PropertyPlantAndEquipmentNet"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "goodwill",
+    "label": "Goodwill",
+    "values": [
+     null,
+     11645000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:Goodwill"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "intangibles",
+    "label": "Intangible assets",
+    "values": [
+     null,
+     1318000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:IntangibleAssetsNetExcludingGoodwill"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "totalAssets",
+    "label": "Total assets",
+    "values": [
+     null,
+     192770000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:Assets"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "currentLiabilities",
+    "label": "Total current liabilities",
+    "values": [
+     null,
+     21122000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:LiabilitiesCurrent"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "longTermDebt",
+    "label": "Long term debt",
+    "values": [
+     null,
+     38285000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:LongTermDebt"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "totalLiabilities",
+    "label": "Total liabilities",
+    "values": [
+     null,
+     65546000000
+    ],
+    "sources": [
+     null,
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:Liabilities"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   },
+   {
+    "key": "equity",
+    "label": "Shareholders' equity",
+    "values": [
+     5217000000,
+     127224000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:StockholdersEquity"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Balance sheet",
+      "concept": "us-gaap:StockholdersEquity"
+     }
+    ],
+    "keyLine": true,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   }
+  ],
+  "cashflow": [
+   {
+    "key": "sbc",
+    "label": "Stock based compensation",
+    "values": [
+     463000000,
+     831000000
+    ],
+    "sources": [
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2025-06-30",
+      "statement": "Cash flow statement",
+      "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+     },
+     {
+      "form": "10-Q",
+      "filed": "2026-08-04",
+      "accession": "0001628280-26-052535",
+      "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+      "fy": 2026,
+      "period": "2026-06-30",
+      "statement": "Cash flow statement",
+      "concept": "us-gaap:AllocatedShareBasedCompensationExpense"
+     }
+    ],
+    "keyLine": false,
+    "yoy": [
+     null,
+     null
+    ],
+    "unit": "USD"
+   }
+  ],
+  "asOf": "2026-08-04",
+  "latestFiling": {
+   "form": "10-Q",
+   "filed": "2026-08-04",
+   "accession": "0001628280-26-052535",
+   "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+   "fy": 2026,
+   "period": "2025-06-30",
+   "statement": "Income statement",
+   "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+  },
+  "bars": [
+   {
+    "year": "Q2 2025",
+    "revenue": 4071000000,
+    "operatingIncome": -970000000,
+    "netIncome": -1008000000,
+    "fcf": null
+   },
+   {
+    "year": "Q2 2026",
+    "revenue": 7814000000,
+    "operatingIncome": -143000000,
+    "netIncome": -541000000,
+    "fcf": null
+   }
+  ]
+ },
+ "ratios": {
+  "asOf": "2026-08-04",
+  "peers": [
+   {
+    "ticker": "ADP",
+    "name": "Automatic Data Processing"
+   }
+  ],
+  "rows": [
+   {
+    "key": "grossMargin",
+    "label": "Gross margin",
+    "definition": "Gross profit divided by revenue.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": 43.9,
+    "peers": {
+     "ADP": 46.4
+    },
+    "median": null,
+    "factId": "ratio.grossMargin"
+   },
+   {
+    "key": "operatingMargin",
+    "label": "Operating margin",
+    "definition": "Operating income divided by revenue.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": -23.8,
+    "peers": {
+     "ADP": null
+    },
+    "median": null,
+    "factId": "ratio.operatingMargin"
+   },
+   {
+    "key": "netMargin",
+    "label": "Net margin",
+    "definition": "Net income divided by revenue.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": -24.8,
+    "peers": {
+     "ADP": 20.1
+    },
+    "median": null,
+    "factId": "ratio.netMargin"
+   },
+   {
+    "key": "roe",
+    "label": "Return on equity (ROE)",
+    "definition": "Net income divided by average shareholders' equity.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": 72.2
+    },
+    "median": null,
+    "factId": "ratio.roe"
+   },
+   {
+    "key": "roic",
+    "label": "Return on invested capital (ROIC)",
+    "definition": "Operating income after tax, divided by equity plus debt minus cash and investments.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": null
+    },
+    "median": null,
+    "factId": "ratio.roic"
+   },
+   {
+    "key": "roa",
+    "label": "Return on assets (ROA)",
+    "definition": "Net income divided by average total assets.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": 7.6
+    },
+    "median": null,
+    "factId": "ratio.roa"
+   },
+   {
+    "key": "debtToEquity",
+    "label": "Debt to equity",
+    "definition": "Total debt divided by shareholders' equity.",
+    "unit": "x",
+    "betterHigh": false,
+    "own": null,
+    "peers": {
+     "ADP": 0.8232
+    },
+    "median": null,
+    "factId": "ratio.debtToEquity"
+   },
+   {
+    "key": "netDebtToEbitda",
+    "label": "Net debt to EBITDA",
+    "definition": "Debt minus cash and investments, divided by operating income plus depreciation and amortization. Negative means net cash.",
+    "unit": "x",
+    "betterHigh": false,
+    "own": null,
+    "peers": {
+     "ADP": null
+    },
+    "median": null,
+    "factId": "ratio.netDebtToEbitda"
+   },
+   {
+    "key": "currentRatio",
+    "label": "Current ratio",
+    "definition": "Current assets divided by current liabilities.",
+    "unit": "x",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": 1.0507
+    },
+    "median": null,
+    "factId": "ratio.currentRatio"
+   },
+   {
+    "key": "interestCoverage",
+    "label": "Interest coverage",
+    "definition": "Operating income divided by interest expense.",
+    "unit": "x",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": null
+    },
+    "median": null,
+    "factId": "ratio.interestCoverage"
+   },
+   {
+    "key": "pe",
+    "label": "Price to earnings (P/E)",
+    "definition": "Share price divided by diluted earnings per share, trailing twelve months.",
+    "unit": "x",
+    "betterHigh": false,
+    "own": null,
+    "peers": {
+     "ADP": 24.1
+    },
+    "median": null,
+    "factId": "ratio.pe"
+   },
+   {
+    "key": "evToEbitda",
+    "label": "EV to EBITDA",
+    "definition": "Market value plus debt minus cash, divided by EBITDA.",
+    "unit": "x",
+    "betterHigh": false,
+    "own": null,
+    "peers": {
+     "ADP": null
+    },
+    "median": null,
+    "factId": "ratio.evToEbitda"
+   },
+   {
+    "key": "priceToSales",
+    "label": "Price to sales",
+    "definition": "Market value divided by revenue, trailing twelve months.",
+    "unit": "x",
+    "betterHigh": false,
+    "own": null,
+    "peers": {
+     "ADP": 4.7605
+    },
+    "median": null,
+    "factId": "ratio.priceToSales"
+   },
+   {
+    "key": "fcfYield",
+    "label": "Free cash flow yield",
+    "definition": "Free cash flow divided by market value.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": null
+    },
+    "median": null,
+    "factId": "ratio.fcfYield"
+   },
+   {
+    "key": "dividendYield",
+    "label": "Dividend yield",
+    "definition": "Dividends paid over the last twelve months, divided by market value.",
+    "unit": "pct",
+    "betterHigh": true,
+    "own": null,
+    "peers": {
+     "ADP": 2.5
+    },
+    "median": null,
+    "factId": "ratio.dividendYield"
+   }
+  ]
+ },
+ "segments": null,
+ "earningsQuality": null,
+ "balanceSheet": {
+  "years": [
+   "Q2 2025"
+  ],
+  "ownsOwes": [
+   {
+    "year": "Q2 2025",
+    "assets": null,
+    "liabilities": null,
+    "equity": 5217000000
+   }
+  ],
+  "cashAndInvestments": null,
+  "totalDebt": null,
+  "maturities": [
+   {
+    "label": "Within 1 year",
+    "value": 2402000000,
+    "source": {
+     "form": "10-Q",
+     "filed": "2026-08-04",
+     "accession": "0001628280-26-052535",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+     "fy": 2026,
+     "period": "2026-06-30",
+     "statement": "Debt note",
+     "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths"
+    }
+   },
+   {
+    "label": "Year 2",
+    "value": 2867000000,
+    "source": {
+     "form": "10-Q",
+     "filed": "2026-08-04",
+     "accession": "0001628280-26-052535",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+     "fy": 2026,
+     "period": "2026-06-30",
+     "statement": "Debt note",
+     "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo"
+    }
+   },
+   {
+    "label": "Year 3",
+    "value": 3422000000,
+    "source": {
+     "form": "10-Q",
+     "filed": "2026-08-04",
+     "accession": "0001628280-26-052535",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+     "fy": 2026,
+     "period": "2026-06-30",
+     "statement": "Debt note",
+     "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree"
+    }
+   },
+   {
+    "label": "Year 4",
+    "value": 3597000000,
+    "source": {
+     "form": "10-Q",
+     "filed": "2026-08-04",
+     "accession": "0001628280-26-052535",
+     "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+     "fy": 2026,
+     "period": "2026-06-30",
+     "statement": "Debt note",
+     "concept": "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour"
+    }
+   }
+  ],
+  "goodwillIntangiblesPctAssets": null,
+  "workingCapital": null,
+  "leases": null,
+  "purchaseObligations": {
+   "id": "bs.purchaseObligations",
+   "label": "Unconditional purchase obligations",
+   "value": 27955000000,
+   "unit": "USD",
+   "display": "$28.0B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-08-04",
+    "accession": "0001628280-26-052535",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/0001628280-26-052535-index.htm",
+    "fy": 2026,
+    "period": "2026-06-30",
+    "concept": "us-gaap:UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount",
+    "statement": "Commitments note"
+   }
+  },
+  "shareCount": [
+   {
+    "year": "Q2 2025",
+    "shares": 2929000000
+   }
+  ],
+  "shareCountChangePct": null
+ },
+ "risk": {
+  "scorecard": [
+   {
+    "key": "market",
+    "label": "Market risk",
+    "level": "High",
+    "rule": "Worst of two reads on 5 years of daily prices. Annualised volatility: below 25% Low, 25% to 40% Medium, above 40% High. Largest fall from a peak: below 30% Low, 30% to 50% Medium, above 50% High.",
+    "inputs": "Volatility 87.4%, largest fall 48.8%, beta 3.10"
+   },
+   {
+    "key": "financial",
+    "label": "Financial risk",
+    "level": "Low",
+    "rule": "Net debt to EBITDA: net cash or below 1 Low, 1 to 3 Medium, above 3 High. A current ratio below 1 raises the level by one step.",
+    "inputs": "Net debt not computable"
+   },
+   {
+    "key": "business",
+    "label": "Business risk",
+    "level": "Low",
+    "rule": "From the concentration the company discloses. Any customer above 25% of revenue, or one region above 70%: High. Any customer above 10%, or one region above 50%: Medium. Otherwise, or nothing disclosed: Low.",
+    "inputs": "No customer above 10% disclosed"
+   },
+   {
+    "key": "legal",
+    "label": "Legal and regulatory risk",
+    "level": "Medium",
+    "rule": "From the legal proceedings section of the latest annual report. Matters the company itself calls material, or a regulator's decision or fine that is pending: High. Named pending cases without that language: Medium. None beyond routine matters: Low.",
+    "inputs": "12 named matters or regulators in the legal section"
+   }
+  ],
+  "factors": [
+   {
+    "title": "Orbital refueling involves technical complexities associated with cryogenic propellant transfer in microgravity, propellant settling.",
+    "line": "Orbital refueling involves technical complexities associated with cryogenic propellant transfer in microgravity, propellant settling, and boil-off management and is required...",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+   },
+   {
+    "title": "Any inability to deliver Starship to market as planned could constrain our participation in new or expanding addressable markets.",
+    "line": "Any inability to deliver Starship to market as planned could constrain our participation in new or expanding addressable markets, limit...",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+   },
+   {
+    "title": "There can be no assurance that we will be able to achieve our objectives.",
+    "line": "There can be no assurance that we will be able to achieve our objectives with respect to Starship within the...",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+   },
+   {
+    "title": "Any delays or difficulties in obtaining, maintaining or renewing required regulatory approvals and licenses required for our space-related activities.",
+    "line": "Any delays or difficulties in obtaining, maintaining or renewing required regulatory approvals and licenses required for our space-related activities, including...",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+   },
+   {
+    "title": "Our launch services are subject to extensive regulation in the United States.",
+    "line": "Our launch services are subject to extensive regulation in the United States and internationally. We must secure and maintain numerous...",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+   }
+  ],
+  "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+ },
+ "audit": {
+  "auditor": "PricewaterhouseCoopers LLP",
+  "location": "Los Angeles, California",
+  "since": 2012,
+  "yearsAsAuditor": 14,
+  "opinion": "Unqualified",
+  "icfrEffective": null,
+  "materialWeakness": false,
+  "cams": [],
+  "auditorChanges": [],
+  "restatements": [],
+  "reportDate": "2026-03-29",
+  "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm"
+ },
+ "simulation": {
+  "basedOn": {
+   "from": "2026-06-12",
+   "to": "2026-09-25",
+   "days": 72,
+   "source": "Yahoo Finance daily closes"
+  },
+  "horizons": [
+   {
+    "key": "1m",
+    "label": "1 month",
+    "stats": {
+     "days": 21,
+     "paths": 5000,
+     "pEndHigher": 0.4542,
+     "medianPct": -2.92,
+     "p5Pct": -35.15,
+     "p95Pct": 47.34,
+     "pDrop20": 0.5112,
+     "typicalWorstDrawdownPct": 20.27
+    },
+    "mc": {
+     "summary": {
+      "paths": 5000,
+      "tradesPerPath": 21,
+      "expectancyPct": 0.5163,
+      "medianPathReturnPct": -2.92,
+      "bestPathReturnPct": 135.33,
+      "worstPathReturnPct": -61.98,
+      "profitablePathShare": 0.4542,
+      "maxDrawdownPct": 40.17,
+      "sharpe": 0,
+      "winRatePct": 0,
+      "buyHoldReturnPct": 0,
+      "exposureShare": 1,
+      "benchmarkAdjustedPct": 0,
+      "sampleTrades": 72
+     },
+     "endpoints": [
+      -61.98,
+      -49.19,
+      -47.95,
+      -46.63,
+      -45.07,
+      -43.71,
+      -42.4,
+      -41.63,
+      -41.33,
+      -40.6,
+      -40.19,
+      -39.34,
+      -38.85,
+      -38.55,
+      -38.25,
+      -37.65,
+      -37.34,
+      -36.95,
+      -36.66,
+      -36.1,
+      -35.53,
+      -35.15,
+      -34.87,
+      -34.53,
+      -34.04,
+      -33.75,
+      -33.49,
+      -33.21,
+      -32.94,
+      -32.72,
+      -32.56,
+      -32.3,
+      -32.04,
+      -31.85,
+      -31.62,
+      -31.31,
+      -31.1,
+      -30.85,
+      -30.58,
+      -30.38,
+      -30.17,
+      -29.65,
+      -29.37,
+      -29.19,
+      -28.95,
+      -28.78,
+      -28.55,
+      -28.41,
+      -28.06,
+      -27.77,
+      -27.43,
+      -27.25,
+      -27.02,
+      -26.64,
+      -26.43,
+      -26.21,
+      -25.99,
+      -25.77,
+      -25.56,
+      -25.32,
+      -25.17,
+      -24.99,
+      -24.83,
+      -24.58,
+      -24.42,
+      -24.19,
+      -23.99,
+      -23.84,
+      -23.73,
+      -23.53,
+      -23.3,
+      -23.16,
+      -22.93,
+      -22.69,
+      -22.57,
+      -22.33,
+      -22.19,
+      -22.09,
+      -21.96,
+      -21.86,
+      -21.69,
+      -21.47,
+      -21.33,
+      -21.2,
+      -21.08,
+      -20.91,
+      -20.7,
+      -20.54,
+      -20.31,
+      -20.17,
+      -20.01,
+      -19.91,
+      -19.68,
+      -19.56,
+      -19.43,
+      -19.28,
+      -19.05,
+      -18.95,
+      -18.79,
+      -18.65,
+      -18.54,
+      -18.41,
+      -18.16,
+      -18.04,
+      -17.85,
+      -17.65,
+      -17.5,
+      -17.38,
+      -17.23,
+      -17,
+      -16.93,
+      -16.77,
+      -16.62,
+      -16.49,
+      -16.36,
+      -16.29,
+      -16.24,
+      -16.14,
+      -15.98,
+      -15.84,
+      -15.78,
+      -15.61,
+      -15.48,
+      -15.27,
+      -15.14,
+      -14.99,
+      -14.86,
+      -14.69,
+      -14.59,
+      -14.41,
+      -14.21,
+      -14.08,
+      -13.85,
+      -13.68,
+      -13.58,
+      -13.49,
+      -13.29,
+      -13.19,
+      -13.04,
+      -12.9,
+      -12.77,
+      -12.6,
+      -12.48,
+      -12.42,
+      -12.31,
+      -12.13,
+      -11.96,
+      -11.73,
+      -11.64,
+      -11.47,
+      -11.34,
+      -11.24,
+      -11.02,
+      -10.81,
+      -10.72,
+      -10.57,
+      -10.46,
+      -10.39,
+      -10.23,
+      -10.03,
+      -9.85,
+      -9.7,
+      -9.6,
+      -9.5,
+      -9.38,
+      -9.21,
+      -9.05,
+      -8.94,
+      -8.79,
+      -8.64,
+      -8.48,
+      -8.39,
+      -8.23,
+      -8.07,
+      -7.94,
+      -7.8,
+      -7.69,
+      -7.52,
+      -7.36,
+      -7.22,
+      -7.07,
+      -6.85,
+      -6.68,
+      -6.58,
+      -6.48,
+      -6.32,
+      -6.2,
+      -6.12,
+      -5.96,
+      -5.83,
+      -5.69,
+      -5.53,
+      -5.42,
+      -5.25,
+      -5.14,
+      -5.01,
+      -4.89,
+      -4.76,
+      -4.64,
+      -4.55,
+      -4.4,
+      -4.33,
+      -4.17,
+      -4.07,
+      -3.97,
+      -3.81,
+      -3.57,
+      -3.41,
+      -3.27,
+      -3.15,
+      -2.92,
+      -2.87,
+      -2.72,
+      -2.55,
+      -2.35,
+      -2.24,
+      -2.02,
+      -1.88,
+      -1.74,
+      -1.64,
+      -1.53,
+      -1.42,
+      -1.21,
+      -1.04,
+      -0.88,
+      -0.71,
+      -0.49,
+      -0.41,
+      -0.28,
+      -0.06,
+      0.19,
+      0.32,
+      0.48,
+      0.62,
+      0.75,
+      0.85,
+      0.98,
+      1.08,
+      1.27,
+      1.41,
+      1.57,
+      1.83,
+      1.99,
+      2.09,
+      2.31,
+      2.47,
+      2.68,
+      2.86,
+      3.04,
+      3.16,
+      3.32,
+      3.46,
+      3.62,
+      3.76,
+      3.99,
+      4.2,
+      4.33,
+      4.48,
+      4.57,
+      4.71,
+      4.86,
+      5.13,
+      5.28,
+      5.4,
+      5.52,
+      5.67,
+      5.85,
+      6.02,
+      6.13,
+      6.41,
+      6.58,
+      6.7,
+      6.87,
+      7.07,
+      7.23,
+      7.39,
+      7.58,
+      7.7,
+      7.84,
+      8.04,
+      8.29,
+      8.45,
+      8.59,
+      8.76,
+      8.88,
+      9.13,
+      9.35,
+      9.64,
+      9.86,
+      10.07,
+      10.22,
+      10.37,
+      10.71,
+      10.88,
+      11.13,
+      11.31,
+      11.62,
+      11.81,
+      11.97,
+      12.13,
+      12.29,
+      12.55,
+      12.84,
+      13.06,
+      13.35,
+      13.65,
+      13.83,
+      14.05,
+      14.32,
+      14.52,
+      14.74,
+      14.93,
+      15.09,
+      15.4,
+      15.58,
+      15.8,
+      16.09,
+      16.28,
+      16.46,
+      16.67,
+      16.83,
+      17.04,
+      17.27,
+      17.42,
+      17.56,
+      17.81,
+      18,
+      18.2,
+      18.46,
+      18.77,
+      19.13,
+      19.48,
+      19.71,
+      20.05,
+      20.28,
+      20.45,
+      20.63,
+      20.98,
+      21.24,
+      21.62,
+      21.82,
+      22.13,
+      22.32,
+      22.57,
+      22.78,
+      23.09,
+      23.32,
+      23.52,
+      23.74,
+      24.05,
+      24.44,
+      24.83,
+      25.09,
+      25.38,
+      25.72,
+      26.17,
+      26.46,
+      26.71,
+      27.21,
+      27.54,
+      27.85,
+      28.14,
+      28.52,
+      28.72,
+      29.01,
+      29.51,
+      29.81,
+      30.26,
+      30.55,
+      30.86,
+      31.02,
+      31.55,
+      31.88,
+      32.4,
+      33.1,
+      33.64,
+      33.88,
+      34.47,
+      34.72,
+      35.05,
+      35.52,
+      35.83,
+      36.23,
+      36.55,
+      37.12,
+      37.46,
+      37.94,
+      38.44,
+      39.15,
+      39.56,
+      40.52,
+      41.45,
+      41.92,
+      42.48,
+      43.34,
+      44.23,
+      44.81,
+      45.31,
+      46.39,
+      47.34,
+      48.14,
+      49.07,
+      50.11,
+      51.21,
+      52.37,
+      53.22,
+      54.65,
+      55.36,
+      56.3,
+      57.61,
+      59.12,
+      60.99,
+      63.55,
+      65.79,
+      67.46,
+      69.76,
+      74.94,
+      77.76,
+      85.33,
+      98.65
+     ],
+     "bins": [
+      {
+       "from": -47.610779554149765,
+       "to": -43.39776264158209,
+       "count": 62
+      },
+      {
+       "from": -43.39776264158209,
+       "to": -39.184745729014416,
+       "count": 70
+      },
+      {
+       "from": -39.184745729014416,
+       "to": -34.97172881644674,
+       "count": 129
+      },
+      {
+       "from": -34.97172881644674,
+       "to": -30.758711903879064,
+       "count": 184
+      },
+      {
+       "from": -30.758711903879064,
+       "to": -26.54569499131139,
+       "count": 192
+      },
+      {
+       "from": -26.54569499131139,
+       "to": -22.33267807874371,
+       "count": 255
+      },
+      {
+       "from": -22.33267807874371,
+       "to": -18.119661166176037,
+       "count": 327
+      },
+      {
+       "from": -18.119661166176037,
+       "to": -13.906644253608363,
+       "count": 349
+      },
+      {
+       "from": -13.906644253608363,
+       "to": -9.693627341040688,
+       "count": 350
+      },
+      {
+       "from": -9.693627341040688,
+       "to": -5.480610428473014,
+       "count": 363
+      },
+      {
+       "from": -5.480610428473014,
+       "to": -1.2675935159053395,
+       "count": 358
+      },
+      {
+       "from": -1.2675935159053395,
+       "to": 2.945423396662342,
+       "count": 309
+      },
+      {
+       "from": 2.945423396662342,
+       "to": 7.158440309230016,
+       "count": 310
+      },
+      {
+       "from": 7.158440309230016,
+       "to": 11.37145722179769,
+       "count": 255
+      },
+      {
+       "from": 11.37145722179769,
+       "to": 15.584474134365365,
+       "count": 226
+      },
+      {
+       "from": 15.584474134365365,
+       "to": 19.79749104693304,
+       "count": 219
+      },
+      {
+       "from": 19.79749104693304,
+       "to": 24.01050795950072,
+       "count": 194
+      },
+      {
+       "from": 24.01050795950072,
+       "to": 28.22352487206839,
+       "count": 147
+      },
+      {
+       "from": 28.22352487206839,
+       "to": 32.43654178463607,
+       "count": 143
+      },
+      {
+       "from": 32.43654178463607,
+       "to": 36.64955869720374,
+       "count": 120
+      },
+      {
+       "from": 36.64955869720374,
+       "to": 40.86257560977142,
+       "count": 87
+      },
+      {
+       "from": 40.86257560977142,
+       "to": 45.075592522339086,
+       "count": 72
+      },
+      {
+       "from": 45.075592522339086,
+       "to": 49.28860943490677,
+       "count": 56
+      },
+      {
+       "from": 49.28860943490677,
+       "to": 53.50162634747445,
+       "count": 46
+      },
+      {
+       "from": 53.50162634747445,
+       "to": 57.714643260042116,
+       "count": 49
+      },
+      {
+       "from": 57.714643260042116,
+       "to": 61.9276601726098,
+       "count": 28
+      },
+      {
+       "from": 61.9276601726098,
+       "to": 66.14067708517746,
+       "count": 20
+      },
+      {
+       "from": 66.14067708517746,
+       "to": 70.35369399774515,
+       "count": 22
+      },
+      {
+       "from": 70.35369399774515,
+       "to": 74.56671091031282,
+       "count": 10
+      },
+      {
+       "from": 74.56671091031282,
+       "to": 78.77972782288049,
+       "count": 17
+      },
+      {
+       "from": 78.77972782288049,
+       "to": 82.99274473544818,
+       "count": 31
+      }
+     ],
+     "domain": [
+      -47.610779554149765,
+      82.99274473544817
+     ],
+     "ridges": [
+      {
+       "session": 3,
+       "density": [
+        0,
+        0,
+        0,
+        0,
+        0.0004,
+        0.0019,
+        0.0058,
+        0.0135,
+        0.0296,
+        0.0589,
+        0.1013,
+        0.1594,
+        0.2484,
+        0.3978,
+        0.6257,
+        0.8656,
+        1,
+        0.9919,
+        0.8672,
+        0.6754,
+        0.4859,
+        0.3512,
+        0.2618,
+        0.1883,
+        0.1382,
+        0.0978,
+        0.0612,
+        0.0362,
+        0.0162,
+        0.0054,
+        0.0039,
+        0.0035,
+        0.0023,
+        0.0027,
+        0.0019,
+        0.0008,
+        0.0008,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "tailMass": 0.1138
+      },
+      {
+       "session": 5,
+       "density": [
+        0,
+        0,
+        0,
+        0.0015,
+        0.007,
+        0.0155,
+        0.029,
+        0.0585,
+        0.1054,
+        0.1569,
+        0.2244,
+        0.3293,
+        0.4873,
+        0.6547,
+        0.7876,
+        0.925,
+        1,
+        0.958,
+        0.8691,
+        0.7506,
+        0.6162,
+        0.4953,
+        0.3838,
+        0.2984,
+        0.2414,
+        0.1734,
+        0.1144,
+        0.0875,
+        0.0665,
+        0.0495,
+        0.037,
+        0.0235,
+        0.014,
+        0.0115,
+        0.009,
+        0.0035,
+        0.0015,
+        0.002,
+        0.0015,
+        0.0015,
+        0.0015,
+        0.001,
+        0.001,
+        0.0005,
+        0,
+        0,
+        0,
+        0
+       ],
+       "tailMass": 0.2
+      },
+      {
+       "session": 8,
+       "density": [
+        0,
+        0.0013,
+        0.0059,
+        0.0183,
+        0.0379,
+        0.0647,
+        0.1137,
+        0.1778,
+        0.2549,
+        0.3686,
+        0.4922,
+        0.6,
+        0.715,
+        0.8163,
+        0.8902,
+        0.9588,
+        1,
+        0.9712,
+        0.8765,
+        0.7719,
+        0.7013,
+        0.6373,
+        0.5301,
+        0.4216,
+        0.3471,
+        0.2915,
+        0.2307,
+        0.166,
+        0.1307,
+        0.1105,
+        0.1007,
+        0.0869,
+        0.0516,
+        0.0248,
+        0.019,
+        0.0196,
+        0.019,
+        0.0144,
+        0.0098,
+        0.0092,
+        0.0059,
+        0.0013,
+        0.0007,
+        0.002,
+        0.002,
+        0.0013,
+        0.0013,
+        0.0007
+       ],
+       "tailMass": 0.3162
+      },
+      {
+       "session": 11,
+       "density": [
+        0.0031,
+        0.0093,
+        0.0295,
+        0.0651,
+        0.1078,
+        0.1589,
+        0.2264,
+        0.3202,
+        0.4333,
+        0.538,
+        0.6512,
+        0.755,
+        0.8186,
+        0.8783,
+        0.9302,
+        0.9814,
+        1,
+        0.9589,
+        0.9155,
+        0.838,
+        0.7171,
+        0.6473,
+        0.6155,
+        0.5341,
+        0.4186,
+        0.338,
+        0.2992,
+        0.2581,
+        0.2008,
+        0.1659,
+        0.1465,
+        0.1085,
+        0.0853,
+        0.0829,
+        0.0682,
+        0.0395,
+        0.0248,
+        0.031,
+        0.0256,
+        0.0116,
+        0.0116,
+        0.0163,
+        0.014,
+        0.0078,
+        0.0039,
+        0.0023,
+        0.0031,
+        0.0047
+       ],
+       "tailMass": 0.3984
+      },
+      {
+       "session": 13,
+       "density": [
+        0.0101,
+        0.0251,
+        0.057,
+        0.1065,
+        0.1676,
+        0.2355,
+        0.3034,
+        0.3822,
+        0.4878,
+        0.5842,
+        0.6647,
+        0.8131,
+        0.969,
+        1,
+        0.9497,
+        0.9153,
+        0.9371,
+        0.9556,
+        0.8877,
+        0.7972,
+        0.7427,
+        0.6706,
+        0.6018,
+        0.5583,
+        0.4837,
+        0.3873,
+        0.3236,
+        0.2883,
+        0.2548,
+        0.2137,
+        0.166,
+        0.1391,
+        0.1316,
+        0.114,
+        0.0914,
+        0.0754,
+        0.0553,
+        0.0427,
+        0.0402,
+        0.0293,
+        0.0201,
+        0.0193,
+        0.0184,
+        0.0101,
+        0.005,
+        0.0075,
+        0.0092,
+        0.0092
+       ],
+       "tailMass": 0.4334
+      },
+      {
+       "session": 16,
+       "density": [
+        0.0459,
+        0.074,
+        0.1078,
+        0.1706,
+        0.2596,
+        0.3486,
+        0.4274,
+        0.4986,
+        0.5754,
+        0.701,
+        0.8154,
+        0.8585,
+        0.9297,
+        1,
+        0.9888,
+        0.9513,
+        0.9053,
+        0.8688,
+        0.8604,
+        0.8454,
+        0.8079,
+        0.7132,
+        0.6195,
+        0.5839,
+        0.5258,
+        0.4602,
+        0.4208,
+        0.3702,
+        0.3065,
+        0.2559,
+        0.2296,
+        0.2015,
+        0.1734,
+        0.164,
+        0.1471,
+        0.1078,
+        0.0712,
+        0.0534,
+        0.0459,
+        0.0366,
+        0.03,
+        0.0337,
+        0.0337,
+        0.0234,
+        0.0141,
+        0.0103,
+        0.0187,
+        0.0262
+       ],
+       "tailMass": 0.4912
+      },
+      {
+       "session": 18,
+       "density": [
+        0.0787,
+        0.116,
+        0.1463,
+        0.22,
+        0.3158,
+        0.4067,
+        0.5066,
+        0.6004,
+        0.671,
+        0.7629,
+        0.8547,
+        0.8971,
+        0.9495,
+        1,
+        0.995,
+        0.9657,
+        0.9334,
+        0.9233,
+        0.9324,
+        0.885,
+        0.7921,
+        0.7084,
+        0.6155,
+        0.552,
+        0.5499,
+        0.5267,
+        0.449,
+        0.3956,
+        0.3683,
+        0.3189,
+        0.2674,
+        0.226,
+        0.1948,
+        0.1746,
+        0.1544,
+        0.1322,
+        0.106,
+        0.0918,
+        0.0807,
+        0.0505,
+        0.0333,
+        0.0343,
+        0.0333,
+        0.0293,
+        0.0232,
+        0.0151,
+        0.0232,
+        0.0343
+       ],
+       "tailMass": 0.5166
+      },
+      {
+       "session": 21,
+       "density": [
+        0.1316,
+        0.1621,
+        0.2232,
+        0.3116,
+        0.3874,
+        0.4926,
+        0.5442,
+        0.5874,
+        0.7063,
+        0.8095,
+        0.8916,
+        0.9695,
+        0.9684,
+        0.9305,
+        0.9642,
+        1,
+        0.9442,
+        0.8674,
+        0.8368,
+        0.8179,
+        0.7516,
+        0.6579,
+        0.6189,
+        0.6063,
+        0.5505,
+        0.5,
+        0.4579,
+        0.42,
+        0.3842,
+        0.3347,
+        0.3095,
+        0.2705,
+        0.2158,
+        0.1811,
+        0.1568,
+        0.1432,
+        0.1379,
+        0.1263,
+        0.1021,
+        0.08,
+        0.0663,
+        0.0642,
+        0.0568,
+        0.0358,
+        0.0305,
+        0.0368,
+        0.0579,
+        0.0705
+       ],
+       "tailMass": 0.5562
+      }
+     ],
+     "tails": {
+      "pLoss15": 0.2976,
+      "pGain15": 0.2586,
+      "tailMass": 0.5562,
+      "impliedVolPct": 25.49
+     }
+    }
+   },
+   {
+    "key": "3m",
+    "label": "3 months",
+    "stats": {
+     "days": 63,
+     "paths": 5000,
+     "pEndHigher": 0.4264,
+     "medianPct": -7.29,
+     "p5Pct": -54.35,
+     "p95Pct": 89.46,
+     "pDrop20": 0.922,
+     "typicalWorstDrawdownPct": 36.55
+    },
+    "mc": {
+     "summary": {
+      "paths": 5000,
+      "tradesPerPath": 63,
+      "expectancyPct": 1.8833,
+      "medianPathReturnPct": -7.29,
+      "bestPathReturnPct": 438.93,
+      "worstPathReturnPct": -83.49,
+      "profitablePathShare": 0.4264,
+      "maxDrawdownPct": 61.11,
+      "sharpe": 0,
+      "winRatePct": 0,
+      "buyHoldReturnPct": 0,
+      "exposureShare": 1,
+      "benchmarkAdjustedPct": 0,
+      "sampleTrades": 72
+     },
+     "endpoints": [
+      -83.49,
+      -72.16,
+      -69.05,
+      -68.1,
+      -66.86,
+      -65.77,
+      -64.11,
+      -63.28,
+      -62.72,
+      -61.9,
+      -60.96,
+      -60.2,
+      -59.39,
+      -58.64,
+      -58.2,
+      -57.6,
+      -56.94,
+      -56.34,
+      -55.81,
+      -55.2,
+      -54.73,
+      -54.35,
+      -53.92,
+      -53.29,
+      -52.63,
+      -52.03,
+      -51.69,
+      -51.39,
+      -50.95,
+      -50.68,
+      -50.36,
+      -50.07,
+      -49.82,
+      -49.51,
+      -49.07,
+      -48.69,
+      -48.23,
+      -47.86,
+      -47.62,
+      -47.21,
+      -46.73,
+      -46.54,
+      -46.01,
+      -45.76,
+      -45.59,
+      -45.35,
+      -44.96,
+      -44.6,
+      -44.37,
+      -44.05,
+      -43.79,
+      -43.55,
+      -43.28,
+      -43.03,
+      -42.62,
+      -42.29,
+      -41.96,
+      -41.6,
+      -41.26,
+      -41.03,
+      -40.71,
+      -40.44,
+      -40.1,
+      -39.86,
+      -39.57,
+      -39.28,
+      -39.07,
+      -38.83,
+      -38.64,
+      -38.34,
+      -38.22,
+      -38.01,
+      -37.75,
+      -37.49,
+      -37.33,
+      -37.08,
+      -36.81,
+      -36.52,
+      -36.13,
+      -35.94,
+      -35.83,
+      -35.59,
+      -35.22,
+      -35.01,
+      -34.85,
+      -34.61,
+      -34.4,
+      -34.2,
+      -33.99,
+      -33.85,
+      -33.66,
+      -33.5,
+      -33.34,
+      -33.18,
+      -32.98,
+      -32.79,
+      -32.65,
+      -32.48,
+      -32.29,
+      -32.11,
+      -31.79,
+      -31.65,
+      -31.51,
+      -31.3,
+      -31.09,
+      -30.76,
+      -30.64,
+      -30.42,
+      -30,
+      -29.68,
+      -29.41,
+      -29.21,
+      -28.9,
+      -28.68,
+      -28.5,
+      -28.29,
+      -28.07,
+      -27.84,
+      -27.47,
+      -27.27,
+      -27.11,
+      -26.89,
+      -26.61,
+      -26.39,
+      -26.25,
+      -26.04,
+      -25.8,
+      -25.58,
+      -25.43,
+      -25.23,
+      -24.99,
+      -24.76,
+      -24.56,
+      -24.37,
+      -24.15,
+      -23.99,
+      -23.78,
+      -23.64,
+      -23.31,
+      -23.05,
+      -22.87,
+      -22.59,
+      -22.33,
+      -22,
+      -21.62,
+      -21.43,
+      -21.21,
+      -20.94,
+      -20.7,
+      -20.5,
+      -20.29,
+      -20.11,
+      -19.88,
+      -19.74,
+      -19.57,
+      -19.36,
+      -19.16,
+      -18.91,
+      -18.7,
+      -18.53,
+      -18.33,
+      -18.13,
+      -17.95,
+      -17.66,
+      -17.44,
+      -17.26,
+      -17.06,
+      -16.89,
+      -16.69,
+      -16.57,
+      -16.35,
+      -15.82,
+      -15.58,
+      -15.44,
+      -15.28,
+      -15.14,
+      -14.94,
+      -14.77,
+      -14.43,
+      -14.24,
+      -13.91,
+      -13.71,
+      -13.52,
+      -13.36,
+      -13,
+      -12.75,
+      -12.54,
+      -12.38,
+      -12.17,
+      -12.11,
+      -11.93,
+      -11.55,
+      -11.35,
+      -11.12,
+      -10.96,
+      -10.77,
+      -10.46,
+      -10.29,
+      -10.03,
+      -9.78,
+      -9.6,
+      -9.34,
+      -9.05,
+      -8.78,
+      -8.64,
+      -8.44,
+      -8.27,
+      -8,
+      -7.84,
+      -7.48,
+      -7.29,
+      -7.16,
+      -6.89,
+      -6.67,
+      -6.57,
+      -6.31,
+      -6.11,
+      -5.9,
+      -5.73,
+      -5.33,
+      -5.03,
+      -4.8,
+      -4.55,
+      -4.39,
+      -4.19,
+      -3.97,
+      -3.72,
+      -3.39,
+      -3.09,
+      -2.94,
+      -2.78,
+      -2.54,
+      -2.41,
+      -2.14,
+      -1.92,
+      -1.57,
+      -1.21,
+      -0.95,
+      -0.65,
+      -0.43,
+      -0.25,
+      0.08,
+      0.23,
+      0.45,
+      0.58,
+      0.85,
+      1,
+      1.32,
+      1.72,
+      1.93,
+      2.12,
+      2.44,
+      2.68,
+      3.05,
+      3.33,
+      3.62,
+      3.94,
+      4.24,
+      4.59,
+      4.79,
+      5.13,
+      5.39,
+      5.74,
+      5.99,
+      6.24,
+      6.63,
+      6.98,
+      7.34,
+      7.71,
+      7.91,
+      8.18,
+      8.44,
+      8.67,
+      8.93,
+      9.23,
+      9.52,
+      9.76,
+      10.12,
+      10.39,
+      10.8,
+      11.04,
+      11.26,
+      11.68,
+      12.19,
+      12.53,
+      12.78,
+      13.05,
+      13.43,
+      13.77,
+      14.13,
+      14.56,
+      14.94,
+      15.41,
+      15.68,
+      15.95,
+      16.26,
+      16.61,
+      16.95,
+      17.2,
+      17.51,
+      18,
+      18.24,
+      18.57,
+      18.92,
+      19.22,
+      19.68,
+      19.87,
+      20.18,
+      20.75,
+      21.19,
+      21.6,
+      22.11,
+      22.37,
+      22.76,
+      23.06,
+      23.34,
+      23.87,
+      24.24,
+      24.63,
+      25.03,
+      25.35,
+      25.82,
+      26.47,
+      26.93,
+      27.32,
+      27.73,
+      28.16,
+      28.86,
+      29.62,
+      29.93,
+      30.12,
+      30.52,
+      30.98,
+      31.6,
+      32.09,
+      32.74,
+      32.9,
+      33.2,
+      33.66,
+      34.29,
+      34.93,
+      35.43,
+      36.1,
+      36.47,
+      36.89,
+      37.53,
+      38.07,
+      38.59,
+      38.93,
+      39.67,
+      40.18,
+      40.76,
+      41.35,
+      42.25,
+      42.96,
+      43.74,
+      44.56,
+      45.09,
+      45.98,
+      46.46,
+      46.9,
+      47.42,
+      48.07,
+      49.01,
+      49.59,
+      50.16,
+      50.9,
+      51.71,
+      52.33,
+      53.19,
+      53.88,
+      54.86,
+      55.65,
+      56.39,
+      57.27,
+      58.17,
+      58.97,
+      59.95,
+      60.7,
+      61.96,
+      62.8,
+      63.76,
+      64.67,
+      65.68,
+      67.03,
+      68.61,
+      69.77,
+      70.83,
+      72.2,
+      73.28,
+      75.24,
+      76.87,
+      78.32,
+      79.3,
+      80.82,
+      81.57,
+      83.06,
+      86.03,
+      88.04,
+      89.46,
+      90.38,
+      91.97,
+      95.15,
+      98.01,
+      100.28,
+      102.28,
+      105.61,
+      108.49,
+      112.25,
+      116.72,
+      120.9,
+      123.44,
+      128.97,
+      133.93,
+      139.3,
+      146.31,
+      158.34,
+      180.25,
+      191,
+      222.88
+     ],
+     "bins": [
+      {
+       "from": -68.9170832674184,
+       "to": -60.54585193495211,
+       "count": 128
+      },
+      {
+       "from": -60.54585193495211,
+       "to": -52.17462060248581,
+       "count": 166
+      },
+      {
+       "from": -52.17462060248581,
+       "to": -43.80338927001951,
+       "count": 301
+      },
+      {
+       "from": -43.80338927001951,
+       "to": -35.432157937553214,
+       "count": 375
+      },
+      {
+       "from": -35.432157937553214,
+       "to": -27.06092660508692,
+       "count": 462
+      },
+      {
+       "from": -27.06092660508692,
+       "to": -18.689695272620618,
+       "count": 449
+      },
+      {
+       "from": -18.689695272620618,
+       "to": -10.318463940154317,
+       "count": 459
+      },
+      {
+       "from": -10.318463940154317,
+       "to": -1.9472326076880222,
+       "count": 444
+      },
+      {
+       "from": -1.9472326076880222,
+       "to": 6.423998724778272,
+       "count": 364
+      },
+      {
+       "from": 6.423998724778272,
+       "to": 14.795230057244567,
+       "count": 313
+      },
+      {
+       "from": 14.795230057244567,
+       "to": 23.166461389710875,
+       "count": 284
+      },
+      {
+       "from": 23.166461389710875,
+       "to": 31.53769272217717,
+       "count": 218
+      },
+      {
+       "from": 31.53769272217717,
+       "to": 39.908924054643464,
+       "count": 198
+      },
+      {
+       "from": 39.908924054643464,
+       "to": 48.28015538710977,
+       "count": 151
+      },
+      {
+       "from": 48.28015538710977,
+       "to": 56.65138671957607,
+       "count": 133
+      },
+      {
+       "from": 56.65138671957607,
+       "to": 65.02261805204236,
+       "count": 108
+      },
+      {
+       "from": 65.02261805204236,
+       "to": 73.39384938450866,
+       "count": 78
+      },
+      {
+       "from": 73.39384938450866,
+       "to": 81.76508071697495,
+       "count": 72
+      },
+      {
+       "from": 81.76508071697495,
+       "to": 90.13631204944124,
+       "count": 57
+      },
+      {
+       "from": 90.13631204944124,
+       "to": 98.50754338190754,
+       "count": 38
+      },
+      {
+       "from": 98.50754338190754,
+       "to": 106.87877471437386,
+       "count": 42
+      },
+      {
+       "from": 106.87877471437386,
+       "to": 115.25000604684016,
+       "count": 26
+      },
+      {
+       "from": 115.25000604684016,
+       "to": 123.62123737930645,
+       "count": 28
+      },
+      {
+       "from": 123.62123737930645,
+       "to": 131.99246871177274,
+       "count": 18
+      },
+      {
+       "from": 131.99246871177274,
+       "to": 140.36370004423904,
+       "count": 19
+      },
+      {
+       "from": 140.36370004423904,
+       "to": 148.73493137670533,
+       "count": 14
+      },
+      {
+       "from": 148.73493137670533,
+       "to": 157.10616270917163,
+       "count": 6
+      },
+      {
+       "from": 157.10616270917163,
+       "to": 165.47739404163795,
+       "count": 4
+      },
+      {
+       "from": 165.47739404163795,
+       "to": 173.84862537410424,
+       "count": 4
+      },
+      {
+       "from": 173.84862537410424,
+       "to": 182.21985670657054,
+       "count": 8
+      },
+      {
+       "from": 182.21985670657054,
+       "to": 190.5910880390368,
+       "count": 33
+      }
+     ],
+     "domain": [
+      -68.9170832674184,
+      190.59108803903678
+     ],
+     "ridges": [
+      {
+       "session": 8,
+       "density": [
+        0,
+        0,
+        0,
+        0.0004,
+        0.0042,
+        0.0166,
+        0.0567,
+        0.1575,
+        0.3362,
+        0.574,
+        0.8132,
+        0.9722,
+        1,
+        0.9147,
+        0.741,
+        0.5292,
+        0.3562,
+        0.2329,
+        0.1424,
+        0.0803,
+        0.0469,
+        0.03,
+        0.0155,
+        0.0092,
+        0.0074,
+        0.0039,
+        0.0018,
+        0.0018,
+        0.0014,
+        0.0004,
+        0,
+        0.0004,
+        0.0007,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "tailMass": 0.3092
+      },
+      {
+       "session": 16,
+       "density": [
+        0,
+        0.001,
+        0.0083,
+        0.0221,
+        0.0658,
+        0.1605,
+        0.2823,
+        0.4497,
+        0.649,
+        0.8282,
+        0.9607,
+        1,
+        0.9686,
+        0.9038,
+        0.8105,
+        0.6775,
+        0.5223,
+        0.4075,
+        0.3206,
+        0.2337,
+        0.1654,
+        0.1178,
+        0.0746,
+        0.0515,
+        0.0437,
+        0.029,
+        0.0191,
+        0.0162,
+        0.0108,
+        0.0054,
+        0.0039,
+        0.0029,
+        0.002,
+        0.002,
+        0.0015,
+        0.0005,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "tailMass": 0.4774
+      },
+      {
+       "session": 24,
+       "density": [
+        0.004,
+        0.0102,
+        0.0324,
+        0.0971,
+        0.1885,
+        0.2919,
+        0.4497,
+        0.6474,
+        0.8319,
+        0.9642,
+        1,
+        0.9597,
+        0.8955,
+        0.8416,
+        0.7905,
+        0.6899,
+        0.5486,
+        0.4327,
+        0.3657,
+        0.314,
+        0.2402,
+        0.1681,
+        0.1317,
+        0.1096,
+        0.0869,
+        0.0716,
+        0.0517,
+        0.0324,
+        0.0239,
+        0.0182,
+        0.0153,
+        0.0148,
+        0.0114,
+        0.0068,
+        0.0062,
+        0.0045,
+        0.0023,
+        0.0023,
+        0.0011,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.0006,
+        0.0011,
+        0.0006,
+        0
+       ],
+       "tailMass": 0.5644
+      },
+      {
+       "session": 32,
+       "density": [
+        0.0154,
+        0.0432,
+        0.0937,
+        0.1689,
+        0.2818,
+        0.4285,
+        0.5986,
+        0.7534,
+        0.8644,
+        0.9692,
+        1,
+        0.9377,
+        0.8662,
+        0.7848,
+        0.6979,
+        0.6202,
+        0.5549,
+        0.5092,
+        0.4303,
+        0.3194,
+        0.2602,
+        0.2318,
+        0.1856,
+        0.1424,
+        0.111,
+        0.0863,
+        0.0752,
+        0.0629,
+        0.0432,
+        0.0333,
+        0.0308,
+        0.0253,
+        0.0185,
+        0.0148,
+        0.0117,
+        0.0086,
+        0.008,
+        0.0092,
+        0.0074,
+        0.0037,
+        0.0031,
+        0.0031,
+        0.0025,
+        0.0025,
+        0.0018,
+        0.0012,
+        0.0018,
+        0.0025
+       ],
+       "tailMass": 0.622
+      },
+      {
+       "session": 39,
+       "density": [
+        0.0312,
+        0.0836,
+        0.1632,
+        0.276,
+        0.4094,
+        0.5255,
+        0.6457,
+        0.789,
+        0.9277,
+        1,
+        0.9801,
+        0.9171,
+        0.8388,
+        0.7777,
+        0.7226,
+        0.6556,
+        0.572,
+        0.4864,
+        0.4293,
+        0.3749,
+        0.3125,
+        0.2515,
+        0.1931,
+        0.1413,
+        0.1148,
+        0.1035,
+        0.0836,
+        0.0743,
+        0.073,
+        0.0577,
+        0.0405,
+        0.0365,
+        0.0338,
+        0.0226,
+        0.0173,
+        0.0179,
+        0.0159,
+        0.0113,
+        0.0073,
+        0.0086,
+        0.0093,
+        0.006,
+        0.004,
+        0.0033,
+        0.0013,
+        0.0007,
+        0.0053,
+        0.0086
+       ],
+       "tailMass": 0.6524
+      },
+      {
+       "session": 47,
+       "density": [
+        0.0807,
+        0.157,
+        0.2474,
+        0.3911,
+        0.5422,
+        0.6622,
+        0.7941,
+        0.9193,
+        0.9874,
+        1,
+        0.977,
+        0.9407,
+        0.8889,
+        0.8126,
+        0.723,
+        0.6585,
+        0.5963,
+        0.5015,
+        0.4178,
+        0.36,
+        0.3348,
+        0.303,
+        0.2326,
+        0.1763,
+        0.1496,
+        0.1407,
+        0.1259,
+        0.1015,
+        0.0941,
+        0.0911,
+        0.0748,
+        0.0548,
+        0.0407,
+        0.0304,
+        0.0252,
+        0.0244,
+        0.0193,
+        0.0148,
+        0.0126,
+        0.0096,
+        0.0104,
+        0.0119,
+        0.0104,
+        0.0067,
+        0.0037,
+        0.0044,
+        0.0119,
+        0.0156
+       ],
+       "tailMass": 0.6806
+      },
+      {
+       "session": 55,
+       "density": [
+        0.1248,
+        0.2305,
+        0.3506,
+        0.473,
+        0.6145,
+        0.7568,
+        0.8736,
+        0.9571,
+        0.9897,
+        1,
+        0.9976,
+        0.969,
+        0.903,
+        0.8116,
+        0.7409,
+        0.6383,
+        0.5207,
+        0.4722,
+        0.4428,
+        0.3967,
+        0.3466,
+        0.314,
+        0.2822,
+        0.2393,
+        0.2107,
+        0.1733,
+        0.1328,
+        0.1224,
+        0.1145,
+        0.097,
+        0.0811,
+        0.0564,
+        0.0461,
+        0.0541,
+        0.0493,
+        0.0326,
+        0.0238,
+        0.0286,
+        0.0326,
+        0.0246,
+        0.0151,
+        0.0151,
+        0.0175,
+        0.0151,
+        0.0111,
+        0.0087,
+        0.0167,
+        0.0238
+       ],
+       "tailMass": 0.6944
+      },
+      {
+       "session": 63,
+       "density": [
+        0.2084,
+        0.3105,
+        0.4142,
+        0.5682,
+        0.7038,
+        0.8594,
+        0.9732,
+        0.9531,
+        0.954,
+        1,
+        0.9858,
+        0.9423,
+        0.8661,
+        0.7623,
+        0.6937,
+        0.6435,
+        0.5808,
+        0.5163,
+        0.4594,
+        0.3967,
+        0.3448,
+        0.3172,
+        0.2845,
+        0.2502,
+        0.2126,
+        0.1724,
+        0.1565,
+        0.1464,
+        0.1238,
+        0.1063,
+        0.0929,
+        0.087,
+        0.0753,
+        0.0544,
+        0.0527,
+        0.0536,
+        0.046,
+        0.0418,
+        0.0343,
+        0.0268,
+        0.0209,
+        0.0151,
+        0.0092,
+        0.0059,
+        0.01,
+        0.0159,
+        0.0402,
+        0.0561
+       ],
+       "tailMass": 0.725
+      }
+     ],
+     "tails": {
+      "pLoss15": 0.4184,
+      "pGain15": 0.3066,
+      "tailMass": 0.725,
+      "impliedVolPct": 46.43
+     }
+    }
+   },
+   {
+    "key": "1y",
+    "label": "1 year",
+    "stats": {
+     "days": 252,
+     "paths": 5000,
+     "pEndHigher": 0.3754,
+     "medianPct": -22.66,
+     "p5Pct": -81.19,
+     "p95Pct": 215.94,
+     "pDrop20": 1,
+     "typicalWorstDrawdownPct": 64.64
+    },
+    "mc": {
+     "summary": {
+      "paths": 5000,
+      "tradesPerPath": 252,
+      "expectancyPct": 10.7253,
+      "medianPathReturnPct": -22.66,
+      "bestPathReturnPct": 1695.93,
+      "worstPathReturnPct": -97.19,
+      "profitablePathShare": 0.3754,
+      "maxDrawdownPct": 87.17,
+      "sharpe": 0,
+      "winRatePct": 0,
+      "buyHoldReturnPct": 0,
+      "exposureShare": 1,
+      "benchmarkAdjustedPct": 0,
+      "sampleTrades": 72
+     },
+     "endpoints": [
+      -97.19,
+      -92.83,
+      -91.26,
+      -89.9,
+      -89.1,
+      -88.33,
+      -87.62,
+      -87.13,
+      -86.64,
+      -86.23,
+      -85.81,
+      -85.31,
+      -85.01,
+      -84.7,
+      -84.16,
+      -83.74,
+      -83.35,
+      -82.92,
+      -82.45,
+      -82.03,
+      -81.55,
+      -81.19,
+      -80.91,
+      -80.56,
+      -80.3,
+      -80.02,
+      -79.68,
+      -79.45,
+      -79.11,
+      -78.85,
+      -78.53,
+      -78.12,
+      -77.98,
+      -77.7,
+      -77.48,
+      -77.21,
+      -76.78,
+      -76.3,
+      -75.88,
+      -75.68,
+      -75.16,
+      -74.92,
+      -74.65,
+      -74.45,
+      -74.19,
+      -73.93,
+      -73.79,
+      -73.48,
+      -73.07,
+      -72.56,
+      -72.33,
+      -72.07,
+      -71.82,
+      -71.61,
+      -71.28,
+      -71.01,
+      -70.66,
+      -70.43,
+      -69.99,
+      -69.67,
+      -69.36,
+      -69.12,
+      -68.92,
+      -68.55,
+      -68.37,
+      -68.04,
+      -67.77,
+      -67.61,
+      -67.28,
+      -67.17,
+      -66.84,
+      -66.55,
+      -66.32,
+      -66.09,
+      -65.9,
+      -65.6,
+      -65.32,
+      -65.03,
+      -64.69,
+      -64.37,
+      -64.01,
+      -63.78,
+      -63.51,
+      -63.25,
+      -62.98,
+      -62.73,
+      -62.33,
+      -62.03,
+      -61.61,
+      -61.41,
+      -61.17,
+      -60.84,
+      -60.57,
+      -60.4,
+      -60.22,
+      -59.97,
+      -59.76,
+      -59.32,
+      -59.18,
+      -58.9,
+      -58.61,
+      -58.36,
+      -58.21,
+      -57.88,
+      -57.65,
+      -57.35,
+      -57.16,
+      -56.95,
+      -56.68,
+      -56.37,
+      -56.16,
+      -55.94,
+      -55.71,
+      -55.48,
+      -55.08,
+      -54.86,
+      -54.59,
+      -54.22,
+      -54.03,
+      -53.69,
+      -53.28,
+      -52.9,
+      -52.55,
+      -52.15,
+      -51.8,
+      -51.6,
+      -51.33,
+      -51.03,
+      -50.71,
+      -50.43,
+      -50.09,
+      -49.81,
+      -49.19,
+      -48.88,
+      -48.68,
+      -48.53,
+      -48.3,
+      -48.01,
+      -47.76,
+      -47.51,
+      -47.25,
+      -46.91,
+      -46.62,
+      -46.34,
+      -46.19,
+      -45.92,
+      -45.62,
+      -45.4,
+      -45.06,
+      -44.74,
+      -44.5,
+      -44.23,
+      -44,
+      -43.75,
+      -43.39,
+      -43.02,
+      -42.59,
+      -42.25,
+      -41.79,
+      -41.48,
+      -41.2,
+      -40.85,
+      -40.47,
+      -40.1,
+      -39.81,
+      -39.48,
+      -39.14,
+      -38.88,
+      -38.48,
+      -38.25,
+      -37.97,
+      -37.69,
+      -37.28,
+      -36.89,
+      -36.49,
+      -36.06,
+      -35.81,
+      -35.32,
+      -35.06,
+      -34.66,
+      -34.38,
+      -34.1,
+      -33.74,
+      -33.31,
+      -32.98,
+      -32.63,
+      -32.31,
+      -31.96,
+      -31.45,
+      -31.1,
+      -30.89,
+      -30.57,
+      -29.96,
+      -29.66,
+      -29.17,
+      -28.73,
+      -28.21,
+      -27.89,
+      -27.46,
+      -27.06,
+      -26.8,
+      -26.41,
+      -26.09,
+      -25.69,
+      -25.29,
+      -24.71,
+      -24.22,
+      -23.85,
+      -23.53,
+      -23.08,
+      -22.66,
+      -22.24,
+      -21.72,
+      -21.42,
+      -21.13,
+      -20.78,
+      -20.4,
+      -20.09,
+      -19.78,
+      -19.36,
+      -18.84,
+      -18.66,
+      -18.25,
+      -17.85,
+      -17.48,
+      -17.03,
+      -16.45,
+      -16.23,
+      -15.95,
+      -15.46,
+      -15.04,
+      -14.56,
+      -14.2,
+      -13.65,
+      -13.01,
+      -12.57,
+      -12.14,
+      -11.78,
+      -11.42,
+      -10.93,
+      -10.27,
+      -9.71,
+      -9.4,
+      -9.16,
+      -8.73,
+      -8.44,
+      -7.93,
+      -7.6,
+      -6.86,
+      -6.58,
+      -5.91,
+      -5.37,
+      -4.9,
+      -4.52,
+      -4.15,
+      -3.83,
+      -3.53,
+      -2.97,
+      -2.54,
+      -2.03,
+      -1.39,
+      -0.6,
+      -0.04,
+      0.22,
+      0.71,
+      1.31,
+      1.87,
+      2.34,
+      2.71,
+      3.48,
+      4.01,
+      4.33,
+      5.1,
+      5.69,
+      6.14,
+      6.43,
+      6.87,
+      7.45,
+      7.82,
+      8.32,
+      9.38,
+      9.75,
+      10.56,
+      11.13,
+      11.82,
+      12.53,
+      12.79,
+      13.15,
+      13.62,
+      14.26,
+      14.95,
+      15.71,
+      16.53,
+      17.31,
+      17.99,
+      18.75,
+      19.67,
+      20.39,
+      21.09,
+      21.57,
+      22.54,
+      23.68,
+      24.48,
+      25,
+      25.57,
+      25.87,
+      26.56,
+      27.3,
+      27.97,
+      28.73,
+      29.3,
+      29.95,
+      30.96,
+      31.9,
+      32.44,
+      32.88,
+      33.95,
+      35.39,
+      36.15,
+      38.04,
+      39.11,
+      39.8,
+      41.01,
+      42.18,
+      43.4,
+      44.43,
+      45.41,
+      46.18,
+      47.42,
+      47.95,
+      48.85,
+      49.89,
+      50.69,
+      51.9,
+      53.48,
+      54.79,
+      56.06,
+      57.47,
+      58.86,
+      60.23,
+      60.96,
+      62.08,
+      63.3,
+      65.46,
+      67.39,
+      68.71,
+      69.92,
+      71.12,
+      71.99,
+      73.22,
+      74.4,
+      75.76,
+      77.31,
+      78.52,
+      80.72,
+      82.78,
+      84.18,
+      85.95,
+      88.31,
+      89.34,
+      91.57,
+      93.36,
+      94.7,
+      96.03,
+      98.74,
+      100.16,
+      102.66,
+      104.38,
+      105.87,
+      107.97,
+      109.98,
+      112.08,
+      114.19,
+      117.71,
+      121.83,
+      123.92,
+      126.14,
+      128.68,
+      129.92,
+      132.74,
+      135.81,
+      139.08,
+      141,
+      143.55,
+      147.47,
+      152.59,
+      155.32,
+      159.27,
+      164.42,
+      169.92,
+      175.37,
+      178.72,
+      183.46,
+      189.04,
+      194.15,
+      197.49,
+      201.31,
+      208.54,
+      211.69,
+      215.94,
+      224.75,
+      231.12,
+      242.63,
+      250.57,
+      259.11,
+      267.65,
+      277.3,
+      285.03,
+      299.47,
+      308.11,
+      330.59,
+      345.35,
+      360.68,
+      386.12,
+      399.75,
+      421.15,
+      478.86,
+      534.83,
+      620.93,
+      755.08
+     ],
+     "bins": [
+      {
+       "from": -91.10516696451604,
+       "to": -68.46862332857751,
+       "count": 754
+      },
+      {
+       "from": -68.46862332857751,
+       "to": -45.83207969263897,
+       "count": 974
+      },
+      {
+       "from": -45.83207969263897,
+       "to": -23.195536056700433,
+       "count": 758
+      },
+      {
+       "from": -23.195536056700433,
+       "to": -0.5589924207618964,
+       "count": 623
+      },
+      {
+       "from": -0.5589924207618964,
+       "to": 22.07755121517664,
+       "count": 456
+      },
+      {
+       "from": 22.07755121517664,
+       "to": 44.71409485111518,
+       "count": 309
+      },
+      {
+       "from": 44.71409485111518,
+       "to": 67.3506384870537,
+       "count": 221
+      },
+      {
+       "from": 67.3506384870537,
+       "to": 89.98718212299225,
+       "count": 185
+      },
+      {
+       "from": 89.98718212299225,
+       "to": 112.6237257589308,
+       "count": 140
+      },
+      {
+       "from": 112.6237257589308,
+       "to": 135.26026939486934,
+       "count": 102
+      },
+      {
+       "from": 135.26026939486934,
+       "to": 157.89681303080783,
+       "count": 83
+      },
+      {
+       "from": 157.89681303080783,
+       "to": 180.53335666674639,
+       "count": 56
+      },
+      {
+       "from": 180.53335666674639,
+       "to": 203.16990030268494,
+       "count": 56
+      },
+      {
+       "from": 203.16990030268494,
+       "to": 225.80644393862343,
+       "count": 48
+      },
+      {
+       "from": 225.80644393862343,
+       "to": 248.44298757456198,
+       "count": 30
+      },
+      {
+       "from": 248.44298757456198,
+       "to": 271.07953121050053,
+       "count": 28
+      },
+      {
+       "from": 271.07953121050053,
+       "to": 293.7160748464391,
+       "count": 31
+      },
+      {
+       "from": 293.7160748464391,
+       "to": 316.35261848237764,
+       "count": 20
+      },
+      {
+       "from": 316.35261848237764,
+       "to": 338.98916211831613,
+       "count": 12
+      },
+      {
+       "from": 338.98916211831613,
+       "to": 361.6257057542547,
+       "count": 20
+      },
+      {
+       "from": 361.6257057542547,
+       "to": 384.26224939019323,
+       "count": 10
+      },
+      {
+       "from": 384.26224939019323,
+       "to": 406.8987930261317,
+       "count": 19
+      },
+      {
+       "from": 406.8987930261317,
+       "to": 429.5353366620703,
+       "count": 9
+      },
+      {
+       "from": 429.5353366620703,
+       "to": 452.17188029800883,
+       "count": 4
+      },
+      {
+       "from": 452.17188029800883,
+       "to": 474.8084239339474,
+       "count": 4
+      },
+      {
+       "from": 474.8084239339474,
+       "to": 497.44496756988593,
+       "count": 5
+      },
+      {
+       "from": 497.44496756988593,
+       "to": 520.0815112058245,
+       "count": 4
+      },
+      {
+       "from": 520.0815112058245,
+       "to": 542.718054841763,
+       "count": 6
+      },
+      {
+       "from": 542.718054841763,
+       "to": 565.3545984777015,
+       "count": 5
+      },
+      {
+       "from": 565.3545984777015,
+       "to": 587.9911421136401,
+       "count": 3
+      },
+      {
+       "from": 587.9911421136401,
+       "to": 610.6276857495786,
+       "count": 25
+      }
+     ],
+     "domain": [
+      -91.10516696451604,
+      610.6276857495786
+     ],
+     "ridges": [
+      {
+       "session": 32,
+       "density": [
+        0.0029,
+        0.0354,
+        0.1872,
+        0.5151,
+        0.8587,
+        1,
+        0.8965,
+        0.6645,
+        0.4514,
+        0.2839,
+        0.1536,
+        0.0802,
+        0.048,
+        0.0296,
+        0.0157,
+        0.0087,
+        0.0052,
+        0.0029,
+        0.0016,
+        0.0008,
+        0.0005,
+        0.0003,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "tailMass": 0.6256
+      },
+      {
+       "session": 63,
+       "density": [
+        0.0339,
+        0.1767,
+        0.4713,
+        0.818,
+        1,
+        0.9675,
+        0.8492,
+        0.6815,
+        0.4872,
+        0.3414,
+        0.2424,
+        0.1664,
+        0.1162,
+        0.079,
+        0.0585,
+        0.0482,
+        0.0329,
+        0.0223,
+        0.0159,
+        0.0103,
+        0.0063,
+        0.0046,
+        0.0037,
+        0.0023,
+        0.0023,
+        0.002,
+        0.0007,
+        0,
+        0,
+        0.0003,
+        0.0007,
+        0.0003,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "tailMass": 0.7268
+      },
+      {
+       "session": 95,
+       "density": [
+        0.1108,
+        0.3647,
+        0.7052,
+        0.958,
+        1,
+        0.9048,
+        0.7617,
+        0.6,
+        0.4784,
+        0.3736,
+        0.2714,
+        0.1989,
+        0.1565,
+        0.1335,
+        0.0981,
+        0.0658,
+        0.0528,
+        0.042,
+        0.0323,
+        0.0227,
+        0.016,
+        0.0141,
+        0.0115,
+        0.0078,
+        0.0056,
+        0.0063,
+        0.0071,
+        0.0059,
+        0.0045,
+        0.0022,
+        0.0007,
+        0.0007,
+        0.0011,
+        0.0015,
+        0.0011,
+        0.0007,
+        0.0004,
+        0,
+        0.0004,
+        0.0007,
+        0.0007,
+        0.0007,
+        0.0004,
+        0,
+        0,
+        0,
+        0.0004,
+        0.0007
+       ],
+       "tailMass": 0.7774
+      },
+      {
+       "session": 126,
+       "density": [
+        0.2043,
+        0.5473,
+        0.8694,
+        1,
+        0.9571,
+        0.8417,
+        0.7204,
+        0.5917,
+        0.4792,
+        0.3862,
+        0.2841,
+        0.2047,
+        0.1623,
+        0.1266,
+        0.101,
+        0.0933,
+        0.0805,
+        0.0593,
+        0.0469,
+        0.0409,
+        0.0329,
+        0.022,
+        0.016,
+        0.018,
+        0.0176,
+        0.0128,
+        0.0092,
+        0.0084,
+        0.0092,
+        0.008,
+        0.004,
+        0.0016,
+        0.002,
+        0.0024,
+        0.0016,
+        0.0012,
+        0.0016,
+        0.0012,
+        0.0008,
+        0.0008,
+        0.0008,
+        0.0008,
+        0.0012,
+        0.0016,
+        0.0012,
+        0.0004,
+        0.0016,
+        0.0032
+       ],
+       "tailMass": 0.808
+      },
+      {
+       "session": 158,
+       "density": [
+        0.2991,
+        0.6694,
+        0.953,
+        1,
+        0.8872,
+        0.756,
+        0.6539,
+        0.5501,
+        0.4393,
+        0.3539,
+        0.2902,
+        0.2297,
+        0.1757,
+        0.1353,
+        0.1067,
+        0.0875,
+        0.0772,
+        0.067,
+        0.0539,
+        0.0445,
+        0.0368,
+        0.0302,
+        0.0253,
+        0.0229,
+        0.0221,
+        0.0192,
+        0.0163,
+        0.0147,
+        0.0127,
+        0.0114,
+        0.0102,
+        0.0078,
+        0.0057,
+        0.0061,
+        0.0065,
+        0.0045,
+        0.0029,
+        0.0025,
+        0.0025,
+        0.002,
+        0.0012,
+        0.0008,
+        0.0012,
+        0.0012,
+        0.0012,
+        0.0016,
+        0.0033,
+        0.0049
+       ],
+       "tailMass": 0.8288
+      },
+      {
+       "session": 189,
+       "density": [
+        0.4062,
+        0.7794,
+        0.9799,
+        1,
+        0.901,
+        0.7401,
+        0.5992,
+        0.4964,
+        0.4037,
+        0.3234,
+        0.2587,
+        0.2073,
+        0.1718,
+        0.1429,
+        0.1153,
+        0.0949,
+        0.089,
+        0.0882,
+        0.0723,
+        0.0464,
+        0.0355,
+        0.0376,
+        0.0334,
+        0.0272,
+        0.0263,
+        0.0247,
+        0.0192,
+        0.0163,
+        0.0171,
+        0.0146,
+        0.01,
+        0.0079,
+        0.0071,
+        0.0067,
+        0.0071,
+        0.0071,
+        0.0063,
+        0.0046,
+        0.0042,
+        0.0054,
+        0.0038,
+        0.0008,
+        0,
+        0,
+        0.0004,
+        0.0017,
+        0.0067,
+        0.01
+       ],
+       "tailMass": 0.85
+      },
+      {
+       "session": 221,
+       "density": [
+        0.5166,
+        0.8857,
+        1,
+        0.9223,
+        0.7972,
+        0.6779,
+        0.5644,
+        0.4742,
+        0.3853,
+        0.3013,
+        0.2465,
+        0.1999,
+        0.1696,
+        0.1442,
+        0.1085,
+        0.0898,
+        0.084,
+        0.074,
+        0.0677,
+        0.0594,
+        0.0436,
+        0.0382,
+        0.0391,
+        0.0324,
+        0.0258,
+        0.0216,
+        0.0216,
+        0.022,
+        0.0175,
+        0.015,
+        0.0125,
+        0.0083,
+        0.005,
+        0.005,
+        0.0091,
+        0.01,
+        0.0067,
+        0.0062,
+        0.0067,
+        0.0046,
+        0.0029,
+        0.0025,
+        0.0021,
+        0.0012,
+        0.0012,
+        0.0012,
+        0.0116,
+        0.0224
+       ],
+       "tailMass": 0.8576
+      },
+      {
+       "session": 252,
+       "density": [
+        0.6143,
+        0.9466,
+        1,
+        0.8962,
+        0.7636,
+        0.6551,
+        0.5425,
+        0.4308,
+        0.3403,
+        0.2715,
+        0.2248,
+        0.1952,
+        0.1685,
+        0.1393,
+        0.1176,
+        0.1047,
+        0.0809,
+        0.0609,
+        0.0626,
+        0.0651,
+        0.0563,
+        0.0409,
+        0.0325,
+        0.0329,
+        0.0317,
+        0.0304,
+        0.0263,
+        0.0179,
+        0.0158,
+        0.0183,
+        0.0167,
+        0.0133,
+        0.0158,
+        0.0175,
+        0.0125,
+        0.0079,
+        0.005,
+        0.0038,
+        0.0046,
+        0.005,
+        0.005,
+        0.005,
+        0.0054,
+        0.0058,
+        0.0054,
+        0.0038,
+        0.0117,
+        0.0209
+       ],
+       "tailMass": 0.8574
+      }
+     ],
+     "tails": {
+      "pLoss15": 0.5482,
+      "pGain15": 0.3092,
+      "tailMass": 0.8574,
+      "impliedVolPct": 116.35
+     }
+    }
+   }
+  ]
+ },
+ "events": {
+  "bigMoments": [
+   {
+    "date": "2026-06-15",
+    "title": "Shares rose 19.6% in one day, 8-K filed nearby.",
+    "kind": "good",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043288/0001628280-26-043288-index.htm",
+    "source": "SEC filing"
+   },
+   {
+    "date": "2026-06-17",
+    "title": "Shares fell 9.3% in one day, 8-K filed nearby.",
+    "kind": "bad",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026043865/0001628280-26-043865-index.htm",
+    "source": "SEC filing"
+   },
+   {
+    "date": "2026-08-07",
+    "title": "Shares rose 15.8% in one day, 8-K filed nearby.",
+    "kind": "good",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/0001628280-26-052515-index.htm",
+    "source": "SEC filing"
+   },
+   {
+    "date": "2026-08-05",
+    "title": "Shares fell 13.6% in one day, 8-K filed nearby.",
+    "kind": "bad",
+    "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/0001628280-26-052515-index.htm",
+    "source": "SEC filing"
+   }
+  ],
+  "coming": [
+   {
+    "date": "2026-11-03",
+    "title": "Next earnings report scheduled for 2026-11-03.",
+    "kind": "neutral",
+    "url": "https://finance.yahoo.com/quote/SPCX/",
+    "source": "Yahoo Finance calendar"
+   }
+  ]
+ },
+ "verified": true,
+ "sectionsMissing": [
+  "Segments",
+  "Earnings quality"
+ ],
+ "meta": {
+  "writer": "fallback",
+  "model": null,
+  "dropped": [],
+  "rewritten": 0,
+  "quickReviewWords": 107
+ }
+}

@@ -1,8 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { prefersReducedMotion } from "@/lib/motion";
+
+/**
+ * Routes that scroll on their own. The MVP pager owns the wheel outright, and
+ * the company research page is a plain long page that should follow the
+ * trackpad at once rather than ease after it.
+ */
+const NATIVE_SCROLL_PREFIX = "/prototype";
 
 /**
  * Lenis, mounted once at the app root.
@@ -20,8 +28,10 @@ import { prefersReducedMotion } from "@/lib/motion";
  * for as long as Lenis is running and restored when it tears down.
  */
 export function SmoothScroll() {
+  const pathname = usePathname();
+  const native = pathname === NATIVE_SCROLL_PREFIX || pathname?.startsWith(`${NATIVE_SCROLL_PREFIX}/`);
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (native || prefersReducedMotion()) return;
 
     const root = document.documentElement;
     const previousBehavior = root.style.scrollBehavior;
@@ -65,7 +75,7 @@ export function SmoothScroll() {
       lenis.destroy();
       root.style.scrollBehavior = previousBehavior;
     };
-  }, []);
+  }, [native]);
 
   return null;
 }

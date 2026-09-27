@@ -1,0 +1,215 @@
+/*
+ * Motion for page 3. Everything here animates transform, opacity or
+ * stroke-dashoffset (the one allowed exception, to draw the lines in).
+ * The traveling light and the text shimmer use the same trick: a masked
+ * window moves across the surface while its content moves the opposite way,
+ * so the mask travels and the artwork stays put, all on the compositor.
+ * `.paused` freezes every animation while the page is off screen, and under
+ * reduced motion every element sits at its settled state from first paint.
+ */
+
+/* ---- pattern draw in ------------------------------------------------- */
+
+.line {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+}
+
+.drawing .line {
+  animation: draw 1.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---- traveling light --------------------------------------------------- */
+
+.lightWindow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 46vmax;
+  height: 46vmax;
+  margin-left: -23vmax;
+  margin-top: -23vmax;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 26%, transparent 52%);
+  mask-image: radial-gradient(circle at center, #000 0%, rgba(0, 0, 0, 0.55) 26%, transparent 52%);
+  animation: roam 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.lightPattern {
+  position: absolute;
+  left: 23vmax;
+  top: 23vmax;
+  width: var(--cw);
+  height: var(--ch);
+  animation: roamBack 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes roam {
+  0% {
+    transform: translate3d(calc(var(--cw) * 0.22), calc(var(--ch) * 0.7), 0);
+  }
+  35% {
+    transform: translate3d(calc(var(--cw) * 0.6), calc(var(--ch) * 0.25), 0);
+  }
+  70% {
+    transform: translate3d(calc(var(--cw) * 0.82), calc(var(--ch) * 0.72), 0);
+  }
+  100% {
+    transform: translate3d(calc(var(--cw) * 0.4), calc(var(--ch) * 0.45), 0);
+  }
+}
+
+@keyframes roamBack {
+  0% {
+    transform: translate3d(calc(var(--cw) * -0.22), calc(var(--ch) * -0.7), 0);
+  }
+  35% {
+    transform: translate3d(calc(var(--cw) * -0.6), calc(var(--ch) * -0.25), 0);
+  }
+  70% {
+    transform: translate3d(calc(var(--cw) * -0.82), calc(var(--ch) * -0.72), 0);
+  }
+  100% {
+    transform: translate3d(calc(var(--cw) * -0.4), calc(var(--ch) * -0.45), 0);
+  }
+}
+
+/* ---- tiles --------------------------------------------------------------- */
+
+.float {
+  animation: float var(--dur, 6s) ease-in-out var(--delay, 0s) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes float {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, var(--dy, -8px), 0);
+  }
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: -40% -60%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.28) 48%,
+    rgba(178, 242, 0, 0.22) 52%,
+    transparent 60%
+  );
+  transform: translate3d(-70%, 0, 0);
+  animation: sweep 7.5s linear var(--sweep, 0s) infinite;
+  pointer-events: none;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translate3d(-70%, 0, 0);
+  }
+  18% {
+    transform: translate3d(70%, 0, 0);
+  }
+  100% {
+    transform: translate3d(70%, 0, 0);
+  }
+}
+
+/* ---- text shimmer ------------------------------------------------------ */
+
+.textWindow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 50%, transparent 62%);
+  mask-image: linear-gradient(100deg, transparent 38%, #000 50%, transparent 62%);
+  animation: band 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+.textInner {
+  position: absolute;
+  inset: 0;
+  animation: bandBack 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes band {
+  0% {
+    transform: translate3d(-70%, 0, 0);
+  }
+  60% {
+    transform: translate3d(70%, 0, 0);
+  }
+  100% {
+    transform: translate3d(70%, 0, 0);
+  }
+}
+
+@keyframes bandBack {
+  0% {
+    transform: translate3d(70%, 0, 0);
+  }
+  60% {
+    transform: translate3d(-70%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-70%, 0, 0);
+  }
+}
+
+/* ---- off screen: freeze ------------------------------------------------ */
+
+.paused .line,
+.paused .lightWindow,
+.paused .lightPattern,
+.paused .float,
+.paused .shimmer::after,
+.paused .textWindow,
+.paused .textInner {
+  animation-play-state: paused;
+}
+
+/* ---- reduced motion: the settled state ------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .line,
+  .drawing .line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .lightWindow,
+  .lightPattern,
+  .float,
+  .textWindow,
+  .textInner {
+    animation: none;
+  }
+  .lightWindow {
+    transform: translate3d(calc(var(--cw) * 0.5), calc(var(--ch) * 0.45), 0);
+  }
+  .lightPattern {
+    transform: translate3d(calc(var(--cw) * -0.5), calc(var(--ch) * -0.45), 0);
+  }
+  .float {
+    transform: none;
+  }
+  .shimmer::after {
+    display: none;
+  }
+  .textWindow {
+    display: none;
+  }
+}

@@ -18,6 +18,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "site"],
       "port": 3100
+    },
+    {
+      "name": "site-verify",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd site && NEXT_DIST_DIR=.next-verify npx next dev --port 3101"],
+      "port": 3101
     }
   ]
 }

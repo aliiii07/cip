@@ -30,6 +30,7 @@ import {
 } from "@/lib/heatmap";
 import type { Rect } from "@/lib/treemap";
 import { useQuotes } from "./useQuotes";
+import { useMvp } from "./state";
 import { FOCUS_RING_INSET } from "./styles";
 
 const NOTE = "Company names are used for identification only. Not investment advice.";
@@ -121,7 +122,7 @@ export function NasdaqHeatmap() {
   const rootRef = useRef<HTMLDivElement>(null);
   const measure = useFontMeasure(rootRef);
   const coarse = useCoarsePointer();
-  const [selected, setSelected] = useState<string | null>(null);
+  const { selected, setSelected } = useMvp();
   const [hovered, setHovered] = useState<string | null>(null);
 
   const mobile = (size?.w ?? 1024) < 640;
@@ -190,9 +191,9 @@ export function NasdaqHeatmap() {
     >
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-1">
         <div>
-          <h1 className="font-display text-[22px] font-semibold leading-none tracking-[-0.5px] text-[#1a1a1a] lg:text-[26px]">
+          <h2 className="font-display text-[22px] font-semibold leading-none tracking-[-0.5px] text-[#1a1a1a] lg:text-[26px]">
             NASDAQ 50
-          </h1>
+          </h2>
           <p className="mt-1.5 text-[14px] leading-snug text-[#4a4a4a]">Pick a company to research.</p>
         </div>
         <p className="text-[12px] leading-snug text-[#71717A] tabular-nums" aria-live="polite">

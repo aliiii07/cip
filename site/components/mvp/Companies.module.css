@@ -1,0 +1,49 @@
+/*
+ * Motion for the company field. Two wrappers per tile so the three
+ * transforms never fight: the outer one rises in once on load, the inner one
+ * drifts for as long as the page is open, and the button itself lifts on
+ * hover. Transform and opacity only. Under reduced motion every tile sits
+ * at its settled place from the first paint.
+ */
+
+.rise {
+  opacity: 0;
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--rise, 0s) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.swim {
+  animation: swim var(--dur, 6s) ease-in-out var(--delay, 0s) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes swim {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(var(--sx, 0px), var(--sy, -6px), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+  .swim {
+    animation: none;
+    transform: none;
+  }
+}

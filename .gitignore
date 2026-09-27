@@ -56,3 +56,6 @@ repomix-output.xml
 .idea/
 .DS_Store
 
+
+# Text pulled from the supplied annual report PDFs by the research script; regenerated on demand
+site/data/reports/
