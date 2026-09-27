@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { McResult, RelationshipGraph } from "@/lib/types";
-import { prefersReducedMotion, TERMINAL_FONT } from "@/lib/motion";
+import { prefersReducedMotion, siteFont } from "@/lib/motion";
 
 /**
  * The canvas hook, in two modes.
@@ -201,7 +201,7 @@ export function ProbabilityLattice({ mc }: { mc: McResult }) {
       ctx.lineTo(w - padX, histBottom + 0.5);
       ctx.stroke();
 
-      ctx.font = `9px ${TERMINAL_FONT}`;
+      ctx.font = `9px ${siteFont()}`;
       ctx.fillStyle = MUTED;
       ctx.textBaseline = "top";
       ctx.textAlign = "left";
@@ -342,7 +342,7 @@ export function TailRidge({ mc }: { mc: McResult }) {
         ctx.stroke();
         ctx.globalAlpha = 1;
 
-        ctx.font = `8.5px ${TERMINAL_FONT}`;
+        ctx.font = `8.5px ${siteFont()}`;
         ctx.fillStyle = FAINT;
         ctx.textAlign = "right";
         ctx.textBaseline = "middle";
@@ -386,7 +386,7 @@ export function TailRidge({ mc }: { mc: McResult }) {
       ctx.stroke();
       ctx.restore();
 
-      ctx.font = `9px ${TERMINAL_FONT}`;
+      ctx.font = `9px ${siteFont()}`;
       ctx.fillStyle = MUTED;
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
@@ -516,7 +516,7 @@ export function MirofishGraph({ graph }: { graph: RelationshipGraph }) {
           ctx.fill();
         }
 
-        ctx.font = `600 9.5px ${TERMINAL_FONT}`;
+        ctx.font = `600 9.5px ${siteFont()}`;
         ctx.fillStyle = INK;
         ctx.textAlign = "center";
         ctx.textBaseline = "top";
@@ -524,11 +524,11 @@ export function MirofishGraph({ graph }: { graph: RelationshipGraph }) {
 
         if (n.r != null && n.id !== "SELF") {
           ctx.fillStyle = MUTED;
-          ctx.font = `8.5px ${TERMINAL_FONT}`;
+          ctx.font = `8.5px ${siteFont()}`;
           ctx.fillText(`r ${n.r.toFixed(2)}`, x, y + r + 17);
         } else if (n.estimated) {
           ctx.fillStyle = FAINT;
-          ctx.font = `8.5px ${TERMINAL_FONT}`;
+          ctx.font = `8.5px ${siteFont()}`;
           ctx.fillText("not measured", x, y + r + 17);
         }
       });

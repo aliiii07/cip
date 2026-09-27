@@ -7,8 +7,10 @@
  * Free of imports so the research script can run it in plain Node.
  */
 
-export type HealthChip = "Strong" | "Moderate" | "Weak";
-export type TrackChip = "Strong" | "Mixed" | "Weak";
+/** "Not enough history" is set by the pipeline, never by a rule, when a
+ *  company has no annual statements yet; the rules only see full years. */
+export type HealthChip = "Strong" | "Moderate" | "Weak" | "Not enough history";
+export type TrackChip = "Strong" | "Mixed" | "Weak" | "Not enough history";
 export type Mark = "Pass" | "Watch" | "Fail";
 export type Level = "Low" | "Medium" | "High";
 

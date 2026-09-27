@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ColorType, createChart, type UTCTimestamp } from "lightweight-charts";
 import type { ResearchEvent } from "@/lib/research-types";
+import { siteFont } from "@/lib/motion";
 import { useCandles } from "./hooks";
 import { GREEN, HAIR, INK, MUTED, RED, Skeleton, Unavailable } from "./atoms";
 
@@ -14,7 +15,7 @@ const RANGES = [
   { key: "max", label: "MAX" },
 ];
 
-const MONO = 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace';
+const FONT = () => siteFont();
 
 /**
  * One clean line of closes with the dated events as dots. Hovering a dot
@@ -33,7 +34,7 @@ export function PriceChart({ symbol, events, currency }: { symbol: string; event
     if (!el || bars.length === 0) return;
 
     const chart = createChart(el, {
-      layout: { background: { type: ColorType.Solid, color: "#ffffff" }, textColor: MUTED, fontSize: 10, fontFamily: MONO },
+      layout: { background: { type: ColorType.Solid, color: "#ffffff" }, textColor: MUTED, fontSize: 10, fontFamily: FONT() },
       grid: { vertLines: { color: "rgba(228,228,231,0.6)" }, horzLines: { color: "rgba(228,228,231,0.6)" } },
       rightPriceScale: { borderColor: HAIR },
       timeScale: { borderColor: HAIR, timeVisible: false },
@@ -93,7 +94,7 @@ export function PriceChart({ symbol, events, currency }: { symbol: string; event
               role="tab"
               aria-selected={range === r.key}
               onClick={() => setRange(r.key)}
-              className={`rounded-full px-3 py-1 font-mono text-[11px] font-semibold transition-colors duration-200 ${
+              className={`rounded-full px-3 py-1 text-[11px] font-semibold transition-colors duration-200 ${
                 range === r.key ? "bg-[#1a1a1a] text-white" : "text-[#4a4a4a] hover:text-[#1a1a1a]"
               }`}
             >
@@ -102,7 +103,7 @@ export function PriceChart({ symbol, events, currency }: { symbol: string; event
           ))}
         </div>
         {changePct != null ? (
-          <span className="font-mono text-[12px] tabular-nums" style={{ color: changePct >= 0 ? GREEN : RED }}>
+          <span className="text-[12px] tabular-nums" style={{ color: changePct >= 0 ? GREEN : RED }}>
             {changePct >= 0 ? "+" : "−"}
             {Math.abs(changePct).toFixed(1)}% over this range
           </span>

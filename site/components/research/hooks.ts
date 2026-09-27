@@ -58,31 +58,86 @@ export function useSeen<T extends HTMLElement>(ref: RefObject<T>, rootMargin = "
 }
 
 /** Which of the given section ids is currently in view, for the tab bar. */
+/**
+ * The section whose top has passed the sticky bars is the active one; at
+ * the end of the page the last section wins, since it may be too short to
+ * reach the top. Measured on scroll rather than observed, so the answer is
+ * the same at the top of the page on a phone, where no section is in view
+ * yet, as everywhere else.
+ */
 export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState(ids[0]);
-  const ratios = useRef(new Map<string, number>());
+  // A clicked tab stays active until the reader scrolls on their own, since
+  // the last sections may be too short to put the clicked one at the top.
+  // The pin watches the section's own position rather than scrollY, so a
+  // block loading above it (which the browser anchors around) keeps the pin.
+  const pin = useRef<{ id: string; animating: boolean; settledTop: number } | null>(null);
+  const topOf = (id: string) => document.getElementById(id)?.getBoundingClientRect().top ?? 0;
+
   useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) ratios.current.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0);
-        let best = ids[0];
-        let bestRatio = -1;
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
+      const p = pin.current;
+      if (p) {
+        if (p.animating || Math.abs(topOf(p.id) - p.settledTop) < 3) return;
+        pin.current = null;
+      }
+      const line = 140;
+      const atEnd = Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2;
+      let current = ids[0];
+      if (atEnd) {
+        current = ids[ids.length - 1];
+      } else {
         for (const id of ids) {
-          const r = ratios.current.get(id) ?? 0;
-          if (r > bestRatio) {
-            best = id;
-            bestRatio = r;
-          }
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= line) current = id;
         }
-        if (bestRatio > 0) setActive(best);
-      },
-      { rootMargin: "-120px 0px -45% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] }
-    );
-    for (const id of ids) {
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    }
-    return () => io.disconnect();
+      }
+      setActive((prev) => (prev === current ? prev : current));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [ids]);
-  return active;
+
+  // Scrolls a section under the sticky bars. Driven here rather than by the
+  // site's smooth scroll, which would put the section under the bars.
+  const jumpTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const from = window.scrollY;
+    const to = Math.max(0, el.getBoundingClientRect().top + from - 120);
+    setActive(id);
+    pin.current = { id, animating: true, settledTop: 0 };
+    const settle = () => {
+      const p = pin.current;
+      if (p && p.id === id) pin.current = { id, animating: false, settledTop: topOf(id) };
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.scrollTo(0, to);
+      requestAnimationFrame(settle);
+      return;
+    }
+    // A short expo out glide, so the distance decides nothing.
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - start) / 650);
+      const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      window.scrollTo(0, from + (to - from) * eased);
+      if (t < 1) requestAnimationFrame(step);
+      else requestAnimationFrame(settle);
+    };
+    requestAnimationFrame(step);
+  };
+
+  return { active, jumpTo };
 }

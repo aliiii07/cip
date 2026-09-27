@@ -163,7 +163,7 @@ function BacktestBlock({ symbol }: { symbol: string }) {
                   <span className="text-[13px] font-semibold">{v.label}</span>
                   <VerdictPill verdict={v.verdict} />
                 </div>
-                <div className="mt-1.5 font-mono text-[11px] tabular-nums text-[#71717A]">
+                <div className="mt-1.5 text-[11px] tabular-nums text-[#71717A]">
                   {v.expectancyPct >= 0 ? "+" : "−"}
                   {Math.abs(v.expectancyPct).toFixed(3)}% per trade · {v.trades} trades
                 </div>
@@ -238,7 +238,11 @@ export function FinancialsSection({ fin, meaning }: { fin: Financials | null; me
         <button type="button" onClick={() => setFull((f) => !f)} className="rounded-full border border-[#1a1a1a] px-4 py-1.5 text-[12px] font-semibold transition-colors duration-200 hover:bg-[#1a1a1a] hover:text-white">
           {full ? "Show key lines" : "Show full statements"}
         </button>
-        <p className="text-[12px] text-[#71717A]">All figures in {fin.currency} as reported. TTM is the last fiscal year plus the current year to date minus the same span a year earlier.</p>
+        <p className="text-[12px] text-[#71717A]">
+          {fin.periodKind === "quarterly"
+            ? `All figures in ${fin.currency} as reported. This company has not filed an annual report yet, so these are the quarters it has reported so far.`
+            : `All figures in ${fin.currency} as reported. TTM is the last fiscal year plus the current year to date minus the same span a year earlier.`}
+        </p>
       </div>
     </Card>
   );
@@ -255,7 +259,7 @@ function StatementTable({ title, lines, years, full, currency }: { title: string
             <tr>
               <th className="py-1.5 text-left font-medium text-[#71717A]" />
               {years.map((y) => (
-                <th key={y} className="py-1.5 pl-3 text-right font-mono font-medium text-[#71717A]">
+                <th key={y} className="py-1.5 pl-3 text-right font-medium text-[#71717A]">
                   {y}
                 </th>
               ))}
@@ -267,11 +271,11 @@ function StatementTable({ title, lines, years, full, currency }: { title: string
                 <td className="py-1.5 pr-3 text-[#4a4a4a]">{l.label}</td>
                 {l.values.map((v, i) => (
                   <td key={i} className="whitespace-nowrap py-1.5 pl-3 text-right">
-                    <span className="font-mono tabular-nums" title={l.sources[i] ? sourceTitle(l.sources[i]!) : undefined}>
+                    <span className="tabular-nums" title={l.sources[i] ? sourceTitle(l.sources[i]!) : undefined}>
                       {v == null ? <span className="text-[#A1A1AA]">·</span> : l.unit === "USD" ? money(v, currency) : displayValue(v, l.unit, currency)}
                     </span>
                     {l.yoy[i] != null ? (
-                      <span className="ml-1.5 font-mono text-[10.5px] tabular-nums" style={{ color: (l.yoy[i] as number) >= 0 ? GREEN : "#A12F35" }}>
+                      <span className="ml-1.5 text-[10.5px] tabular-nums" style={{ color: (l.yoy[i] as number) >= 0 ? GREEN : "#A12F35" }}>
                         {signedPct(l.yoy[i], 0)}
                       </span>
                     ) : null}

@@ -59,7 +59,7 @@ export function Card({
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-3 text-[12px] text-[#71717A]">
           {aside}
-          {asOf ? <span className="font-mono tabular-nums">Financials as of {asOf}</span> : null}
+          {asOf ? <span className="tabular-nums">Financials as of {asOf}</span> : null}
           {source ? (
             <a
               href={source.url}
@@ -82,7 +82,7 @@ export function Card({
 export function Num({ f, fallback = "Not reported", className = "" }: { f: Fact | null | undefined; fallback?: string; className?: string }) {
   if (!f) return <span className={`text-[#71717A] ${className}`}>{fallback}</span>;
   return (
-    <span className={`font-mono tabular-nums ${className}`} title={sourceTitle(f.source)}>
+    <span className={`tabular-nums ${className}`} title={sourceTitle(f.source)}>
       {f.display}
     </span>
   );
@@ -90,7 +90,7 @@ export function Num({ f, fallback = "Not reported", className = "" }: { f: Fact 
 
 export function Val({ children, title, className = "" }: { children: ReactNode; title?: string; className?: string }) {
   return (
-    <span className={`font-mono tabular-nums ${className}`} title={title}>
+    <span className={`tabular-nums ${className}`} title={title}>
       {children}
     </span>
   );
@@ -181,7 +181,7 @@ export function Tile({ label, value, sub, tone }: { label: string; value: ReactN
   return (
     <div className="rounded-[12px] border border-[#E4E4E7] px-4 py-3">
       <div className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#71717A]">{label}</div>
-      <div className="mt-1 font-mono text-[22px] font-semibold leading-none tabular-nums" style={{ color }}>
+      <div className="mt-1 text-[22px] font-semibold leading-none tabular-nums" style={{ color }}>
         {value}
       </div>
       {sub ? <div className="mt-1.5 text-[12px] text-[#71717A]">{sub}</div> : null}

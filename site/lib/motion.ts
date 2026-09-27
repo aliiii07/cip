@@ -18,7 +18,19 @@ export function hasFinePointer(): boolean {
 /** The one easing curve used everywhere motion happens on this site. */
 export const EASE_PREMIUM = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-/** Canvas text needs a real font name string; CSS var() does not resolve in a
- *  2D context. Matches the marketing site's typeface so the prototype reads
- *  as the same product, not a separate app dropped into an iframe. */
-export const TERMINAL_FONT = 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace';
+/**
+ * Canvas and chart text need a real font family string; a CSS var() does not
+ * resolve in a 2D context. This reads the site's Figtree instance (declared
+ * by next/font on <html> under a generated family name) so canvases, charts
+ * and the page share one face. Resolved once, on the client.
+ */
+let resolvedFont: string | null = null;
+export function siteFont(): string {
+  if (resolvedFont) return resolvedFont;
+  if (typeof window === "undefined") return TERMINAL_FONT;
+  const v = getComputedStyle(document.documentElement).getPropertyValue("--font-figtree").trim();
+  resolvedFont = v ? `${v}, ${TERMINAL_FONT}` : TERMINAL_FONT;
+  return resolvedFont;
+}
+
+export const TERMINAL_FONT = '"Helvetica Neue", Helvetica, Arial, sans-serif';

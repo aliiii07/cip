@@ -14,7 +14,7 @@
   "employees": 43938
  },
  "asOf": {
-  "research": "2026-09-27T06:26:38.866Z",
+  "research": "2026-09-27T07:23:23.976Z",
   "latestAnnual": {
    "form": "20-F",
    "filed": "2026-02-25",
@@ -33,6 +33,23 @@
   "prices": "2026-09-25"
  },
  "quickReview": [
+  {
+   "key": "about",
+   "title": "What it does",
+   "sentences": [
+    {
+     "text": "ASML is a leading supplier to the semiconductor industry.",
+     "factIds": []
+    }
+   ],
+   "items": [
+    {
+     "text": "",
+     "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm",
+     "source": "20-F"
+    }
+   ]
+  },
   {
    "key": "money",
    "title": "Where the money comes from",
@@ -126,6 +143,28 @@
    ]
   },
   {
+   "key": "risks",
+   "title": "What can go wrong",
+   "sentences": [],
+   "items": [
+    {
+     "text": "Due to the high complexity and cost of our systems, customers may opt for existing technologies over newer ones.",
+     "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm",
+     "source": "20-F risk factors"
+    },
+    {
+     "text": "The global economic environment, including inflation, interest rates and geopolitical events, contributes to this uncertainty.",
+     "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm",
+     "source": "20-F risk factors"
+    },
+    {
+     "text": "Reductions or delays in capital expenditures by our customers, or incorrect assumptions by us about our customers’ capital expenditures.",
+     "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm",
+     "source": "20-F risk factors"
+    }
+   ]
+  },
+  {
    "key": "moments",
    "title": "Big moments",
    "sentences": [],
@@ -137,30 +176,19 @@
      "source": "Price history"
     },
     {
-     "date": "2022-11-10",
-     "text": "Shares rose 14.6% in one day.",
-     "kind": "good",
-     "source": "Price history"
-    },
-    {
      "date": "2024-08-02",
      "text": "Shares fell 8.4% in one day.",
      "kind": "bad",
      "source": "Price history"
     },
     {
-     "date": "2024-07-17",
-     "text": "Shares fell 12.7% in one day.",
-     "kind": "bad",
-     "source": "Price history"
+     "date": "2022-11-10",
+     "text": "Shares rose 14.6% in one day, 6-K filed nearby.",
+     "url": "https://www.sec.gov/Archives/edgar/data/937966/000119312522282132/0001193125-22-282132-index.htm",
+     "kind": "good",
+     "source": "SEC filing"
     }
    ]
-  },
-  {
-   "key": "risks",
-   "title": "What can go wrong",
-   "sentences": [],
-   "items": []
   },
   {
    "key": "coming",
@@ -174,12 +202,50 @@
      "source": "Yahoo Finance calendar"
     }
    ]
+  },
+  {
+   "key": "peers",
+   "title": "Against its peers",
+   "sentences": [
+    {
+     "text": "Operating margin 34.6% against 40.0% for peers.",
+     "factIds": [
+      "ratio.operatingMargin",
+      "ratio.median.operatingMargin"
+     ]
+    }
+   ]
+  }
+ ],
+ "quickNumbers": [
+  {
+   "label": "Revenue, latest year",
+   "factId": "revenue.FY2025"
+  },
+  {
+   "label": "Revenue growth a year",
+   "factId": "track.revenueCagr"
+  },
+  {
+   "label": "Operating margin",
+   "factId": "ratio.operatingMargin"
+  },
+  {
+   "label": "Free cash flow",
+   "factId": "health.fcf"
+  },
+  {
+   "label": "Net cash",
+   "factId": "health.netPosition"
   }
  ],
  "whatThisMeans": {
   "chart": {
    "text": "Real daily candles with 20 and 50 day averages, RSI and mapped support and resistance.",
-   "factIds": []
+   "factIds": [
+    "chart.ma20",
+    "chart.ma50"
+   ]
   },
   "probabilities": {
    "text": "5,000 paths built from 1254 trading days of this stock's own moves, not a forecast.",
@@ -218,7 +284,7 @@
    "factIds": []
   },
   "audit": {
-   "text": "Who checks the books, for how long, and what they concluded.",
+   "text": "PricewaterhouseCoopers Accountants N.V. has audited the company since 2024; the latest opinion is unqualified.",
    "factIds": [
     "audit.since"
    ]
@@ -3630,7 +3696,7 @@
    "label": "Net debt to EBITDA",
    "value": -0.7245,
    "unit": "x",
-   "display": "-0.72x",
+   "display": "−0.72x",
    "source": {
     "form": "20-F",
     "filed": "2026-02-25",
@@ -3741,6 +3807,246 @@
     "fy": 2025,
     "period": "2025-12-31",
     "statement": "Peers: the largest companies in the same sector among the NASDAQ 50"
+   }
+  },
+  {
+   "id": "ratio.median.grossMargin",
+   "label": "Peer median, gross margin",
+   "value": 62.4,
+   "unit": "pct",
+   "display": "62.4%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.operatingMargin",
+   "label": "Peer median, operating margin",
+   "value": 40,
+   "unit": "pct",
+   "display": "40.0%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.netMargin",
+   "label": "Peer median, net margin",
+   "value": 33.95,
+   "unit": "pct",
+   "display": "34.0%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.roe",
+   "label": "Peer median, return on equity (roe)",
+   "value": 39.85,
+   "unit": "pct",
+   "display": "39.9%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.roic",
+   "label": "Peer median, return on invested capital (roic)",
+   "value": 31.95,
+   "unit": "pct",
+   "display": "31.9%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.roa",
+   "label": "Peer median, return on assets (roa)",
+   "value": 20.5,
+   "unit": "pct",
+   "display": "20.5%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.debtToEquity",
+   "label": "Peer median, debt to equity",
+   "value": 0.37,
+   "unit": "x",
+   "display": "0.37x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.netDebtToEbitda",
+   "label": "Peer median, net debt to ebitda",
+   "value": -0.43,
+   "unit": "x",
+   "display": "−0.43x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.currentRatio",
+   "label": "Peer median, current ratio",
+   "value": 1.87,
+   "unit": "x",
+   "display": "1.87x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.interestCoverage",
+   "label": "Peer median, interest coverage",
+   "value": 16.1221,
+   "unit": "x",
+   "display": "16.12x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.pe",
+   "label": "Peer median, price to earnings (p/e)",
+   "value": 42.05,
+   "unit": "x",
+   "display": "42.0x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.evToEbitda",
+   "label": "Peer median, ev to ebitda",
+   "value": 34.75,
+   "unit": "x",
+   "display": "34.8x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.priceToSales",
+   "label": "Peer median, price to sales",
+   "value": 15.23,
+   "unit": "x",
+   "display": "15.23x",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.fcfYield",
+   "label": "Peer median, free cash flow yield",
+   "value": 2,
+   "unit": "pct",
+   "display": "2.0%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.dividendYield",
+   "label": "Peer median, dividend yield",
+   "value": 0.5,
+   "unit": "pct",
+   "display": "0.5%",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Median of ASML and NVDA, AAPL, MSFT, AVGO"
    }
   },
   {
@@ -4270,6 +4576,23 @@
    }
   },
   {
+   "id": "health.netPosition",
+   "label": "Net cash",
+   "value": 8931000000,
+   "unit": "USD",
+   "display": "EUR 8.9B",
+   "source": {
+    "form": "20-F",
+    "filed": "2026-02-25",
+    "accession": "0001628280-26-011378",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
+    "fy": 2025,
+    "period": "2025-12-31",
+    "statement": "Balance sheet (cash and investments minus total debt)",
+    "concept": "us-gaap:Assets"
+   }
+  },
+  {
    "id": "track.tradingSince",
    "label": "Shares trading since",
    "value": 1995,
@@ -4721,7 +5044,7 @@
     "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/0001628280-26-011378-index.htm",
     "fy": 2025,
     "period": "2025-12-31",
-    "statement": "Report of Independent Registered Public Accounting Firm"
+    "statement": "Report of the independent auditor"
    }
   },
   {
@@ -5043,6 +5366,7 @@
  },
  "financials": {
   "currency": "EUR",
+  "periodKind": "annual",
   "years": [
    "FY2021",
    "FY2022",
@@ -8092,7 +8416,7 @@
      "MSFT": 67.9,
      "AVGO": 68.8
     },
-    "median": 56.9,
+    "median": 62.4,
     "factId": "ratio.grossMargin"
    },
    {
@@ -8108,7 +8432,7 @@
      "MSFT": 46.8,
      "AVGO": 48
     },
-    "median": 34.6,
+    "median": 40,
     "factId": "ratio.operatingMargin"
    },
    {
@@ -8124,7 +8448,7 @@
      "MSFT": 40.3,
      "AVGO": 42.9
     },
-    "median": 29.4,
+    "median": 33.95,
     "factId": "ratio.netMargin"
    },
    {
@@ -8140,7 +8464,7 @@
      "MSFT": 34,
      "AVGO": 45.7
     },
-    "median": 45.7,
+    "median": 39.85,
     "factId": "ratio.roe"
    },
    {
@@ -8156,7 +8480,7 @@
      "MSFT": 33.9,
      "AVGO": 30
     },
-    "median": 33.9,
+    "median": 31.95,
     "factId": "ratio.roic"
    },
    {
@@ -8172,7 +8496,7 @@
      "MSFT": 19.4,
      "AVGO": 21.6
     },
-    "median": 19.4,
+    "median": 20.5,
     "factId": "ratio.roa"
    },
    {
@@ -8188,7 +8512,7 @@
      "MSFT": 0.0911,
      "AVGO": 0.596
     },
-    "median": 0.2239,
+    "median": 0.37,
     "factId": "ratio.debtToEquity"
    },
    {
@@ -8204,7 +8528,7 @@
      "MSFT": -0.4696,
      "AVGO": 0.8279
     },
-    "median": -0.4696,
+    "median": -0.43,
     "factId": "ratio.netDebtToEbitda"
    },
    {
@@ -8220,7 +8544,7 @@
      "MSFT": 1.2303,
      "AVGO": 2.5037
     },
-    "median": 1.2618,
+    "median": 1.87,
     "factId": "ratio.currentRatio"
    },
    {
@@ -8236,7 +8560,7 @@
      "MSFT": 50.8807,
      "AVGO": 13.7401
     },
-    "median": 33.5,
+    "median": 16.1221,
     "factId": "ratio.interestCoverage"
    },
    {
@@ -8268,7 +8592,7 @@
      "MSFT": 24.2,
      "AVGO": 40.2
     },
-    "median": 40.2,
+    "median": 34.75,
     "factId": "ratio.evToEbitda"
    },
    {
@@ -8284,7 +8608,7 @@
      "MSFT": 11.5503,
      "AVGO": 18.9013
     },
-    "median": 18.9013,
+    "median": 15.23,
     "factId": "ratio.priceToSales"
    },
    {
@@ -8300,7 +8624,7 @@
      "MSFT": 1.7,
      "AVGO": 2.3
     },
-    "median": 1.7,
+    "median": 2,
     "factId": "ratio.fcfYield"
    },
    {
@@ -8880,10 +9204,49 @@
     "inputs": "No named matters beyond routine"
    }
   ],
-  "factors": [],
+  "factors": [
+   {
+    "title": "Due to the high complexity and cost of our systems, customers may opt for existing technologies over newer ones.",
+    "line": "Due to the high complexity and cost of our systems, customers may opt for existing technologies over newer ones, or...",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+   },
+   {
+    "title": "The global economic environment, including inflation, interest rates and geopolitical events, contributes to this uncertainty.",
+    "line": "The global economic environment, including inflation, interest rates and geopolitical events, contributes to this uncertainty.",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+   },
+   {
+    "title": "Reductions or delays in capital expenditures by our customers, or incorrect assumptions by us about our customers’ capital expenditures.",
+    "line": "Reductions or delays in capital expenditures by our customers, or incorrect assumptions by us about our customers’ capital expenditures, could...",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+   },
+   {
+    "title": "We are exposed to economic, geopolitical and other developments in our international operations.",
+    "line": "We are exposed to economic, geopolitical and other developments in our international operations.",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+   },
+   {
+    "title": "In the course of our business, we have been and may be subject to claims.",
+    "line": "In the course of our business, we have been and may be subject to claims by third parties alleging that...",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+   }
+  ],
   "sourceUrl": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
  },
- "audit": null,
+ "audit": {
+  "auditor": "PricewaterhouseCoopers Accountants N.V.",
+  "location": "Eindhoven, The Netherlands",
+  "since": 2024,
+  "yearsAsAuditor": 2,
+  "opinion": "Unqualified",
+  "icfrEffective": true,
+  "materialWeakness": false,
+  "cams": [],
+  "auditorChanges": [],
+  "restatements": [],
+  "reportDate": "2026-02-24",
+  "sourceUrl": "https://www.sec.gov/Archives/edgar/data/937966/000162828026011378/asml-20251231.htm"
+ },
  "simulation": {
   "basedOn": {
    "from": "2021-09-27",
@@ -12069,13 +12432,6 @@
     "source": "Price history"
    },
    {
-    "date": "2022-11-10",
-    "title": "Shares rose 14.6% in one day.",
-    "kind": "good",
-    "url": "https://finance.yahoo.com/quote/ASML/history/",
-    "source": "Price history"
-   },
-   {
     "date": "2024-08-02",
     "title": "Shares fell 8.4% in one day.",
     "kind": "bad",
@@ -12083,11 +12439,11 @@
     "source": "Price history"
    },
    {
-    "date": "2024-07-17",
-    "title": "Shares fell 12.7% in one day.",
-    "kind": "bad",
-    "url": "https://finance.yahoo.com/quote/ASML/history/",
-    "source": "Price history"
+    "date": "2022-11-10",
+    "title": "Shares rose 14.6% in one day, 6-K filed nearby.",
+    "kind": "good",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000119312522282132/0001193125-22-282132-index.htm",
+    "source": "SEC filing"
    }
   ],
   "coming": [
@@ -12101,14 +12457,18 @@
   ]
  },
  "verified": true,
- "sectionsMissing": [
-  "Audit"
- ],
+ "sectionsMissing": [],
  "meta": {
   "writer": "fallback",
   "model": null,
-  "dropped": [],
+  "dropped": [
+   {
+    "where": "Quick review word budget",
+    "text": "Shares fell 12.7% in one day, 6-K filed nearby.",
+    "reason": "over 150 words"
+   }
+  ],
   "rewritten": 0,
-  "quickReviewWords": 78
+  "quickReviewWords": 144
  }
 }

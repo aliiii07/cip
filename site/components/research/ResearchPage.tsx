@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useQuotes } from "@/components/mvp/useQuotes";
 import type { Company, Quote } from "@/lib/nasdaq50";
 import type { CompanyResearch } from "@/lib/research-types";
@@ -51,18 +51,18 @@ const VARS = {
 export function ResearchPage({ symbol, company, research }: { symbol: string; company: Company; research: CompanyResearch | null }) {
   const { quotes } = useQuotes();
   const quote = quotes?.find((q) => q.symbol === symbol) ?? null;
-  const active = useActiveSection(TAB_IDS);
+  const { active, jumpTo } = useActiveSection(TAB_IDS);
   const wtm = research?.whatThisMeans ?? {};
 
   return (
     <div className="min-h-screen bg-parrot-dark pb-16 pt-[72px] text-white" style={VARS}>
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
         <HeaderCard symbol={symbol} company={company} research={research} quote={quote} loading={!quotes} />
-        <TabBar active={active} />
+        <TabBar active={active} onJump={jumpTo} />
 
         <main className="mt-5 space-y-5">
           <section id="summary" className="scroll-mt-[128px]">
-            <div className="grid gap-5 lg:grid-cols-[55fr_45fr]">
+            <div className="grid gap-5 lg:grid-cols-[42fr_58fr]">
               <div className={`${CARD} p-5 sm:p-6`}>
                 <h2 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.3px] lg:text-[22px]">Price</h2>
                 <div className="mt-3">
@@ -95,7 +95,7 @@ export function ResearchPage({ symbol, company, research }: { symbol: string; co
         <footer className="mt-8 space-y-1 text-[12px] leading-relaxed text-parrot-muted">
           <p>Everything here is research, not investment advice. Figures come from company filings. Prices may be delayed.</p>
           {research ? (
-            <p className="font-mono text-[11px] tabular-nums">
+            <p className="text-[11px] tabular-nums">
               Research built {research.asOf.research.slice(0, 10)} from {research.asOf.latestAnnual.form} filed {research.asOf.latestAnnual.filed} and {research.asOf.latestFiling.form} filed {research.asOf.latestFiling.filed}. Words {research.meta.writer === "anthropic" ? `written by ${research.meta.model} from the computed facts` : "assembled from the computed facts by fixed templates"}; {research.meta.dropped.length === 0 ? "every sentence passed the checker" : `${research.meta.dropped.length} sentence(s) removed by the checker`}.
             </p>
           ) : null}
@@ -156,11 +156,11 @@ function PriceLine({ quote, loading, currency }: { quote: Quote | null; loading:
   const sym = currency === "USD" ? "$" : `${currency} `;
   return (
     <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-      <span className="font-mono text-[22px] font-semibold tabular-nums leading-none">
+      <span className="text-[22px] font-semibold tabular-nums leading-none">
         {sym}
         {quote.price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
       </span>
-      <span className="font-mono text-[14px] tabular-nums" style={{ color: line.up ? GREEN : RED }}>
+      <span className="text-[14px] tabular-nums" style={{ color: line.up ? GREEN : RED }}>
         {line.up ? "▲" : "▼"} {line.up ? "+" : "−"}
         {Math.abs(quote.change).toFixed(2)} ({line.up ? "+" : "−"}
         {Math.abs(quote.changePct).toFixed(2)}%)
@@ -194,38 +194,31 @@ function countryCode(name: string): string {
 
 /* ---------------------------------------------------------------- tabs */
 
-function TabBar({ active }: { active: string }) {
+function TabBar({ active, onJump }: { active: string; onJump: (id: string) => void }) {
+  // On a phone the bar scrolls sideways, so keep the active tab in view.
+  const listRef = useRef<HTMLUListElement>(null);
+  useEffect(() => {
+    const ul = listRef.current;
+    const li = ul?.querySelector<HTMLElement>(`[data-tab="${active}"]`);
+    if (!ul || !li || ul.scrollWidth <= ul.clientWidth) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    ul.scrollTo({ left: li.offsetLeft - (ul.clientWidth - li.clientWidth) / 2, behavior: reduced ? "auto" : "smooth" });
+  }, [active]);
   // Owns the click: the site's smooth scroll also listens for in page
   // anchors and would scroll the section under the sticky bars, so stop the
-  // event here and scroll to the section with the bars' height allowed for.
+  // event here and let the section hook do the scrolling.
   const onPick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     e.stopPropagation();
-    const el = document.getElementById(id);
-    if (!el) return;
-    const from = window.scrollY;
-    const to = Math.max(0, el.getBoundingClientRect().top + from - 120);
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      window.scrollTo(0, to);
-      return;
-    }
-    // A short expo out glide, driven here so the distance decides nothing.
-    const start = performance.now();
-    const step = (now: number) => {
-      const t = Math.min(1, (now - start) / 650);
-      const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-      window.scrollTo(0, from + (to - from) * eased);
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
+    onJump(id);
   };
   return (
     <nav className="sticky top-14 z-30 -mx-4 mt-4 border-b border-white/10 bg-parrot-dark/95 backdrop-blur-[6px] sm:mx-0" aria-label="Sections">
-      <ul className="flex gap-1 overflow-x-auto px-4 [scrollbar-width:none] sm:px-0">
+      <ul ref={listRef} className="flex gap-1 overflow-x-auto px-4 [scrollbar-width:none] sm:px-0">
         {TABS.map((t) => {
           const on = t.id === active;
           return (
-            <li key={t.id} className="shrink-0">
+            <li key={t.id} data-tab={t.id} className="shrink-0">
               <a
                 href={`#${t.id}`}
                 onClick={(e) => onPick(e, t.id)}

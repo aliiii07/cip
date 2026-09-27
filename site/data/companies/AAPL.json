@@ -14,7 +14,7 @@
   "employees": 150000
  },
  "asOf": {
-  "research": "2026-09-27T06:14:40.961Z",
+  "research": "2026-09-27T07:23:19.357Z",
   "latestAnnual": {
    "form": "10-K",
    "filed": "2025-10-31",
@@ -33,6 +33,23 @@
   "prices": "2026-09-25"
  },
  "quickReview": [
+  {
+   "key": "about",
+   "title": "What it does",
+   "sentences": [
+    {
+     "text": "The Company designs, manufactures and markets smartphones, personal computers, tablets, wearables and accessories, and sells a variety of related services.",
+     "factIds": []
+    }
+   ],
+   "items": [
+    {
+     "text": "",
+     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+     "source": "10-K"
+    }
+   ]
+  },
   {
    "key": "money",
    "title": "Where the money comes from",
@@ -125,6 +142,28 @@
    ]
   },
   {
+   "key": "risks",
+   "title": "What can go wrong",
+   "sentences": [],
+   "items": [
+    {
+     "text": "The Company's operations and performance depend significantly on global and regional economic conditions.",
+     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+     "source": "10-K risk factors"
+    },
+    {
+     "text": "The Company's business can be impacted by political events, trade and other international disputes, geopolitical tensions, conflict, terrorism.",
+     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+     "source": "10-K risk factors"
+    },
+    {
+     "text": "Global markets for the Company's products and services are highly competitive and subject to rapid technological change.",
+     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+     "source": "10-K risk factors"
+    }
+   ]
+  },
+  {
    "key": "moments",
    "title": "Big moments",
    "sentences": [],
@@ -136,46 +175,10 @@
      "source": "Price history"
     },
     {
-     "date": "2022-11-10",
-     "text": "Shares rose 8.9% in one day, 8-K filed nearby.",
-     "url": "https://www.sec.gov/Archives/edgar/data/320193/000119312522278435/0001193125-22-278435-index.htm",
-     "kind": "good",
-     "source": "SEC filing"
-    },
-    {
      "date": "2025-04-04",
      "text": "Shares fell 7.3% in one day.",
      "kind": "bad",
      "source": "Price history"
-    },
-    {
-     "date": "2026-07-31",
-     "text": "Shares fell 7.3% in one day, 8-K filed nearby.",
-     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/0000320193-26-000018-index.htm",
-     "kind": "bad",
-     "source": "SEC filing"
-    }
-   ]
-  },
-  {
-   "key": "risks",
-   "title": "What can go wrong",
-   "sentences": [],
-   "items": [
-    {
-     "text": "The Company's operations and performance depend significantly on global and regional economic...",
-     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
-     "source": "10-K risk factors"
-    },
-    {
-     "text": "The Company's business can be impacted by political events, trade and other...",
-     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
-     "source": "10-K risk factors"
-    },
-    {
-     "text": "Global markets for the Company's products and services are highly competitive and...",
-     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
-     "source": "10-K risk factors"
     }
    ]
   },
@@ -191,12 +194,61 @@
      "source": "Yahoo Finance calendar"
     }
    ]
+  },
+  {
+   "key": "peers",
+   "title": "Against its peers",
+   "sentences": [
+    {
+     "text": "Price to earnings 39.1x against a peer median of 45.0x.",
+     "factIds": [
+      "ratio.pe",
+      "ratio.median.pe"
+     ]
+    },
+    {
+     "text": "Operating margin 33.2% against 46.8% for peers.",
+     "factIds": [
+      "ratio.operatingMargin",
+      "ratio.median.operatingMargin"
+     ]
+    }
+   ]
+  }
+ ],
+ "quickNumbers": [
+  {
+   "label": "Revenue, 12 months",
+   "factId": "revenue.TTM"
+  },
+  {
+   "label": "Revenue growth a year",
+   "factId": "track.revenueCagr"
+  },
+  {
+   "label": "Operating margin",
+   "factId": "ratio.operatingMargin"
+  },
+  {
+   "label": "Free cash flow",
+   "factId": "health.fcf"
+  },
+  {
+   "label": "Net cash",
+   "factId": "health.netPosition"
+  },
+  {
+   "label": "Price to earnings",
+   "factId": "ratio.pe"
   }
  ],
  "whatThisMeans": {
   "chart": {
    "text": "Real daily candles with 20 and 50 day averages, RSI and mapped support and resistance.",
-   "factIds": []
+   "factIds": [
+    "chart.ma20",
+    "chart.ma50"
+   ]
   },
   "probabilities": {
    "text": "5,000 paths built from 1254 trading days of this stock's own moves, not a forecast.",
@@ -4616,7 +4668,7 @@
    "label": "Net debt to EBITDA",
    "value": -0.3821,
    "unit": "x",
-   "display": "-0.38x",
+   "display": "−0.38x",
    "source": {
     "form": "10-Q",
     "filed": "2026-07-31",
@@ -4744,6 +4796,246 @@
     "fy": 2025,
     "period": "2025-09-27",
     "statement": "Peers: the largest companies in the same sector among the NASDAQ 50"
+   }
+  },
+  {
+   "id": "ratio.median.grossMargin",
+   "label": "Peer median, gross margin",
+   "value": 67.9,
+   "unit": "pct",
+   "display": "67.9%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.operatingMargin",
+   "label": "Peer median, operating margin",
+   "value": 46.8,
+   "unit": "pct",
+   "display": "46.8%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.netMargin",
+   "label": "Peer median, net margin",
+   "value": 40.3,
+   "unit": "pct",
+   "display": "40.3%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.roe",
+   "label": "Peer median, return on equity (roe)",
+   "value": 34,
+   "unit": "pct",
+   "display": "34.0%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.roic",
+   "label": "Peer median, return on invested capital (roic)",
+   "value": 30,
+   "unit": "pct",
+   "display": "30.0%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.roa",
+   "label": "Peer median, return on assets (roa)",
+   "value": 19.4,
+   "unit": "pct",
+   "display": "19.4%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.debtToEquity",
+   "label": "Peer median, debt to equity",
+   "value": 0.1457,
+   "unit": "x",
+   "display": "0.15x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.netDebtToEbitda",
+   "label": "Peer median, net debt to ebitda",
+   "value": -0.4696,
+   "unit": "x",
+   "display": "−0.47x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.currentRatio",
+   "label": "Peer median, current ratio",
+   "value": 2.5037,
+   "unit": "x",
+   "display": "2.50x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.interestCoverage",
+   "label": "Peer median, interest coverage",
+   "value": 16.1221,
+   "unit": "x",
+   "display": "16.12x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.pe",
+   "label": "Peer median, price to earnings (p/e)",
+   "value": 45,
+   "unit": "x",
+   "display": "45.0x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.evToEbitda",
+   "label": "Peer median, ev to ebitda",
+   "value": 40.2,
+   "unit": "x",
+   "display": "40.2x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.priceToSales",
+   "label": "Peer median, price to sales",
+   "value": 18.9013,
+   "unit": "x",
+   "display": "18.90x",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.fcfYield",
+   "label": "Peer median, free cash flow yield",
+   "value": 1.7,
+   "unit": "pct",
+   "display": "1.7%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
+   }
+  },
+  {
+   "id": "ratio.median.dividendYield",
+   "label": "Peer median, dividend yield",
+   "value": 0.7,
+   "unit": "pct",
+   "display": "0.7%",
+   "source": {
+    "form": "10-K",
+    "filed": "2025-10-31",
+    "accession": "0000320193-25-000079",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
+    "fy": 2025,
+    "period": "2025-09-27",
+    "statement": "Median of AAPL and NVDA, MSFT, AVGO"
    }
   },
   {
@@ -5156,6 +5448,23 @@
     "fy": 2026,
     "period": "2026-06-27",
     "statement": "Computed: current assets over current liabilities",
+    "concept": "us-gaap:Assets"
+   }
+  },
+  {
+   "id": "health.netPosition",
+   "label": "Net cash",
+   "value": 64170000000,
+   "unit": "USD",
+   "display": "$64.2B",
+   "source": {
+    "form": "10-Q",
+    "filed": "2026-07-31",
+    "accession": "0000320193-26-000020",
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/0000320193-26-000020-index.htm",
+    "fy": 2026,
+    "period": "2026-06-27",
+    "statement": "Balance sheet (cash and investments minus total debt)",
     "concept": "us-gaap:Assets"
    }
   },
@@ -5628,7 +5937,7 @@
     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm",
     "fy": 2025,
     "period": "2025-09-27",
-    "statement": "Report of Independent Registered Public Accounting Firm"
+    "statement": "Report of the independent auditor"
    }
   },
   {
@@ -5916,6 +6225,7 @@
  },
  "financials": {
   "currency": "USD",
+  "periodKind": "annual",
   "years": [
    "FY2021",
    "FY2022",
@@ -9563,7 +9873,7 @@
      "MSFT": 67.9,
      "AVGO": 68.8
     },
-    "median": 62.4,
+    "median": 67.9,
     "factId": "ratio.grossMargin"
    },
    {
@@ -9578,7 +9888,7 @@
      "MSFT": 46.8,
      "AVGO": 48
     },
-    "median": 40,
+    "median": 46.8,
     "factId": "ratio.operatingMargin"
    },
    {
@@ -9593,7 +9903,7 @@
      "MSFT": 40.3,
      "AVGO": 42.9
     },
-    "median": 33.95,
+    "median": 40.3,
     "factId": "ratio.netMargin"
    },
    {
@@ -9608,7 +9918,7 @@
      "MSFT": 34,
      "AVGO": 45.7
     },
-    "median": 39.85,
+    "median": 34,
     "factId": "ratio.roe"
    },
    {
@@ -9623,7 +9933,7 @@
      "MSFT": 33.9,
      "AVGO": 30
     },
-    "median": 31.95,
+    "median": 30,
     "factId": "ratio.roic"
    },
    {
@@ -9638,7 +9948,7 @@
      "MSFT": 19.4,
      "AVGO": 21.6
     },
-    "median": 20.5,
+    "median": 19.4,
     "factId": "ratio.roa"
    },
    {
@@ -9653,7 +9963,7 @@
      "MSFT": 0.0911,
      "AVGO": 0.596
     },
-    "median": 0.37,
+    "median": 0.1457,
     "factId": "ratio.debtToEquity"
    },
    {
@@ -9668,7 +9978,7 @@
      "MSFT": -0.4696,
      "AVGO": 0.8279
     },
-    "median": -0.43,
+    "median": -0.4696,
     "factId": "ratio.netDebtToEbitda"
    },
    {
@@ -9683,7 +9993,7 @@
      "MSFT": 1.2303,
      "AVGO": 2.5037
     },
-    "median": 1.87,
+    "median": 2.5037,
     "factId": "ratio.currentRatio"
    },
    {
@@ -9713,7 +10023,7 @@
      "MSFT": 28.8,
      "AVGO": 45
     },
-    "median": 42.05,
+    "median": 45,
     "factId": "ratio.pe"
    },
    {
@@ -9728,7 +10038,7 @@
      "MSFT": 24.2,
      "AVGO": 40.2
     },
-    "median": 34.75,
+    "median": 40.2,
     "factId": "ratio.evToEbitda"
    },
    {
@@ -9743,7 +10053,7 @@
      "MSFT": 11.5503,
      "AVGO": 18.9013
     },
-    "median": 15.23,
+    "median": 18.9013,
     "factId": "ratio.priceToSales"
    },
    {
@@ -9758,7 +10068,7 @@
      "MSFT": 1.7,
      "AVGO": 2.3
     },
-    "median": 2,
+    "median": 1.7,
     "factId": "ratio.fcfYield"
    },
    {
@@ -9773,7 +10083,7 @@
      "MSFT": 0.7,
      "AVGO": 0.7
     },
-    "median": 0.5,
+    "median": 0.7,
     "factId": "ratio.dividendYield"
    }
   ]
@@ -10405,27 +10715,27 @@
   ],
   "factors": [
    {
-    "title": "The Company's operations and performance depend significantly on global...",
+    "title": "The Company's operations and performance depend significantly on global and regional economic conditions.",
     "line": "The Company's operations and performance depend significantly on global and regional economic conditions and adverse economic conditions can materially adversely...",
     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
    },
    {
-    "title": "The Company's business can be impacted by political events...",
+    "title": "The Company's business can be impacted by political events, trade and other international disputes, geopolitical tensions, conflict, terrorism.",
     "line": "The Company's business can be impacted by political events, trade and other international disputes, geopolitical tensions, conflict, terrorism, natural disasters...",
     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
    },
    {
-    "title": "Global markets for the Company's products and services are...",
+    "title": "Global markets for the Company's products and services are highly competitive and subject to rapid technological change.",
     "line": "Global markets for the Company's products and services are highly competitive and subject to rapid technological change, and the Company...",
     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
    },
    {
-    "title": "To remain competitive and stimulate customer demand, the Company...",
+    "title": "To remain competitive and stimulate customer demand, the Company must successfully manage frequent introductions.",
     "line": "To remain competitive and stimulate customer demand, the Company must successfully manage frequent introductions and transitions of products and services.",
     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
    },
    {
-    "title": "The Company depends on component and product manufacturing and...",
+    "title": "The Company depends on component and product manufacturing and logistical services provided by outsourcing partners, many.",
     "line": "The Company depends on component and product manufacturing and logistical services provided by outsourcing partners, many of which are located...",
     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
    }
@@ -13633,25 +13943,11 @@
     "source": "Price history"
    },
    {
-    "date": "2022-11-10",
-    "title": "Shares rose 8.9% in one day, 8-K filed nearby.",
-    "kind": "good",
-    "url": "https://www.sec.gov/Archives/edgar/data/320193/000119312522278435/0001193125-22-278435-index.htm",
-    "source": "SEC filing"
-   },
-   {
     "date": "2025-04-04",
     "title": "Shares fell 7.3% in one day.",
     "kind": "bad",
     "url": "https://finance.yahoo.com/quote/AAPL/history/",
     "source": "Price history"
-   },
-   {
-    "date": "2026-07-31",
-    "title": "Shares fell 7.3% in one day, 8-K filed nearby.",
-    "kind": "bad",
-    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/0000320193-26-000018-index.htm",
-    "source": "SEC filing"
    }
   ],
   "coming": [
@@ -13669,8 +13965,19 @@
  "meta": {
   "writer": "fallback",
   "model": null,
-  "dropped": [],
+  "dropped": [
+   {
+    "where": "Quick review word budget",
+    "text": "Shares fell 7.3% in one day, 8-K filed nearby.",
+    "reason": "over 150 words"
+   },
+   {
+    "where": "Quick review word budget",
+    "text": "Shares rose 8.9% in one day, 8-K filed nearby.",
+    "reason": "over 150 words"
+   }
+  ],
   "rewritten": 0,
-  "quickReviewWords": 115
+  "quickReviewWords": 146
  }
 }

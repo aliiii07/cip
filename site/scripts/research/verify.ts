@@ -28,6 +28,13 @@ interface Token {
 const NUMBER =
   /(?<![\w.])(?:[$€£]\s?)?(\d{1,3}(?:,\d{3})+|\d+)(\.\d+)?\s?(%|x|T|B|M|bn|billion|million|trillion|percent)?(?![\w])/g;
 
+/** Dates and form names are not figures: "2026-11-03" is checked as a date, "8-K" is a name. */
+function stripNonFigures(text: string, knownYears: Set<number>): string {
+  return text
+    .replace(/\b((?:19|20)\d{2})-\d{2}-\d{2}\b/g, (m, y) => (knownYears.has(Number(y)) ? " " : m))
+    .replace(/\b(?:\d{1,2}-[KQF]|F-1|S-1|424B\d)\b/gi, " ");
+}
+
 function tokens(text: string): Token[] {
   const out: Token[] = [];
   for (const m of text.matchAll(NUMBER)) {
@@ -94,7 +101,7 @@ export function checkSentence(s: Sentence, facts: Fact[], knownYears: Set<number
   const words = s.text.trim().split(/\s+/).length;
   if (words > 20) return { ok: false, reason: `${words} words, limit 20` };
 
-  for (const t of tokens(s.text)) {
+  for (const t of tokens(stripNonFigures(s.text, knownYears))) {
     if (t.unit === "year" && knownYears.has(t.value)) continue;
     const cited = facts.filter((f) => s.factIds.includes(f.id));
     if (cited.some((f) => matches(t, f))) continue;

@@ -9,7 +9,7 @@ import {
 } from "lightweight-charts";
 import type { Candle, Indicators } from "@/lib/types";
 import { Stat, fmt, pct } from "./atoms";
-import { TERMINAL_FONT } from "@/lib/motion";
+import { siteFont } from "@/lib/motion";
 
 /**
  * Native candles. No Heikin-Ashi, no smoothing — what is drawn is what traded.
@@ -34,7 +34,7 @@ export function ChartAnalysis({
         background: { type: ColorType.Solid, color: "#ffffff" },
         textColor: "#71717A",
         fontSize: 10,
-        fontFamily: TERMINAL_FONT,
+        fontFamily: siteFont(),
       },
       grid: {
         vertLines: { color: "rgba(228,228,231,0.6)" },

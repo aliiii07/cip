@@ -117,7 +117,7 @@ export function RiskSection({ risk, meaning }: { risk: RiskView | null; meaning:
           <ol className="mt-3 space-y-2.5">
             {risk.factors.map((f, i) => (
               <li key={i} className="flex gap-3 text-[14px] leading-snug">
-                <span className="shrink-0 font-mono text-[12px] text-[#71717A]">{String(i + 1).padStart(2, "0")}</span>
+                <span className="shrink-0 text-[12px] text-[#71717A]">{String(i + 1).padStart(2, "0")}</span>
                 <span>
                   {f.line.startsWith(f.title.replace(/\.\.\.$/, "")) ? (
                     <span className="font-medium">{f.line}</span>

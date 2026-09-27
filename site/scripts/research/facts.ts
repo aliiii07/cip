@@ -126,7 +126,13 @@ function isAnnualForm(form: string): boolean {
  * ending there, instant lines a balance on that date. Among candidates the
  * latest filed annual form wins, then the latest filed anything.
  */
-export function pickAnnual(cf: CompanyFacts, tags: string[], kind: "duration" | "instant", end: string): Picked | null {
+export function pickAnnual(
+  cf: CompanyFacts,
+  tags: string[],
+  kind: "duration" | "instant",
+  end: string,
+  span: [number, number] = [340, 385]
+): Picked | null {
   let best: Picked | null = null;
   for (const tag of tags) {
     for (const { concept, entries } of entriesFor(cf, tag)) {
@@ -135,7 +141,7 @@ export function pickAnnual(cf: CompanyFacts, tags: string[], kind: "duration" | 
         if (kind === "duration") {
           if (!e.start) continue;
           const d = days(e.start, e.end);
-          if (d < 340 || d > 385) continue;
+          if (d < span[0] || d > span[1]) continue;
         } else if (e.start) continue;
         if (!best) best = { value: e.val, entry: e, concept };
         else {
@@ -170,6 +176,25 @@ export function fiscalYearEnds(cf: CompanyFacts, n = 5): string[] {
 
 export function fiscalLabel(end: string): string {
   return `FY${end.slice(0, 4)}`;
+}
+
+/** The quarter ends a company has reported, for one that has no fiscal year yet. */
+export function quarterEnds(cf: CompanyFacts, n = 5): { end: string; label: string }[] {
+  const found = new Map<string, string>();
+  for (const tag of INCOME_LINES[0].tags) {
+    for (const { entries } of entriesFor(cf, tag)) {
+      for (const e of entries) {
+        if (!e.start) continue;
+        const d = days(e.start, e.end);
+        if (d >= 80 && d <= 100 && e.fp) found.set(e.end, `${e.fp} ${e.end.slice(0, 4)}`);
+      }
+    }
+    if (found.size) break;
+  }
+  return [...found.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .slice(-n)
+    .map(([end, label]) => ({ end, label }));
 }
 
 /**
@@ -250,10 +275,18 @@ export interface BuiltStatements {
 }
 
 export function buildStatements(cf: CompanyFacts, cik: string, currency: string): BuiltStatements | null {
-  const ends = fiscalYearEnds(cf, 5);
-  if (ends.length === 0) return null;
+  let ends = fiscalYearEnds(cf, 5);
+  let periodKind: "annual" | "quarterly" = "annual";
+  let years = ends.map(fiscalLabel);
+  if (ends.length === 0) {
+    const quarters = quarterEnds(cf, 5);
+    if (quarters.length === 0) return null;
+    periodKind = "quarterly";
+    ends = quarters.map((q) => q.end);
+    years = quarters.map((q) => q.label);
+  }
   const lastFyEnd = ends[ends.length - 1];
-  const years = ends.map(fiscalLabel);
+  const span: [number, number] = periodKind === "annual" ? [340, 385] : [80, 100];
   const facts: Fact[] = [];
 
   const build = (specs: LineSpec[], statement: "income" | "balance" | "cashflow", label: string) => {
@@ -267,9 +300,14 @@ export function buildStatements(cf: CompanyFacts, cik: string, currency: string)
       const values: (number | null)[] = [];
       const sources: (Source | null)[] = [];
       for (const end of ends) {
-        const p = pickAnnual(cf, spec.tags, spec.kind, end);
+        const p = pickAnnual(cf, spec.tags, spec.kind, end, span);
         values.push(p ? p.value : null);
         sources.push(p ? sourceFor(cik, p.entry, p.concept, label) : null);
+      }
+      if (periodKind === "quarterly") {
+        // No trailing column: a company this new has no twelve months to trail.
+        lines.push({ key: spec.key, label: spec.label, values, sources, keyLine: spec.keyLine, yoy: [], unit: spec.unit });
+        continue;
       }
       // TTM column
       if (spec.kind === "duration") {
@@ -292,7 +330,7 @@ export function buildStatements(cf: CompanyFacts, cik: string, currency: string)
   const inc = build(INCOME_LINES, "income", "Income statement");
   const bal = build(BALANCE_LINES, "balance", "Balance sheet");
   const cfs = build(CASHFLOW_LINES, "cashflow", "Cash flow statement");
-  const columns = ends.length + 1;
+  const columns = periodKind === "annual" ? ends.length + 1 : ends.length;
 
   const find = (lines: StatementLine[], key: string) => lines.find((l) => l.key === key);
 
@@ -332,7 +370,7 @@ export function buildStatements(cf: CompanyFacts, cik: string, currency: string)
       .map((l) => ({
         ...l,
         yoy: l.values.map((v, i) => {
-          if (i === 0 || i >= ends.length) return null;
+          if (periodKind === "quarterly" || i === 0 || i >= ends.length) return null;
           const prev = l.values[i - 1];
           if (v == null || prev == null || prev === 0) return null;
           return Number((((v - prev) / Math.abs(prev)) * 100).toFixed(1));
@@ -342,8 +380,8 @@ export function buildStatements(cf: CompanyFacts, cik: string, currency: string)
   const income = finish(inc.lines);
   const balance = finish(bal.lines);
   const cashflow = finish(cfs.lines);
-  const ttmColumn = inc.ttmPossible || bal.ttmPossible || cfs.ttmPossible ? ends.length : null;
-  const colLabels = [...years, "TTM"];
+  const ttmColumn = periodKind === "annual" && (inc.ttmPossible || bal.ttmPossible || cfs.ttmPossible) ? ends.length : null;
+  const colLabels = periodKind === "annual" ? [...years, "TTM"] : years;
 
   // Facts for every key line and column, ids like revenue.FY2025 / revenue.TTM.
   const register = (lines: StatementLine[]) => {
@@ -365,10 +403,9 @@ export function buildStatements(cf: CompanyFacts, cik: string, currency: string)
   register(balance);
   register(cashflow);
 
-  const latest = [...income, ...balance, ...cashflow]
-    .flatMap((l) => l.sources)
-    .filter((s): s is Source => !!s)
-    .reduce((a, b) => (b.filed > a.filed ? b : a));
+  const allSources = [...income, ...balance, ...cashflow].flatMap((l) => l.sources).filter((s): s is Source => !!s);
+  if (allSources.length === 0) return null;
+  const latest = allSources.reduce((a, b) => (b.filed > a.filed ? b : a));
 
   const opInc = find(income, "operatingIncome");
   const ni = find(income, "netIncome");
@@ -388,8 +425,9 @@ export function buildStatements(cf: CompanyFacts, cik: string, currency: string)
   return {
     financials: {
       currency,
+      periodKind,
       years: colLabels,
-      periodEnds: [...ends, ""],
+      periodEnds: periodKind === "annual" ? [...ends, ""] : ends,
       income,
       balance,
       cashflow,

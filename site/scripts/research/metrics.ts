@@ -213,8 +213,9 @@ export function ratioRows(own: Record<string, number | null>, peers: { ticker: s
   return RATIO_SPECS.map((spec) => {
     const peerVals: Record<string, number | null> = {};
     for (const p of peers) peerVals[p.ticker] = p.values[spec.key] ?? null;
-    const all = [own[spec.key], ...peers.map((p) => p.values[spec.key])].filter((v): v is number => v != null).sort((a, b) => a - b);
-    const median = all.length ? (all.length % 2 ? all[(all.length - 1) / 2] : r2((all[all.length / 2 - 1] + all[all.length / 2]) / 2)) : null;
+    // The median of the peers alone, and only when at least two of them report it.
+    const all = peers.map((p) => p.values[spec.key]).filter((v): v is number => v != null).sort((a, b) => a - b);
+    const median = all.length >= 2 ? (all.length % 2 ? all[(all.length - 1) / 2] : r2((all[all.length / 2 - 1] + all[all.length / 2]) / 2)) : null;
     return { key: spec.key, label: spec.label, definition: spec.definition, unit: spec.unit, betterHigh: spec.betterHigh, own: own[spec.key] ?? null, peers: peerVals, median, factId: `ratio.${spec.key}` };
   });
 }

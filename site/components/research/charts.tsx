@@ -64,7 +64,7 @@ export function GroupedBars({
         {[...top, ...(yMin < 0 ? ticks(-yMin).map((t) => -t) : [])].map((t) => (
           <g key={t}>
             <line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} stroke={HAIR} strokeWidth="1" />
-            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="10" fill={MUTED} fontFamily="var(--font-mono)">
+            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="10" fill={MUTED} fontFamily="var(--font-figtree)">
               {money(t, currency)}
             </text>
           </g>
@@ -85,7 +85,7 @@ export function GroupedBars({
                   </rect>
                 );
               })}
-              <text x={gx + (barW * series.length) / 2} y={H - 8} textAnchor="middle" fontSize="11" fill={MUTED} fontFamily="var(--font-mono)">
+              <text x={gx + (barW * series.length) / 2} y={H - 8} textAnchor="middle" fontSize="11" fill={MUTED} fontFamily="var(--font-figtree)">
                 {c}
               </text>
             </g>
@@ -140,7 +140,7 @@ export function StackedBars({
         {top.map((t) => (
           <g key={t}>
             <line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} stroke={HAIR} strokeWidth="1" />
-            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="10" fill={MUTED} fontFamily="var(--font-mono)">
+            <text x={padL - 8} y={y(t)} textAnchor="end" dominantBaseline="middle" fontSize="10" fill={MUTED} fontFamily="var(--font-figtree)">
               {money(t, currency)}
             </text>
           </g>
@@ -162,7 +162,7 @@ export function StackedBars({
                   </rect>
                 );
               })}
-              <text x={x + barW / 2} y={H - 8} textAnchor="middle" fontSize="11" fill={MUTED} fontFamily="var(--font-mono)">
+              <text x={x + barW / 2} y={H - 8} textAnchor="middle" fontSize="11" fill={MUTED} fontFamily="var(--font-figtree)">
                 {c}
               </text>
             </g>
@@ -191,7 +191,7 @@ export function SeriesTable({ years, items, currency }: { years: string[]; items
           <tr>
             <th className="py-1 text-left font-medium text-[#71717A]" />
             {years.map((y) => (
-              <th key={y} className="py-1 text-right font-mono font-medium text-[#71717A]">
+              <th key={y} className="py-1 text-right font-medium text-[#71717A]">
                 {y}
               </th>
             ))}
@@ -202,7 +202,7 @@ export function SeriesTable({ years, items, currency }: { years: string[]; items
             <tr key={it.name}>
               <td className="py-1 pr-3 text-[#4a4a4a]">{it.name}</td>
               {it.values.map((v, i) => (
-                <td key={i} className="py-1 pl-3 text-right font-mono tabular-nums">
+                <td key={i} className="py-1 pl-3 text-right tabular-nums">
                   {v == null ? <span className="text-[#A1A1AA]">·</span> : money(v, currency)}
                 </td>
               ))}

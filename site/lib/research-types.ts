@@ -56,7 +56,7 @@ export interface QuickItem {
 }
 
 export interface QuickBlock {
-  key: "money" | "track" | "health" | "moments" | "risks" | "coming";
+  key: "about" | "money" | "track" | "health" | "moments" | "risks" | "coming" | "peers";
   title: string;
   chip?: Chip;
   sentences: Sentence[];
@@ -81,7 +81,10 @@ export interface StatementLine {
 
 export interface Financials {
   currency: string;
-  /** Column labels, e.g. FY2021 ... FY2025, TTM. */
+  /** Fiscal years when the company has filed annual reports; otherwise the
+   *  quarters it has filed so far, oldest first, and no trailing column. */
+  periodKind: "annual" | "quarterly";
+  /** Column labels, e.g. FY2021 ... FY2025, TTM, or Q2 2025, Q2 2026. */
   years: string[];
   periodEnds: string[];
   income: StatementLine[];
@@ -228,6 +231,8 @@ export interface CompanyResearch {
     prices: string;
   };
   quickReview: QuickBlock[];
+  /** The six figures at the top of the quick review, by fact id. */
+  quickNumbers: { label: string; factId: string }[];
   whatThisMeans: Record<string, Sentence>;
   facts: Fact[];
   revenueSources: { name: string; pct: number; value: number; factId: string }[];

@@ -30,11 +30,11 @@ export function RatiosSection({ ratios, symbol, meaning }: { ratios: Ratios | nu
             <tr>
               <th className="py-1.5 text-left font-medium text-[#71717A]">Ratio</th>
               {cols.map((c) => (
-                <th key={c} className={`py-1.5 pl-3 text-right font-mono font-semibold ${c === symbol ? "text-[#1a1a1a]" : "text-[#71717A]"}`}>
+                <th key={c} className={`py-1.5 pl-3 text-right font-semibold ${c === symbol ? "text-[#1a1a1a]" : "text-[#71717A]"}`}>
                   {c}
                 </th>
               ))}
-              <th className="py-1.5 pl-3 text-right font-mono font-medium text-[#71717A]">Median</th>
+              <th className="py-1.5 pl-3 text-right font-medium text-[#71717A]">Median</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E4E4E7]">
@@ -46,12 +46,12 @@ export function RatiosSection({ ratios, symbol, meaning }: { ratios: Ratios | nu
                 {cols.map((c) => {
                   const v = c === symbol ? r.own : r.peers[c] ?? null;
                   return (
-                    <td key={c} className={`py-1.5 pl-3 text-right font-mono tabular-nums ${shade(v, r.median, r.betterHigh)} ${c === symbol ? "font-semibold" : ""}`}>
+                    <td key={c} className={`py-1.5 pl-3 text-right tabular-nums ${shade(v, r.median, r.betterHigh)} ${c === symbol ? "font-semibold" : ""}`}>
                       {fmt(v, r.unit)}
                     </td>
                   );
                 })}
-                <td className="py-1.5 pl-3 text-right font-mono tabular-nums text-[#71717A]">{fmt(r.median, r.unit)}</td>
+                <td className="py-1.5 pl-3 text-right tabular-nums text-[#71717A]">{fmt(r.median, r.unit)}</td>
               </tr>
             ))}
           </tbody>
@@ -111,7 +111,7 @@ export function EarningsQualitySection({ eq, meaning }: { eq: { checks: EqCheck[
                   <span className="text-[14px] font-semibold">
                     <Tip term={c.label} def={c.rule} />
                   </span>
-                  <span className="font-mono text-[13px] tabular-nums" style={{ color: c.mark === "Fail" ? RED : c.mark === "Pass" ? GREEN : "#8a6f14" }}>
+                  <span className="text-[13px] tabular-nums" style={{ color: c.mark === "Fail" ? RED : c.mark === "Pass" ? GREEN : "#8a6f14" }}>
                     {c.mark ?? "Not computable"} · {c.display}
                   </span>
                 </div>
