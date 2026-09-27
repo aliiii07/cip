@@ -122,8 +122,11 @@ export function useActiveSection(ids: string[]) {
       const p = pin.current;
       if (p && p.id === id) pin.current = { id, animating: false, settledTop: topOf(id) };
     };
+    // "instant" overrides the global smooth scroll-behavior, which would
+    // otherwise animate every frame of the glide below on its own.
+    const jump = (y: number) => window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      window.scrollTo(0, to);
+      jump(to);
       requestAnimationFrame(settle);
       return;
     }
@@ -132,7 +135,7 @@ export function useActiveSection(ids: string[]) {
     const step = (now: number) => {
       const t = Math.min(1, (now - start) / 650);
       const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-      window.scrollTo(0, from + (to - from) * eased);
+      jump(from + (to - from) * eased);
       if (t < 1) requestAnimationFrame(step);
       else requestAnimationFrame(settle);
     };
