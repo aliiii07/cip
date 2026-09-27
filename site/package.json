@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start --port 3100",
     "lint": "next lint",
-    "logos": "node scripts/fetch-logos.mjs"
+    "logos": "node scripts/fetch-logos.mjs",
+    "research": "node scripts/research/index.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",

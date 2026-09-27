@@ -21,4 +21,4 @@ export const EASE_PREMIUM = "cubic-bezier(0.22, 1, 0.36, 1)";
 /** Canvas text needs a real font name string; CSS var() does not resolve in a
  *  2D context. Matches the marketing site's typeface so the prototype reads
  *  as the same product, not a separate app dropped into an iframe. */
-export const TERMINAL_FONT = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+export const TERMINAL_FONT = 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace';

@@ -1,8 +1,31 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { EASE_PREMIUM, prefersReducedMotion } from "@/lib/motion";
 import { FOCUS_RING } from "./styles";
+
+/** Lets a page move the stack, e.g. picking a company on page 1 opens page 2. */
+interface SnapNav {
+  index: number;
+  count: number;
+  go: (index: number) => void;
+}
+
+const SnapContext = createContext<SnapNav | null>(null);
+
+export function useSnap(): SnapNav {
+  const value = useContext(SnapContext);
+  if (!value) throw new Error("useSnap must be used inside SnapPages");
+  return value;
+}
 
 /**
  * A fixed stack of screen tall pages with one gesture per page.
@@ -140,6 +163,7 @@ export function SnapPages({
   const tone = tones?.[index] ?? "dark";
 
   return (
+    <SnapContext.Provider value={{ index, count, go }}>
     <div
       ref={containerRef}
       data-lenis-prevent
@@ -177,6 +201,7 @@ export function SnapPages({
 
       <Indicator index={index} count={count} onSelect={go} tone={tone} />
     </div>
+    </SnapContext.Provider>
   );
 }
 

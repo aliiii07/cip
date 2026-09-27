@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NASDAQ 50 · CIP",
+  title: "International Companies · CIP",
   description:
-    "Pick any of 50 top NASDAQ companies and research it in seconds. Live market data. Not investment advice.",
+    "Pick any of 50 NASDAQ companies and research it in seconds. Live market data. Not investment advice.",
 };
 
 /**
