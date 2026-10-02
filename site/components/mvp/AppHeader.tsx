@@ -14,7 +14,7 @@ export function AppHeader({ back = { href: "/", label: "Back to site" } }: { bac
       <div className="flex h-full items-center justify-between px-4 sm:px-6 lg:px-10">
         <Link
           href="/"
-          aria-label="CIP home"
+          aria-label="C.I.P home"
           className={`inline-flex items-center gap-2.5 rounded-md text-white ${FOCUS_RING}`}
         >
           <CipMark className="h-[22px] w-[26px]" animate={false} />

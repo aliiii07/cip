@@ -46,7 +46,7 @@ export function SiteFooter() {
               <div className="flex items-center gap-3">
                 <LogoMark className="h-6 w-8 text-white" />
                 <span className="font-display text-[20px] font-semibold tracking-[-0.5px] text-white">
-                  CIP
+                  C.I.P
                 </span>
               </div>
               <p className="mt-4 max-w-[34ch] font-body text-[14px] leading-relaxed text-text-dark-muted">
@@ -118,7 +118,7 @@ export function SiteFooter() {
           </div>
 
           <p className="mt-12 font-body text-[13px] font-light text-text-light-muted">
-            © {new Date().getFullYear()} CIP · Pre-seed · netcip.com · Paper
+            © {new Date().getFullYear()} C.I.P · Pre-seed · netcip.com · Paper
             trading only, no live brokerage.
           </p>
         </div>

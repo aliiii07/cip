@@ -124,7 +124,7 @@ function HeaderCard({ symbol, company, research, quote, loading }: { symbol: str
           {research?.verified ? (
             <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1a1a1a]" style={{ background: LIME }} title="Every number and date in the written text matched a computed fact or a cited filing.">
               <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-6" /></svg>
-              Verified by CIP
+              Verified by C.I.P
             </span>
           ) : null}
         </div>

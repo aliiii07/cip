@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2.5">
               <LogoMark className="h-6 w-8 text-white" />
-              <span className="text-[13px] tracking-[0.18em]">CIP</span>
+              <span className="text-[13px] tracking-[0.18em]">C.I.P</span>
             </div>
             <p className="mt-3 max-w-[30ch] text-[13px] leading-relaxed text-muted">
               Capital Investment Prospects. Built in Uzbekistan for

@@ -31,7 +31,7 @@ const STEPS = [
   {
     index: "2",
     title: "Follow with Confidence",
-    body: "Pick a strategy and copy it into a paper session inside CIP.",
+    body: "Pick a strategy and copy it into a paper session inside C.I.P.",
     src: "/landing/frame-follow.png",
     mobile: "/landing/frame-follow@mobile.png",
     alt: "Copying a verified strategy into a paper session",
@@ -39,7 +39,7 @@ const STEPS = [
   {
     index: "3",
     title: "Auto-Follow Re-Verification",
-    body: "When an expert makes a move, CIP re-checks it with data and AI risk reviews before the paper book updates.",
+    body: "When an expert makes a move, C.I.P re-checks it with data and AI risk reviews before the paper book updates.",
     src: "/landing/frame-reverify.png",
     mobile: "/landing/frame-reverify@mobile.png",
     alt: "Checking a new expert move against AI risk parameters",
@@ -146,7 +146,7 @@ export function HowItWorksScroll() {
             {/* right: heading + steps, 460×608 box */}
             <div className="w-[460px]">
               <h2 className="font-display text-[50px] font-semibold leading-[50px] tracking-[-1px] text-white">
-                How CIP Works
+                How C.I.P Works
               </h2>
 
               <ol className="mt-12 space-y-8">
@@ -194,7 +194,7 @@ export function HowItWorksScroll() {
       {/* --------------------------------------------- mobile: plain stack */}
       <div className="mx-auto max-w-content px-6 py-20 lg:hidden">
         <h2 className="font-display text-[34px] font-semibold leading-[1.05] tracking-[-1px] text-white">
-          How CIP Works
+          How C.I.P Works
         </h2>
         <ol className="mt-10 space-y-14">
           {STEPS.map((s) => (

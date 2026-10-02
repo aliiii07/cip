@@ -54,7 +54,7 @@ export function Companies() {
             International Companies
           </h1>
           <p className="mt-1.5 text-[14px] leading-snug text-parrot-muted">
-            The 50 NASDAQ companies CIP covers. Pick one to research.
+            The 50 NASDAQ companies C.I.P covers. Pick one to research.
           </p>
         </div>
         <p className="hidden text-[12px] leading-snug text-parrot-muted tabular-nums sm:block">50 companies</p>

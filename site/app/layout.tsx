@@ -32,7 +32,7 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "CIP · Capital Investment Prospects",
+  title: "C.I.P · Capital Investment Prospects",
   description:
     "Build your own strategy or follow an expert. Nothing reaches you untested: every strategy passes the same verification first. Paper-trading only, on real data.",
   metadataBase: new URL("https://netcip.com"),
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "CIP · Capital Investment Prospects",
+    title: "C.I.P · Capital Investment Prospects",
     description:
       "Follow the proven, not just the famous. Every strategy verified before you trust it.",
     type: "website",

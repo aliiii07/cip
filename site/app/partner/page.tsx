@@ -3,7 +3,7 @@ import { Navbar } from "@/components/parrot/Navbar";
 import { Footer } from "@/components/parrot/Footer";
 import { PartnerForm } from "@/components/parrot/PartnerForm";
 
-export const metadata: Metadata = { title: "Partner with Us · CIP" };
+export const metadata: Metadata = { title: "Partner with Us · C.I.P" };
 
 export default function PartnerPage() {
   return (

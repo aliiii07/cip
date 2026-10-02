@@ -44,7 +44,7 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex h-full max-w-[1580px] items-center px-6 lg:px-[60px]">
-        <Link href="/" aria-label="CIP home">
+        <Link href="/" aria-label="C.I.P home">
           <ParrotLogo />
         </Link>
 

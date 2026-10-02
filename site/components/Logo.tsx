@@ -13,7 +13,7 @@ const DOT = { cx: 905, cy: 375, r: 68 };
 export function LogoMark({
   className,
   animate = false,
-  title = "CIP",
+  title = "C.I.P",
 }: {
   className?: string;
   animate?: boolean;
@@ -49,7 +49,7 @@ export function LogoMark({
 /** Full app-icon lockup: the mark on a black rounded square. */
 export function LogoSquare({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 1200 1200" className={className} role="img" aria-label="CIP">
+    <svg viewBox="0 0 1200 1200" className={className} role="img" aria-label="C.I.P">
       <rect width="1200" height="1200" rx="232" fill="#0A0A0A" />
       <path
         d={LINE}

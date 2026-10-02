@@ -209,7 +209,7 @@ export function UzbekCompanies() {
               Tez orada
             </p>
             <p className="mt-4 max-w-[420px] text-[13px] leading-snug text-white/85 [text-shadow:0_1px_16px_rgba(31,31,31,0.95)] sm:text-[15px] lg:mt-5 lg:max-w-[520px] lg:text-[16px]">
-              We are preparing research on Uzbek companies with the same honesty and verification as everything else on CIP.
+              We are preparing research on Uzbek companies with the same honesty and verification as everything else on C.I.P.
             </p>
           </div>
         </div>

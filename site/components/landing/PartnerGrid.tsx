@@ -32,7 +32,7 @@ export function PartnerGrid() {
           Want access to top institutional-style playbooks?
         </h2>
         <p className="mt-6 max-w-[760px] font-body text-[18px] font-normal leading-[28px] tracking-[-0.5px] text-text-light-muted lg:text-[28px] lg:leading-[36.4px]">
-          Follow model books verified by CIP’s data and backtesting engine
+          Follow model books verified by C.I.P’s data and backtesting engine
           across global and emerging markets. Simulated until you choose
           otherwise.
         </p>

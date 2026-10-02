@@ -104,7 +104,7 @@ export function RoiCalculator() {
         </h2>
         <p className="mt-6 max-w-[760px] font-body text-[18px] font-normal leading-[28px] tracking-[-0.5px] text-text-light-muted lg:text-[28px] lg:leading-[36.4px]">
           Enter an amount to see how a modelled annual rate compounds over one
-          year. A hypothetical arithmetic example, not a forecast and not a CIP
+          year. A hypothetical arithmetic example, not a forecast and not a C.I.P
           result.
         </p>
 

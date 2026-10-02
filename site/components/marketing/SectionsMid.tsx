@@ -8,7 +8,7 @@ const WHAT = [
   ["Follow", "Pick one and start copying it."],
   [
     "Auto-follow",
-    "Let it update when the expert moves, after CIP re-verifies the new move.",
+    "Let it update when the expert moves, after C.I.P re-verifies the new move.",
   ],
   [
     "Build",
@@ -192,7 +192,7 @@ export function Honesty() {
               This passed the test, or it did not.
             </p>
             <p className="mt-9 max-w-[58ch] text-[17px] leading-[1.66] text-[#2c2b28]">
-              CIP stands between a strategy and the user and says which one it
+              C.I.P stands between a strategy and the user and says which one it
               is. That is the whole product, and it is the one rule that holds
               it together: nothing reaches a user without passing through
               verification first.
@@ -302,7 +302,7 @@ export function Numbers() {
       <Reveal>
         <h2 className="display">By the numbers</h2>
         <p className="mt-5 text-[17px] text-[#57554f]">
-          The engineering discipline behind every strategy CIP produces.
+          The engineering discipline behind every strategy C.I.P produces.
         </p>
       </Reveal>
 

@@ -21,10 +21,10 @@ export function NavBar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-[94px] bg-pure-black">
       <div className="mx-auto flex h-full max-w-content items-center gap-8 px-6 lg:px-0">
-        <Link href="/" className="flex items-center gap-3" aria-label="CIP home">
+        <Link href="/" className="flex items-center gap-3" aria-label="C.I.P home">
           <LogoMark className="h-6 w-8 text-white" />
           <span className="font-display text-[20px] font-semibold tracking-[-0.5px] text-white">
-            CIP
+            C.I.P
           </span>
         </Link>
 
