@@ -23,8 +23,8 @@ export function InvestingBand() {
     const value = email.trim();
     if (!value) return;
     window.location.href = `mailto:${INBOX}?subject=${encodeURIComponent(
-      "CIP early access"
-    )}&body=${encodeURIComponent(`Please add me to the CIP list.\n\nEmail: ${value}\n`)}`;
+      "C.I.P early access"
+    )}&body=${encodeURIComponent(`Please add me to the C.I.P list.\n\nEmail: ${value}\n`)}`;
     setSent(true);
   };
 

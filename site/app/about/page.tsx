@@ -30,13 +30,13 @@ export default function AboutPage() {
             <Reveal delay={80}>
               <div className="space-y-6 text-[17px] leading-[1.68] text-[#c6c6c6]">
                 <p>
-                  CIP lets everyday people invest the way professionals do.
+                  C.I.P lets everyday people invest the way professionals do.
                   Follow the strategies of top investors and funds, build your
                   own with AI, or do both.
                 </p>
                 <p>
-                  The core of CIP is neither building nor following. It is
-                  verification. CIP stands between a strategy and the person
+                  The core of C.I.P is neither building nor following. It is
+                  verification. C.I.P stands between a strategy and the person
                   about to trust it and says either this passed the test, or
                   this did not.
                 </p>

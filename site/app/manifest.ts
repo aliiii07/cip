@@ -11,8 +11,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "CIP — Capital Investment Prospects",
-    short_name: "CIP",
+    name: "C.I.P · Capital Investment Prospects",
+    short_name: "C.I.P",
     description:
       "Decision intelligence for what comes next. A no-code quantitative sandbox and analytical research suite.",
     start_url: "/",

@@ -9,7 +9,7 @@
  */
 
 export const BRAND = {
-  name: "CIP",
+  name: "C.I.P",
   fullName: "Capital Investment Prospects",
   company: "Capital Investment Prospects, Inc.",
   email: "corporation@netcip.com",
@@ -22,13 +22,13 @@ export const NAV: { label: string; href: string }[] = [
 ];
 
 // The nav pill goes to the same place as the hero Launch button.
-export const NAV_CTA = { label: "Launch CIP", href: "/prototype" } as const;
+export const NAV_CTA = { label: "Launch C.I.P", href: "/prototype" } as const;
 
 export const HERO = {
   // Rendered twice around the ring, so both halves read the same.
   badge: "FEATURED ON TECHSTARS • ",
   h1: "Easy Investing, Backed by Real Research",
-  sub: "Deep research, live data, official info. What takes analysts a month, CIP gives you in seconds.",
+  sub: "Deep research, live data, official info. What takes analysts a month, C.I.P gives you in seconds.",
   // The one entry point to the MVP (the prototype terminal).
   cta: { label: "Launch", href: "/prototype" },
 } as const;
@@ -71,7 +71,7 @@ export const ACCESS = {
     { name: "Alphabet", logo: "alphabet.png" },
   ],
   trademark:
-    "Logos are trademarks of their respective owners and are used for identification only. CIP is not affiliated with or endorsed by these companies.",
+    "Logos are trademarks of their respective owners and are used for identification only. C.I.P is not affiliated with or endorsed by these companies.",
 } as const;
 
 export const SECURITY = {
@@ -103,7 +103,7 @@ export const CALC = {
   sub: "Enter an amount to see your potential investment growth in 1 year.",
   placeholder: "Enter Amount",
   savings: { label: "Savings Account", rate: 0.0039 },
-  parrot: { label: "CIP", rate: 0.2765 },
+  parrot: { label: "C.I.P", rate: 0.2765 },
   cards: [
     { name: "Inflation Defense", fund: "VanEck", period: "YTD", value: "+16.25%" },
     { name: "Sector Rotation", fund: "State Street", period: "YTD", value: "+06.50%" },
@@ -116,13 +116,13 @@ export const CALC = {
     { name: "Value Core", value: "$4,970.15", delta: "+11%" },
   ],
   disclaimer:
-    "Disclaimer: This investment analysis tool presents hypothetical outcomes based on past performance. Modeled portfolio performance is based on the Blackrock Core Portfolio (1 year return of 27.65%). Actual returns will vary based on market conditions. Investing involves risk, including possible loss of principal. Images shown are for design only, and do not contain any implied advice or recommendation, however the purpose is to showcase some of CIP's offerings to users on the platform.",
+    "Disclaimer: This investment analysis tool presents hypothetical outcomes based on past performance. Modeled portfolio performance is based on the Blackrock Core Portfolio (1 year return of 27.65%). Actual returns will vary based on market conditions. Investing involves risk, including possible loss of principal. Images shown are for design only, and do not contain any implied advice or recommendation, however the purpose is to showcase some of C.I.P's offerings to users on the platform.",
   link: "See Full Assumptions & Disclosures",
 } as const;
 
 export const FAQ: { q: string; a: string }[] = [
   {
-    q: "So what does CIP actually do?",
+    q: "So what does C.I.P actually do?",
     a: "It does the research you'd normally spend weeks on. Pick a company and you'll see the full picture, what the big investors are doing, and whether the strategy holds up, in seconds.",
   },
   {

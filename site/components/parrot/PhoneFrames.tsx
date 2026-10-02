@@ -231,7 +231,7 @@ export function ScreenBacktest({ active = false }: ScreenProps) {
       <div className="px-5 pt-12">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-parrot-lime px-3 py-1 text-[11px] font-semibold text-[#1a1a1a]">
           <span className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[#1a1a1a] text-[8px] text-parrot-lime">✓</span>
-          Verified by CIP
+          Verified by C.I.P
         </span>
         <div className="mt-3">
           <ScreenTitle title="Backtest Result" subtitle="Apple, 5 years of history" />

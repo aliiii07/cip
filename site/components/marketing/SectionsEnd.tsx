@@ -18,7 +18,7 @@ export function Vision() {
           </h2>
           <p className="lead mt-12">
             Access to expert strategies was never the hard part. Knowing which
-            of them survive a check is. CIP puts that check between every
+            of them survive a check is. C.I.P puts that check between every
             strategy and the person about to trust it.
           </p>
           <p className="mt-10 text-[clamp(1.25rem,2.4vw,2rem)] italic">

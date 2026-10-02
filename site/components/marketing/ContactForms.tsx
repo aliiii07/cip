@@ -20,10 +20,10 @@ export function WaitlistForm() {
     const value = email.trim();
     if (!value) return;
     const body = encodeURIComponent(
-      `Please add me to the CIP early-access list.\n\nEmail: ${value}\n`
+      `Please add me to the C.I.P early-access list.\n\nEmail: ${value}\n`
     );
     window.location.href = `mailto:${INBOX}?subject=${encodeURIComponent(
-      "CIP early access"
+      "C.I.P early access"
     )}&body=${body}`;
     setSent(true);
   };

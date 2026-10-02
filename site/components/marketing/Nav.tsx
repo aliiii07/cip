@@ -29,9 +29,9 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex h-[68px] max-w-deck items-center gap-4 px-[var(--gutter)]">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="CIP home">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="C.I.P home">
           <LogoMark className="h-6 w-8 text-white" />
-          <span className="text-[13px] tracking-[0.18em]">CIP</span>
+          <span className="text-[13px] tracking-[0.18em]">C.I.P</span>
         </Link>
 
         <nav className="ml-6 hidden items-center gap-7 lg:flex">

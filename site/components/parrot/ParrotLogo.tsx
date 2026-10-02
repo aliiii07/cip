@@ -21,7 +21,7 @@ export function CipMark({
   animate?: boolean;
 }) {
   return (
-    <svg viewBox="248 292 742 630" className={className} role="img" aria-label="CIP" fill="none">
+    <svg viewBox="248 292 742 630" className={className} role="img" aria-label="C.I.P" fill="none">
       <path
         d={LINE}
         stroke="currentColor"

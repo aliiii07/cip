@@ -78,18 +78,18 @@ export function About() {
         <Reveal>
           <h2 className="display">About us</h2>
           <p className="mt-5 text-[15px] text-[#6e6c66]">
-            Capital Investment Prospects (CIP)
+            Capital Investment Prospects (C.I.P)
           </p>
 
           <div className="mt-12 space-y-6 text-[17px] leading-[1.68] text-[#2c2b28]">
             <p>
-              CIP lets everyday people invest the way professionals do. Follow
+              C.I.P lets everyday people invest the way professionals do. Follow
               the strategies of top investors and funds, build your own with
               AI, or do both.
             </p>
             <p>
-              What separates CIP from every copy-trading app is verification.
-              Nothing reaches you until CIP has checked it with data,
+              What separates C.I.P from every copy-trading app is verification.
+              Nothing reaches you until C.I.P has checked it with data,
               research, backtesting and an AI risk review.
             </p>
             <p className="text-[#1c1b19]">
@@ -105,10 +105,10 @@ export function About() {
           </ScrollParallax>
 
           <div className="pointer-glow bg-ink px-8 py-9 text-white">
-            <div className="eyebrow">CIP</div>
+            <div className="eyebrow">C.I.P</div>
             <ol className="mt-4 space-y-2 text-[15px] text-[#d8d8d8]">
               <li>01 · An expert moves, or you build</li>
-              <li>02 · CIP verifies it</li>
+              <li>02 · C.I.P verifies it</li>
               <li>03 · Only what passes reaches you</li>
             </ol>
             <div className="my-7 h-[86px]">
@@ -182,7 +182,7 @@ export function Problem() {
             <p className="text-white">
               <strong className="font-semibold">No proof.</strong> No tool
               checks whether an expert’s move actually holds up before you
-              copy it. That gap is the whole reason CIP exists.
+              copy it. That gap is the whole reason C.I.P exists.
             </p>
           </div>
         </Reveal>
@@ -233,7 +233,7 @@ export function Positioning() {
         </h2>
         <p className="lead mt-6">
           Copy-trading put expert portfolios within reach and asked you to
-          take them on faith. CIP checks the move before it reaches you.
+          take them on faith. C.I.P checks the move before it reaches you.
         </p>
       </Reveal>
 
@@ -252,7 +252,7 @@ export function Positioning() {
         <Reveal delay={160}>
           <ScrollParallax className="parallax-slow-rev panel panel-signal pointer-glow h-full">
             <div className="flex items-center gap-2.5">
-              <span className="eyebrow">CIP</span>
+              <span className="eyebrow">C.I.P</span>
               <span className="dot" />
             </div>
             <ul className="mt-7 space-y-4 text-[16px] text-white">

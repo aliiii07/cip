@@ -7,17 +7,17 @@ import { DISCLAIMER } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Legal · Capital Investment Prospects",
   description:
-    "CIP is a research and simulation tool. Not a broker, not investment advice, no live execution.",
+    "C.I.P is a research and simulation tool. Not a broker, not investment advice, no live execution.",
 };
 
 const SECTIONS = [
   [
     "Not investment advice",
-    "CIP is an educational and research tool. Nothing it produces is a recommendation to buy, sell, or hold any instrument, and nothing on this site should be read as personalised financial advice. We are not a licensed investment adviser. Decisions about your money are yours, and you should consult a qualified professional before making them.",
+    "C.I.P is an educational and research tool. Nothing it produces is a recommendation to buy, sell, or hold any instrument, and nothing on this site should be read as personalised financial advice. We are not a licensed investment adviser. Decisions about your money are yours, and you should consult a qualified professional before making them.",
   ],
   [
     "Not a broker, paper only",
-    "CIP does not execute orders, hold funds, or connect to any brokerage or exchange for the purpose of trading. Live execution is not implemented in the product. Every position, fill, and result you see is simulated against real market data.",
+    "C.I.P does not execute orders, hold funds, or connect to any brokerage or exchange for the purpose of trading. Live execution is not implemented in the product. Every position, fill, and result you see is simulated against real market data.",
   ],
   [
     "Simulated results",
@@ -25,7 +25,7 @@ const SECTIONS = [
   ],
   [
     "Market data",
-    "Market data is supplied by third parties, including Binance and Polygon.io, and is used for research and simulation. It may be delayed, incomplete, or revised. Where a data source is unavailable, CIP substitutes clearly-badged sample data rather than presenting an unmarked estimate.",
+    "Market data is supplied by third parties, including Binance and Polygon.io, and is used for research and simulation. It may be delayed, incomplete, or revised. Where a data source is unavailable, C.I.P substitutes clearly-badged sample data rather than presenting an unmarked estimate.",
   ],
   [
     "AI-generated language",

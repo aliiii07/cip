@@ -4,7 +4,7 @@ import { Navbar } from "@/components/parrot/Navbar";
 import { Footer } from "@/components/parrot/Footer";
 import { NAV_CTA } from "@/lib/parrot-content";
 
-export const metadata: Metadata = { title: "Sign up / Log in · CIP" };
+export const metadata: Metadata = { title: "Sign up / Log in · C.I.P" };
 
 /** Placeholder until accounts exist. */
 export default function LoginPage() {
@@ -17,7 +17,7 @@ export default function LoginPage() {
             Sign up / Log in
           </h1>
           <p className="mt-4 font-body text-[18px] leading-[28px] text-[#A1A1AA]">
-            Accounts are coming soon. Until then, everything CIP can do is open without one.
+            Accounts are coming soon. Until then, everything C.I.P can do is open without one.
           </p>
           <Link
             href={NAV_CTA.href}

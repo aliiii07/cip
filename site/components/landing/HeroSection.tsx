@@ -127,7 +127,7 @@ export function HeroSection() {
               }
               className="mt-7 max-w-[692px] font-body text-[17px] font-normal leading-[27px] text-text-dark-muted lg:text-[24px] lg:leading-[36px]"
             >
-              Follow expert playbooks safely. Nothing reaches you until CIP
+              Follow expert playbooks safely. Nothing reaches you until C.I.P
               verifies it with data, research, backtesting, and AI risk
               reviews.
             </motion.p>
