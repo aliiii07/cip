@@ -4,10 +4,10 @@
  */
 
 export const DISCLAIMER =
-  "For educational and simulation purposes only. Past performance does not guarantee future results. C.I.P is not a broker and does not provide investment advice.";
+  "For educational and simulation purposes only. Past performance does not guarantee future results. Investa is not a broker and does not provide investment advice.";
 
 export const APPROVAL_BANNER =
-  "You decide. C.I.P recommends a tested strategy and its verdict, never a trade and never a direction. Nothing runs until you approve it. Not investment advice.";
+  "You decide. Investa recommends a tested strategy and its verdict, never a trade and never a direction. Nothing runs until you approve it. Not investment advice.";
 
 /** One consistent stage story across the whole site. */
 export const STAGE = "Pre-seed · MVP shipped";

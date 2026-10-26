@@ -13,28 +13,28 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 const QA: [string, string][] = [
   [
-    "Why choose C.I.P?",
-    "C.I.P gives you access to pro portfolios, plus every single strategy is verified by data, research, and AI risk models. It also works seamlessly across emerging markets.",
+    "Why choose Investa?",
+    "Investa gives you access to pro portfolios, plus every single strategy is verified by data, research, and AI risk models. It also works seamlessly across emerging markets.",
   ],
   [
     "How does Auto-Follow work?",
-    "Auto-follow copies expert moves, but C.I.P re-checks and re-verifies each move with AI before it updates your paper portfolio.",
+    "Auto-follow copies expert moves, but Investa re-checks and re-verifies each move with AI before it updates your paper portfolio.",
   ],
   [
     "Do I need to leave the app to trade?",
-    "No. You follow, build, and track everything fully inside C.I.P.",
+    "No. You follow, build, and track everything fully inside Investa.",
   ],
   [
-    "Is C.I.P good if I am new to investing?",
-    "Yes. C.I.P is beginner-friendly and explains each strategy’s numbers and risk metrics in plain language.",
+    "Is Investa good if I am new to investing?",
+    "Yes. Investa is beginner-friendly and explains each strategy’s numbers and risk metrics in plain language.",
   ],
   [
-    "Is C.I.P safe?",
+    "Is Investa safe?",
     "Safer by design: paper-first, no real money at risk when testing, honest simulated results.",
   ],
   [
     "How do I choose strategies?",
-    "C.I.P suggests verified strategies tailored to your goals and risk profile; you keep full choice.",
+    "Investa suggests verified strategies tailored to your goals and risk profile; you keep full choice.",
   ],
   [
     "Do I need a new brokerage account?",
@@ -42,8 +42,8 @@ const QA: [string, string][] = [
   ],
   ["What is the minimum amount to start?", "None in paper mode."],
   [
-    "How much does C.I.P cost?",
-    "Free to learn on paper; low-cost subscription for advanced verified strategies. C.I.P takes zero cut of your assets.",
+    "How much does Investa cost?",
+    "Free to learn on paper; low-cost subscription for advanced verified strategies. Investa takes zero cut of your assets.",
   ],
 ];
 
