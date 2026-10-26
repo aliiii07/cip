@@ -17,7 +17,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { ticker: string } }): Metadata {
   const company = COMPANY[params.ticker.toUpperCase()];
   return {
-    title: company ? `${company.name} research · C.I.P` : "Company not covered · C.I.P",
+    title: company ? `${company.name} research · Investa` : "Company not covered · Investa",
     description: company ? `${company.name}: quick review and full analysis from official filings and live prices. Not investment advice.` : undefined,
   };
 }
